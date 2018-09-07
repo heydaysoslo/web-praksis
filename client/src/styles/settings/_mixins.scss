@@ -1,0 +1,79 @@
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+  @if $fallback {
+    font-size: $fallback;
+  }
+  font-size: $responsive;
+}
+
+@mixin animation-delay($count, $delay, $initial: 0) {
+  animation-delay: (($count + 1) * $delay) + $initial;
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) {
+      animation-delay: ($i * $delay) + $initial;
+    }
+  }
+}
+
+@mixin showQueries {
+  &:after {
+    position: fixed;
+    @include spacing('md', ('right', 'bottom'));
+    @include font-size(h2);
+  }
+
+  @include bp(sm) {
+    &:after {
+      content: 'small';
+    }
+  }
+  @include bp(md) {
+    &:after {
+      content: 'medium';
+    }
+  }
+  @include bp(lg) {
+    &:after {
+      content: 'large';
+    }
+  }
+  @include bp(xl) {
+    &:after {
+      content: 'xlarge';
+    }
+  }
+}
+
+@mixin content-width($size) {
+    @each $bp, $widths in $content-width {
+      @if $bp == sm {
+        max-width: 100%;
+        @include spacing('md', ('padding-left', 'padding-right'));
+      } @else {
+        @include bp($bp) {
+          $width: map-get($widths, $size);
+          max-width: rem-calc($width);
+          margin-left: auto;
+          margin-right: auto;
+          @include spacing('md', ('padding-left', 'padding-right'));
+        }
+    }
+  }
+}
+
+@mixin container {
+  position: relative;
+  width: 100%;
+  @include content-width(sm);
+}

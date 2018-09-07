@@ -1,0 +1,65 @@
+// .Cards {
+//   display: flex;
+//   flex-direction: column;
+//   @include spacing('section', 'padding-top');
+
+//   &:before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     display: inline-block;
+//     width: $border__width--large;
+//     height: 100%;
+//     background: $c-main;
+//   }
+
+//   &__dot {
+//     width: rem-calc(30);
+//     height: rem-calc(30);
+//     border-radius: 999px;
+//     background: $c-main;
+//     position: absolute;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     transition: $trans--fast;
+//   }
+
+//   &__item {
+//     @include spacing('lg', 'margin-bottom');
+//     animation: slide-up .4s ease both;
+//     @include animation-delay(10, 100ms);
+
+//     &:nth-of-type(odd) {
+//       margin-right: 50%;
+//       @include spacing('lg', 'padding-right');
+//     }
+
+//     &:nth-of-type(even) {
+//       margin-left: 50%;
+//       @include spacing('lg', 'padding-left');
+//     }
+//   }
+
+//   &__header {
+//     @include spacing('sm', 'margin-bottom');
+//     display: flex;
+//     justify-content: space-between;
+//   }
+
+//   &__img {
+//     display: none;
+//   }
+
+//   &__excerpt {
+//     display: none;
+//   }
+// }
+
+.Cards {
+  &__item {
+    background: silver;
+    margin: 10px;
+  }
+}
