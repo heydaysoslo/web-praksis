@@ -39,6 +39,13 @@ export const getPageBySlug = slug => {
   return wp.pages().slug(slug)
 }
 
+export const getProtectedPost = (id, password) => {
+  return wp
+    .posts()
+    .id(id)
+    .password(password)
+}
+
 const parseUserCredentials = hash => {
   const hashDecoded = base64.decode(hash)
   const hashParts = hashDecoded.split('*|*')
