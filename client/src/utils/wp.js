@@ -48,20 +48,20 @@ const parseUserCredentials = hash => {
   }
 }
 
-export const getPreview = (id, hash) => {
-  let testeee = wp
-    .posts()
-    .id(id)
-    .revisions()
-    .auth(parseUserCredentials(hash))
-    .toString()
-  console.log(testeee)
-
-  return wp
-    .posts()
-    .id(id)
-    .revisions()
-    .auth(parseUserCredentials(hash))
+export const getPreview = ({ id, hash, postType }) => {
+  if (postType === 'post') {
+    return wp
+      .posts()
+      .id(id)
+      .revisions()
+      .auth(parseUserCredentials(hash))
+  } else if (postType === 'page') {
+    return wp
+      .pages()
+      .id(id)
+      .revisions()
+      .auth(parseUserCredentials(hash))
+  }
 }
 
 export const getMe = () => {

@@ -9,13 +9,11 @@ class Preview extends Component {
     post: false
   }
   componentDidMount() {
-    getPreview(this.props.match.params.id, this.props.match.params.hash).then(
-      res => {
-        this.setState({
-          post: res[0]
-        })
-      }
-    )
+    getPreview(this.props.match.params).then(res => {
+      this.setState({
+        post: res[0]
+      })
+    })
   }
   render() {
     const { post } = this.state

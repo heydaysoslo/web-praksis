@@ -25,7 +25,7 @@ export const routes = [
   },
   {
     name: 'Preview',
-    path: '/_preview/:id/:hash',
+    path: '/_preview/:id/:postType/:hash',
     component: Preview,
     exact: true
   },
