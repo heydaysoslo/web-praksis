@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import renderHTML from 'react-render-html'
 import { getPostBySlug } from '../utils/wp'
 import { injectInlineScripts } from '../utils/scriptInject'
+import Article from './Article'
 
 class PostPage extends Component {
   state = {
@@ -27,23 +27,7 @@ class PostPage extends Component {
     }
   }
   render() {
-    const { post } = this.state
-    return (
-      <article className="article">
-        <div className="container">
-          {post.title && <h1>{post.title.rendered}</h1>}
-          {post.better_featured_image && (
-            <img
-              src={post.better_featured_image.source_url}
-              alt={post.better_featured_image.alt_text}
-            />
-          )}
-          <div className="article__content editor">
-            {post.content && renderHTML(post.content.rendered)}
-          </div>
-        </div>
-      </article>
-    )
+    return <Article post={this.state.post} />
   }
 }
 

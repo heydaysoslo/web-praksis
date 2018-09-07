@@ -1,17 +1,22 @@
 // import base64 from 'base-64'
 import WPAPI from 'wpapi'
+import base64 from 'base-64'
+// import URL from 'url-parse'
 // import Cookie from 'js-cookie'
 // https://yarnpkg.com/en/package/wpapi
 
+// const url = new URL(window.location.href);
+
 const wp = new WPAPI({
-  endpoint: 'http://praksis.test/api/',
-  nonce: 'c8e6c25816'
+  endpoint: 'http://praksis.test/api/'
+  // username: 'preview',
+  // password: '5DMpJK2FIbdy#vh8DFK3j@*5'
   // username: 'martinsanne',
-  // password: '8BejSi9!jv@3s)Z5gu',
+  // password: '8BejSi9!jv@3s)Z5gu'
   // token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wcmFrc2lzLnRlc3QiLCJpYXQiOjE1MzYzMDIyODksIm5iZiI6MTUzNjMwMjI4OSwiZXhwIjoxNTM2OTA3MDg5LCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.1CyISEvbRwbfuLnUtjAiG9Wo7DWy8y5dSN9rHABR_oQ'
 })
 
-wp.myCustomResource = wp.registerRoute('v1', '/geolocation/')
+// wp.myCustomResource = wp.registerRoute('v1', '/geolocation/')
 // wp.myCustomResource()
 //   .then(res => console.log('res', res))
 //   .catch(err => console.log('err', err))
@@ -34,16 +39,29 @@ export const getPageBySlug = slug => {
   return wp.pages().slug(slug)
 }
 
-export const getPreview = (id, wpnonce) => {
-  return (
-    wp
+const parseUserCredentials = hash => {
+  const hashDecoded = base64.decode(hash)
+  const hashParts = hashDecoded.split('*|*')
+  return {
+    username: hashParts[0],
+    password: hashParts[1]
+  }
+}
 
-      // .pages()
-      // .id(id)
-      // .revisions()
-      .myCustomResource()
-      .param('_wpnonce', wpnonce)
-  )
+export const getPreview = (id, hash) => {
+  let testeee = wp
+    .posts()
+    .id(id)
+    .revisions()
+    .auth(parseUserCredentials(hash))
+    .toString()
+  console.log(testeee)
+
+  return wp
+    .posts()
+    .id(id)
+    .revisions()
+    .auth(parseUserCredentials(hash))
 }
 
 export const getMe = () => {
@@ -70,6 +88,8 @@ export const getMe = () => {
 // console.log(allCookies)
 
 // https://oprea.rocks/blog/enable-jwt-authentication-for-the-wordpress-rest-api/
-getMe().then(res => {
-  console.log(res)
-})
+// getMe().then(res => {
+//   console.log(res)
+// })
+
+export default wp

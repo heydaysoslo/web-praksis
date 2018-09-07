@@ -25,7 +25,7 @@ export const routes = [
   },
   {
     name: 'Preview',
-    path: '/_preview/:id/:wpnonce',
+    path: '/_preview/:id/:hash',
     component: Preview,
     exact: true
   },
