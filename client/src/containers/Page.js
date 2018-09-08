@@ -1,64 +1,84 @@
 import React, { Component } from 'react'
-import renderHTML from 'react-render-html'
-import { getPageBySlug } from '../utils/wp'
-import NoMatchPage from '../containers/NoMatchPage'
+import { getPageBySlug, getProtectedPage } from '../utils/wp'
+import { injectInlineScripts } from '../utils/scriptInject'
+import Article from './Article'
 
-class Page extends Component {
+class PostPage extends Component {
   state = {
-    post: null,
-    loading: false
+    post: [],
+    isUnlocked: false,
+    password: '',
+    pwmessage: ''
   }
+
   getPost = slug => {
-    this.setState({
-      loading: true
-    })
     getPageBySlug(slug).then(res => {
-      if (res.length) {
-        this.setState({
-          loading: false,
-          post: res[0]
-        })
-      } else {
-        this.setState({
-          loading: false,
-          post: null
-        })
+      const post = res[0]
+      if (post.content && post.content.rendered) {
+        injectInlineScripts(post.content.rendered)
       }
+      console.log(post)
+      this.setState({ post })
     })
   }
+
+  handleSubmit = event => {
+    getProtectedPage(this.state.post.id, this.state.password)
+      .then(post => {
+        if (post.content && post.content.rendered) {
+          injectInlineScripts(post.content.rendered)
+        }
+        this.setState({ post, isUnlocked: true })
+      })
+      .catch(err => {
+        console.log('error', err)
+        if (err.message) {
+          this.setState({
+            pwmessage: err.message
+          })
+        }
+      })
+    event.preventDefault()
+  }
+
   componentDidMount = () => {
     this.getPost(this.props.match.params.slug)
   }
+
   componentWillReceiveProps = async nextProps => {
+    // Replace with componentDidUpdate https://reactjs.org/docs/react-component.html#componentdidupdate
     if (nextProps.match.params.slug !== this.props.match.params.slug) {
       this.getPost(nextProps.match.params.slug)
     }
   }
+
+  handleChange = event => {
+    this.setState({ password: event.target.value })
+  }
+
   render() {
-    const { post } = this.state
-    if (this.state.loading) {
-      return <div>Loading…</div>
-    } else if (!this.state.post) {
-      return <NoMatchPage />
-    } else {
+    if (
+      this.state.post &&
+      this.state.post.protected &&
+      !this.state.isUnlocked
+    ) {
       return (
         <article className="article">
           <div className="container">
-            {post.title && <h1>{post.title.rendered}</h1>}
-            {post.better_featured_image && (
-              <img
-                src={post.better_featured_image.source_url}
-                alt={post.better_featured_image.alt_text}
-              />
-            )}
-            <div className="article__content editor">
-              {post.content && renderHTML(post.content.rendered)}
-            </div>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Passordbeskyttet innlegg
+                <br />
+                <input onChange={this.handleChange} type="text" />
+                {this.state.pwmessage && <p>{this.state.pwmessage}</p>}
+              </label>
+            </form>
           </div>
         </article>
       )
     }
+    return <Article post={this.state.post} />
   }
 }
 
-export default Page
+export default PostPage

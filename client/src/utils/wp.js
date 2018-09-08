@@ -46,6 +46,13 @@ export const getProtectedPost = (id, password) => {
     .password(password)
 }
 
+export const getProtectedPage = (id, password) => {
+  return wp
+    .pages()
+    .id(id)
+    .password(password)
+}
+
 const parseUserCredentials = hash => {
   const hashDecoded = base64.decode(hash)
   const hashParts = hashDecoded.split('*|*')
