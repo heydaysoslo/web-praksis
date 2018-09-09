@@ -1,7 +1,8 @@
 import FrontPage from '../containers/FrontPage'
 import PostsPage from '../containers/PostsPage'
-import PostPage from '../containers/PostPage'
-import Page from '../containers/Page'
+// import PostPage from '../containers/PostPage'
+// import Page from '../containers/Page'
+import Single from '../containers/Single'
 import Preview from '../containers/Preview'
 
 export const routes = [
@@ -19,20 +20,20 @@ export const routes = [
   },
   {
     name: 'Post',
-    path: '/posts/:slug',
-    component: PostPage,
+    path: '/:type/:slug',
+    component: Single,
     exact: false
+  },
+  {
+    name: 'Page',
+    path: '/:slug',
+    component: Single,
+    exact: true
   },
   {
     name: 'Preview',
     path: '/_preview/:id/:postType/:hash',
     component: Preview,
-    exact: true
-  },
-  {
-    name: 'Page',
-    path: '/:slug',
-    component: Page,
     exact: true
   }
 ]

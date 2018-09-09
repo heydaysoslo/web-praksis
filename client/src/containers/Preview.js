@@ -10,6 +10,7 @@ class Preview extends Component {
   }
   componentDidMount() {
     getPreview(this.props.match.params).then(res => {
+      console.log(this.props.match.params)
       this.setState({
         post: res[0]
       })

@@ -13,7 +13,7 @@ const Post = props => {
         </p>
       </header>
       <div className="Cards__content">{renderHTML(post.content.rendered)}</div>
-      <Link to={`/posts/${post.slug}`}>Les mer</Link>
+      <Link to={`/post/${post.slug}`}>Les mer</Link>
     </div>
   )
 }

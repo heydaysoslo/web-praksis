@@ -16,6 +16,15 @@ const wp = new WPAPI({
   // token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wcmFrc2lzLnRlc3QiLCJpYXQiOjE1MzYzMDIyODksIm5iZiI6MTUzNjMwMjI4OSwiZXhwIjoxNTM2OTA3MDg5LCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.1CyISEvbRwbfuLnUtjAiG9Wo7DWy8y5dSN9rHABR_oQ'
 })
 
+const parseUserCredentials = hash => {
+  const hashDecoded = base64.decode(hash)
+  const hashParts = hashDecoded.split('*|*')
+  return {
+    username: hashParts[0],
+    password: hashParts[1]
+  }
+}
+
 // wp.myCustomResource = wp.registerRoute('v1', '/geolocation/')
 // wp.myCustomResource()
 //   .then(res => console.log('res', res))
@@ -33,10 +42,15 @@ export const getPostBySlug = slug => {
     .posts()
     .slug(slug)
     .embed()
+    .then(res => res[0])
 }
 
 export const getPageBySlug = slug => {
-  return wp.pages().slug(slug)
+  return wp
+    .pages()
+    .slug(slug)
+    .embed()
+    .then(res => res[0])
 }
 
 export const getProtectedPost = (id, password) => {
@@ -53,13 +67,30 @@ export const getProtectedPage = (id, password) => {
     .password(password)
 }
 
-const parseUserCredentials = hash => {
-  const hashDecoded = base64.decode(hash)
-  const hashParts = hashDecoded.split('*|*')
-  return {
-    username: hashParts[0],
-    password: hashParts[1]
+export const getProtectedObject = (id, type, password) => {
+  let promise
+  switch (type) {
+    case 'post':
+      promise = getProtectedPost(id, password)
+      break
+    default:
+      promise = getProtectedPage(id, password)
+      break
   }
+  return promise
+}
+
+export const getObjectBySlug = ({ type, slug }) => {
+  let promise
+  switch (type) {
+    case 'post':
+      promise = getPostBySlug(slug)
+      break
+    default:
+      promise = getPageBySlug(slug)
+      break
+  }
+  return promise
 }
 
 export const getPreview = ({ id, hash, postType }) => {
