@@ -10,6 +10,7 @@ class Header extends Component {
     fetch('http://praksis.test/api/menus/v1/menus/primary')
       .then(res => res.json())
       .then(res => {
+        console.log(res)
         this.setState({
           menuItems: res.items
         })
