@@ -13,6 +13,12 @@ class Single extends Component {
   }
 
   loadContent = () => {
+    // Reset state
+    this.setState({
+      loading: true,
+      unlocked: false
+    })
+
     const urlParams = this.props.match.params
     getObjectBySlug(urlParams)
       .then(post => {
@@ -22,6 +28,12 @@ class Single extends Component {
         })
       })
       .catch(err => console.log(err))
+  }
+
+  componentDidUpdate = prevProps => {
+    if (this.props.match.params.slug !== prevProps.match.params.slug) {
+      this.loadContent()
+    }
   }
 
   componentDidMount = () => {
