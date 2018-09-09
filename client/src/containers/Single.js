@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import HeaderMeta from '../components/HeaderMeta'
+import Article from '../containers/Article'
 import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'
 
@@ -54,7 +55,7 @@ class Single extends Component {
     return (
       <Fragment>
         <HeaderMeta data={post} />
-        <pre>{JSON.stringify(post, null, 2)}</pre>
+        <Article post={post} />
       </Fragment>
     )
   }
