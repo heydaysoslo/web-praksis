@@ -8,19 +8,10 @@ $breakpoints: (
 @mixin bp($size) {
   @if $size == sm {
     @content;
-  }
-  @else {
+  } @else {
     $bp: map-get($breakpoints, $size);
     @media screen and (min-width: #{em-calc($bp)}) {
       @content;
-    }
-  }
-}
-
-@each $bp, $width in $breakpoints {
-  .container {
-    @include bp($bp) {
-      max-width: rem-calc($width);
     }
   }
 }

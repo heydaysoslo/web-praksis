@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { getNavMenu } from '../utils/wp'
 
 class Header extends Component {
   state = {
@@ -7,14 +8,13 @@ class Header extends Component {
   }
 
   componentDidMount = () => {
-    fetch('http://praksis.test/api/menus/v1/menus/primary')
-      .then(res => res.json())
+    getNavMenu('primary')
       .then(res => {
-        console.log(res)
         this.setState({
           menuItems: res.items
         })
       })
+      .catch(err => console.log(err))
   }
 
   render() {

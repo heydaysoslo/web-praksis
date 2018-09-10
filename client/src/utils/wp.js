@@ -1,20 +1,12 @@
-// import base64 from 'base-64'
 import WPAPI from 'wpapi'
 import base64 from 'base-64'
-// import URL from 'url-parse'
-// import Cookie from 'js-cookie'
-// https://yarnpkg.com/en/package/wpapi
-
-// const url = new URL(window.location.href);
 
 const wp = new WPAPI({
-  endpoint: 'http://praksis.test/api/'
-  // username: 'preview',
-  // password: '5DMpJK2FIbdy#vh8DFK3j@*5'
-  // username: 'martinsanne',
-  // password: '8BejSi9!jv@3s)Z5gu'
-  // token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wcmFrc2lzLnRlc3QiLCJpYXQiOjE1MzYzMDIyODksIm5iZiI6MTUzNjMwMjI4OSwiZXhwIjoxNTM2OTA3MDg5LCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.1CyISEvbRwbfuLnUtjAiG9Wo7DWy8y5dSN9rHABR_oQ'
+  endpoint: 'http://praksis.test/api'
 })
+
+// Create custom routes
+wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
 
 const parseUserCredentials = hash => {
   const hashDecoded = base64.decode(hash)
@@ -25,16 +17,15 @@ const parseUserCredentials = hash => {
   }
 }
 
-// wp.myCustomResource = wp.registerRoute('v1', '/geolocation/')
-// wp.myCustomResource()
-//   .then(res => console.log('res', res))
-//   .catch(err => console.log('err', err))
-
 export const getPosts = (page = 1) => {
   return wp
     .posts()
     .perPage(10)
     .page(page)
+}
+
+export const getNavMenu = slug => {
+  return wp.navMenus().id(slug)
 }
 
 export const getPostBySlug = slug => {

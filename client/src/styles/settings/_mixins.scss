@@ -56,18 +56,18 @@
 }
 
 @mixin content-width($size) {
-    @each $bp, $widths in $content-width {
-      @if $bp == sm {
-        max-width: 100%;
+  @each $bp, $widths in $content-width {
+    @if $bp == sm {
+      max-width: 100%;
+      @include spacing('md', ('padding-left', 'padding-right'));
+    } @else {
+      @include bp($bp) {
+        $width: map-get($widths, $size);
+        max-width: rem-calc($width);
+        margin-left: auto;
+        margin-right: auto;
         @include spacing('md', ('padding-left', 'padding-right'));
-      } @else {
-        @include bp($bp) {
-          $width: map-get($widths, $size);
-          max-width: rem-calc($width);
-          margin-left: auto;
-          margin-right: auto;
-          @include spacing('md', ('padding-left', 'padding-right'));
-        }
+      }
     }
   }
 }
@@ -75,5 +75,6 @@
 @mixin container {
   position: relative;
   width: 100%;
-  @include content-width(sm);
+  max-width: rem-calc(720);
+  margin: 0 auto;
 }

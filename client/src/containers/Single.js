@@ -40,7 +40,7 @@ class Single extends Component {
     this.loadContent()
   }
 
-  unlockPost = post => {
+  onPostUnlocked = post => {
     this.setState({
       post,
       unlocked: true
@@ -60,7 +60,7 @@ class Single extends Component {
         <PostPassword
           postType={post.type}
           postId={post.id}
-          unlockPost={this.unlockPost}
+          postUnlocked={this.onPostUnlocked}
         />
       )
     }

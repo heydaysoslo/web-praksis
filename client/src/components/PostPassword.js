@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Cookies from 'universal-cookie'
+// import Cookies from 'universal-cookie'
 import { getProtectedObject } from '../utils/wp'
 
 class PostPassword extends Component {
@@ -11,8 +11,9 @@ class PostPassword extends Component {
   }
 
   componentDidMount = () => {
-    const cookies = new Cookies()
-    const password = cookies.get('post_unlocked_' + this.props.postId)
+    const password = sessionStorage.getItem(
+      'post_unlocked_' + this.props.postId
+    )
     if (password) {
       this.setState(
         {
@@ -34,11 +35,12 @@ class PostPassword extends Component {
       this.state.password
     )
       .then(post => {
-        const cookies = new Cookies()
-        cookies.set('post_unlocked_' + this.props.postId, this.state.password, {
-          path: '/'
-        })
-        this.props.unlockPost(post)
+        // Save password in session so we don't need to ender password every time
+        sessionStorage.setItem(
+          'post_unlocked_' + this.props.postId,
+          this.state.password
+        )
+        this.props.postUnlocked(post)
       })
       .catch(err => {
         console.log('error', err)
