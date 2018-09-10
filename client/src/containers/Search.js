@@ -1,12 +1,22 @@
 import React, { Component } from 'react'
 import TagCloud from '../components/TagCloud'
+import Post from '../components/Post'
+import { search } from '../utils/wp'
 
 class Search extends Component {
   state = {
-    searchTerm: ''
+    searchTerm: '',
+    posts: []
   }
 
   handleSubmit = event => {
+    search(this.state.searchTerm)
+      .then(posts => {
+        this.setState({ posts })
+      })
+      .catch(err => {
+        this.setState({ posts: [] })
+      })
     event.preventDefault()
   }
 
@@ -15,6 +25,7 @@ class Search extends Component {
   }
 
   render() {
+    const { posts } = this.state
     return (
       <article>
         <form onSubmit={this.handleSubmit}>
@@ -23,11 +34,13 @@ class Search extends Component {
               placeholder="Skriv her"
               onChange={this.handleChange}
               type="text"
+              value={this.state.searchTerm}
             />
           </label>
         </form>
         <p>… eller let i tags</p>
         <TagCloud />
+        {posts && posts.map(p => <Post key={p.id} post={p} />)}
       </article>
     )
   }

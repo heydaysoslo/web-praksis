@@ -24,7 +24,7 @@ class TagCloud extends Component {
             {tags &&
               tags.map(tag => {
                 return (
-                  <li className="TagCloud__item">
+                  <li key={`tag-${tag.id}`} className="TagCloud__item">
                     <Link
                       className="TagCloud__link"
                       key={'tag-' + tag.id}

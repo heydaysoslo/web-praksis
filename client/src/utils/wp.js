@@ -7,6 +7,7 @@ const wp = new WPAPI({
 
 // Create custom routes
 wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
+wp.search = wp.registerRoute('relevanssi/v1', '/search/')
 
 const parseUserCredentials = hash => {
   const hashDecoded = base64.decode(hash)
@@ -15,6 +16,10 @@ const parseUserCredentials = hash => {
     username: hashParts[0],
     password: hashParts[1]
   }
+}
+
+export const search = queryTerm => {
+  return wp.search().param('s', queryTerm)
 }
 
 export const getPostsByCategory = id => {
