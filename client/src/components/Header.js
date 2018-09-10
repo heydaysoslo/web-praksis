@@ -50,6 +50,9 @@ class Header extends Component {
                   )
                 }
               })}
+              <Link to={'/sok'} className="Nav__item">
+                Søk
+              </Link>
             </nav>
           )}
           {/* <pre>{JSON.stringify(this.state.menuItems, null, 2)}</pre> */}

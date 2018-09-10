@@ -126,32 +126,4 @@ export const getPreview = ({ id, hash, postType }) => {
   }
 }
 
-export const getMe = () => {
-  return wp.users().me()
-  // .setHeaders(
-  //   'Authorization',
-  //   'Bearer ' +
-  //     'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wcmFrc2lzLnRlc3QiLCJpYXQiOjE1MzYzMDIyODksIm5iZiI6MTUzNjMwMjI4OSwiZXhwIjoxNTM2OTA3MDg5LCJkYXRhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.1CyISEvbRwbfuLnUtjAiG9Wo7DWy8y5dSN9rHABR_oQ'
-  // )
-
-  // const headers = new Headers()
-  // const username = 'martinsanne'
-  // const password = 'Jrfn fTS2 dmZX KD29 IHDT aZrI'
-  // headers.set(
-  //   'Authorization',
-  //   'Basic ' + base64.encode(username + ':' + password)
-  // )
-  // return fetch(`http://praksis.test/api/wp/v2/users/me`, {
-  //   headers
-  // }).then(res => res.json())
-}
-
-// const allCookies = Cookie.get()
-// console.log(allCookies)
-
-// https://oprea.rocks/blog/enable-jwt-authentication-for-the-wordpress-rest-api/
-// getMe().then(res => {
-//   console.log(res)
-// })
-
 export default wp

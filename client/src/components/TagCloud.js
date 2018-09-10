@@ -18,16 +18,26 @@ class TagCloud extends Component {
       return null
     }
     return (
-      <nav>
-        {tags &&
-          tags.map(tag => {
-            return (
-              <Link key={'tag-' + tag.id} to={tag.link}>
-                {tag.name}
-              </Link>
-            )
-          })}
-      </nav>
+      <div className="TagCloud">
+        <nav className="TagCloud__nav">
+          <ul className="TagCloud__list">
+            {tags &&
+              tags.map(tag => {
+                return (
+                  <li className="TagCloud__item">
+                    <Link
+                      className="TagCloud__link"
+                      key={'tag-' + tag.id}
+                      to={tag.link}
+                    >
+                      {tag.name}
+                    </Link>
+                  </li>
+                )
+              })}
+          </ul>
+        </nav>
+      </div>
     )
   }
 }

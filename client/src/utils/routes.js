@@ -6,6 +6,7 @@ import Taxonomy from '../containers/Taxonomy'
 import Single from '../containers/Single'
 import Preview from '../containers/Preview'
 import Tag from '../containers/Tag'
+import Search from '../containers/Search'
 
 export const routes = [
   {
@@ -18,6 +19,12 @@ export const routes = [
     name: 'Posts',
     path: '/posts',
     component: PostsPage,
+    exact: true
+  },
+  {
+    name: 'Search',
+    path: '/sok',
+    component: Search,
     exact: true
   },
   {

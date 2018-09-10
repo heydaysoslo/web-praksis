@@ -171,8 +171,9 @@ img {
   vertical-align: middle; }
 
 ul {
-  list-style-type: disc;
-  list-style-position: inside; }
+  list-style: none;
+  padding: 0;
+  margin: 0; }
 
 li {
   position: relative; }
@@ -366,6 +367,13 @@ strong {
 .Cards__item {
   background: silver;
   margin: 10px; }
+
+.TagCloud__list {
+  display: flex; }
+
+.TagCloud__item {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem; }
 
 .wp-caption {
   max-width: 100% !important; }
