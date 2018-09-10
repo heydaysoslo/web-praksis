@@ -1,6 +1,6 @@
 .editor {
   hyphens: auto;
-  
+
   blockquote {
     @include spacing('md', 'margin-bottom');
   }
@@ -11,10 +11,5 @@
 
   p {
     @include spacing('md', 'margin-bottom');
-  }
-
-  img {
-    width: auto;
-    max-width: 100%;
   }
 }

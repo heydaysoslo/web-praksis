@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // import Cookies from 'universal-cookie'
 import { getProtectedObject } from '../utils/wp'
+import Loading from './Loading'
 
 class PostPassword extends Component {
   state = {
@@ -63,7 +64,7 @@ class PostPassword extends Component {
 
   render() {
     if (this.state.loading) {
-      return <div>Laster</div>
+      return <Loading />
     }
     return (
       <div>

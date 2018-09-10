@@ -1,9 +1,11 @@
 import FrontPage from '../containers/FrontPage'
 import PostsPage from '../containers/PostsPage'
+import Taxonomy from '../containers/Taxonomy'
 // import PostPage from '../containers/PostPage'
 // import Page from '../containers/Page'
 import Single from '../containers/Single'
 import Preview from '../containers/Preview'
+import Tag from '../containers/Tag'
 
 export const routes = [
   {
@@ -16,6 +18,18 @@ export const routes = [
     name: 'Posts',
     path: '/posts',
     component: PostsPage,
+    exact: true
+  },
+  {
+    name: 'Category',
+    path: '/kategori/:cat',
+    component: Taxonomy,
+    exact: true
+  },
+  {
+    name: 'Tag',
+    path: '/stikkord/:tag',
+    component: Tag,
     exact: true
   },
   {

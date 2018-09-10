@@ -31,7 +31,7 @@ const DataWrapper = dataType => WrappedComponent => {
     }
     render() {
       return this.state.loading ? (
-        <div>Laster innlegg</div>
+        <Loading />
       ) : (
         <WrappedComponent {...this.props} {...this.state} />
       )

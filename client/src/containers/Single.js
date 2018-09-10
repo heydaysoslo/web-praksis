@@ -3,6 +3,7 @@ import HeaderMeta from '../components/HeaderMeta'
 import Article from '../containers/Article'
 import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'
+import Loading from '../components/Loading'
 
 class Single extends Component {
   state = {
@@ -50,9 +51,9 @@ class Single extends Component {
   render() {
     const { loading, noMatch, post, unlocked } = this.state
     if (loading) {
-      return <div>Laster</div>
+      return <Loading />
     }
-    if (noMatch) {
+    if (noMatch || !post) {
       return <div>404</div>
     }
     if (post.content.protected && !unlocked) {

@@ -17,6 +17,32 @@ const parseUserCredentials = hash => {
   }
 }
 
+export const getPostsByCategory = id => {
+  return wp.posts().categories(id)
+}
+
+export const getPostsByTag = id => {
+  return wp.posts().tags(id)
+}
+
+export const getTags = () => {
+  return wp.tags()
+}
+
+export const getCategoryBySlug = slug => {
+  return wp
+    .categories()
+    .slug(slug)
+    .then(cats => cats[0])
+}
+
+export const getTagBySlug = slug => {
+  return wp
+    .tags()
+    .slug(slug)
+    .then(tags => tags[0])
+}
+
 export const getPosts = (page = 1) => {
   return wp
     .posts()
