@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { getNavMenu } from '../utils/wp'
+import Portal from './Portal'
+import Toggle from './Toggle'
+import SlideoutNav from './SlideoutNav'
 
 class Header extends Component {
   state = {
@@ -56,6 +59,18 @@ class Header extends Component {
             </nav>
           )}
           {/* <pre>{JSON.stringify(this.state.menuItems, null, 2)}</pre> */}
+          <Toggle>
+            {({ on, toggle }) => (
+              <Fragment>
+                {on && (
+                  <Portal>
+                    <SlideoutNav toggle={toggle} />
+                  </Portal>
+                )}
+                <button onClick={toggle}>Meny</button>
+              </Fragment>
+            )}
+          </Toggle>
         </header>
       </div>
     )

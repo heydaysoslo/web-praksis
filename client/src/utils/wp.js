@@ -1,11 +1,13 @@
 import WPAPI from 'wpapi'
 import base64 from 'base-64'
 
-console.log(process.env)
+const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'production'
+const endpoint =
+  env === 'development'
+    ? 'http://praksis.test/api'
+    : 'https://208503-www.web.tornado-node.net'
 
-const wp = new WPAPI({
-  endpoint: 'http://praksis.test/api'
-})
+const wp = new WPAPI({ endpoint })
 
 // Create custom routes
 wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
