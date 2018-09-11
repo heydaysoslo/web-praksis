@@ -8,7 +8,11 @@ const compression = require('compression')
 
 const app = express()
 
-var whitelist = ['http://localhost:5000']
+var whitelist = [
+  'http://localhost:5000',
+  'https://web-praksis.herokuapp.com',
+  'https://208503-www.web.tornado-node.net'
+]
 var corsOptions = {
   allowedHeaders: ['X-WP-Nonce'],
   origin: function(origin, callback) {
