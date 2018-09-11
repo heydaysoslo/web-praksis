@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
-import striptags from 'striptags'
+
+export const striptags = html => {
+  var tmp = document.createElement('DIV')
+  tmp.innerHTML = html
+  return tmp.textContent || tmp.innerText
+}
 
 class HeaderMeta extends Component {
   getCanonicalUrl = data => {

@@ -1,6 +1,8 @@
 import WPAPI from 'wpapi'
 import base64 from 'base-64'
 
+console.log(process.env)
+
 const wp = new WPAPI({
   endpoint: 'http://praksis.test/api'
 })
