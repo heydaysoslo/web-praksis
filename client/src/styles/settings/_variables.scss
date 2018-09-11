@@ -1,6 +1,5 @@
 // Fonts
-$sans: 'Replica ProTT';
-$serif: 'Tiempos Text';
+$f-sans: 'Replica';
 $f-size: 50px;
 
 // Colors
@@ -15,7 +14,7 @@ $breakpoints: (
   md: 768,
   lg: 1024,
   xl: 1400,
-  xxl: 1800,
+  xxl: 1800
 );
 
 $content-width: (
@@ -30,7 +29,7 @@ $content-width: (
   xl: (
     sm: 1400,
     lg: 1600
-  ),
+  )
 );
 
 // Spacing
@@ -63,7 +62,7 @@ $typography: (
     h3: 31,
     body: 20,
     small: 16,
-    lead: 31,
+    lead: 31
   ),
   md: (
     h1: 44,
@@ -71,7 +70,7 @@ $typography: (
     h3: 30,
     body: 20,
     small: 26,
-    lead: 44,
+    lead: 44
   ),
   lg: (
     h1: 52,
@@ -79,8 +78,8 @@ $typography: (
     h3: 37,
     body: 22,
     small: 18,
-    lead: 52,
-  ),
+    lead: 52
+  )
 );
 
 // Border

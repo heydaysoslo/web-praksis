@@ -1,16 +1,69 @@
-// @font-face {
-//   font-family: 'Riposte';
-//   src: url('../assets/fonts/Riposte-Regular.eot?#iefix')
-//       format('embedded-opentype'),
-//     url('../assets/fonts/Riposte-Regular.woff2') format('woff2'),
-//     url('../assets/fonts/Riposte-Regular.woff') format('woff');
-//   font-weight: $font-weight-normal;
-//   font-style: normal;
-// }
+$font-directory: '/assets/fonts';
 
-// @font-face {
-//   font-family: 'Favorit';
-//   src: url('../assets/fonts/Favorit-Regular.otf');
-//   font-weight: normal;
-//   font-style: normal;
-// }
+// Regular
+@font-face {
+  font-family: 'Replica';
+  src: url('#{$font-directory}/lineto/lineto-replica-regular.eot');
+  src: url('#{$font-directory}/lineto/lineto-replica-regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$font-directory}/lineto/lineto-replica-regular.woff2')
+      format('woff2'),
+    url('#{$font-directory}/lineto/lineto-replica-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+// Regular Italic
+@font-face {
+  font-family: 'Replica';
+  src: url('#{$font-directory}/lineto/lineto-replica-italic.eot');
+  src: url('#{$font-directory}/lineto/lineto-replica-italic.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$font-directory}/lineto/lineto-replica-italic.woff2') format('woff2'),
+    url('#{$font-directory}/lineto/lineto-replica-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+// Light
+@font-face {
+  font-family: 'Replica';
+  src: url('#{$font-directory}/lineto/lineto-replica-light.eot');
+  src: url('#{$font-directory}/lineto/lineto-replica-light.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$font-directory}/lineto/lineto-replica-light.woff2') format('woff2'),
+    url('#{$font-directory}/lineto/lineto-replica-light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+// Light Italic
+@font-face {
+  font-family: 'Replica';
+  src: url('#{$font-directory}/lineto/lineto-replica-lightitalic.eot');
+  src: url('#{$font-directory}/lineto/lineto-replica-lightitalic.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$font-directory}/lineto/lineto-replica-lightitalic.woff2')
+      format('woff2'),
+    url('#{$font-directory}/lineto/lineto-replica-lightitalic.woff')
+      format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: normal;
+}
+
+// Bold
+@font-face {
+  font-family: 'Replica';
+  src: url('#{$font-directory}/lineto/lineto-replica-bold.eot');
+  src: url('#{$font-directory}/lineto/lineto-replica-bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$font-directory}/lineto/lineto-replica-bold.woff2') format('woff2'),
+    url('#{$font-directory}/lineto/lineto-replica-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+}

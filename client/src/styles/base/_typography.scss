@@ -3,10 +3,10 @@ html {
 }
 
 body {
-  font-family: $serif;
+  font-family: $f-sans;
   @include font-size(body);
   line-height: 1.344;
-  font-weight: normal;
+  font-weight: 300;
   color: $c-text;
   -webkit-font-smoothing: antialiased;
 }
@@ -21,7 +21,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: $sans;
+  font-weight: 400;
 }
 
 p,
