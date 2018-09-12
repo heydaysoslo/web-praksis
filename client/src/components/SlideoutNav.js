@@ -13,15 +13,7 @@ export default class SlideoutNav extends Component {
     return (
       <div className="SlideoutNav">
         <div className="SlideoutNav__background" onClick={this.props.toggle} />
-        <div className="SlideoutNav__menu">
-          <ul>
-            <li>Nav item</li>
-            <li>Nav item</li>
-            <li>Nav item</li>
-            <li>Nav item</li>
-            <li>Nav item</li>
-          </ul>
-        </div>
+        <div className="SlideoutNav__menu">{this.props.children}</div>
       </div>
     )
   }

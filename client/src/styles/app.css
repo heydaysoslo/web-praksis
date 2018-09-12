@@ -215,6 +215,9 @@ ul {
   padding: 0;
   margin: 0; }
 
+[role='button'] {
+  cursor: pointer; }
+
 li {
   position: relative; }
 
@@ -223,6 +226,10 @@ figure {
 
 figcaption:before {
   content: '↳ \00a0'; }
+
+.SocialMediaShareCount {
+  display: inline;
+  margin-left: 0.25rem; }
 
 html {
   font-size: 100%; }

@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react'
-import { Link, NavLink } from 'react-router-dom'
 import { getNavMenu } from '../utils/wp'
+import { Link } from 'react-router-dom'
 import Portal from './Portal'
 import Toggle from './Toggle'
 import SlideoutNav from './SlideoutNav'
+import NavMenu from './NavMenu'
 
 class Header extends Component {
   state = {
@@ -27,44 +28,15 @@ class Header extends Component {
           <Link to={'/'} className="Header__logo">
             Praksis
           </Link>
-          {this.state.menuItems.length > 0 && (
-            <nav className="Header__nav Nav">
-              {this.state.menuItems.map(p => {
-                if (p.slug) {
-                  return (
-                    <NavLink
-                      className="Nav__item"
-                      key={`Nav__item-${p.ID}`}
-                      to={p.slug}
-                    >
-                      {p.title}
-                    </NavLink>
-                  )
-                } else {
-                  return (
-                    <a
-                      key={`Nav__item-${p.ID}`}
-                      href={p.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {p.title}
-                    </a>
-                  )
-                }
-              })}
-              <Link to={'/sok'} className="Nav__item">
-                Søk
-              </Link>
-            </nav>
-          )}
-          {/* <pre>{JSON.stringify(this.state.menuItems, null, 2)}</pre> */}
+          <NavMenu items={this.state.menuItems} />
           <Toggle>
             {({ on, toggle }) => (
               <Fragment>
                 {on && (
                   <Portal>
-                    <SlideoutNav toggle={toggle} />
+                    <SlideoutNav toggle={toggle}>
+                      <NavMenu items={this.state.menuItems} />
+                    </SlideoutNav>
                   </Portal>
                 )}
                 <button onClick={toggle}>Meny</button>

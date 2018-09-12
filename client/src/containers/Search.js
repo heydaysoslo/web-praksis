@@ -38,8 +38,9 @@ class Search extends Component {
             />
           </label>
         </form>
-        <p>… eller let i tags</p>
-        <TagCloud />
+        <TagCloud>
+          <p>… eller let i tags</p>
+        </TagCloud>
         {posts && posts.map(p => <Post key={p.id} post={p} />)}
       </article>
     )

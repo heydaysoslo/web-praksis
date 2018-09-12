@@ -19,6 +19,7 @@ class TagCloud extends Component {
     }
     return (
       <div className="TagCloud">
+        {this.props.children}
         <nav className="TagCloud__nav">
           <ul className="TagCloud__list">
             {tags &&

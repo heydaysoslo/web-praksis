@@ -17,6 +17,10 @@ ul {
   // list-style-position: inside;
 }
 
+[role='button'] {
+  cursor: pointer;
+}
+
 li {
   position: relative;
 }
@@ -29,4 +33,9 @@ figcaption {
   &:before {
     content: '↳ \00a0';
   }
+}
+
+.SocialMediaShareCount {
+  display: inline;
+  margin-left: 0.25rem;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import renderHTML from 'react-render-html'
+import Share from '../components/ShareButtons'
 
 class Article extends Component {
   render() {
@@ -17,6 +18,7 @@ class Article extends Component {
           <div className="article__content editor">
             {post.content && renderHTML(post.content.rendered)}
           </div>
+          <Share />
         </div>
       </article>
     )
