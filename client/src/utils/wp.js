@@ -5,7 +5,7 @@ const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'production'
 const endpoint =
   env === 'development'
     ? 'http://praksis.test/api'
-    : 'https://208503-www.web.tornado-node.net'
+    : 'https://208503-www.web.tornado-node.net/api'
 
 const wp = new WPAPI({ endpoint })
 
