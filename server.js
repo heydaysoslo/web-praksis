@@ -10,8 +10,8 @@ const app = express()
 
 var whitelist = [
   'http://localhost:5000',
-  'https://web-praksis.herokuapp.com',
-  'https://208503-www.web.tornado-node.net'
+  'http://web-praksis.herokuapp.com',
+  'https://web-praksis.herokuapp.com'
 ]
 var corsOptions = {
   allowedHeaders: ['X-WP-Nonce'],
