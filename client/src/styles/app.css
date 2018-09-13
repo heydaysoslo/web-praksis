@@ -253,7 +253,9 @@ body {
 
 h1,
 h2,
-h3,
+h3 {
+  font-weight: 700; }
+
 h4,
 h5 {
   font-weight: 400; }
@@ -364,19 +366,23 @@ strong {
       font-size: 3.25rem; } }
 
 .development:after {
-  content: 'small'; }
+  content: sm; }
 
 @media screen and (min-width: 48em) {
   .development:after {
-    content: 'medium'; } }
+    content: md; } }
 
 @media screen and (min-width: 64em) {
   .development:after {
-    content: 'large'; } }
+    content: lg; } }
 
 @media screen and (min-width: 87.5em) {
   .development:after {
-    content: 'xlarge'; } }
+    content: xl; } }
+
+@media screen and (min-width: 112.5em) {
+  .development:after {
+    content: xxl; } }
 
 .container {
   position: relative;
