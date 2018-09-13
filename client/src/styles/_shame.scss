@@ -1,0 +1,39 @@
+.ArticleHeader {
+  margin-top: rem-calc(70);
+  margin-bottom: rem-calc(70);
+  &__title,
+  &__intro,
+  &__meta {
+    text-align: center;
+  }
+  &__intro {
+    @include font-size(lead);
+    font-weight: 400;
+    line-height: 1.23;
+    color: $c-primary;
+    max-width: rem-calc(740);
+    margin: 0 auto;
+    margin-top: rem-calc(20);
+  }
+  &__meta {
+    margin-bottom: rem-calc(20);
+  }
+  &__image {
+    max-width: rem-calc(1160);
+    margin: 0 auto;
+    margin-top: rem-calc(40);
+  }
+}
+
+.Article {
+  &__content {
+    max-width: rem-calc(740);
+    margin: 0 auto;
+  }
+}
+
+.Articles {
+  &__item {
+    border-bottom: 1px solid $c-black;
+  }
+}

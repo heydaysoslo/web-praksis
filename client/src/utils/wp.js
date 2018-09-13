@@ -22,6 +22,20 @@ const parseUserCredentials = hash => {
   }
 }
 
+export const baseUrl = (path = '') => {
+  return window.location.protocol + '//' + window.location.host + path
+}
+
+export const getObjectLink = obj => {
+  if (obj.type) {
+    if (obj.type === 'page') {
+      return '/' + obj.slug
+    }
+    return '/' + obj.type + '/' + obj.slug
+  }
+  console.log('Nothing found')
+}
+
 export const search = queryTerm => {
   return wp.search().param('s', queryTerm)
 }

@@ -23,28 +23,26 @@ class Header extends Component {
 
   render() {
     return (
-      <div className="container">
-        <header className="Header">
-          <Link to={'/'} className="Header__logo">
-            Praksis
-          </Link>
-          <NavMenu items={this.state.menuItems} />
-          <Toggle>
-            {({ on, toggle }) => (
-              <Fragment>
-                {on && (
-                  <Portal>
-                    <SlideoutNav toggle={toggle}>
-                      <NavMenu items={this.state.menuItems} />
-                    </SlideoutNav>
-                  </Portal>
-                )}
-                <button onClick={toggle}>Meny</button>
-              </Fragment>
-            )}
-          </Toggle>
-        </header>
-      </div>
+      <header className="Header">
+        <Link to={'/'} className="Header__logo">
+          Praksis
+        </Link>
+        <NavMenu items={this.state.menuItems} />
+        <Toggle>
+          {({ on, toggle }) => (
+            <Fragment>
+              {on && (
+                <Portal>
+                  <SlideoutNav toggle={toggle}>
+                    <NavMenu items={this.state.menuItems} />
+                  </SlideoutNav>
+                </Portal>
+              )}
+              <button onClick={toggle}>Meny</button>
+            </Fragment>
+          )}
+        </Toggle>
+      </header>
     )
   }
 }

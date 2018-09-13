@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { getPosts } from '../utils/wp'
-
-import Post from '../components/Post'
+import Article from '../containers/Article'
 
 class FrontPage extends Component {
   state = {
@@ -29,14 +28,17 @@ class FrontPage extends Component {
   render() {
     const { posts } = this.state
     return (
-      <div className="main">
-        <div className="container">
-          <div className="cards">
-            {posts && posts.map(p => <Post key={p.id} post={p} />)}
-          </div>
-          <button onClick={this.loadNextPage}>Load next page</button>
-        </div>
-      </div>
+      <article>
+        <section className="Articles">
+          {posts &&
+            posts.map(p => (
+              <div className="Articles__item">
+                <Article key={p.id} post={p} />
+              </div>
+            ))}
+        </section>
+        <button onClick={this.loadNextPage}>Load next page</button>
+      </article>
     )
   }
 }
