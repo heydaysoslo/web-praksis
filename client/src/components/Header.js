@@ -27,18 +27,20 @@ class Header extends Component {
         <Link to={'/'} className="Header__logo">
           Praksis
         </Link>
-        <NavMenu items={this.state.menuItems} />
+        {/* <NavMenu items={this.state.menuItems} /> */}
         <Toggle>
           {({ on, toggle }) => (
             <Fragment>
               {on && (
                 <Portal>
                   <SlideoutNav toggle={toggle}>
-                    <NavMenu items={this.state.menuItems} />
+                    <NavMenu toggle={toggle} items={this.state.menuItems} />
                   </SlideoutNav>
                 </Portal>
               )}
-              <button onClick={toggle}>Meny</button>
+              <div className="Header__nav Header__nav--right">
+                <button onClick={toggle}>Meny</button>
+              </div>
             </Fragment>
           )}
         </Toggle>

@@ -8,34 +8,44 @@ export default class NavMenu extends Component {
       return null
     }
     return (
-      <nav className="Header__nav Nav">
-        {items.map(p => {
-          if (p.slug) {
-            return (
-              <NavLink
-                className="Nav__item"
-                key={`Nav__item-${p.ID}`}
-                to={p.slug}
-              >
-                {p.title}
-              </NavLink>
-            )
-          } else {
-            return (
-              <a
-                key={`Nav__item-${p.ID}`}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {p.title}
-              </a>
-            )
-          }
-        })}
-        <Link to={'/sok'} className="Nav__item">
-          Søk
-        </Link>
+      <nav className="NavMenu">
+        <ul className="NavMenu__list">
+          {items.map(p => {
+            if (p.slug) {
+              return (
+                <li className="NavMenu__item">
+                  <NavLink
+                    className="NavMenu__link"
+                    key={`Nav__item-${p.ID}`}
+                    to={p.slug}
+                    onClick={this.props.toggle}
+                  >
+                    {p.title}
+                  </NavLink>
+                </li>
+              )
+            } else {
+              return (
+                <li className="NavMenu__item">
+                  <a
+                    className="NavMenu__link"
+                    key={`Nav__item-${p.ID}`}
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {p.title}
+                  </a>
+                </li>
+              )
+            }
+          })}
+          <li className="NavMenu__item">
+            <Link to={'/sok'} className="NavMenu__link">
+              Søk
+            </Link>
+          </li>
+        </ul>
       </nav>
     )
   }

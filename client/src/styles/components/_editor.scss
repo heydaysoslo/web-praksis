@@ -12,8 +12,16 @@
   h1,
   h2,
   h3 {
-    margin-top: rem-calc(40);
     margin-bottom: rem-calc(20);
+  }
+
+  h1,
+  h2 {
+    margin-top: rem-calc(70);
+  }
+
+  h3 {
+    margin-top: rem-calc(40);
   }
 
   p {
@@ -30,7 +38,6 @@
 
   ul,
   ol {
-    list-style-type: decimal;
     margin-top: rem-calc(20);
     margin-bottom: rem-calc(20);
     padding-left: rem-calc(40);
@@ -42,15 +49,17 @@
   blockquote {
     margin-top: rem-calc(140);
     margin-bottom: rem-calc(140);
-    margin-left: -140px;
-    margin-right: -140px;
+
     @include font-size(h1);
+    color: $c-text;
     text-align: center;
     font-weight: bold;
     line-height: 1.1;
+
     p {
       line-height: inherit;
     }
+
     cite {
       @include font-size(body);
       font-weight: 300;
@@ -61,6 +70,11 @@
       &:before {
         content: '— ';
       }
+    }
+
+    @include bp(lg) {
+      margin-left: -(rem-calc(140));
+      margin-right: -(rem-calc(140));
     }
   }
 

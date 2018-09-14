@@ -2,7 +2,6 @@
   margin-top: rem-calc(70);
   margin-bottom: rem-calc(70);
   &__title,
-  &__intro,
   &__meta {
     text-align: center;
   }
@@ -13,7 +12,7 @@
     color: $c-primary;
     max-width: rem-calc(740);
     margin: 0 auto;
-    margin-top: rem-calc(20);
+    margin-top: rem-calc(70);
   }
   &__meta {
     margin-bottom: rem-calc(20);
@@ -36,4 +35,10 @@
   &__item {
     border-bottom: 1px solid $c-black;
   }
+}
+
+.MoreArticles {
+  text-align: center;
+  padding-top: rem-calc(140);
+  padding-bottom: rem-calc(140);
 }

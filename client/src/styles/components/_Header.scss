@@ -1,12 +1,24 @@
-// .Header {
-//   @include spacing('md', ('padding-top', 'padding-bottom'));
-//   display: flex;
-//   justify-content: center;
-
-//   &__logo {
-//     @include font-size(h2);
-//     font-family: $sans;
-//     font-weight: normal;
-//     text-align: center;
-//   }
-// }
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: rem-calc(10);
+  padding-bottom: rem-calc(10);
+  border-bottom: 1px solid $c-black;
+  height: rem-calc(62+20+1);
+  &__logo {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: rem-calc(62);
+    color: $c-text;
+  }
+  &__toggle {
+  }
+  &__nav {
+    &--right {
+      position: absolute;
+      right: 0;
+      padding: rem-calc(10);
+    }
+  }
+}

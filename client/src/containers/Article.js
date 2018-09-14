@@ -37,10 +37,14 @@ class Article extends Component {
             <span className="type">Leserinnlegg</span>
           </div>
           {post.title && (
-            <h1 className="ArticleHeader__title">{post.title.rendered}</h1>
+            <h1 className="ArticleHeader__title">
+              {renderHTML(post.title.rendered)}
+            </h1>
           )}
           {post.acf.intro && (
-            <div className="ArticleHeader__intro">{post.acf.intro}</div>
+            <div className="ArticleHeader__intro">
+              {renderHTML(post.acf.intro)}
+            </div>
           )}
           {post.featured_image && (
             <div className="ArticleHeader__image">

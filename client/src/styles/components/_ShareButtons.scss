@@ -1,0 +1,17 @@
+.ShareButtons {
+  text-align: center;
+  border-top: 1px solid $c-gray;
+  padding-top: rem-calc(70);
+  padding-bottom: rem-calc(70);
+  margin-top: rem-calc(70);
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: rem-calc(20);
+  }
+  &__item {
+    margin-left: rem-calc(10);
+    margin-right: rem-calc(10);
+  }
+}

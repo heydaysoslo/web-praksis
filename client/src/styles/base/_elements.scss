@@ -17,8 +17,30 @@ ul {
   // list-style-position: inside;
 }
 
-[role='button'] {
+[role='button'],
+button,
+[type='button'] {
   cursor: pointer;
+  display: inline-block;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  @include font-size(body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  font-smooth: always;
+  vertical-align: middle;
+  &:focus {
+    outline: none;
+  }
+}
+
+[type='text'] {
+  border: 0;
+  font-family: inherit;
+  background: transparent;
+  @include font-size(body);
+  font-weight: 300;
 }
 
 li {
@@ -35,7 +57,6 @@ figcaption {
   }
 }
 
-.SocialMediaShareCount {
-  display: inline;
-  margin-left: 0.25rem;
+a {
+  color: $c-black;
 }

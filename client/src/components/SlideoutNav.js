@@ -11,10 +11,20 @@ export default class SlideoutNav extends Component {
 
   render() {
     return (
-      <div className="SlideoutNav">
+      <section className="SlideoutNav">
         <div className="SlideoutNav__background" onClick={this.props.toggle} />
-        <div className="SlideoutNav__menu">{this.props.children}</div>
-      </div>
+        <div className="SlideoutNav__menu">
+          <header className="SlideoutNav__header">
+            <button
+              className="SlideoutNav__close-button"
+              onClick={this.props.toggle}
+            >
+              Lukk
+            </button>
+          </header>
+          <div className="SlideoutNav__content">{this.props.children}</div>
+        </div>
+      </section>
     )
   }
 }

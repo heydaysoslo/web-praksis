@@ -5,6 +5,7 @@ import {
   EmailShareButton,
   FacebookShareCount
 } from 'react-share'
+import ShareURL from '../components/ShareURL'
 
 export default class ShareButtons extends Component {
   render() {
@@ -18,20 +19,43 @@ export default class ShareButtons extends Component {
     return (
       <div className="ShareButtons">
         <h4>Del innlegget</h4>
-        <div className="ShareButtons__group">
-          <FacebookShareButton url={url} hashtag={hashtags}>
-            Facebook
-            <FacebookShareCount url={url}>
-              {shareCount => <Fragment>{shareCount}</Fragment>}
-            </FacebookShareCount>
-          </FacebookShareButton>
-          <TwitterShareButton title={title} hashtags={[hashtags]} url={url}>
-            Twitter
-          </TwitterShareButton>
-          <EmailShareButton url={url} subject={title} body={description}>
-            Email
-          </EmailShareButton>
-        </div>
+        <ul className="ShareButtons__list">
+          <li className="ShareButtons__item">
+            <ShareURL url={url} />
+          </li>
+          <li className="ShareButtons__item">
+            <FacebookShareButton
+              className="ShareButtons__button"
+              url={url}
+              hashtag={hashtags}
+            >
+              Facebook
+              <FacebookShareCount className="ShareButtons__button" url={url}>
+                {shareCount => <Fragment>{shareCount}</Fragment>}
+              </FacebookShareCount>
+            </FacebookShareButton>
+          </li>
+          <li className="ShareButtons__item">
+            <TwitterShareButton
+              className="ShareButtons__button"
+              title={title}
+              hashtags={[hashtags]}
+              url={url}
+            >
+              Twitter
+            </TwitterShareButton>
+          </li>
+          <li className="ShareButtons__item">
+            <EmailShareButton
+              className="ShareButtons__button"
+              url={url}
+              subject={title}
+              body={description}
+            >
+              Email
+            </EmailShareButton>
+          </li>
+        </ul>
       </div>
     )
   }

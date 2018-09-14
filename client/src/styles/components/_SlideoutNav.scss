@@ -10,18 +10,31 @@
 
   &__menu {
     background: $c-white;
-    width: 200px;
-    padding: 40px;
+    width: 100%;
+    max-width: rem-calc(400);
     position: absolute;
     right: 0;
     height: 100%;
   }
   &__background {
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba($c-gray, 0.95);
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
+    cursor: pointer;
+  }
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    padding: rem-calc(10);
+    border-bottom: 1px solid $c-gray;
+  }
+  &__close-button {
+    height: rem-calc(62);
+  }
+  &__content {
+    padding: rem-calc(30);
   }
 }

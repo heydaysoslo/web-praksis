@@ -7,8 +7,9 @@ body {
   @include font-size(body);
   line-height: 1.4;
   font-weight: 300;
-  color: $c-text;
+  color: $c-black;
   -webkit-font-smoothing: antialiased;
+  font-smooth: always;
 }
 
 ::selection {
@@ -19,11 +20,13 @@ body {
 h1,
 h2,
 h3 {
+  color: $c-text;
   font-weight: 700;
 }
 
 h4,
 h5 {
+  color: $c-text;
   font-weight: 400;
 }
 
