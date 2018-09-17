@@ -6,7 +6,7 @@ import uuid from 'uuid/v1'
 export default class PostTags extends Component {
   render() {
     const terms = getPostTags(this.props.post)
-    if (!terms) {
+    if (!terms.length) {
       return null
     }
     return (

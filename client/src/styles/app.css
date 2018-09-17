@@ -564,7 +564,10 @@ strong {
   border-top: 1px solid #b8b3ae;
   padding-top: 4.375rem;
   padding-bottom: 4.375rem;
-  margin-top: 4.375rem; }
+  margin-top: 4.375rem;
+  max-width: 46.25rem;
+  margin-left: auto;
+  margin-right: auto; }
   .ShareButtons__list {
     display: flex;
     justify-content: center;
