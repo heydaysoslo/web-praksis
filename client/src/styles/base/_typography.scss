@@ -74,12 +74,8 @@ a {
   position: relative;
   text-decoration: none;
   // color: currentColor;
-  line-height: 0.9em;
-  // border-bottom: 0.07em solid currentColor;
-  transition: $trans;
-
   &:hover {
-    border-color: transparent;
+    text-decoration: none;
   }
 }
 

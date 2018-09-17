@@ -35,62 +35,6 @@ app.use(require('prerender-node'))
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')))
 
-// Put all API endpoints under '/api'
-app.post('/api/intercom', (req, res) => {
-  var Intercom = require('intercom-client') // TODO possible to import subset of intercom-client to make package smaller?
-  const client = new Intercom.Client({
-    token: process.env.INTERCOM_ACCESS_TOKEN
-  })
-  client.users.create(req.body, function(r) {
-    res.json(r)
-  })
-})
-
-app.post('/api/mail', (req, res) => {
-  console.log('fired', req.body)
-  const nodemailer = require('nodemailer')
-  const transporter = nodemailer.createTransport(
-    { sendmail: true },
-    {
-      from: req.body.email,
-      to: 'niiimon@gmail.com',
-      subject: 'Ny lege har vist interesse!'
-    }
-  )
-  transporter.sendMail(
-    {
-      html: `
-  <p>
-    <strong>Navn</strong>
-    ${req.body.name}
-  </p>
-  <p>
-    <strong>E-post</strong>
-    ${req.body.email}
-  </p>
-  <p>
-    <strong>Telefon</strong>
-    ${req.body.phone}
-  </p>
-  <p>
-    <strong>HPR</strong>
-    ${req.body.hpr}
-  </p>
-  `
-    },
-    (err, info) => {
-      if (err) {
-        res.json({
-          error: true,
-          message: 'Noe gikk galt'
-        })
-      } else {
-        res.json(info)
-      }
-    }
-  )
-})
-
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {

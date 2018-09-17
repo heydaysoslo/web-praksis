@@ -5,6 +5,7 @@ import Portal from './Portal'
 import Toggle from './Toggle'
 import SlideoutNav from './SlideoutNav'
 import NavMenu from './NavMenu'
+// import SearchView from './SearchView'
 
 class Header extends Component {
   state = {
@@ -27,23 +28,37 @@ class Header extends Component {
         <Link to={'/'} className="Header__logo">
           Praksis
         </Link>
-        {/* <NavMenu items={this.state.menuItems} /> */}
-        <Toggle>
-          {({ on, toggle }) => (
-            <Fragment>
-              {on && (
-                <Portal>
-                  <SlideoutNav toggle={toggle}>
-                    <NavMenu toggle={toggle} items={this.state.menuItems} />
-                  </SlideoutNav>
-                </Portal>
-              )}
-              <div className="Header__nav Header__nav--right">
+        <div className="Header__nav Header__nav--right">
+          {/* <NavMenu items={this.state.menuItems} /> */}
+          <Toggle>
+            {({ on, toggle }) => (
+              <Fragment>
+                {on && (
+                  <Portal>
+                    <SlideoutNav toggle={toggle}>
+                      <NavMenu toggle={toggle} items={this.state.menuItems} />
+                    </SlideoutNav>
+                  </Portal>
+                )}
+
                 <button onClick={toggle}>Meny</button>
-              </div>
-            </Fragment>
-          )}
-        </Toggle>
+              </Fragment>
+            )}
+          </Toggle>
+          <Link to="/sok">Søk</Link>
+          {/* <Toggle>
+            {({ on, toggle }) => (
+              <Fragment>
+                {on && (
+                  <Portal>
+                    <SearchView toggle={toggle} />
+                  </Portal>
+                )}
+                <button onClick={toggle}>Søk</button>
+              </Fragment>
+            )}
+          </Toggle> */}
+        </div>
       </header>
     )
   }

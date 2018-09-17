@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export default class NavMenu extends Component {
   render() {
@@ -15,6 +15,7 @@ export default class NavMenu extends Component {
               return (
                 <li className="NavMenu__item">
                   <NavLink
+                    activeClassName="NavMenu__link--active"
                     className="NavMenu__link"
                     key={`Nav__item-${p.ID}`}
                     to={p.slug}
@@ -40,11 +41,6 @@ export default class NavMenu extends Component {
               )
             }
           })}
-          <li className="NavMenu__item">
-            <Link to={'/sok'} className="NavMenu__link">
-              Søk
-            </Link>
-          </li>
         </ul>
       </nav>
     )

@@ -1,10 +1,7 @@
 .ArticleHeader {
   margin-top: rem-calc(70);
   margin-bottom: rem-calc(70);
-  &__title,
-  &__meta {
-    text-align: center;
-  }
+  text-align: center;
   &__intro {
     @include font-size(lead);
     font-weight: 400;
@@ -13,14 +10,21 @@
     max-width: rem-calc(740);
     margin: 0 auto;
     margin-top: rem-calc(70);
+    text-align: left;
   }
   &__meta {
     margin-bottom: rem-calc(20);
+    @include t-uppercase;
   }
   &__image {
     max-width: rem-calc(1160);
     margin: 0 auto;
     margin-top: rem-calc(40);
+  }
+  &__read-time {
+    margin-top: rem-calc(20);
+    color: $c-gray;
+    @include t-uppercase;
   }
 }
 

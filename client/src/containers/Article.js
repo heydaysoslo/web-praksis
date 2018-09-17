@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import renderHTML from 'react-render-html'
 import ShareButtons from '../components/ShareButtons'
 import { postDateFormat } from '../utils/date'
 import AcfImage from '../components/AcfImage'
 import { baseUrl, getObjectLink } from '../utils/wp'
+import PostTerms from '../components/PostTerms'
+import PostTags from '../components/PostTags'
 
 class Article extends Component {
-  componentDidMount = () => {
+  makeEmbedsResponsive = () => {
     const embeds = document.getElementsByClassName('embed')
     if (embeds) {
       Object.keys(embeds).forEach(key => {
@@ -26,21 +28,33 @@ class Article extends Component {
       })
     }
   }
+
+  componentDidMount = () => {
+    this.makeEmbedsResponsive()
+  }
+
   render() {
     const { post } = this.props
+    console.log(post)
     return (
       <article className="Article">
         <header className="ArticleHeader">
           <div className="ArticleHeader__meta">
-            <span className="date">{postDateFormat(post.date)}</span>
+            {<span className="type">Leserinnlegg</span>}
             {' • '}
-            <span className="type">Leserinnlegg</span>
+            <time dateTime={post.date} className="date">
+              {postDateFormat(post.date)}
+            </time>
           </div>
           {post.title && (
             <h1 className="ArticleHeader__title">
               {renderHTML(post.title.rendered)}
             </h1>
           )}
+          <p className="ArticleHeader__read-time">
+            Lesetid: {post.read_time}{' '}
+            {post.read_time > 1 ? 'minutter' : 'minutt'}
+          </p>
           {post.acf.intro && (
             <div className="ArticleHeader__intro">
               {renderHTML(post.acf.intro)}
@@ -62,7 +76,13 @@ class Article extends Component {
           {post.content && renderHTML(post.content.rendered)}
         </div>
         {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
-        <ShareButtons url={baseUrl(getObjectLink(post))} />
+        {post.type === 'post' && (
+          <Fragment>
+            <PostTerms post={post} />
+            <PostTags post={post} />
+            <ShareButtons url={baseUrl(getObjectLink(post))} />
+          </Fragment>
+        )}
       </article>
     )
   }

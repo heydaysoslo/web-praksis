@@ -3,11 +3,7 @@ import TagCloud from '../components/TagCloud'
 import Post from '../components/Post'
 import { search } from '../utils/wp'
 
-const PostsEmpty = () => {
-  return 'Ingen innlegg funnet'
-}
-
-export default class Search extends Component {
+export default class SearchView extends Component {
   state = {
     searchTerm: '',
     posts: []
@@ -28,13 +24,29 @@ export default class Search extends Component {
     this.setState({ searchTerm: event.target.value })
   }
 
+  onEscClick = e => {
+    if (e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27) {
+      this.props.toggle()
+      e.preventDefault()
+    }
+  }
+
+  componentDidMount = () => {
+    window.addEventListener('keyup', this.onEscClick, true)
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('keyup', this.onEscClick)
+  }
+
   render() {
     const { posts } = this.state
     return (
-      <article className="Search">
-        {/* <header className="Search__header">
+      <div className="SearchView">
+        <header className="SearchView__header">
           <h1>Søk</h1>
-        </header> */}
+          <button onClick={this.props.toggle}>Lukk</button>
+        </header>
         <form onSubmit={this.handleSubmit}>
           <label>
             <input
@@ -48,12 +60,8 @@ export default class Search extends Component {
         <TagCloud>
           <p>… eller let i tags</p>
         </TagCloud>
-        {posts.length ? (
-          posts.map(p => <Post key={p.id} post={p} />)
-        ) : (
-          <PostsEmpty />
-        )}
-      </article>
+        {posts && posts.map(p => <Post key={p.id} post={p} />)}
+      </div>
     )
   }
 }

@@ -364,11 +364,9 @@ small {
 
 a {
   position: relative;
-  text-decoration: none;
-  line-height: 0.9em;
-  transition: 0.3s ease; }
+  text-decoration: none; }
   a:hover {
-    border-color: transparent; }
+    text-decoration: none; }
 
 strong {
   font-weight: 700; }
@@ -520,8 +518,8 @@ strong {
     padding: 0.625rem; }
 
 .Cards__item {
-  background: silver;
-  margin: 10px; }
+  text-align: center;
+  border-bottom: 1px solid #000; }
 
 .TagCloud__list {
   display: flex; }
@@ -595,14 +593,25 @@ strong {
   border: 1px solid #b8b3ae;
   padding: 0.625rem; }
 
+.SearchView {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: white;
+  overflow: auto; }
+
+.Terms__item--active {
+  text-decoration: underline; }
+
 .wp-caption {
   max-width: 100% !important; }
 
 .ArticleHeader {
   margin-top: 4.375rem;
-  margin-bottom: 4.375rem; }
-  .ArticleHeader__title, .ArticleHeader__meta {
-    text-align: center; }
+  margin-bottom: 4.375rem;
+  text-align: center; }
   .ArticleHeader__intro {
     font-size: 1.625rem;
     font-weight: 400;
@@ -610,19 +619,43 @@ strong {
     color: #dc1e0f;
     max-width: 46.25rem;
     margin: 0 auto;
-    margin-top: 4.375rem; }
+    margin-top: 4.375rem;
+    text-align: left; }
     @media screen and (min-width: 48em) {
       .ArticleHeader__intro {
         font-size: 1.625rem; } }
     @media screen and (min-width: 64em) {
       .ArticleHeader__intro {
-        font-size: 1.625rem; } }
+        font-size: 1.75rem; } }
   .ArticleHeader__meta {
-    margin-bottom: 1.25rem; }
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+    font-size: 1rem; }
+    @media screen and (min-width: 48em) {
+      .ArticleHeader__meta {
+        font-size: 1.625rem; } }
+    @media screen and (min-width: 64em) {
+      .ArticleHeader__meta {
+        font-size: 1rem; } }
   .ArticleHeader__image {
     max-width: 72.5rem;
     margin: 0 auto;
     margin-top: 2.5rem; }
+  .ArticleHeader__read-time {
+    margin-top: 1.25rem;
+    color: #b8b3ae;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-weight: 400;
+    font-size: 1rem; }
+    @media screen and (min-width: 48em) {
+      .ArticleHeader__read-time {
+        font-size: 1.625rem; } }
+    @media screen and (min-width: 64em) {
+      .ArticleHeader__read-time {
+        font-size: 1rem; } }
 
 .Article__content {
   max-width: 46.25rem;

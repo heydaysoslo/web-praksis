@@ -7,7 +7,26 @@ const endpoint =
     ? 'http://praksis.test/api'
     : 'https://208503-www.web.tornado-node.net/api'
 
-const wp = new WPAPI({ endpoint })
+// const cache = {}
+
+const wp = new WPAPI({
+  endpoint
+  // transport: {
+  //   get: (wpreq, cb) => {
+  //     const result = cache[wpreq]
+  //     if (result) {
+  //       if (cb && typeof cb === 'function') {
+  //         cb(null, result)
+  //       }
+  //       return Promise.resolve(result)
+  //     }
+  //     return WPAPI.transport.get(wpreq, cb).then(res => {
+  //       cache[wpreq] = result
+  //       return result
+  //     })
+  //   }
+  // }
+})
 
 // Create custom routes
 wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
@@ -59,6 +78,10 @@ export const getCategoryBySlug = slug => {
     .then(cats => cats[0])
 }
 
+export const getCategories = () => {
+  return wp.categories()
+}
+
 export const getTagBySlug = slug => {
   return wp
     .tags()
@@ -71,6 +94,7 @@ export const getPosts = (page = 1) => {
     .posts()
     .perPage(10)
     .page(page)
+    .embed()
 }
 
 export const getNavMenu = slug => {
@@ -147,6 +171,28 @@ export const getPreview = ({ id, hash, postType }) => {
       .revisions()
       .auth(parseUserCredentials(hash))
   }
+}
+
+export const getPostTerms = post => {
+  if (
+    post._embedded &&
+    post._embedded['wp:term'] &&
+    post._embedded['wp:term'][0]
+  ) {
+    return post._embedded['wp:term'][0]
+  }
+  return []
+}
+
+export const getPostTags = post => {
+  if (
+    post._embedded &&
+    post._embedded['wp:term'] &&
+    post._embedded['wp:term'][1]
+  ) {
+    return post._embedded['wp:term'][1]
+  }
+  return []
 }
 
 export default wp
