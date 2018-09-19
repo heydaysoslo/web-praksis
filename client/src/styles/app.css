@@ -371,6 +371,21 @@ a {
 strong {
   font-weight: 700; }
 
+.Author {
+  display: flex;
+  align-items: center; }
+  .Author__media {
+    overflow: hidden;
+    border-radius: 9999px;
+    max-width: 5.625rem;
+    margin-right: 1.25rem; }
+
+.App__header {
+  z-index: 100; }
+
+.App__content {
+  padding-top: 5.3125rem; }
+
 .development:after {
   position: fixed;
   right: 1.375rem;
@@ -506,7 +521,12 @@ strong {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
   border-bottom: 1px solid #373332;
-  height: 5.1875rem; }
+  height: 5.1875rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white; }
   .Header__logo {
     text-transform: uppercase;
     font-weight: 700;
@@ -533,14 +553,18 @@ strong {
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0; }
-  .SlideoutNav__menu {
-    background: white;
-    width: 100%;
-    max-width: 25rem;
+  right: 0;
+  z-index: 200; }
+  .SlideoutNav__content {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     position: absolute;
+    top: 0;
+    bottom: 0;
     right: 0;
-    height: 100%; }
+    background: white;
+    max-width: 25rem;
+    width: 100%; }
   .SlideoutNav__background {
     background: rgba(184, 179, 174, 0.95);
     position: absolute;
@@ -556,7 +580,7 @@ strong {
     border-bottom: 1px solid #b8b3ae; }
   .SlideoutNav__close-button {
     height: 3.875rem; }
-  .SlideoutNav__content {
+  .SlideoutNav__body {
     padding: 1.875rem; }
 
 .ShareButtons {

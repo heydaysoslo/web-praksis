@@ -23,7 +23,7 @@ export const routes = [
   },
   {
     name: 'Search',
-    path: '/sok',
+    path: '/sok/:query',
     component: Search,
     exact: true
   },
@@ -46,15 +46,15 @@ export const routes = [
     exact: false
   },
   {
-    name: 'Page',
-    path: '/:slug',
-    component: Single,
-    exact: true
-  },
-  {
     name: 'Preview',
     path: '/_preview/:id/:postType/:hash',
     component: Preview,
+    exact: true
+  },
+  {
+    name: 'Page',
+    path: '/:slug',
+    component: Single,
     exact: true
   }
 ]

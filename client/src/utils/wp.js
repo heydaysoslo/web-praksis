@@ -79,7 +79,12 @@ export const getCategoryBySlug = slug => {
 }
 
 export const getCategories = () => {
-  return wp.categories()
+  return wp.categories().then(cats => {
+    // Return only categories with a post count
+    return cats.filter(cat => {
+      return cat.count > 0
+    })
+  })
 }
 
 export const getTagBySlug = slug => {

@@ -1,0 +1,10 @@
+.Author {
+  display: flex;
+  align-items: center;
+  &__media {
+    overflow: hidden;
+    border-radius: 9999px;
+    max-width: rem-calc(90);
+    margin-right: rem-calc(20);
+  }
+}

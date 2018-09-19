@@ -24,7 +24,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="Header">
+      <header className="App__header Header">
         <Link to={'/'} className="Header__logo">
           Praksis
         </Link>

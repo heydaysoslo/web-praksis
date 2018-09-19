@@ -10,10 +10,12 @@ class Portal extends Component {
   }
 
   componentDidMount = () => {
+    document.body.style.overflow = 'hidden'
     portalRoot.appendChild(this.el)
   }
 
   componentWillUnmount = () => {
+    document.body.style.overflow = ''
     portalRoot.removeChild(this.el)
   }
 

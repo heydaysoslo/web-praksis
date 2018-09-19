@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import uuid from 'uuid/v1'
 
 export default class NavMenu extends Component {
   render() {
@@ -13,11 +14,10 @@ export default class NavMenu extends Component {
           {items.map(p => {
             if (p.slug) {
               return (
-                <li className="NavMenu__item">
+                <li key={uuid()} className="NavMenu__item">
                   <NavLink
                     activeClassName="NavMenu__link--active"
                     className="NavMenu__link"
-                    key={`Nav__item-${p.ID}`}
                     to={p.slug}
                     onClick={this.props.toggle}
                   >
@@ -27,10 +27,9 @@ export default class NavMenu extends Component {
               )
             } else {
               return (
-                <li className="NavMenu__item">
+                <li key={uuid()} className="NavMenu__item">
                   <a
                     className="NavMenu__link"
-                    key={`Nav__item-${p.ID}`}
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"

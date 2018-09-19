@@ -7,14 +7,18 @@
   left: 0;
   bottom: 0;
   right: 0;
+  z-index: 200;
 
-  &__menu {
-    background: $c-white;
-    width: 100%;
-    max-width: rem-calc(400);
+  &__content {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
     position: absolute;
+    top: 0;
+    bottom: 0;
     right: 0;
-    height: 100%;
+    background: $c-white;
+    max-width: rem-calc(400);
+    width: 100%;
   }
   &__background {
     background: rgba($c-gray, 0.95);
@@ -34,7 +38,8 @@
   &__close-button {
     height: rem-calc(62);
   }
-  &__content {
+
+  &__body {
     padding: rem-calc(30);
   }
 }

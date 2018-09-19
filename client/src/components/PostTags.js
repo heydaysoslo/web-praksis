@@ -11,18 +11,19 @@ export default class PostTags extends Component {
     }
     return (
       <div className="PostTags">
-        <span>Tagget med</span>
         <ul className="PostTags__list">
-          {terms &&
-            terms.map(term => {
-              return (
-                <li className="PostTags__item" key={uuid()}>
-                  <Link className="PostTags__link" to={term.link}>
-                    {term.name}
-                  </Link>
-                </li>
-              )
-            })}
+          <li className="PostTags__item PostTags__item--title">
+            <strong>Tags</strong>
+          </li>
+          {terms.map(term => {
+            return (
+              <li className="PostTags__item" key={uuid()}>
+                <Link className="PostTags__link" to={term.link}>
+                  {term.name}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </div>
     )

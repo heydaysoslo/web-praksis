@@ -6,6 +6,7 @@ import AcfImage from '../components/AcfImage'
 import { baseUrl, getObjectLink } from '../utils/wp'
 import PostTerms from '../components/PostTerms'
 import PostTags from '../components/PostTags'
+import Author from '../components/Author'
 
 class Article extends Component {
   makeEmbedsResponsive = () => {
@@ -35,26 +36,29 @@ class Article extends Component {
 
   render() {
     const { post } = this.props
-    console.log(post)
     return (
       <article className="Article">
         <header className="ArticleHeader">
-          <div className="ArticleHeader__meta">
-            {<span className="type">Leserinnlegg</span>}
-            {' • '}
-            <time dateTime={post.date} className="date">
-              {postDateFormat(post.date)}
-            </time>
-          </div>
+          {post.type === 'post' && (
+            <div className="ArticleHeader__meta">
+              {<span className="type">Leserinnlegg</span>}
+              {' • '}
+              <time dateTime={post.date} className="date">
+                {postDateFormat(post.date)}
+              </time>
+            </div>
+          )}
           {post.title && (
             <h1 className="ArticleHeader__title">
               {renderHTML(post.title.rendered)}
             </h1>
           )}
-          <p className="ArticleHeader__read-time">
-            Lesetid: {post.read_time}{' '}
-            {post.read_time > 1 ? 'minutter' : 'minutt'}
-          </p>
+          {post.type === 'post' && (
+            <p className="ArticleHeader__read-time">
+              Lesetid: {post.read_time}{' '}
+              {post.read_time > 1 ? 'minutter' : 'minutt'}
+            </p>
+          )}
           {post.acf.intro && (
             <div className="ArticleHeader__intro">
               {renderHTML(post.acf.intro)}
@@ -78,6 +82,7 @@ class Article extends Component {
         {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
         {post.type === 'post' && (
           <Fragment>
+            <Author author={post.author} />
             <PostTerms post={post} />
             <PostTags post={post} />
             <ShareButtons url={baseUrl(getObjectLink(post))} />

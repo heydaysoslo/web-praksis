@@ -1,0 +1,8 @@
+.App {
+  &__header {
+    z-index: 100;
+  }
+  &__content {
+    padding-top: rem-calc(85);
+  }
+}

@@ -6,6 +6,11 @@
   padding-bottom: rem-calc(10);
   border-bottom: 1px solid $c-black;
   height: rem-calc(62+20+1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $c-white;
   &__logo {
     text-transform: uppercase;
     font-weight: 700;

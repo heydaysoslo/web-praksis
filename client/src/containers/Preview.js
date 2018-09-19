@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { getPreview } from '../utils/wp'
 import Article from './Article'
 import Helmet from 'react-helmet'
-// import {routes} from '../utils/routes'
 
 class Preview extends Component {
   state = {
@@ -10,7 +9,6 @@ class Preview extends Component {
   }
   componentDidMount() {
     getPreview(this.props.match.params).then(res => {
-      console.log(this.props.match.params)
       this.setState({
         post: res[0]
       })

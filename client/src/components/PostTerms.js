@@ -11,6 +11,9 @@ export default class PostTerms extends Component {
     }
     return (
       <ul className="PostTerms">
+        <li className="PostTerms__item PostTerms__item--title">
+          <strong>Kategorier</strong>
+        </li>
         {terms &&
           terms.map(term => {
             return (

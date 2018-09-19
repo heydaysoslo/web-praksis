@@ -9,21 +9,23 @@ import { routes } from './utils/routes'
 class App extends Component {
   render() {
     return (
-      <div className="main">
+      <div className="App">
         <Router>
           <Fragment>
             <Header {...this.props} />
-            <Switch>
-              {routes.map(r => (
-                <Route
-                  key={r.path}
-                  exact={r.exact}
-                  path={r.path}
-                  component={r.component}
-                />
-              ))}
-              <Route component={NoMatchPage} />
-            </Switch>
+            <div className="App__content">
+              <Switch>
+                {routes.map(r => (
+                  <Route
+                    key={r.path}
+                    exact={r.exact}
+                    path={r.path}
+                    component={r.component}
+                  />
+                ))}
+                <Route component={NoMatchPage} />
+              </Switch>
+            </div>
           </Fragment>
         </Router>
       </div>

@@ -36,7 +36,11 @@ class Tag extends Component {
       return <Loading />
     }
     if (!posts.length) {
-      return <div>Fant ingen innlegg</div>
+      return (
+        <div>
+          Fant ingen innlegg for stikkordet <strong>{tag.name}</strong>
+        </div>
+      )
     }
     return (
       <article>
