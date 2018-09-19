@@ -11,6 +11,17 @@ export default class NavMenu extends Component {
     return (
       <nav className="NavMenu">
         <ul className="NavMenu__list">
+          <li className="NavMenu__item">
+            <NavLink
+              activeClassName="NavMenu__link--active"
+              className="NavMenu__link"
+              to="/"
+              onClick={this.props.toggle}
+              exact
+            >
+              Feed
+            </NavLink>
+          </li>
           {items.map(p => {
             if (p.slug) {
               return (
@@ -20,6 +31,7 @@ export default class NavMenu extends Component {
                     className="NavMenu__link"
                     to={p.slug}
                     onClick={this.props.toggle}
+                    exact
                   >
                     {p.title}
                   </NavLink>

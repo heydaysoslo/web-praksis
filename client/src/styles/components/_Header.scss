@@ -1,16 +1,18 @@
 .Header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: rem-calc(10);
-  padding-bottom: rem-calc(10);
   border-bottom: 1px solid $c-black;
-  height: rem-calc(62+20+1);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: $c-white;
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: rem-calc(10);
+    padding-bottom: rem-calc(10);
+    height: rem-calc(62+20+1);
+  }
   &__logo {
     text-transform: uppercase;
     font-weight: 700;

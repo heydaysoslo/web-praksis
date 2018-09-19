@@ -31,6 +31,8 @@ const wp = new WPAPI({
 // Create custom routes
 wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
 wp.search = wp.registerRoute('relevanssi/v1', '/search/')
+// wp.cookies = wp.registerRoute('hey/v1', '/cookies/')
+// wp.setHeaders('credentials', 'include')
 
 const parseUserCredentials = hash => {
   const hashDecoded = base64.decode(hash)
@@ -39,6 +41,15 @@ const parseUserCredentials = hash => {
     username: hashParts[0],
     password: hashParts[1]
   }
+}
+
+export const loggedIn = () => {
+  return fetch(endpoint + '/hey/v1/loggedin', {
+    method: 'get',
+    credentials: 'include'
+  }).then(res => {
+    return res.json()
+  })
 }
 
 export const baseUrl = (path = '') => {

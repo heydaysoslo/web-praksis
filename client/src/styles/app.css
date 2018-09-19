@@ -371,6 +371,13 @@ a {
 strong {
   font-weight: 700; }
 
+.NavMenu__link {
+  display: block;
+  padding: 0.3125rem 1.875rem; }
+  .NavMenu__link--active {
+    background: #dc1e0f;
+    color: white; }
+
 .Author {
   display: flex;
   align-items: center; }
@@ -515,18 +522,19 @@ strong {
   margin-bottom: 3.75rem; }
 
 .Header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
   border-bottom: 1px solid #373332;
-  height: 5.1875rem;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: white; }
+  .Header__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    height: 5.1875rem; }
   .Header__logo {
     text-transform: uppercase;
     font-weight: 700;
@@ -580,8 +588,6 @@ strong {
     border-bottom: 1px solid #b8b3ae; }
   .SlideoutNav__close-button {
     height: 3.875rem; }
-  .SlideoutNav__body {
-    padding: 1.875rem; }
 
 .ShareButtons {
   text-align: center;
@@ -695,3 +701,9 @@ strong {
   text-align: center;
   padding-top: 8.75rem;
   padding-bottom: 8.75rem; }
+
+.AdminBar {
+  padding: 5px;
+  background: #373332;
+  color: white;
+  width: 100%; }

@@ -11,6 +11,7 @@
 @import 'base/elements';
 @import 'base/typography';
 
+@import 'components/NavMenu';
 @import 'components/Author';
 @import 'components/App';
 @import 'components/development';
@@ -28,3 +29,5 @@
 @import 'components/Terms';
 @import 'overrides/wp';
 @import 'shame';
+
+@import 'components/AdminBar';

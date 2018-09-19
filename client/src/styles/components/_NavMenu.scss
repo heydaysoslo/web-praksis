@@ -1,0 +1,10 @@
+.NavMenu {
+  &__link {
+    display: block;
+    padding: rem-calc(5) rem-calc(30);
+    &--active {
+      background: $c-primary;
+      color: $c-white;
+    }
+  }
+}
