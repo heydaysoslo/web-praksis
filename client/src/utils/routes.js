@@ -23,6 +23,12 @@ export const routes = [
   },
   {
     name: 'Search',
+    path: '/sok',
+    component: Search,
+    exact: true
+  },
+  {
+    name: 'Search',
     path: '/sok/:query',
     component: Search,
     exact: true

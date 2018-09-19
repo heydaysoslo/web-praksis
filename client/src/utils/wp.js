@@ -68,7 +68,12 @@ export const getPostsByTag = id => {
 }
 
 export const getTags = () => {
-  return wp.tags()
+  return wp.tags().then(tags => {
+    // Return only tags with a post count
+    return tags.filter(tag => {
+      return tag.count > 0
+    })
+  })
 }
 
 export const getCategoryBySlug = slug => {

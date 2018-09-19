@@ -4,36 +4,60 @@ import Post from '../components/Post'
 import { search } from '../utils/wp'
 
 const cleanSearch = str => {
-  return str.replace(/[^a-zA-Z0-9\-_ ]/g, '')
+  return str.replace(/[^a-zA-Z0-9\-_+ ]/g, '')
 }
 
 export default class Search extends Component {
   state = {
+    inputValue: '',
+    posts: [],
     searchTerm: '',
-    posts: []
+    searching: false
   }
 
   doSearch = () => {
-    const searchTerm = cleanSearch(this.state.searchTerm)
+    const searchTerm = cleanSearch(this.state.inputValue)
+    this.setState({ searching: true })
     search(searchTerm)
       .then(posts => {
-        this.setState({ posts })
+        this.setState({
+          posts,
+          searchTerm: this.state.inputValue,
+          searching: false
+        })
       })
       .catch(err => {
-        this.setState({ posts: [] })
+        this.setState({
+          posts: [],
+          searchTerm: this.state.inputValue,
+          searching: false
+        })
       })
   }
 
   handleSubmit = event => {
+    if (this.autoQueryTimer) {
+      clearTimeout(this.autoQueryTimer)
+    }
+
     this.doSearch()
+
     event.preventDefault()
   }
 
   handleChange = event => {
     const query = event.target.value
-    this.setState({ searchTerm: query }, () => {
+
+    this.setState({ inputValue: query }, () => {
       window.history.replaceState({ query }, '', '/sok/' + query)
     })
+
+    if (this.autoQueryTimer) {
+      clearTimeout(this.autoQueryTimer)
+    }
+    this.autoQueryTimer = setTimeout(() => {
+      this.doSearch()
+    }, 500)
   }
 
   componentDidMount = () => {
@@ -41,7 +65,7 @@ export default class Search extends Component {
     if (this.props.match.params && this.props.match.params.query) {
       this.setState(
         {
-          searchTerm: this.props.match.params.query
+          inputValue: this.props.match.params.query
         },
         () => {
           this.doSearch()
@@ -51,7 +75,7 @@ export default class Search extends Component {
   }
 
   render() {
-    const { posts } = this.state
+    const { posts, searching, searchTerm, inputValue } = this.state
     return (
       <article className="Search">
         <form onSubmit={this.handleSubmit}>
@@ -60,20 +84,21 @@ export default class Search extends Component {
               placeholder="Skriv her"
               onChange={this.handleChange}
               type="text"
-              value={this.state.searchTerm}
+              value={inputValue}
             />
           </label>
         </form>
         <TagCloud>
           <p>… eller let i tags</p>
         </TagCloud>
-        {posts.length ? (
-          posts.map(p => <Post key={p.id} post={p} />)
-        ) : (
-          <div>
-            Ingen innlegg funnet for <strong>{this.state.searchTerm}</strong>
-          </div>
-        )}
+        {searching && <div>Leter etter stasj</div>}
+        {posts.length
+          ? posts.map(p => <Post key={p.id} post={p} />)
+          : searchTerm && (
+              <div>
+                Ingen innlegg funnet for <strong>{searchTerm}</strong>
+              </div>
+            )}
       </article>
     )
   }
