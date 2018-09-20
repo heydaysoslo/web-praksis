@@ -60,3 +60,34 @@ $font-directory: '/assets/fonts';
   font-style: normal;
   font-stretch: normal;
 }
+
+// Tiempos Text - Regular
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('#{$font-directory}/tiempos/TiemposText-Regular.eot');
+  src: url('#{$font-directory}/tiempos/TiemposText-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$font-directory}/tiempos/TiemposText-Regular.woff2') format('woff2')
+      url('#{$font-directory}/tiempos/TiemposText-Regular.woff') format('woff'),
+    url('#{$font-directory}/tiempos/TiemposText-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+// Tiempos Text - Regular Italic
+@font-face {
+  font-family: 'Tiempos Text';
+  src: url('#{$font-directory}/tiempos/TiemposText-RegularItalic.eot');
+  src: url('#{$font-directory}/tiempos/TiemposText-RegularItalic.eot?#iefix')
+      format('embedded-opentype'),
+    url('#{$font-directory}/tiempos/TiemposText-RegularItalic.woff2')
+      format('woff2')
+      url('#{$font-directory}/tiempos/TiemposText-RegularItalic.woff')
+      format('woff'),
+    url('#{$font-directory}/tiempos/TiemposText-RegularItalic.ttf')
+      format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: normal;
+}

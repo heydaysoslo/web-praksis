@@ -5,27 +5,27 @@
   &__intro {
     @include font-size(lead);
     font-weight: 400;
-    line-height: 1.23;
-    color: $c-primary;
+    line-height: 1.3;
+    // color: $c-primary;
     max-width: rem-calc(740);
     margin: 0 auto;
-    margin-top: rem-calc(70);
-    text-align: left;
+    margin-top: rem-calc(30);
   }
   &__meta {
-    margin-bottom: rem-calc(20);
-    @include t-uppercase;
+    margin-bottom: rem-calc(30);
+    // @include font-size(small);
+    // @include t-uppercase;
   }
   &__image {
     max-width: rem-calc(1160);
     margin: 0 auto;
     margin-top: rem-calc(40);
   }
-  &__read-time {
-    margin-top: rem-calc(20);
-    color: $c-gray;
-    @include t-uppercase;
-  }
+  // &__read-time {
+  //   margin-top: rem-calc(20);
+  //   color: $c-gray;
+  //   @include t-uppercase;
+  // }
 }
 
 .Article {

@@ -26,7 +26,7 @@ button,
   background: transparent;
   font-family: inherit;
   @include font-size(body);
-  font-weight: 300;
+  font-weight: inherit;
   -webkit-font-smoothing: antialiased;
   font-smooth: always;
   vertical-align: middle;
@@ -40,7 +40,7 @@ button,
   font-family: inherit;
   background: transparent;
   @include font-size(body);
-  font-weight: 300;
+  font-weight: inherit;
 }
 
 li {

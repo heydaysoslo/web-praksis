@@ -41,23 +41,20 @@ class Article extends Component {
         <header className="ArticleHeader">
           {post.type === 'post' && (
             <div className="ArticleHeader__meta">
-              {<span className="type">Leserinnlegg</span>}
-              {' • '}
               <time dateTime={post.date} className="date">
                 {postDateFormat(post.date)}
               </time>
+              {' • '}
+              <span className="ArticleHeader__read-time">
+                {post.read_time} {post.read_time > 1 ? 'minutter' : 'minutt'}{' '}
+                lesetid
+              </span>
             </div>
           )}
           {post.title && (
             <h1 className="ArticleHeader__title">
               {renderHTML(post.title.rendered)}
             </h1>
-          )}
-          {post.type === 'post' && (
-            <p className="ArticleHeader__read-time">
-              Lesetid: {post.read_time}{' '}
-              {post.read_time > 1 ? 'minutter' : 'minutt'}
-            </p>
           )}
           {post.acf.intro && (
             <div className="ArticleHeader__intro">

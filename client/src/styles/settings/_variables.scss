@@ -1,17 +1,19 @@
 // Fonts
-$f-sans: 'Replica';
+$f-sans: 'Replica', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$f-serif: 'Tiempos Text', Times, serif;
 $f-size: 50px;
 
 // Colors
-$c-main: #e42313;
-$c-primary: #dc1e0f;
-$c-text: #1d1d1b;
-$c-background: white;
-$c-border: #1d1d1b;
-$c-shadow: #efefef;
-$c-white: white;
 $c-black: #373332;
+$c-white: #fff;
+$c-primary: #dc1e0f;
+$c-medium-gray: #b8b3ae;
+$c-light-gray: #f1eeeb;
 $c-gray: #b8b3ae;
+
+$c-background: $c-white;
+$c-meta: $c-medium-gray;
+$c-text: $c-black;
 
 $breakpoints: (
   sm: 0,
@@ -52,7 +54,7 @@ $spacing: (
   ),
   lg: (
     sm: 10,
-    md: 22,
+    md: 20,
     lg: 60,
     section: 140
   )
@@ -66,7 +68,8 @@ $typography: (
     h3: 31,
     body: 20,
     small: 16,
-    lead: 26
+    lead: 26,
+    text: 20
   ),
   md: (
     h1: 44,
@@ -74,23 +77,19 @@ $typography: (
     h3: 30,
     body: 20,
     small: 26,
-    lead: 26
+    lead: 26,
+    text: 20
   ),
   lg: (
     h1: 62,
-    h2: 52,
-    h3: 36,
-    body: 22,
+    h2: 42,
+    h3: 28,
+    body: 16,
     small: 16,
-    lead: 28
+    lead: 28,
+    text: 20
   )
 );
-
-// Border
-$border__width: 1px;
-$border__width--small: 1px;
-$border__width--large: 5px;
-$border: $border__width solid $c-border;
 
 // Radius
 $radius: 4px;

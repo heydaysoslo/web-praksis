@@ -1,14 +1,23 @@
 .editor {
-  // hyphens: auto;
-  // blockquote {
-  //   @include spacing('md', 'margin-bottom');
-  // }
-  // blockquote + p {
-  //   @include spacing('md', 'margin-bottom');
-  // }
-  // p {
-  //   @include spacing('md', 'margin-bottom');
-  // }
+  @include font-size(text);
+
+  font-family: $f-serif;
+
+  em {
+    font-style: italic;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote,
+  strong {
+    font-family: $f-sans;
+  }
+
   h1,
   h2,
   h3 {
@@ -22,6 +31,21 @@
 
   h3 {
     margin-top: rem-calc(40);
+  }
+
+  h4 {
+    // @include font-size(body);
+    font-weight: 700;
+    margin-bottom: rem-calc(5);
+    color: $c-primary;
+    margin-bottom: rem-calc(15);
+    margin-top: rem-calc(30);
+  }
+
+  p > strong {
+    display: inline-block;
+    line-height: 1.4;
+    font-size: 1.1em; // adjust font size to same x-height as Tiempos
   }
 
   p {
@@ -47,14 +71,14 @@
   }
 
   blockquote {
-    margin-top: rem-calc(140);
-    margin-bottom: rem-calc(140);
+    margin-top: rem-calc(70);
+    margin-bottom: rem-calc(70);
 
-    @include font-size(h1);
-    color: $c-text;
+    @include font-size(h2);
+    color: $c-primary;
     text-align: center;
     font-weight: bold;
-    line-height: 1.1;
+    line-height: 1.25;
 
     p {
       line-height: inherit;
@@ -62,8 +86,8 @@
 
     cite {
       @include font-size(body);
-      font-weight: 300;
-      font-style: italic;
+      // font-weight: 400;
+      // font-style: italic;
       margin-top: rem-calc(70);
       display: block;
       // color: $c-gray;

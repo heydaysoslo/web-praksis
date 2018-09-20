@@ -5,8 +5,8 @@ html {
 body {
   font-family: $f-sans;
   @include font-size(body);
-  line-height: 1.4;
-  font-weight: 300;
+  line-height: 1.5;
+  font-weight: 400;
   color: $c-black;
   -webkit-font-smoothing: antialiased;
   font-smooth: always;
