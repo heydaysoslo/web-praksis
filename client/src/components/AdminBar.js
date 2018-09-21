@@ -19,8 +19,6 @@ export default class AdminBar extends Component {
     if (!user) {
       return null
     }
-    return (
-      <div className="AdminBar">Hello, {user.userdata.data.user_nicename}!</div>
-    )
+    return <div className="AdminBar">Hello!</div>
   }
 }

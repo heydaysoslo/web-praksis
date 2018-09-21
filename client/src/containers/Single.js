@@ -4,6 +4,7 @@ import Article from '../containers/Article'
 import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'
 import Loading from '../components/Loading'
+import queryString from 'query-string'
 
 class Single extends Component {
   state = {
@@ -19,6 +20,11 @@ class Single extends Component {
       loading: true,
       unlocked: false
     })
+
+    const queryParams = queryString.parse(this.props.location.search, {
+      ignoreQueryPrefix: true
+    })
+    console.log(queryParams)
 
     const urlParams = this.props.match.params
     getObjectBySlug(urlParams)
