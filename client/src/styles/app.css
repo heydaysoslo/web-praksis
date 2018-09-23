@@ -72,7 +72,7 @@ margin-top: font-size($size:small, $breakpoint:small);
 @font-face {
   font-family: 'Tiempos Text';
   src: url("/assets/fonts/tiempos/TiemposText-Regular.eot");
-  src: url("/assets/fonts/tiempos/TiemposText-Regular.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/tiempos/TiemposText-Regular.woff2") format("woff2") url("/assets/fonts/tiempos/TiemposText-Regular.woff") format("woff"), url("/assets/fonts/tiempos/TiemposText-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/tiempos/TiemposText-Regular.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/tiempos/TiemposText-Regular.woff2") format("woff2"), url("/assets/fonts/tiempos/TiemposText-Regular.woff") format("woff"), url("/assets/fonts/tiempos/TiemposText-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-stretch: normal; }
@@ -80,7 +80,7 @@ margin-top: font-size($size:small, $breakpoint:small);
 @font-face {
   font-family: 'Tiempos Text';
   src: url("/assets/fonts/tiempos/TiemposText-RegularItalic.eot");
-  src: url("/assets/fonts/tiempos/TiemposText-RegularItalic.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/tiempos/TiemposText-RegularItalic.woff2") format("woff2") url("/assets/fonts/tiempos/TiemposText-RegularItalic.woff") format("woff"), url("/assets/fonts/tiempos/TiemposText-RegularItalic.ttf") format("truetype");
+  src: url("/assets/fonts/tiempos/TiemposText-RegularItalic.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/tiempos/TiemposText-RegularItalic.woff2") format("woff2"), url("/assets/fonts/tiempos/TiemposText-RegularItalic.woff") format("woff"), url("/assets/fonts/tiempos/TiemposText-RegularItalic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-stretch: normal; }

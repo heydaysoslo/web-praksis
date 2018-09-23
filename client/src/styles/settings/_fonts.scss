@@ -67,8 +67,8 @@ $font-directory: '/assets/fonts';
   src: url('#{$font-directory}/tiempos/TiemposText-Regular.eot');
   src: url('#{$font-directory}/tiempos/TiemposText-Regular.eot?#iefix')
       format('embedded-opentype'),
-    url('#{$font-directory}/tiempos/TiemposText-Regular.woff2') format('woff2')
-      url('#{$font-directory}/tiempos/TiemposText-Regular.woff') format('woff'),
+    url('#{$font-directory}/tiempos/TiemposText-Regular.woff2') format('woff2'),
+    url('#{$font-directory}/tiempos/TiemposText-Regular.woff') format('woff'),
     url('#{$font-directory}/tiempos/TiemposText-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
@@ -82,8 +82,8 @@ $font-directory: '/assets/fonts';
   src: url('#{$font-directory}/tiempos/TiemposText-RegularItalic.eot?#iefix')
       format('embedded-opentype'),
     url('#{$font-directory}/tiempos/TiemposText-RegularItalic.woff2')
-      format('woff2')
-      url('#{$font-directory}/tiempos/TiemposText-RegularItalic.woff')
+      format('woff2'),
+    url('#{$font-directory}/tiempos/TiemposText-RegularItalic.woff')
       format('woff'),
     url('#{$font-directory}/tiempos/TiemposText-RegularItalic.ttf')
       format('truetype');
