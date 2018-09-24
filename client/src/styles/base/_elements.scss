@@ -17,6 +17,11 @@ ul {
   // list-style-position: inside;
 }
 
+hr {
+  border: 0;
+  border-top: 1px solid $c-black;
+}
+
 [role='button'],
 button,
 [type='button'] {

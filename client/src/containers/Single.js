@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import HeaderMeta from '../components/HeaderMeta'
 import Article from '../containers/Article'
-import { getObjectBySlug } from '../utils/wp'
+import { getObjectBySlug, getLatestRevisions } from '../utils/wp'
 import PostPassword from '../components/PostPassword'
 import Loading from '../components/Loading'
 import queryString from 'query-string'
@@ -21,10 +21,24 @@ class Single extends Component {
       unlocked: false
     })
 
+    /**
+     * Need to fix revision
+     */
     const queryParams = queryString.parse(this.props.location.search, {
       ignoreQueryPrefix: true
     })
     console.log(queryParams)
+
+    if (queryParams && queryParams.preview === 'true') {
+      getLatestRevisions(queryParams)
+        .then(res => {
+          console.log('res', res)
+        })
+        .catch(err => console.log('err', err))
+    }
+    /**
+     * END: Need to fix revision
+     */
 
     const urlParams = this.props.match.params
     getObjectBySlug(urlParams)

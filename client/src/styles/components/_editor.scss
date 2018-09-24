@@ -97,8 +97,8 @@
     }
 
     @include bp(lg) {
-      margin-left: -(rem-calc(140));
-      margin-right: -(rem-calc(140));
+      margin-left: -(rem-calc(120));
+      margin-right: -(rem-calc(120));
     }
   }
 

@@ -10,8 +10,11 @@
 @import 'base/reset';
 @import 'base/elements';
 @import 'base/typography';
+@import 'base/grid';
 
 @import 'components/NavMenu';
+@import 'components/Article';
+@import 'components/ArticleHeader';
 @import 'components/Author';
 @import 'components/App';
 @import 'components/development';

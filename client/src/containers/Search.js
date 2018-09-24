@@ -77,7 +77,7 @@ export default class Search extends Component {
   render() {
     const { posts, searching, searchTerm, inputValue } = this.state
     return (
-      <article className="Search">
+      <article className="Search container">
         <form onSubmit={this.handleSubmit}>
           <label>
             <input
@@ -91,7 +91,7 @@ export default class Search extends Component {
         <TagCloud>
           <p>… eller let i tags</p>
         </TagCloud>
-        {searching && <div>Leter etter stasj</div>}
+        {searching && <div>Vi leter og graver…</div>}
         {posts.length
           ? posts.map(p => <Post key={p.id} post={p} />)
           : searchTerm && (

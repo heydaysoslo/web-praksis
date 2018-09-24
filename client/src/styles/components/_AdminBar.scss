@@ -1,6 +1,13 @@
 .AdminBar {
-  padding: 5px;
-  background: $c-black;
-  color: $c-white;
-  width: 100%;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  a {
+    line-height: 1;
+    border-radius: 999px;
+    padding: 5px 10px;
+    background: $c-black;
+    color: $c-white;
+    display: block;
+  }
 }

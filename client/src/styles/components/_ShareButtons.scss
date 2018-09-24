@@ -1,20 +1,21 @@
 .ShareButtons {
-  text-align: center;
-  border-top: 1px solid $c-gray;
-  padding-top: rem-calc(70);
-  padding-bottom: rem-calc(70);
-  margin-top: rem-calc(70);
-  max-width: rem-calc(740);
-  margin-left: auto;
-  margin-right: auto;
+  // text-align: center;
+  // border-top: 1px solid $c-gray;
+  // padding-top: rem-calc(70);
+  // padding-bottom: rem-calc(70);
+  // margin-top: rem-calc(70);
+  // max-width: rem-calc(740);
+  // margin-left: auto;
+  // margin-right: auto;
   &__list {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     margin-top: rem-calc(20);
+    flex-wrap: wrap;
   }
   &__item {
-    margin-left: rem-calc(10);
-    margin-right: rem-calc(10);
+    // margin-left: rem-calc(10);
+    margin-right: rem-calc(20);
   }
 }

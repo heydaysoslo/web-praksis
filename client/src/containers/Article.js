@@ -7,6 +7,7 @@ import { baseUrl, getObjectLink } from '../utils/wp'
 import PostTerms from '../components/PostTerms'
 import PostTags from '../components/PostTags'
 import Author from '../components/Author'
+import EditPostLink from '../components/EditPostLink'
 
 class Article extends Component {
   makeEmbedsResponsive = () => {
@@ -38,7 +39,10 @@ class Article extends Component {
     const { post } = this.props
     return (
       <article className="Article">
-        <header className="ArticleHeader">
+        <div className="container">
+          <hr />
+        </div>
+        <header className="ArticleHeader container container--text">
           {post.type === 'post' && (
             <div className="ArticleHeader__meta">
               <time dateTime={post.date} className="date">
@@ -61,30 +65,43 @@ class Article extends Component {
               {renderHTML(post.acf.intro)}
             </div>
           )}
-          {post.featured_image && (
-            <div className="ArticleHeader__image">
-              <AcfImage image={post.featured_image} />
-            </div>
-          )}
         </header>
+        {post.featured_image && (
+          <div className="Article__image container">
+            <AcfImage image={post.featured_image} />
+          </div>
+        )}
         {post.better_featured_image && (
           <img
             src={post.better_featured_image.source_url}
             alt={post.better_featured_image.alt_text}
           />
         )}
-        <div className="Article__content editor">
+        <div className="Article__content editor container container--text">
           {post.content && renderHTML(post.content.rendered)}
         </div>
-        {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
-        {post.type === 'post' && (
-          <Fragment>
-            <Author author={post.author} />
-            <PostTerms post={post} />
-            <PostTags post={post} />
-            <ShareButtons url={baseUrl(getObjectLink(post))} />
-          </Fragment>
-        )}
+        <footer className="ArticleFooter Article__footer container container--text">
+          {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
+          {post.type === 'post' && (
+            <Fragment>
+              <div className="ArticleFooter__item">
+                <Author author={post.author} />
+              </div>
+              <div className="ArticleFooter__item">
+                <PostTerms post={post} />
+              </div>
+              <div className="ArticleFooter__item">
+                <PostTags post={post} />
+              </div>
+              <div className="ArticleFooter__item">
+                <ShareButtons url={baseUrl(getObjectLink(post))} />
+              </div>
+            </Fragment>
+          )}
+          <div className="ArticleFooter__item">
+            <EditPostLink post={post} />
+          </div>
+        </footer>
       </article>
     )
   }

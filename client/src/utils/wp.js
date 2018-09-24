@@ -7,30 +7,35 @@ const endpoint =
     ? 'http://praksis.test/api'
     : 'https://208503-www.web.tornado-node.net/api'
 
-// const cache = {}
+const wpCache = {}
 
 const wp = new WPAPI({
-  endpoint
-  // transport: {
-  //   get: (wpreq, cb) => {
-  //     const result = cache[wpreq]
-  //     if (result) {
-  //       if (cb && typeof cb === 'function') {
-  //         cb(null, result)
-  //       }
-  //       return Promise.resolve(result)
-  //     }
-  //     return WPAPI.transport.get(wpreq, cb).then(res => {
-  //       cache[wpreq] = result
-  //       return result
-  //     })
-  //   }
-  // }
+  endpoint,
+  transport: {
+    get: (wpreq, callback) => {
+      // Cache requests
+      let result = wpCache[wpreq]
+      if (result) {
+        if (callback && typeof callback === 'function') {
+          callback(null, result)
+        }
+        return Promise.resolve(result)
+      }
+      return WPAPI.transport.get(wpreq, callback).then(result => {
+        wpCache[wpreq] = result
+        return result
+      })
+    }
+  }
 })
 
 // Create custom routes
 wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
 wp.search = wp.registerRoute('relevanssi/v1', '/search/')
+// wp.privateData = wp.registerRoute(
+//   'hey/v1',
+//   '/privateData/(?P<id>[a-zA-Z0-9_-]+)'
+// )
 // wp.cookies = wp.registerRoute('hey/v1', '/cookies/')
 // wp.setHeaders('credentials', 'include')
 
@@ -43,13 +48,27 @@ const parseUserCredentials = hash => {
   }
 }
 
+export const cachedPrivateRequest = requestUrl => {
+  const requestKey = base64.encode(requestUrl)
+  if (!wpCache[requestKey]) {
+    wpCache[requestKey] = fetch(requestUrl, {
+      method: 'get',
+      credentials: 'include'
+    }).then(res => {
+      return res.json()
+    })
+  }
+  return wpCache[requestKey]
+}
+
 export const loggedIn = () => {
-  return fetch(endpoint + '/hey/v1/loggedin', {
-    method: 'get',
-    credentials: 'include'
-  }).then(res => {
-    return res.json()
-  })
+  const requestUrl = endpoint + '/hey/v1/loggedin'
+  return cachedPrivateRequest(requestUrl)
+}
+
+export const getLatestRevisions = ({ preview_id }) => {
+  const requestUrl = endpoint + '/hey/v1/revision/' + preview_id
+  return cachedPrivateRequest(requestUrl)
 }
 
 export const baseUrl = (path = '') => {

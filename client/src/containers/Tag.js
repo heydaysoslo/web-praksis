@@ -43,7 +43,7 @@ class Tag extends Component {
       )
     }
     return (
-      <article>
+      <article className="container">
         <header>
           <TagCloud />
           <h1>

@@ -1,0 +1,9 @@
+.Article {
+  &__image {
+    margin-top: rem-calc(40);
+  }
+  &__content {
+    margin: 0 auto;
+    margin-top: rem-calc(70);
+  }
+}
