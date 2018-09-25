@@ -21,6 +21,9 @@
     line-height: 1;
     display: block;
     height: rem-calc(62);
+    color: $c-white;
+    background: $c-primary;
+    padding: 0 rem-calc(10);
   }
   &__toggle {
   }

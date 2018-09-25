@@ -1,0 +1,11 @@
+.StickyPosts {
+  text-align: center;
+  &__item {
+    padding-top: rem-calc(20);
+    padding-bottom: rem-calc(20);
+  }
+  &__title,
+  &__link {
+    color: $c-primary;
+  }
+}

@@ -4,6 +4,7 @@ import Article from '../containers/Article'
 import uuid from 'uuid/v1'
 import cc from 'classcat'
 import Loading from '../components/Loading'
+import StickyPosts from '../components/StickyPosts'
 
 class FrontPage extends Component {
   state = {
@@ -52,14 +53,15 @@ class FrontPage extends Component {
     }
     return (
       <article>
-        <section className="Articles">
+        <StickyPosts />
+        <div className="Articles">
           {posts &&
             posts.map(p => (
               <div key={uuid('post')} className="Articles__item">
                 <Article post={p} />
               </div>
             ))}
-        </section>
+        </div>
         <div className="MoreArticles">
           {!allPagesLoaded && (
             <button

@@ -180,6 +180,10 @@ export const getObjectBySlug = ({ type, slug }) => {
   return promise
 }
 
+export const getStickyPosts = () => {
+  return wp.posts().sticky(true)
+}
+
 export const getPreview = ({ id, postType }) => {
   let requestUrl
   if (postType === 'post') {
