@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getPostTerms } from '../utils/wp'
 import { Link } from 'react-router-dom'
 import uuid from 'uuid/v1'
+import cc from 'classcat'
 
 export default class PostTerms extends Component {
   render() {
@@ -10,7 +11,12 @@ export default class PostTerms extends Component {
       return null
     }
     return (
-      <ul className="PostTerms">
+      <ul
+        className={cc({
+          PostTerms: true,
+          [this.props.className]: true
+        })}
+      >
         <li className="PostTerms__item PostTerms__item--title">
           <strong>Kategorier</strong>
         </li>

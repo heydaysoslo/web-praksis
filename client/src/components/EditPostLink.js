@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { loggedIn } from '../utils/wp'
+import cc from 'classcat'
 
 export default class EditPostLink extends Component {
   state = {
@@ -24,14 +25,21 @@ export default class EditPostLink extends Component {
       return null
     }
     return (
-      <a
-        target="_blank"
-        rel="noopener"
-        className="edit-post-link"
-        href={edit_post_link}
+      <div
+        className={cc({
+          [this.props.className]: true,
+          EditPostLink: true
+        })}
       >
-        Rediger
-      </a>
+        <a
+          target="_blank"
+          rel="noopener"
+          className="EditPostLink__link"
+          href={edit_post_link}
+        >
+          Rediger
+        </a>
+      </div>
     )
   }
 }

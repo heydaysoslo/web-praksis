@@ -650,6 +650,14 @@ strong {
   margin: 0 auto;
   margin-top: 4.375rem; }
 
+.ArticleFooter {
+  margin-top: 5rem;
+  border-top: 1px solid #dc1e0f;
+  padding-top: 3.75rem;
+  padding-bottom: 2.5rem; }
+  .ArticleFooter__item {
+    padding-bottom: 4 0/16rem; }
+
 .ArticleHeader {
   margin-top: 1.875rem; }
   .ArticleHeader__intro {
@@ -943,13 +951,6 @@ strong {
   text-align: center;
   padding-top: 8.75rem;
   padding-bottom: 8.75rem; }
-
-.ArticleFooter {
-  margin-top: 4.375rem; }
-  .ArticleFooter__item {
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    border-top: 1px solid #b8b3ae; }
 
 .AdminBar {
   position: fixed;

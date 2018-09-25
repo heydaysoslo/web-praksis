@@ -3,12 +3,3 @@
   padding-top: rem-calc(140);
   padding-bottom: rem-calc(140);
 }
-
-.ArticleFooter {
-  margin-top: rem-calc(70);
-  &__item {
-    padding-top: rem-calc(40);
-    padding-bottom: rem-calc(40);
-    border-top: 1px solid $c-gray;
-  }
-}

@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import Lazyload from './Lazyload'
+import cc from 'classcat'
 
 export default class Author extends Component {
   render() {
     const { avatar, bio, name } = this.props.author
     return (
-      <div className="Author">
+      <div
+        className={cc({
+          Author: true,
+          [this.props.className]: true
+        })}
+      >
         <div className="Author__media">
           <Lazyload sizes={avatar} alt="Avatar" />
         </div>

@@ -86,25 +86,18 @@ class Article extends Component {
         <footer className="ArticleFooter Article__footer container container--text">
           {post.type === 'post' && (
             <Fragment>
-              <div className="ArticleFooter__item">
-                <Author author={post.author} />
-              </div>
-              <div className="ArticleFooter__item">
-                <PostTerms post={post} />
-              </div>
-              <div className="ArticleFooter__item">
-                <PostTags post={post} />
-              </div>
+              <Author className="ArticleFooter__item" author={post.author} />
+              <PostTerms className="ArticleFooter__item" post={post} />
+              <PostTags className="ArticleFooter__item" post={post} />
               {!preview && (
-                <div className="ArticleFooter__item">
-                  <ShareButtons url={baseUrl(getObjectLink(post))} />
-                </div>
+                <ShareButtons
+                  className="ArticleFooter__item"
+                  url={baseUrl(getObjectLink(post))}
+                />
               )}
             </Fragment>
           )}
-          <div className="ArticleFooter__item">
-            <EditPostLink post={post} />
-          </div>
+          <EditPostLink className="ArticleFooter__item" post={post} />
         </footer>
       </article>
     )
