@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Loading extends Component {
   render() {
-    return <div>Laster</div>
+    return <div className="container">Laster</div>
   }
 }
 

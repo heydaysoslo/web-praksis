@@ -55,7 +55,7 @@ class Taxonomy extends Component {
       return <Loading />
     }
     return (
-      <div>
+      <article className="container">
         <h1>Kategori: {cat.name}</h1>
         {cats && (
           <ul className="Terms">
@@ -80,7 +80,7 @@ class Taxonomy extends Component {
             Fant ingen innlegg i kategorien <strong>{cat.name}</strong>
           </div>
         )}
-      </div>
+      </article>
     )
   }
 }

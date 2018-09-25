@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import HeaderMeta from '../components/HeaderMeta'
 import Article from '../containers/Article'
-import { getObjectBySlug, getLatestRevisions } from '../utils/wp'
+import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'
 import Loading from '../components/Loading'
-import queryString from 'query-string'
 
 class Single extends Component {
   state = {
@@ -21,27 +20,7 @@ class Single extends Component {
       unlocked: false
     })
 
-    /**
-     * Need to fix revision
-     */
-    const queryParams = queryString.parse(this.props.location.search, {
-      ignoreQueryPrefix: true
-    })
-    console.log(queryParams)
-
-    if (queryParams && queryParams.preview === 'true') {
-      getLatestRevisions(queryParams)
-        .then(res => {
-          console.log('res', res)
-        })
-        .catch(err => console.log('err', err))
-    }
-    /**
-     * END: Need to fix revision
-     */
-
-    const urlParams = this.props.match.params
-    getObjectBySlug(urlParams)
+    getObjectBySlug(this.props.match.params)
       .then(post => {
         this.setState({
           post,
@@ -69,7 +48,7 @@ class Single extends Component {
   }
 
   render() {
-    const { loading, noMatch, post, unlocked } = this.state
+    const { loading, noMatch, post, unlocked, isPreview } = this.state
     if (loading) {
       return <Loading />
     }
@@ -88,7 +67,7 @@ class Single extends Component {
     return (
       <Fragment>
         <HeaderMeta data={post} />
-        <Article post={post} />
+        <Article post={post} preview={isPreview} />
       </Fragment>
     )
   }

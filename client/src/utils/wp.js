@@ -1,5 +1,4 @@
 import WPAPI from 'wpapi'
-import base64 from 'base-64'
 
 const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'production'
 const endpoint =
@@ -32,33 +31,17 @@ const wp = new WPAPI({
 // Create custom routes
 wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
 wp.search = wp.registerRoute('relevanssi/v1', '/search/')
-// wp.privateData = wp.registerRoute(
-//   'hey/v1',
-//   '/privateData/(?P<id>[a-zA-Z0-9_-]+)'
-// )
-// wp.cookies = wp.registerRoute('hey/v1', '/cookies/')
-// wp.setHeaders('credentials', 'include')
-
-const parseUserCredentials = hash => {
-  const hashDecoded = base64.decode(hash)
-  const hashParts = hashDecoded.split('*|*')
-  return {
-    username: hashParts[0],
-    password: hashParts[1]
-  }
-}
 
 export const cachedPrivateRequest = requestUrl => {
-  const requestKey = base64.encode(requestUrl)
-  if (!wpCache[requestKey]) {
-    wpCache[requestKey] = fetch(requestUrl, {
+  if (!wpCache[requestUrl]) {
+    wpCache[requestUrl] = fetch(requestUrl, {
       method: 'get',
       credentials: 'include'
     }).then(res => {
       return res.json()
     })
   }
-  return wpCache[requestKey]
+  return wpCache[requestUrl]
 }
 
 export const loggedIn = () => {
@@ -66,8 +49,8 @@ export const loggedIn = () => {
   return cachedPrivateRequest(requestUrl)
 }
 
-export const getLatestRevisions = ({ preview_id }) => {
-  const requestUrl = endpoint + '/hey/v1/revision/' + preview_id
+export const getLatestRevisions = id => {
+  const requestUrl = endpoint + '/hey/v1/revisions/' + id
   return cachedPrivateRequest(requestUrl)
 }
 
@@ -197,19 +180,23 @@ export const getObjectBySlug = ({ type, slug }) => {
   return promise
 }
 
-export const getPreview = ({ id, hash, postType }) => {
+export const getPreview = ({ id, postType }) => {
+  let requestUrl
   if (postType === 'post') {
-    return wp
+    requestUrl = wp
       .posts()
       .id(id)
       .revisions()
-      .auth(parseUserCredentials(hash))
+      .toString()
   } else if (postType === 'page') {
-    return wp
+    requestUrl = wp
       .pages()
       .id(id)
       .revisions()
-      .auth(parseUserCredentials(hash))
+      .toString()
+  }
+  if (requestUrl) {
+    return cachedPrivateRequest(requestUrl)
   }
 }
 

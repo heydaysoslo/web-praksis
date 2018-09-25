@@ -1,8 +1,11 @@
-.Cards {
-  &__item {
-    // background: silver;
-    // margin: 10px;
-    text-align: center;
-    border-bottom: 1px solid #000;
+.Card {
+  // background: silver;
+  // margin: 10px;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  padding-top: rem-calc(40);
+  padding-bottom: rem-calc(50);
+  &__title {
+    margin-bottom: rem-calc(30);
   }
 }

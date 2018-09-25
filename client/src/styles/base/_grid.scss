@@ -21,6 +21,7 @@ $gutters: (
   margin-left: auto;
   width: 100%;
   max-width: rem-calc(1400);
+  display: block;
 
   &--text {
     max-width: rem-calc(860);

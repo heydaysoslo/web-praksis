@@ -6,12 +6,10 @@ import { getObjectLink } from '../utils/wp'
 const Post = props => {
   const { post } = props
   return (
-    <article className="Cards__item">
-      <Link to={getObjectLink(post)}>
-        <h1>{renderHTML(post.title.rendered)}</h1>
-        <div className="Cards__content">
-          {renderHTML(post.excerpt.rendered)}
-        </div>
+    <article className="Card">
+      <Link className="container container--text" to={getObjectLink(post)}>
+        <h1 className="Card__title">{renderHTML(post.title.rendered)}</h1>
+        <div className="Card__content">{renderHTML(post.excerpt.rendered)}</div>
       </Link>
     </article>
   )

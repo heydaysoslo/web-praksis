@@ -18,6 +18,9 @@
     font-weight: 700;
     font-size: rem-calc(62);
     color: $c-text;
+    line-height: 1;
+    display: block;
+    height: rem-calc(62);
   }
   &__toggle {
   }

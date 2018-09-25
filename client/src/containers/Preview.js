@@ -24,7 +24,7 @@ class Preview extends Component {
         <Helmet>
           <meta name="robots" content="noindex" />
         </Helmet>
-        <Article post={post} />
+        <Article preview={true} post={post} />
       </Fragment>
     )
   }

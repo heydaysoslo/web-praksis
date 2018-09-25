@@ -46,16 +46,16 @@ export const routes = [
     exact: true
   },
   {
+    name: 'Preview',
+    path: '/_preview/:id/:postType',
+    component: Preview,
+    exact: true
+  },
+  {
     name: 'Post',
     path: '/:type/:slug',
     component: Single,
     exact: false
-  },
-  {
-    name: 'Preview',
-    path: '/_preview/:id/:postType/:hash',
-    component: Preview,
-    exact: true
   },
   {
     name: 'Page',
