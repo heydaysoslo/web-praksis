@@ -8,6 +8,7 @@ import PostTerms from '../components/PostTerms'
 import PostTags from '../components/PostTags'
 import Author from '../components/Author'
 import EditPostLink from '../components/EditPostLink'
+import { Link } from 'react-router-dom'
 
 class Article extends Component {
   makeEmbedsResponsive = () => {
@@ -40,10 +41,10 @@ class Article extends Component {
     return (
       <article className="Article">
         <div className="container">
-          <hr />
+          <hr className="--primary" />
         </div>
-        <header className="ArticleHeader container container--text">
-          <div className="ArticleHeader__meta">
+        <header className="Article__header container container--text">
+          <div className="Article__meta">
             {preview && <p>Forhåndsvisning</p>}
             {post.type === 'post' && (
               <Fragment>
@@ -51,7 +52,7 @@ class Article extends Component {
                   {postDateFormat(post.date)}
                 </time>
                 {' • '}
-                <span className="ArticleHeader__read-time">
+                <span className="Article__read-time">
                   {post.read_time} {post.read_time > 1 ? 'minutter' : 'minutt'}{' '}
                   lesetid
                 </span>
@@ -59,14 +60,14 @@ class Article extends Component {
             )}
           </div>
           {post.title && (
-            <h1 className="ArticleHeader__title">
-              {renderHTML(post.title.rendered)}
+            <h1 className="Article__title">
+              <Link to={getObjectLink(post)}>
+                {renderHTML(post.title.rendered)}
+              </Link>
             </h1>
           )}
           {post.acf.intro && (
-            <div className="ArticleHeader__intro">
-              {renderHTML(post.acf.intro)}
-            </div>
+            <div className="Article__intro">{renderHTML(post.acf.intro)}</div>
           )}
         </header>
         {post.featured_image && (

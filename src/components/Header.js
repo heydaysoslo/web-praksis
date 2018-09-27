@@ -27,12 +27,11 @@ class Header extends Component {
     return (
       <header className="App__header Header">
         <AdminBar />
-        <div className="Header__content">
+        <div className="Header__content container">
           <Link to={'/'} className="Header__logo">
             Praksis
           </Link>
           <div className="Header__nav Header__nav--right">
-            {/* <NavMenu items={this.state.menuItems} /> */}
             <Toggle>
               {({ on, toggle }) => (
                 <Fragment>
@@ -43,24 +42,11 @@ class Header extends Component {
                       </SlideoutNav>
                     </Portal>
                   )}
-
                   <button onClick={toggle}>Meny</button>
                 </Fragment>
               )}
             </Toggle>
             <Link to="/sok">Søk</Link>
-            {/* <Toggle>
-            {({ on, toggle }) => (
-              <Fragment>
-                {on && (
-                  <Portal>
-                    <SearchView toggle={toggle} />
-                  </Portal>
-                )}
-                <button onClick={toggle}>Søk</button>
-              </Fragment>
-            )}
-          </Toggle> */}
           </div>
         </div>
       </header>

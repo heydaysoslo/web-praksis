@@ -6,7 +6,7 @@ $typography: (
     h3: 60,
     body: 24,
     small: 12,
-    lead: 60,
+    lead: 60
   ),
   md: (
     h1: 22,
@@ -14,7 +14,7 @@ $typography: (
     h3: 60,
     body: 28,
     small: 12,
-    lead: 60,
+    lead: 60
   ),
   lg: (
     h1: 22,
@@ -22,8 +22,8 @@ $typography: (
     h3: 60,
     body: 60,
     small: 12,
-    lead: 60,
-  ),
+    lead: 60
+  )
 ) !default;
 
 @function font-size($size, $breakpoint) {

@@ -20,7 +20,10 @@ ul {
 hr {
   margin: 0;
   border: 0;
-  border-top: 1px solid $c-black;
+  border-top: 2px solid $c-black;
+  &.--primary {
+    border-color: $c-primary;
+  }
 }
 
 [role='button'],

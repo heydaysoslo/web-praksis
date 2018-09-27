@@ -30,13 +30,6 @@
   }
 }
 
-@mixin container {
-  position: relative;
-  width: 100%;
-  max-width: rem-calc(720);
-  margin: 0 auto;
-}
-
 @mixin t-uppercase {
   text-transform: uppercase;
   letter-spacing: 0.01em;

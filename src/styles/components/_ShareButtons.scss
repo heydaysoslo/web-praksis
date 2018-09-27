@@ -17,5 +17,15 @@
   &__item {
     // margin-left: rem-calc(10);
     margin-right: rem-calc(20);
+    &--url {
+      display: none;
+    }
+  }
+  @include bp(md) {
+    &__item {
+      &--url {
+        display: block;
+      }
+    }
   }
 }

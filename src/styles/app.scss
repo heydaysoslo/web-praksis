@@ -1,9 +1,11 @@
-@import 'settings/functions.scss';
-@import 'settings/variables.scss';
+@import 'utils/functions.scss';
+@import 'utils/unit.scss';
+@import 'utils/font-size.scss';
+@import 'utils/mixins.scss';
+
+@import 'settings/settings.scss';
 @import 'settings/breakpoints.scss';
 @import 'settings/spacing.scss';
-@import 'settings/font-size.scss';
-@import 'settings/mixins.scss';
 @import 'settings/animation.scss';
 @import 'settings/fonts.scss';
 

@@ -1,37 +1,33 @@
 .Header {
-  // border-bottom: 1px solid $c-black;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
   width: 100%;
-  // background-color: $c-white;
   &__content {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding-top: rem-calc(10);
-    padding-bottom: rem-calc(10);
-    height: rem-calc(62+20+1);
   }
   &__logo {
     text-transform: uppercase;
     font-weight: 700;
-    font-size: rem-calc(62);
+    font-size: rem-calc(42);
     color: $c-text;
     line-height: 1;
     display: block;
-    height: rem-calc(62);
     color: $c-white;
     background: $c-primary;
-    padding: 0 rem-calc(10);
-  }
-  &__toggle {
+    padding: rem-calc(5 10);
   }
   &__nav {
     &--right {
       position: absolute;
       right: 0;
       padding: rem-calc(10);
+    }
+  }
+  @include bp(md) {
+    &__content {
+      justify-content: center;
+    }
+    &__logo {
+      font-size: rem-calc(62);
     }
   }
 }

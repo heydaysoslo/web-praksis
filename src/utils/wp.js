@@ -1,10 +1,10 @@
 import WPAPI from 'wpapi'
 
 const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'production'
-const endpoint =
-  env === 'development'
-    ? 'http://praksis.test/api'
-    : 'https://208503-www.web.tornado-node.net/api'
+let endpoint = 'http://praksis.test/api'
+if (env === 'production' || window.location.hostname !== 'localhost') {
+  endpoint = 'https://208503-www.web.tornado-node.net/api'
+}
 
 const wpCache = {}
 
