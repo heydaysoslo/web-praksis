@@ -71,8 +71,8 @@
   }
 
   blockquote {
-    margin-top: rem-calc(70);
-    margin-bottom: rem-calc(70);
+    margin-top: rem-calc(35);
+    margin-bottom: rem-calc(35);
 
     @include font-size(h2);
     color: $c-primary;
@@ -122,5 +122,12 @@
   img {
     margin-top: rem-calc(60);
     margin-bottom: rem-calc(60);
+  }
+
+  @include bp(md) {
+    blockquote {
+      margin-top: rem-calc(70);
+      margin-bottom: rem-calc(70);
+    }
   }
 }

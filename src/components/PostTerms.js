@@ -6,7 +6,7 @@ import cc from 'classcat'
 
 export default class PostTerms extends Component {
   render() {
-    const terms = getPostTerms(this.props.post)
+    const terms = getPostTerms(this.props.post, 'category')
     if (!terms) {
       return null
     }

@@ -3,14 +3,19 @@ import renderHTML from 'react-render-html'
 import ShareButtons from '../components/ShareButtons'
 import { postDateFormat } from '../utils/date'
 import AcfImage from '../components/AcfImage'
-import { baseUrl, getObjectLink } from '../utils/wp'
+import { baseUrl, getObjectLink, getPostTerms } from '../utils/wp'
 import PostTerms from '../components/PostTerms'
 import PostTags from '../components/PostTags'
 import Author from '../components/Author'
 import EditPostLink from '../components/EditPostLink'
 import { Link } from 'react-router-dom'
+import cc from 'classcat'
 
 class Article extends Component {
+  state = {
+    articleType: null
+  }
+
   makeEmbedsResponsive = () => {
     const embeds = document.getElementsByClassName('embed')
     if (embeds) {
@@ -32,14 +37,34 @@ class Article extends Component {
     }
   }
 
+  setArticleType = () => {
+    const articleTypes = getPostTerms(this.props.post, 'content_type')
+    if (articleTypes) {
+      this.setState({
+        articleType: articleTypes[0]
+      })
+    }
+  }
+
   componentDidMount = () => {
     this.makeEmbedsResponsive()
+    this.setArticleType()
   }
 
   render() {
     const { post, preview } = this.props
+    const { articleType } = this.state
+    let articleTypeSlug = ''
+    if (articleType) {
+      articleTypeSlug = articleType.slug
+    }
     return (
-      <article className="Article">
+      <article
+        className={cc({
+          Article: true,
+          [`Article--${articleTypeSlug}`]: true
+        })}
+      >
         <div className="container">
           <hr className="--primary" />
         </div>

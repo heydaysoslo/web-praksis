@@ -204,15 +204,22 @@ export const getPreview = ({ id, postType }) => {
   }
 }
 
-export const getPostTerms = post => {
-  if (
-    post._embedded &&
-    post._embedded['wp:term'] &&
-    post._embedded['wp:term'][0]
-  ) {
-    return post._embedded['wp:term'][0]
+export const getPostTerms = (post, type = null) => {
+  let allTerms = {}
+  if (post._embedded && post._embedded['wp:term']) {
+    post._embedded['wp:term'].forEach(terms => {
+      terms.forEach(term => {
+        if (!allTerms[term.taxonomy]) {
+          allTerms[term.taxonomy] = []
+        }
+        allTerms[term.taxonomy].push(term)
+      })
+    })
   }
-  return []
+  if (type) {
+    return allTerms[type] ? allTerms[type] : null
+  }
+  return allTerms
 }
 
 export const getPostTags = post => {

@@ -24,12 +24,25 @@
     margin-bottom: rem-calc(20);
   }
 
-  &__title {
+  &--debattinnlegg &__title {
     // transform: rotate(-1.5deg);
     a {
       background: $c-primary;
       color: #fff;
       padding: rem-calc(0 10);
+    }
+  }
+
+  &__footer {
+    margin-top: rem-calc(180);
+    &::before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      border-top: 2px solid $c-primary;
+      width: rem-calc(30);
+      position: relative;
+      top: -(rem-calc(90));
     }
   }
 
@@ -51,8 +64,6 @@
 }
 
 .ArticleFooter {
-  margin-top: rem-calc(80);
-  padding-top: rem-calc(60);
   padding-bottom: rem-calc(40);
   &__item {
     // margin-top: rem-calc(40);

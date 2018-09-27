@@ -253,7 +253,7 @@ button,
   border: 0;
   background: transparent;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: inherit;
   -webkit-font-smoothing: antialiased;
   font-smooth: always;
@@ -262,12 +262,12 @@ button,
     [role='button'],
     button,
     [type='button'] {
-      font-size: 1rem; } }
+      font-size: 1.125rem; } }
   @media screen and (min-width: 64em) {
     [role='button'],
     button,
     [type='button'] {
-      font-size: 1rem; } }
+      font-size: 1.125rem; } }
   [role='button']:focus,
   button:focus,
   [type='button']:focus {
@@ -277,14 +277,14 @@ button,
   border: 0;
   font-family: inherit;
   background: transparent;
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: inherit; }
   @media screen and (min-width: 48em) {
     [type='text'] {
-      font-size: 1rem; } }
+      font-size: 1.125rem; } }
   @media screen and (min-width: 64em) {
     [type='text'] {
-      font-size: 1rem; } }
+      font-size: 1.125rem; } }
 
 li {
   position: relative; }
@@ -303,7 +303,7 @@ html {
 
 body {
   font-family: "Replica", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.5;
   font-weight: 400;
   color: #373332;
@@ -311,10 +311,10 @@ body {
   font-smooth: always; }
   @media screen and (min-width: 48em) {
     body {
-      font-size: 1rem; } }
+      font-size: 1.125rem; } }
   @media screen and (min-width: 64em) {
     body {
-      font-size: 1rem; } }
+      font-size: 1.125rem; } }
 
 ::selection {
   background: #b8b3ae; }
@@ -342,7 +342,7 @@ h1,
 
 h2,
 .h2 {
-  font-size: 2.625rem;
+  font-size: 1.75rem;
   line-height: 1.2;
   margin-bottom: 2.5rem; }
   @media screen and (min-width: 48em) {
@@ -637,6 +637,9 @@ strong {
           flex-basis: 100%;
           max-width: 100%; } }
 
+.c-primary {
+  color: #dc1e0f; }
+
 .StickyPosts {
   text-align: center; }
   .StickyPosts__item {
@@ -678,10 +681,21 @@ strong {
 .Article__meta {
   margin-bottom: 1.25rem; }
 
-.Article__title a {
+.Article--debattinnlegg .Article__title a {
   background: #dc1e0f;
   color: #fff;
   padding: 0 0.625rem; }
+
+.Article__footer {
+  margin-top: 11.25rem; }
+  .Article__footer::before {
+    content: '';
+    display: block;
+    margin: 0 auto;
+    border-top: 2px solid #dc1e0f;
+    width: 1.875rem;
+    position: relative;
+    top: -5.625rem; }
 
 @media screen and (min-width: 48em) {
   .Article__header {
@@ -695,8 +709,6 @@ strong {
     margin-top: 4.375rem; } }
 
 .ArticleFooter {
-  margin-top: 5rem;
-  padding-top: 3.75rem;
   padding-bottom: 2.5rem; }
   .ArticleFooter__item {
     padding-bottom: 2.5rem; }
@@ -707,8 +719,13 @@ strong {
   .Author__media {
     overflow: hidden;
     border-radius: 9999px;
-    max-width: 5.625rem;
+    max-width: 9.375rem;
     margin-right: 1.25rem; }
+  .Author__content {
+    line-height: 1.34; }
+  @media screen and (min-width: 48em) {
+    .Author__media {
+      max-width: 4.6875rem; } }
 
 .App__header {
   z-index: 100; }
@@ -717,7 +734,7 @@ strong {
   position: fixed;
   right: 1.375rem;
   bottom: 1.375rem;
-  font-size: 2.625rem; }
+  font-size: 1.75rem; }
   @media screen and (min-width: 48em) {
     .development:after {
       right: 1.375rem;
@@ -806,9 +823,9 @@ strong {
     .editor ol li {
       margin-bottom: 0.625rem; }
   .editor blockquote {
-    margin-top: 4.375rem;
-    margin-bottom: 4.375rem;
-    font-size: 2.625rem;
+    margin-top: 2.1875rem;
+    margin-bottom: 2.1875rem;
+    font-size: 1.75rem;
     color: #dc1e0f;
     text-align: center;
     font-weight: bold;
@@ -822,15 +839,15 @@ strong {
     .editor blockquote p {
       line-height: inherit; }
     .editor blockquote cite {
-      font-size: 1rem;
+      font-size: 1.125rem;
       margin-top: 4.375rem;
       display: block; }
       @media screen and (min-width: 48em) {
         .editor blockquote cite {
-          font-size: 1rem; } }
+          font-size: 1.125rem; } }
       @media screen and (min-width: 64em) {
         .editor blockquote cite {
-          font-size: 1rem; } }
+          font-size: 1.125rem; } }
       .editor blockquote cite:before {
         content: '— '; }
     @media screen and (min-width: 64em) {
@@ -853,6 +870,10 @@ strong {
   .editor img {
     margin-top: 3.75rem;
     margin-bottom: 3.75rem; }
+  @media screen and (min-width: 48em) {
+    .editor blockquote {
+      margin-top: 4.375rem;
+      margin-bottom: 4.375rem; } }
 
 .Header {
   width: 100%; }

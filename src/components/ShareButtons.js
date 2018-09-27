@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -16,7 +16,6 @@ export default class ShareButtons extends Component {
     const hashtags = ''
     const title = 'Les dette innlegget fra Praksis'
     const description = `Les dette innlegget ${url}`
-    console.log(navigator.share)
     return (
       <div
         className={cc({

@@ -16,6 +16,7 @@ export default class Author extends Component {
           <Lazyload sizes={avatar} alt="Avatar" />
         </div>
         <div className="Author__content">
+          <strong className="c-primary">Tekst</strong>
           <h4 className="Author__title">{name}</h4>
           {bio && <p className="Author__body">{bio}</p>}
         </div>

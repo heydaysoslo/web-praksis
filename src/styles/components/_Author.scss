@@ -4,7 +4,15 @@
   &__media {
     overflow: hidden;
     border-radius: 9999px;
-    max-width: rem-calc(90);
+    max-width: rem-calc(150);
     margin-right: rem-calc(20);
+  }
+  &__content {
+    line-height: 1.34;
+  }
+  @include bp(md) {
+    &__media {
+      max-width: rem-calc(75);
+    }
   }
 }
