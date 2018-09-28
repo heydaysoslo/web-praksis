@@ -53,78 +53,83 @@ class Article extends Component {
 
   render() {
     const { post, preview } = this.props
+    let articleStyle = post.article_style || 'default'
     const { articleType } = this.state
-    let articleTypeSlug = ''
-    if (articleType) {
-      articleTypeSlug = articleType.slug
-    }
     return (
       <article
         className={cc({
+          container: true,
           Article: true,
-          [`Article--${articleTypeSlug}`]: true
+          [`Article--${articleStyle}`]: true
         })}
       >
-        <div className="container">
-          <hr className="--primary" />
-        </div>
-        <header className="Article__header container container--text">
-          <div className="Article__meta">
-            {preview && <p>Forhåndsvisning</p>}
+        <div className="Article__inner">
+          <header className="Article__header container container--text">
+            <div className="Article__meta">
+              {preview && <p>Forhåndsvisning</p>}
+              {post.type === 'post' && (
+                <Fragment>
+                  <time dateTime={post.date} className="date">
+                    {postDateFormat(post.date)}
+                  </time>
+                  {articleType && (
+                    <Fragment>
+                      {' • '}
+                      <Link to={articleType.link} className="Article__type">
+                        {articleType.name}
+                      </Link>
+                    </Fragment>
+                  )}
+                  {' • '}
+                  <span className="Article__read-time">
+                    {post.read_time}{' '}
+                    {post.read_time > 1 ? 'minutter' : 'minutt'} lesetid
+                  </span>
+                </Fragment>
+              )}
+            </div>
+            {post.title && (
+              <h1 className="Article__title">
+                <Link to={getObjectLink(post)}>
+                  {renderHTML(post.title.rendered)}
+                </Link>
+              </h1>
+            )}
+            {post.acf.intro && (
+              <div className="Article__intro">{renderHTML(post.acf.intro)}</div>
+            )}
+          </header>
+          {post.featured_image && (
+            <div className="Article__image">
+              <AcfImage image={post.featured_image} />
+            </div>
+          )}
+          {post.better_featured_image && (
+            <img
+              src={post.better_featured_image.source_url}
+              alt={post.better_featured_image.alt_text}
+            />
+          )}
+          <div className="Article__content editor container container--text">
+            {post.content && renderHTML(post.content.rendered)}
+          </div>
+          <footer className="ArticleFooter Article__footer container container--text">
             {post.type === 'post' && (
               <Fragment>
-                <time dateTime={post.date} className="date">
-                  {postDateFormat(post.date)}
-                </time>
-                {' • '}
-                <span className="Article__read-time">
-                  {post.read_time} {post.read_time > 1 ? 'minutter' : 'minutt'}{' '}
-                  lesetid
-                </span>
+                <Author className="ArticleFooter__item" author={post.author} />
+                <PostTerms className="ArticleFooter__item" post={post} />
+                <PostTags className="ArticleFooter__item" post={post} />
+                {!preview && (
+                  <ShareButtons
+                    className="ArticleFooter__item"
+                    url={baseUrl(getObjectLink(post))}
+                  />
+                )}
               </Fragment>
             )}
-          </div>
-          {post.title && (
-            <h1 className="Article__title">
-              <Link to={getObjectLink(post)}>
-                {renderHTML(post.title.rendered)}
-              </Link>
-            </h1>
-          )}
-          {post.acf.intro && (
-            <div className="Article__intro">{renderHTML(post.acf.intro)}</div>
-          )}
-        </header>
-        {post.featured_image && (
-          <div className="Article__image container">
-            <AcfImage image={post.featured_image} />
-          </div>
-        )}
-        {post.better_featured_image && (
-          <img
-            src={post.better_featured_image.source_url}
-            alt={post.better_featured_image.alt_text}
-          />
-        )}
-        <div className="Article__content editor container container--text">
-          {post.content && renderHTML(post.content.rendered)}
+            <EditPostLink className="ArticleFooter__item" post={post} />
+          </footer>
         </div>
-        <footer className="ArticleFooter Article__footer container container--text">
-          {post.type === 'post' && (
-            <Fragment>
-              <Author className="ArticleFooter__item" author={post.author} />
-              <PostTerms className="ArticleFooter__item" post={post} />
-              <PostTags className="ArticleFooter__item" post={post} />
-              {!preview && (
-                <ShareButtons
-                  className="ArticleFooter__item"
-                  url={baseUrl(getObjectLink(post))}
-                />
-              )}
-            </Fragment>
-          )}
-          <EditPostLink className="ArticleFooter__item" post={post} />
-        </footer>
       </article>
     )
   }

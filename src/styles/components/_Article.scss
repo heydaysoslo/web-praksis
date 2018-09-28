@@ -24,13 +24,21 @@
     margin-bottom: rem-calc(20);
   }
 
-  &--debattinnlegg &__title {
+  &--red &__title {
     // transform: rotate(-1.5deg);
     a {
       background: $c-primary;
       color: #fff;
       padding: rem-calc(0 10);
     }
+  }
+
+  &--frame &__inner {
+    border: 1px solid $c-black;
+  }
+
+  &--default &__inner {
+    border-top: 2px solid $c-primary;
   }
 
   &__footer {

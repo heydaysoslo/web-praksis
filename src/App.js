@@ -20,7 +20,10 @@ class App extends Component {
                     key={r.path}
                     exact={r.exact}
                     path={r.path}
-                    component={r.component}
+                    render={defaultProps => {
+                      // Support passing props from routes setup
+                      return <r.component {...r.props} {...defaultProps} />
+                    }}
                   />
                 ))}
                 <Route component={NoMatchPage} />

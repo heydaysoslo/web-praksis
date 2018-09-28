@@ -27,26 +27,31 @@ class Header extends Component {
     return (
       <header className="App__header Header">
         <AdminBar />
-        <div className="Header__content container">
-          <Link to={'/'} className="Header__logo">
-            Praksis
-          </Link>
-          <div className="Header__nav Header__nav--right">
-            <Toggle>
-              {({ on, toggle }) => (
-                <Fragment>
-                  {on && (
-                    <Portal>
-                      <SlideoutNav toggle={toggle}>
-                        <NavMenu toggle={toggle} items={this.state.menuItems} />
-                      </SlideoutNav>
-                    </Portal>
-                  )}
-                  <button onClick={toggle}>Meny</button>
-                </Fragment>
-              )}
-            </Toggle>
-            <Link to="/sok">Søk</Link>
+        <div className="container container--fluid">
+          <div className="Header__content">
+            <Link to={'/'} className="Header__logo">
+              Praksis
+            </Link>
+            <div className="Header__nav Header__nav--right">
+              <Toggle>
+                {({ on, toggle }) => (
+                  <Fragment>
+                    {on && (
+                      <Portal>
+                        <SlideoutNav toggle={toggle}>
+                          <NavMenu
+                            toggle={toggle}
+                            items={this.state.menuItems}
+                          />
+                        </SlideoutNav>
+                      </Portal>
+                    )}
+                    <button onClick={toggle}>Meny</button>
+                  </Fragment>
+                )}
+              </Toggle>
+              {/* <Link to="/sok">Søk</Link> */}
+            </div>
           </div>
         </div>
       </header>

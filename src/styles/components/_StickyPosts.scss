@@ -1,5 +1,10 @@
 .StickyPosts {
   text-align: center;
+  padding-top: rem-calc(20);
+  padding-bottom: rem-calc(20);
+  &__list {
+    align-items: center;
+  }
   &__item {
     padding-top: rem-calc(20);
     padding-bottom: rem-calc(20);
@@ -7,5 +12,13 @@
   &__title,
   &__link {
     color: $c-primary;
+  }
+  @include bp(md) {
+    padding-top: rem-calc(30);
+    padding-bottom: rem-calc(30);
+  }
+  @include bp(lg) {
+    padding-top: rem-calc(60);
+    padding-bottom: rem-calc(60);
   }
 }

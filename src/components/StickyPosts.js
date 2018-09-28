@@ -24,21 +24,21 @@ export default class StickyPosts extends Component {
     }
     return (
       <div className="StickyPosts container">
-        <div className="grid">
+        <ul className="StickyPosts__list grid">
           {posts.map(post => {
             return (
-              <div
+              <li
                 key={uuid('sticky')}
-                className="grid__item grid__item--md-4 StickyPosts__item"
+                className="StickyPosts__item grid__item grid__item--md-4"
               >
                 <Link className="StickyPosts__link" to={getObjectLink(post)}>
                   <h3 className="StickyPosts__title">{post.title.rendered}</h3>
                   <span>Les mer</span>
                 </Link>
-              </div>
+              </li>
             )
           })}
-        </div>
+        </ul>
       </div>
     )
   }

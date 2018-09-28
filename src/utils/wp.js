@@ -31,6 +31,14 @@ const wp = new WPAPI({
 // Create custom routes
 wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
 wp.search = wp.registerRoute('relevanssi/v1', '/search/')
+wp.contentType = wp.registerRoute('wp/v2', 'content_type/(?P<id>[\\d]+)')
+wp.contentTypes = wp.registerRoute('wp/v2', 'content_type')
+
+const excludeEmptyTerms = terms => {
+  return terms.filter(term => {
+    return term.count > 0
+  })
+}
 
 export const cachedPrivateRequest = requestUrl => {
   if (!wpCache[requestUrl]) {
@@ -80,13 +88,8 @@ export const getPostsByTag = id => {
   return wp.posts().tags(id)
 }
 
-export const getTags = () => {
-  return wp.tags().then(tags => {
-    // Return only tags with a post count
-    return tags.filter(tag => {
-      return tag.count > 0
-    })
-  })
+export const getPostsByTaxonomy = (tax, ids) => {
+  return wp.posts().param(tax, ids)
 }
 
 export const getCategoryBySlug = slug => {
@@ -96,13 +99,23 @@ export const getCategoryBySlug = slug => {
     .then(cats => cats[0])
 }
 
+export const getTags = () => {
+  return wp.tags().then(excludeEmptyTerms)
+}
+
 export const getCategories = () => {
-  return wp.categories().then(cats => {
-    // Return only categories with a post count
-    return cats.filter(cat => {
-      return cat.count > 0
-    })
-  })
+  return wp.categories().then(excludeEmptyTerms)
+}
+
+export const getContentTypes = () => {
+  return wp.contentTypes().then(excludeEmptyTerms)
+}
+
+export const getContentType = slug => {
+  return wp
+    .contentTypes()
+    .slug(slug)
+    .then(cats => cats[0])
 }
 
 export const getTagBySlug = slug => {

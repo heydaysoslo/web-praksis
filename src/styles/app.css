@@ -641,12 +641,24 @@ strong {
   color: #dc1e0f; }
 
 .StickyPosts {
-  text-align: center; }
+  text-align: center;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem; }
+  .StickyPosts__list {
+    align-items: center; }
   .StickyPosts__item {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem; }
   .StickyPosts__title, .StickyPosts__link {
     color: #dc1e0f; }
+  @media screen and (min-width: 48em) {
+    .StickyPosts {
+      padding-top: 1.875rem;
+      padding-bottom: 1.875rem; } }
+  @media screen and (min-width: 64em) {
+    .StickyPosts {
+      padding-top: 3.75rem;
+      padding-bottom: 3.75rem; } }
 
 .NavMenu__link {
   display: block;
@@ -681,10 +693,16 @@ strong {
 .Article__meta {
   margin-bottom: 1.25rem; }
 
-.Article--debattinnlegg .Article__title a {
+.Article--red .Article__title a {
   background: #dc1e0f;
   color: #fff;
   padding: 0 0.625rem; }
+
+.Article--frame .Article__inner {
+  border: 1px solid #373332; }
+
+.Article--default .Article__inner {
+  border-top: 2px solid #dc1e0f; }
 
 .Article__footer {
   margin-top: 11.25rem; }
@@ -879,7 +897,8 @@ strong {
   width: 100%; }
   .Header__content {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    position: relative; }
   .Header__logo {
     text-transform: uppercase;
     font-weight: 700;

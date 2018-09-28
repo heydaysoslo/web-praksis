@@ -1,6 +1,7 @@
 import FrontPage from '../containers/FrontPage'
 import PostsPage from '../containers/PostsPage'
 import Taxonomy from '../containers/Taxonomy'
+import ContentType from '../containers/ContentType'
 // import PostPage from '../containers/PostPage'
 // import Page from '../containers/Page'
 import Single from '../containers/Single'
@@ -38,6 +39,15 @@ export const routes = [
     path: '/kategori/:cat',
     component: Taxonomy,
     exact: true
+  },
+  {
+    name: 'Category',
+    path: '/innleggstype/:cat',
+    component: ContentType,
+    exact: true,
+    props: {
+      taxonomy: 'content_type'
+    }
   },
   {
     name: 'Tag',
