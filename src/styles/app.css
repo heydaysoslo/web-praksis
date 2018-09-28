@@ -667,6 +667,17 @@ strong {
     background: #dc1e0f;
     color: #fff; }
 
+.Article__inner {
+  border-top: 2px solid #dc1e0f; }
+
+.Article--red .Article__title a {
+  background: #dc1e0f;
+  color: #fff;
+  padding: 0 0.625rem; }
+
+.Article--frame .Article__inner {
+  border: 1px solid #373332; }
+
 .Article__image {
   margin-top: 2.5rem; }
 
@@ -692,17 +703,6 @@ strong {
 
 .Article__meta {
   margin-bottom: 1.25rem; }
-
-.Article--red .Article__title a {
-  background: #dc1e0f;
-  color: #fff;
-  padding: 0 0.625rem; }
-
-.Article--frame .Article__inner {
-  border: 1px solid #373332; }
-
-.Article--default .Article__inner {
-  border-top: 2px solid #dc1e0f; }
 
 .Article__footer {
   margin-top: 11.25rem; }
