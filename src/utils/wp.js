@@ -3,7 +3,7 @@ import WPAPI from 'wpapi'
 const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'production'
 let endpoint = 'https://praksis.local/api'
 if (env === 'production' || window.location.hostname !== 'localhost') {
-  endpoint = 'https://praksis.flywheelsites.com/api/'
+  endpoint = 'https://praksis.flywheelsites.com/api'
 }
 
 const wpCache = {}
