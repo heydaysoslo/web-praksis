@@ -640,6 +640,21 @@ strong {
 .c-primary {
   color: #dc1e0f; }
 
+.cookieConsent {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.625rem;
+  background: #dc1e0f;
+  color: #fff;
+  width: 100%;
+  font-size: 1rem; }
+  @media screen and (min-width: 48em) {
+    .cookieConsent {
+      font-size: 1rem; } }
+  @media screen and (min-width: 64em) {
+    .cookieConsent {
+      font-size: 1rem; } }
+
 .StickyPosts {
   text-align: center;
   padding-top: 1.25rem;

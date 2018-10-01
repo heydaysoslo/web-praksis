@@ -1,0 +1,9 @@
+.cookieConsent {
+  display: flex;
+  justify-content: space-between;
+  padding: rem-calc(10);
+  background: $c-primary;
+  color: $c-white;
+  width: 100%;
+  @include font-size(small);
+}

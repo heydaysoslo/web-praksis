@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import CookieConsent from 'react-cookie-consent'
 
 import NoMatchPage from './containers/NoMatchPage'
 import Header from './components/Header'
@@ -31,6 +32,18 @@ class App extends Component {
             </div>
           </Fragment>
         </Router>
+        <CookieConsent
+          // acceptOnScroll={true}
+          // acceptOnScrollPercentage={25}
+          disableStyles={true}
+          location="bottom"
+          buttonText="Jeg godtar"
+          buttonClasses="cookieConsent__button"
+          contentClasses="cookieConstent__content"
+          expires={150}
+        >
+          Denne siden bruker cookies for å forbedre brukeropplevelsen.
+        </CookieConsent>
       </div>
     )
   }
