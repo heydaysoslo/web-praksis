@@ -94,6 +94,12 @@ $typography: (
 // Radius
 $radius: 4px;
 
-// Trans
-$trans: 0.3s ease;
-$trans--fast: 0.12s ease;
+// Transition
+$ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+// Objects quickly accelerate and slowly decelerate between on-screen locations.
+$ease-out: cubic-bezier(0, 0, 0.2, 1);
+// Objects enter the screen at full velocity from off-screen and slowly decelerate to a resting point.
+$ease-in: cubic-bezier(0.4, 0, 1, 1);
+// Objects leave the screen at full velocity. They do not decelerate when off-screen.
+$ease-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+// The sharp curve is used by objects that may return to the screen at any time. (in and out of screen bounds)

@@ -1,0 +1,37 @@
+.SideNav {
+  &__header {
+    display: flex;
+    height: rem-calc(38);
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__content {
+    width: 100%;
+    position: relative;
+  }
+
+  &__drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: rem-calc(30);
+    width: 100%;
+    text-align: right;
+    max-width: rem-calc(400);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to left, $c-white, rgba($c-white, 0.75));
+    z-index: 9;
+  }
+}

@@ -1,10 +1,15 @@
 .NavMenu {
   &__link {
     display: block;
-    padding: rem-calc(5) rem-calc(30);
+    padding: rem-calc(10 0);
+    color: $c-primary;
+    @include font-size(lead);
+    line-height: 1;
+    &:hover {
+      color: $c-black;
+    }
     &--active {
-      background: $c-primary;
-      color: $c-white;
+      color: $c-black;
     }
   }
 }

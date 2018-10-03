@@ -1,21 +1,18 @@
+// Remember to add #portal below #root to index.html
 import { Component } from 'react'
 import ReactDOM from 'react-dom'
 
 const portalRoot = document.getElementById('portal')
 
-class Portal extends Component {
+export default class Portal extends Component {
   constructor() {
     super()
     this.el = document.createElement('div')
   }
-
   componentDidMount = () => {
-    document.body.style.overflow = 'hidden'
     portalRoot.appendChild(this.el)
   }
-
   componentWillUnmount = () => {
-    document.body.style.overflow = ''
     portalRoot.removeChild(this.el)
   }
 
@@ -24,5 +21,3 @@ class Portal extends Component {
     return ReactDOM.createPortal(children, this.el)
   }
 }
-
-export default Portal

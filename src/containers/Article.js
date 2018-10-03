@@ -58,12 +58,13 @@ class Article extends Component {
     return (
       <article
         className={cc({
+          container: true,
           Article: true,
           [`Article--${articleStyle}`]: true
         })}
       >
         <div className="Article__inner">
-          <header className="Article__header container container--text">
+          <header className="Article__header wrapper wrapper--text">
             <div className="Article__meta">
               {preview && <p>Forhåndsvisning</p>}
               {post.type === 'post' && (
@@ -109,10 +110,10 @@ class Article extends Component {
               alt={post.better_featured_image.alt_text}
             />
           )}
-          <div className="Article__content editor container container--text">
+          <div className="Article__content editor wrapper wrapper--text">
             {post.content && renderHTML(post.content.rendered)}
           </div>
-          <footer className="ArticleFooter Article__footer container container--text">
+          <footer className="ArticleFooter Article__footer wrapper wrapper--text">
             {post.type === 'post' && (
               <div className="ArticleFooter__content">
                 <Author className="ArticleFooter__item" author={post.author} />

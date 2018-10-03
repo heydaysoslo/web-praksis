@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import HeaderMeta from '../components/HeaderMeta'
+import { HeaderMeta } from '../components/utilities'
 import Article from '../containers/Article'
 import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'

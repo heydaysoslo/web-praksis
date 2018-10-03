@@ -1,20 +1,26 @@
 $grid-columns: 12;
-$gutters: (
+$grid-gutters: (
   sm: 20,
   md: 30,
   lg: 50,
   xl: 60
 );
+$container-gutters: (
+  sm: 0,
+  md: 30,
+  lg: 30,
+  xl: 30
+);
 
-// .container {
-//   background: #f1f1f1;
-// }
-// .grid {
-//   background: red;
-// }
-// .grid__item {
-//   background: silver;
-// }
+@mixin real-max-width($base-width) {
+  // We need to loop through this to take gutters etc into count
+  @each $bp, $gutter in $grid-gutters {
+    @include bp($bp) {
+      $extra: map-get($container-gutters, $bp);
+      max-width: rem-calc($base-width + (($gutter + $extra) * 2));
+    }
+  }
+}
 
 .container {
   margin-right: auto;
@@ -22,31 +28,34 @@ $gutters: (
   width: 100%;
   max-width: rem-calc(1400);
   display: block;
-
   &--text {
-    max-width: rem-calc(860);
+    @include real-max-width(540);
   }
   &--fluid {
     max-width: none;
   }
 
-  // &--sm {
-  //   max-width: rem-calc(600);
-  // }
-  // &--md {
-  //   max-width: rem-calc(1024);
-  // }
-  // &--lg {
-  //   max-width: rem-calc(440);
-  // }
-
   // Add outer gutters
-  @each $bp, $gutter in $gutters {
+  @each $bp, $gutter in $grid-gutters {
     @include bp($bp) {
-      $value: rem-calc($gutter);
+      $extra: map-get($container-gutters, $bp);
+      $value: rem-calc($gutter + $extra);
       padding-right: $value;
       padding-left: $value;
+      &--fluid {
+        $normal: rem-calc($gutter);
+        padding-right: $normal;
+        padding-left: $normal;
+      }
     }
+  }
+}
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  &--text {
+    max-width: rem-calc(860);
   }
 }
 
@@ -64,7 +73,7 @@ $gutters: (
     max-width: 100%;
   }
 
-  @each $bp, $gutter in $gutters {
+  @each $bp, $gutter in $grid-gutters {
     &--#{$bp} {
       &-center {
         justify-content: center;
@@ -78,13 +87,7 @@ $gutters: (
     }
 
     @include bp($bp) {
-      $grid_gutter: rem-calc($gutter/2 * -1);
-      margin-right: $grid_gutter;
-      margin-left: $grid_gutter;
       &__item {
-        $item_gutter: rem-calc($gutter/2);
-        padding-right: $item_gutter;
-        padding-left: $item_gutter;
         &--#{$bp} {
           flex-basis: auto;
         }
@@ -95,84 +98,97 @@ $gutters: (
           }
         }
       }
+
+      $grid_gutter: rem-calc($gutter/2 * -1);
+
+      &--margin-x {
+        margin-right: $grid_gutter;
+        margin-left: $grid_gutter;
+      }
+
+      &--margin-x &__item {
+        $item_gutter: rem-calc($gutter/2);
+        padding-right: $item_gutter;
+        padding-left: $item_gutter;
+      }
+
+      &--margin-y &__item {
+        $item_gutter: rem-calc($gutter/2);
+        margin-top: $item_gutter;
+        margin-bottom: $item_gutter;
+      }
     }
   }
 }
 
-// @mixin hr-width {
-//   @each $bp, $value in $gutters {
-//     @include bp($bp) {
-//       max-width: calc(#{$global-width} - #{rem-calc($value * 2)});
+// Possible helper classes
+
+// @each $bp, $size in $breakpoints {
+//   @include bp($bp) {
+//     .cell--#{$bp} {
+//       flex-basis: auto;
+//     }
+//     @for $i from 1 through $grid-columns {
+//       .cell--#{$bp}-#{$i} {
+//         flex-basis: percentage($i/$grid-columns);
+//         max-width: percentage($i/$grid-columns);
+//       }
+//     }
+//     @for $i from 0 through $grid-columns {
+//       .col-#{$bp}-offset-#{$i} {
+//         @if $i == 0 {
+//           margin-left: 0;
+//         } @else {
+//           margin-left: percentage($i/$grid-columns);
+//         }
+//       }
+//     }
+//     .col-#{$bp} {
+//       flex-grow: 1;
+//       flex-basis: 0;
+//       max-width: 100%;
+//     }
+//     .start-#{$bp} {
+//       justify-content: flex-start;
+//       text-align: left;
+//     }
+
+//     .center-#{$bp} {
+//       justify-content: center;
+//       text-align: center;
+//     }
+
+//     .end-#{$bp} {
+//       justify-content: flex-end;
+//       text-align: right;
+//     }
+
+//     .top-#{$bp} {
+//       align-items: flex-start;
+//     }
+
+//     .middle-#{$bp} {
+//       align-items: center;
+//     }
+
+//     .bottom-#{$bp} {
+//       align-items: flex-end;
+//     }
+
+//     .around-#{$bp} {
+//       justify-content: space-around;
+//     }
+
+//     .between-#{$bp} {
+//       justify-content: space-between;
+//     }
+
+//     .first-#{$bp} {
+//       order: -1;
+//     }
+
+//     .last-#{$bp} {
+//       order: 1;
 //     }
 //   }
 // }
-
-@each $bp, $size in $breakpoints {
-  @include bp($bp) {
-    // .cell--#{$bp} {
-    //   flex-basis: auto;
-    // }
-    // @for $i from 1 through $grid-columns {
-    //   .cell--#{$bp}-#{$i} {
-    //     flex-basis: percentage($i/$grid-columns);
-    //     max-width: percentage($i/$grid-columns);
-    //   }
-    // }
-    // @for $i from 0 through $grid-columns {
-    //   .col-#{$bp}-offset-#{$i} {
-    //     @if $i == 0 {
-    //       margin-left: 0;
-    //     } @else {
-    //       margin-left: percentage($i/$grid-columns);
-    //     }
-    //   }
-    // }
-    // .col-#{$bp} {
-    //   flex-grow: 1;
-    //   flex-basis: 0;
-    //   max-width: 100%;
-    // }
-    // .start-#{$bp} {
-    //   justify-content: flex-start;
-    //   text-align: left;
-    // }
-
-    // .center-#{$bp} {
-    //   justify-content: center;
-    //   text-align: center;
-    // }
-
-    // .end-#{$bp} {
-    //   justify-content: flex-end;
-    //   text-align: right;
-    // }
-
-    // .top-#{$bp} {
-    //   align-items: flex-start;
-    // }
-
-    // .middle-#{$bp} {
-    //   align-items: center;
-    // }
-
-    // .bottom-#{$bp} {
-    //   align-items: flex-end;
-    // }
-
-    // .around-#{$bp} {
-    //   justify-content: space-around;
-    // }
-
-    // .between-#{$bp} {
-    //   justify-content: space-between;
-    // }
-
-    // .first-#{$bp} {
-    //   order: -1;
-    // }
-
-    // .last-#{$bp} {
-    //   order: 1;
-    // }
-  }
-}
