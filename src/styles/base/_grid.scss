@@ -29,7 +29,7 @@ $container-gutters: (
   max-width: rem-calc(1400);
   display: block;
   &--text {
-    @include real-max-width(540);
+    @include real-max-width(680);
   }
   &--fluid {
     max-width: none;
@@ -55,7 +55,7 @@ $container-gutters: (
   margin-left: auto;
   margin-right: auto;
   &--text {
-    max-width: rem-calc(860);
+    max-width: rem-calc(680);
   }
 }
 

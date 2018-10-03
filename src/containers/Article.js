@@ -114,7 +114,7 @@ class Article extends Component {
             {post.content && renderHTML(post.content.rendered)}
           </div>
           <footer className="ArticleFooter Article__footer wrapper wrapper--text">
-            {post.type === 'post' && (
+            {post.type === 'post' ? (
               <div className="ArticleFooter__content">
                 <Author className="ArticleFooter__item" author={post.author} />
                 {/* <PostTerms className="ArticleFooter__item" post={post} />
@@ -125,9 +125,11 @@ class Article extends Component {
                     url={baseUrl(getObjectLink(post))}
                   />
                 )}
+                <EditPostLink className="ArticleFooter__item" post={post} />
               </div>
+            ) : (
+              <EditPostLink className="ArticleFooter__item" post={post} />
             )}
-            <EditPostLink className="ArticleFooter__item" post={post} />
           </footer>
         </div>
       </article>

@@ -2,6 +2,8 @@
   // max-width: rem-calc(1400);
   // margin: 0 auto;
 
+  margin-top: rem-calc(70);
+
   &__inner {
     border-top: 2px solid $c-primary;
   }
@@ -16,7 +18,8 @@
   }
 
   &--frame &__inner {
-    border: 1px solid $c-black;
+    border: 2px solid $c-light-gray;
+    // background: #000;
   }
 
   &__image {
@@ -66,7 +69,7 @@
   &__content {
     border-top: 2px solid $c-light-gray;
     padding-top: rem-calc(40);
-    padding-bottom: rem-calc(100);
+    padding-bottom: rem-calc(20);
   }
   &__item {
     // margin-top: rem-calc(40);
