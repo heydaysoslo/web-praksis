@@ -1,18 +1,28 @@
 .Author {
-  display: flex;
-  align-items: center;
+  text-align: center;
   &__media {
     overflow: hidden;
     border-radius: 9999px;
-    max-width: rem-calc(150);
+    max-width: rem-calc(100);
     margin-right: rem-calc(20);
+    margin: 0 auto;
   }
   &__content {
+    margin-top: rem-calc(20);
     line-height: 1.34;
   }
   @include bp(md) {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    max-width: rem-calc(400);
+    &__content {
+      margin-top: 0;
+      padding-left: rem-calc(30);
+    }
     &__media {
-      max-width: rem-calc(75);
+      margin: 0;
+      min-width: 33.33%;
     }
   }
 }

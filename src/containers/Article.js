@@ -4,8 +4,8 @@ import ShareButtons from '../components/ShareButtons'
 import { postDateFormat } from '../utils/date'
 import AcfImage from '../components/AcfImage'
 import { baseUrl, getObjectLink, getPostTerms } from '../utils/wp'
-import PostTerms from '../components/PostTerms'
-import PostTags from '../components/PostTags'
+// import PostTerms from '../components/PostTerms'
+// import PostTags from '../components/PostTags'
 import Author from '../components/Author'
 import EditPostLink from '../components/EditPostLink'
 import { Link } from 'react-router-dom'
@@ -58,7 +58,6 @@ class Article extends Component {
     return (
       <article
         className={cc({
-          container: true,
           Article: true,
           [`Article--${articleStyle}`]: true
         })}
@@ -115,17 +114,17 @@ class Article extends Component {
           </div>
           <footer className="ArticleFooter Article__footer container container--text">
             {post.type === 'post' && (
-              <Fragment>
+              <div className="ArticleFooter__content">
                 <Author className="ArticleFooter__item" author={post.author} />
-                <PostTerms className="ArticleFooter__item" post={post} />
-                <PostTags className="ArticleFooter__item" post={post} />
+                {/* <PostTerms className="ArticleFooter__item" post={post} />
+                <PostTags className="ArticleFooter__item" post={post} /> */}
                 {!preview && (
                   <ShareButtons
                     className="ArticleFooter__item"
                     url={baseUrl(getObjectLink(post))}
                   />
                 )}
-              </Fragment>
+              </div>
             )}
             <EditPostLink className="ArticleFooter__item" post={post} />
           </footer>
