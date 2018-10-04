@@ -904,6 +904,7 @@ strong {
       .Article__intro {
         font-size: 1.75rem; } }
   .Article__meta {
+    color: #b8b3ae;
     margin-bottom: 1.25rem; }
   .Article--single {
     padding-bottom: 8.75rem; }
@@ -1269,6 +1270,14 @@ strong {
     border-bottom: 1px solid #b8b3ae; }
   .SlideoutNav__close-button {
     height: 3.875rem; }
+
+.ShareButtons__button {
+  color: #b8b3ae; }
+  .ShareButtons__button:hover {
+    color: #dc1e0f; }
+
+.ShareButtons__title {
+  color: #dc1e0f; }
 
 .ShareButtons__list {
   align-items: center;

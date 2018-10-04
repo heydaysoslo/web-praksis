@@ -7,6 +7,15 @@
   // max-width: rem-calc(740);
   // margin-left: auto;
   // margin-right: auto;
+  &__button {
+    color: $c-medium-gray;
+    &:hover {
+      color: $c-primary;
+    }
+  }
+  &__title {
+    color: $c-primary;
+  }
   &__list {
     // display: flex;
     // justify-content: center;

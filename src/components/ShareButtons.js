@@ -23,7 +23,7 @@ export default class ShareButtons extends Component {
           [this.props.className]: this.props.className
         })}
       >
-        <h4>Del</h4>
+        <h4 className="ShareButtons__title">Del</h4>
         <ul className="ShareButtons__list">
           {/* <li className="ShareButtons__item ShareButtons__item--url">
             <ShareURL url={url} />
