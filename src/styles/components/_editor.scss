@@ -7,6 +7,15 @@
     font-style: italic;
   }
 
+  a {
+    color: $c-primary;
+    border-bottom: 1px solid $c-primary;
+    transition: color 0.15s ease;
+    &:hover {
+      color: $c-text;
+    }
+  }
+
   h1,
   h2,
   h3,

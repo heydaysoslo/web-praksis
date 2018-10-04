@@ -17,9 +17,9 @@
 
 .Burger {
   span {
-    width: 35px;
-    height: 5px;
-    background-color: #333;
+    width: 28px;
+    height: 4px;
+    background-color: $c-black;
     margin: 6px 0;
     display: block;
   }
@@ -27,15 +27,15 @@
 
 .Close {
   span {
-    width: 35px;
-    height: 5px;
-    background-color: #333;
+    width: 28px;
+    height: 4px;
+    background-color: $c-black;
     display: block;
     &:first-child {
-      transform: rotate(-45deg) translate(0, 3.5px);
+      transform: rotate(-45deg) translate(0, 2.5px);
     }
     &:last-child {
-      transform: rotate(45deg) translate(0, -3.5px);
+      transform: rotate(45deg) translate(0, -2.5px);
     }
   }
 }

@@ -13,7 +13,7 @@ export default class Author extends Component {
         })}
       >
         <div className="Author__media">
-          <Lazyload sizes={avatar} alt="Avatar" />
+          <Lazyload aspectratio="1/1" sizes={avatar} alt="Avatar" />
         </div>
         <div className="Author__content">
           <strong className="c-primary">Tekst</strong>

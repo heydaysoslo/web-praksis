@@ -11,6 +11,7 @@ import Author from '../components/Author'
 import EditPostLink from '../components/EditPostLink'
 import { Link } from 'react-router-dom'
 import cc from 'classcat'
+import autolinker from 'autolinker'
 
 class Article extends Component {
   state = {
@@ -56,6 +57,20 @@ class Article extends Component {
     const { post, preview } = this.props
     let articleStyle = post.article_style || 'default'
     const { articleType } = this.state
+    let theContent = post.content.rendered
+    theContent = autolinker.link(theContent, {
+      className: 'editorLink',
+      replaceFn: match => {
+        switch (match.getType()) {
+          case 'email':
+            const email = match.getEmail()
+            return `<a className="editorLink editorLink-email" href="mailto:${email}">${email}</a>`
+          default:
+            return
+        }
+      }
+    })
+    theContent = renderHTML(theContent)
     return (
       <article
         className={cc({
@@ -114,7 +129,7 @@ class Article extends Component {
           )}
           <StickyContainer className="Article__stickyContainer">
             <div className="Article__content editor wrapper wrapper--text">
-              {post.content && renderHTML(post.content.rendered)}
+              {theContent}
             </div>
             <footer className="ArticleFooter Article__footer wrapper wrapper--text">
               {post.type === 'post' && (

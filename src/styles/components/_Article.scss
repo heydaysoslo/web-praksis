@@ -18,7 +18,9 @@
   }
 
   &--frame &__inner {
-    border: 2px solid $c-light-gray;
+    border: 2px solid transparent;
+    border-top: 2px solid $c-light-gray;
+    border-right: 2px solid $c-light-gray;
     // background: #000;
   }
 

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "autolinker": "^1.7.1",
     "base-64": "^0.1.0",
     "classcat": "^3.2.3",
     "htmlparser2": "^3.9.2",

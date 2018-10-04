@@ -40,6 +40,7 @@ export default class Lazyload extends Component {
           alt={alt}
           data-sizes="auto"
           title={title}
+          data-aspectratio={this.props.aspectratio}
         />
       </picture>
     )

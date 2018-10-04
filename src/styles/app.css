@@ -784,7 +784,9 @@ strong {
     color: #fff;
     padding: 0 0.625rem; }
   .Article--frame .Article__inner {
-    border: 2px solid #f1eeeb; }
+    border: 2px solid transparent;
+    border-top: 2px solid #f1eeeb;
+    border-right: 2px solid #f1eeeb; }
   .Article__stickyContainer {
     position: relative; }
   .Article__sticky {
@@ -959,6 +961,12 @@ strong {
       font-size: 1.25rem; } }
   .editor em {
     font-style: italic; }
+  .editor a {
+    color: #dc1e0f;
+    border-bottom: 1px solid #dc1e0f;
+    transition: color 0.15s ease; }
+    .editor a:hover {
+      color: #373332; }
   .editor h1,
   .editor h2,
   .editor h3,
@@ -1212,21 +1220,21 @@ strong {
       color: #373332; }
 
 .Burger span {
-  width: 35px;
-  height: 5px;
-  background-color: #333;
+  width: 28px;
+  height: 4px;
+  background-color: #373332;
   margin: 6px 0;
   display: block; }
 
 .Close span {
-  width: 35px;
-  height: 5px;
-  background-color: #333;
+  width: 28px;
+  height: 4px;
+  background-color: #373332;
   display: block; }
   .Close span:first-child {
-    transform: rotate(-45deg) translate(0, 3.5px); }
+    transform: rotate(-45deg) translate(0, 2.5px); }
   .Close span:last-child {
-    transform: rotate(45deg) translate(0, -3.5px); }
+    transform: rotate(45deg) translate(0, -2.5px); }
 
 .AdminBar {
   position: fixed;
