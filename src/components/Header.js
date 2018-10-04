@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { getNavMenu } from '../utils/wp'
 import { Link } from 'react-router-dom'
 import { Consumer } from './utilities'
-import AdminBar from '../components/AdminBar'
+// import AdminBar from '../components/AdminBar'
 import SideNav from '../components/SideNav'
 
 class Header extends Component {
@@ -25,7 +25,7 @@ class Header extends Component {
       <Consumer>
         {ctx => (
           <header className="App__header Header">
-            <AdminBar />
+            {/* <AdminBar /> */}
             <div className="container container--fluid">
               <div className="Header__content">
                 <Link to={'/'} className="Header__logo">

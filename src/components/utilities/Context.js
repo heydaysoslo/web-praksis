@@ -1,6 +1,6 @@
 import React, { Component, createContext } from 'react'
 import { getNavMenu, getPosts } from '../../utils/wp'
-const MyContext = createContext()
+export const SiteContext = createContext()
 
 export class Provider extends Component {
   state = {
@@ -9,7 +9,8 @@ export class Provider extends Component {
     posts: [],
     postsPage: 1,
     loadingNext: false,
-    allPagesLoaded: false
+    allPagesLoaded: false,
+    feedScrollPos: 0
   }
 
   componentDidMount = () => {
@@ -65,7 +66,7 @@ export class Provider extends Component {
 
   render() {
     return (
-      <MyContext.Provider
+      <SiteContext.Provider
         value={{
           state: this.state,
           actions: {
@@ -75,8 +76,8 @@ export class Provider extends Component {
         }}
       >
         {this.props.children}
-      </MyContext.Provider>
+      </SiteContext.Provider>
     )
   }
 }
-export const Consumer = MyContext.Consumer
+export const Consumer = SiteContext.Consumer

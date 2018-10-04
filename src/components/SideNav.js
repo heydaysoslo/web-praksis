@@ -42,7 +42,7 @@ export default class SideNav extends Component {
               <PoseGroup>
                 {ctx.state.showMenu && [
                   <Drawer key="shade" className="SideNav__drawer">
-                    <div className="SideNav__content">
+                    <div className="SideNav__content container container--fluid">
                       <div className="SideNav__header">
                         <button
                           className="SideNav__close"

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import renderHTML from 'react-render-html'
+import { StickyContainer, Sticky } from 'react-sticky'
 import ShareButtons from '../components/ShareButtons'
 import { postDateFormat } from '../utils/date'
 import AcfImage from '../components/AcfImage'
@@ -99,6 +100,7 @@ class Article extends Component {
               <div className="Article__intro">{renderHTML(post.acf.intro)}</div>
             )}
           </header>
+
           {post.featured_image && (
             <div className="Article__image">
               <AcfImage image={post.featured_image} />
@@ -110,27 +112,45 @@ class Article extends Component {
               alt={post.better_featured_image.alt_text}
             />
           )}
-          <div className="Article__content editor wrapper wrapper--text">
-            {post.content && renderHTML(post.content.rendered)}
-          </div>
-          <footer className="ArticleFooter Article__footer wrapper wrapper--text">
-            {post.type === 'post' ? (
-              <div className="ArticleFooter__content">
-                <Author className="ArticleFooter__item" author={post.author} />
-                {/* <PostTerms className="ArticleFooter__item" post={post} />
-                <PostTags className="ArticleFooter__item" post={post} /> */}
-                {!preview && (
-                  <ShareButtons
+          <StickyContainer className="Article__stickyContainer">
+            <div className="Article__content editor wrapper wrapper--text">
+              {post.content && renderHTML(post.content.rendered)}
+            </div>
+            <footer className="ArticleFooter Article__footer wrapper wrapper--text">
+              {post.type === 'post' && (
+                <div className="ArticleFooter__content">
+                  <Author
                     className="ArticleFooter__item"
-                    url={baseUrl(getObjectLink(post))}
+                    author={post.author}
                   />
-                )}
-                <EditPostLink className="ArticleFooter__item" post={post} />
-              </div>
-            ) : (
-              <EditPostLink className="ArticleFooter__item" post={post} />
-            )}
-          </footer>
+                  {/* <PostTerms className="ArticleFooter__item" post={post} />
+                <PostTags className="ArticleFooter__item" post={post} /> */}
+                  {/* {!preview && (
+                    <ShareButtons
+                      className="ArticleFooter__item"
+                      url={baseUrl(getObjectLink(post))}
+                    />
+                  )} */}
+                </div>
+              )}
+            </footer>
+            <Sticky disableCompensation topOffset={-40}>
+              {({ style, isSticky }) => (
+                <div
+                  style={style}
+                  className={cc({
+                    Article__sticky: true,
+                    'Article__sticky--stuck': isSticky
+                  })}
+                >
+                  {!(preview || post.type !== 'post') && (
+                    <ShareButtons url={baseUrl(getObjectLink(post))} />
+                  )}
+                  <EditPostLink post={post} />
+                </div>
+              )}
+            </Sticky>
+          </StickyContainer>
         </div>
       </article>
     )

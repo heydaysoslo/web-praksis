@@ -20,7 +20,7 @@
     &--right {
       position: absolute;
       right: 0;
-      padding: rem-calc(10);
+      // padding: rem-calc(10);
     }
   }
   @include bp(md) {

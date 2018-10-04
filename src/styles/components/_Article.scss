@@ -22,6 +22,25 @@
     // background: #000;
   }
 
+  &__stickyContainer {
+    position: relative;
+  }
+  &__sticky {
+    position: absolute;
+    top: 0;
+    display: none;
+    &--stuck {
+      padding-top: 40px;
+    }
+    @include bp(lg) {
+      display: block;
+    }
+
+    // @include bp(sm, lg) {
+    //   position: static !important;
+    // }
+  }
+
   &__image {
     margin-top: rem-calc(40);
   }

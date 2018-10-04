@@ -248,6 +248,8 @@ hr {
 [role='button'],
 button,
 [type='button'] {
+  padding: 0;
+  margin: 0;
   cursor: pointer;
   display: inline-block;
   border: 0;
@@ -339,6 +341,14 @@ h1,
     h1,
     .h1 {
       font-size: 3.875rem; } }
+  @media screen and (min-width: 0em) and (max-width: 48em) {
+    h1,
+    .h1 {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      hyphens: auto; } }
 
 h2,
 .h2 {
@@ -717,7 +727,7 @@ strong {
 
 .SideNav__header {
   display: flex;
-  height: 2.375rem;
+  height: 4.5rem;
   align-items: center;
   justify-content: flex-end; }
 
@@ -731,7 +741,6 @@ strong {
   right: 0;
   bottom: 0;
   z-index: 10;
-  padding: 1.875rem;
   width: 100%;
   text-align: right;
   max-width: 25rem;
@@ -774,6 +783,17 @@ strong {
     padding: 0 0.625rem; }
   .Article--frame .Article__inner {
     border: 2px solid #f1eeeb; }
+  .Article__stickyContainer {
+    position: relative; }
+  .Article__sticky {
+    position: absolute;
+    top: 0;
+    display: none; }
+    .Article__sticky--stuck {
+      padding-top: 40px; }
+    @media screen and (min-width: 64em) {
+      .Article__sticky {
+        display: block; } }
   .Article__image {
     margin-top: 2.5rem; }
   .Article__content {
@@ -841,8 +861,51 @@ strong {
         margin: 0;
         min-width: 33.33%; } }
 
-.App__header {
-  z-index: 100; }
+.App {
+  padding-left: 10px; }
+  .App__header {
+    z-index: 100; }
+  @media screen and (min-width: 48em) {
+    .App {
+      padding-left: 40px; } }
+
+.AppFooter {
+  height: 10px;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  width: 100vh;
+  background: #dc1e0f;
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  font-size: 1rem;
+  color: #fff; }
+  @media screen and (min-width: 48em) {
+    .AppFooter {
+      font-size: 1rem; } }
+  @media screen and (min-width: 64em) {
+    .AppFooter {
+      font-size: 1rem; } }
+  .AppFooter__content {
+    display: none;
+    line-height: 1;
+    padding: 0.625rem;
+    justify-content: space-between; }
+  .AppFooter a {
+    text-decoration: underline;
+    color: #fff; }
+    .AppFooter a:hover {
+      text-decoration: none; }
+  @media screen and (min-width: 48em) {
+    .AppFooter {
+      height: 40px; }
+      .AppFooter__content {
+        display: flex; } }
+
+.SvgFlame {
+  height: 1em;
+  width: auto;
+  margin-left: 0.3125rem; }
 
 .development:after {
   position: fixed;
@@ -925,14 +988,37 @@ strong {
   .editor p {
     margin-bottom: 1.25rem; }
   .editor ul {
-    list-style-type: disc; }
+    list-style-type: none;
+    padding-left: 25px; }
+    .editor ul li:before {
+      content: '';
+      vertical-align: baseline;
+      position: relative;
+      top: 1px;
+      border-radius: 99px;
+      background: #dc1e0f;
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-left: -25px;
+      margin-right: 9px; }
   .editor ol {
-    list-style-type: decimal; }
+    list-style-type: none;
+    counter-reset: item;
+    padding-left: 25px; }
+    .editor ol li:before {
+      content: counter(item) " ";
+      display: inline-block;
+      counter-increment: item;
+      width: 25px;
+      margin-left: -25px;
+      color: #dc1e0f;
+      font-family: "Replica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 700; }
   .editor ul,
   .editor ol {
     margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-    padding-left: 2.5rem; }
+    margin-bottom: 1.25rem; }
     .editor ul li,
     .editor ol li {
       margin-bottom: 0.625rem; }
@@ -1007,8 +1093,7 @@ strong {
     padding: 0.3125rem 0.625rem; }
   .Header__nav--right {
     position: absolute;
-    right: 0;
-    padding: 0.625rem; }
+    right: 0; }
   @media screen and (min-width: 48em) {
     .Header__content {
       justify-content: center; }
@@ -1064,10 +1149,8 @@ strong {
     height: 3.875rem; }
 
 .ShareButtons__list {
-  display: flex;
   align-items: center;
-  margin-top: 1.25rem;
-  flex-wrap: wrap; }
+  margin-top: 1.25rem; }
 
 .ShareButtons__item {
   margin-right: 1.25rem; }
@@ -1136,3 +1219,6 @@ strong {
   .AdminBar a:hover,
   .EditPostLink__link:hover {
     background: #00a0d2; }
+
+.EditPostLink {
+  margin-top: 1.5625rem; }

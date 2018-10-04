@@ -2,7 +2,47 @@
   &__header {
     z-index: 100;
   }
-  // &__content {
-  //   padding-top: rem-calc(85);
-  // }
+  padding-left: 10px; // make space for footer
+  @include bp(md) {
+    padding-left: 40px; // make space for footer
+  }
+}
+
+.AppFooter {
+  height: 10px;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  width: 100vh;
+  background: $c-primary;
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  @include font-size(small);
+  color: $c-white;
+  &__content {
+    display: none;
+    line-height: 1;
+    padding: rem-calc(10);
+    justify-content: space-between;
+  }
+  a {
+    text-decoration: underline;
+    color: $c-white;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  @include bp(md) {
+    height: 40px;
+    &__content {
+      display: flex;
+    }
+  }
+}
+
+.SvgFlame {
+  height: 1em;
+  width: auto;
+  margin-left: rem-calc(5);
+  // transform: rotate(90deg);
 }

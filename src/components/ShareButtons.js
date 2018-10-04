@@ -4,7 +4,7 @@ import {
   TwitterShareButton,
   EmailShareButton
 } from 'react-share'
-import ShareURL from '../components/ShareURL'
+// import ShareURL from '../components/ShareURL'
 import cc from 'classcat'
 
 export default class ShareButtons extends Component {
@@ -20,14 +20,14 @@ export default class ShareButtons extends Component {
       <div
         className={cc({
           ShareButtons: true,
-          [this.props.className]: true
+          [this.props.className]: this.props.className
         })}
       >
-        <h4>Del innlegget</h4>
+        <h4>Del</h4>
         <ul className="ShareButtons__list">
-          <li className="ShareButtons__item ShareButtons__item--url">
+          {/* <li className="ShareButtons__item ShareButtons__item--url">
             <ShareURL url={url} />
-          </li>
+          </li> */}
           <li className="ShareButtons__item ShareButtons__item--facebook">
             <FacebookShareButton
               className="ShareButtons__button"

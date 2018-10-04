@@ -53,18 +53,48 @@
   }
 
   ul {
-    list-style-type: disc;
+    list-style-type: none;
+    padding-left: 25px;
+    li {
+      &:before {
+        $sz: 16px;
+        content: '';
+        vertical-align: baseline;
+        position: relative;
+        top: 1px;
+        border-radius: 99px;
+        background: $c-primary;
+        display: inline-block;
+        width: $sz;
+        height: $sz;
+        margin-left: -25px;
+        margin-right: 25px - $sz;
+      }
+    }
   }
 
   ol {
-    list-style-type: decimal;
+    list-style-type: none;
+    counter-reset: item;
+    padding-left: 25px;
+    li {
+      &:before {
+        content: counter(item) ' ';
+        display: inline-block;
+        counter-increment: item;
+        width: 25px;
+        margin-left: -25px;
+        color: $c-primary;
+        font-family: $f-sans;
+        font-weight: 700;
+      }
+    }
   }
 
   ul,
   ol {
     margin-top: rem-calc(20);
     margin-bottom: rem-calc(20);
-    padding-left: rem-calc(40);
     li {
       margin-bottom: rem-calc(10);
     }

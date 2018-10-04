@@ -1,7 +1,7 @@
 .SideNav {
   &__header {
     display: flex;
-    height: rem-calc(38);
+    height: rem-calc(72);
     align-items: center;
     justify-content: flex-end;
   }
@@ -17,7 +17,7 @@
     right: 0;
     bottom: 0;
     z-index: 10;
-    padding: rem-calc(30);
+    // padding: rem-calc(30);
     width: 100%;
     text-align: right;
     max-width: rem-calc(400);
