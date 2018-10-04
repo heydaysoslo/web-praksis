@@ -51,6 +51,7 @@ class Article extends Component {
   componentDidMount = () => {
     this.makeEmbedsResponsive()
     this.setArticleType()
+    window.scrollTo(0, 0)
   }
 
   render() {
@@ -157,7 +158,7 @@ class Article extends Component {
                   className={cc({
                     Article__sticky: true,
                     'Article__sticky--stuck': isSticky,
-                    'Article__sticky--bottom': distanceFromBottom <= 20
+                    'Article__sticky--bottom': distanceFromBottom <= 1
                   })}
                 >
                   {!(preview || post.type !== 'post') && (
