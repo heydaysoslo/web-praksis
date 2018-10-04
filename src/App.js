@@ -55,15 +55,14 @@ class App extends Component {
                       <a href="/">Personvern</a>
                     </div>
                     <div className="AppFooter__right">
-                      Er medlemsblad fra{' '}
+                      Et medlemsblad fra{' '}
                       <a
                         target="_blank"
                         rel="noopener noreferrer"
                         href="http://auf.no"
                       >
-                        AUF
-                      </a>{' '}
-                      <SvgFlame />
+                        AUF <SvgFlame />
+                      </a>
                     </div>
                   </div>
                 </footer>

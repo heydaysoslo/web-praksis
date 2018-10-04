@@ -36,7 +36,7 @@ button,
   border: 0;
   background: transparent;
   font-family: inherit;
-  @include font-size(body);
+  font-size: inherit;
   font-weight: inherit;
   -webkit-font-smoothing: antialiased;
   font-smooth: always;

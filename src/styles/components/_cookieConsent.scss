@@ -1,9 +1,25 @@
 .cookieConsent {
-  display: flex;
-  justify-content: space-between;
-  padding: rem-calc(10);
-  background: $c-primary;
-  color: $c-white;
-  width: 100%;
+  padding: rem-calc(15);
+  background: $c-light-gray;
+  color: $c-text;
+  // width: 100%;
   @include font-size(small);
+  line-height: 1.25;
+  border-radius: 3px;
+  right: 20px;
+  bottom: 20px !important;
+  max-width: rem-calc(280);
+  &__button {
+    color: $c-white;
+    background-color: $c-primary;
+    border-radius: 3px;
+    width: 100%;
+    display: block;
+    padding: rem-calc(5);
+    margin-top: rem-calc(10);
+    &:hover {
+      background-color: $c-black;
+    }
+  }
+  // left: 0;
 }

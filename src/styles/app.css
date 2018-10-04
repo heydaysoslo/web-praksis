@@ -255,21 +255,11 @@ button,
   border: 0;
   background: transparent;
   font-family: inherit;
-  font-size: 1.125rem;
+  font-size: inherit;
   font-weight: inherit;
   -webkit-font-smoothing: antialiased;
   font-smooth: always;
   vertical-align: middle; }
-  @media screen and (min-width: 48em) {
-    [role='button'],
-    button,
-    [type='button'] {
-      font-size: 1.125rem; } }
-  @media screen and (min-width: 64em) {
-    [role='button'],
-    button,
-    [type='button'] {
-      font-size: 1.125rem; } }
   [role='button']:focus,
   button:focus,
   [type='button']:focus {
@@ -691,19 +681,31 @@ strong {
   color: #dc1e0f; }
 
 .cookieConsent {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.625rem;
-  background: #dc1e0f;
-  color: #fff;
-  width: 100%;
-  font-size: 1rem; }
+  padding: 0.9375rem;
+  background: #f1eeeb;
+  color: #373332;
+  font-size: 1rem;
+  line-height: 1.25;
+  border-radius: 3px;
+  right: 20px;
+  bottom: 20px !important;
+  max-width: 17.5rem; }
   @media screen and (min-width: 48em) {
     .cookieConsent {
       font-size: 1rem; } }
   @media screen and (min-width: 64em) {
     .cookieConsent {
       font-size: 1rem; } }
+  .cookieConsent__button {
+    color: #fff;
+    background-color: #dc1e0f;
+    border-radius: 3px;
+    width: 100%;
+    display: block;
+    padding: 0.3125rem;
+    margin-top: 0.625rem; }
+    .cookieConsent__button:hover {
+      background-color: #373332; }
 
 .StickyPosts {
   text-align: center;
