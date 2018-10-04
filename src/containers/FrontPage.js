@@ -49,7 +49,11 @@ class FrontPage extends Component {
               {ctx.state.loadingNext ? 'Laster innlegg' : 'Last flere innlegg'}
             </button>
           )}
-          {ctx.state.allPagesLoaded && <div>Alle innlegg lastet</div>}
+          {ctx.state.allPagesLoaded && (
+            <div className="MoreArticles__button MoreArticles__button--loaded">
+              Alle innlegg lastet
+            </div>
+          )}
         </div>
       </article>
     )

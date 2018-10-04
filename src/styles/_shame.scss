@@ -1,5 +1,41 @@
 .MoreArticles {
   text-align: center;
-  padding-top: rem-calc(140);
-  padding-bottom: rem-calc(140);
+  margin-top: rem-calc(140);
+  &__button {
+    display: block;
+    width: 100%;
+    padding: rem-calc(70 40);
+    text-align: center;
+    background: $c-light-gray;
+    color: $c-primary;
+    transition: color 0.25s ease;
+    &:hover {
+      color: $c-black;
+    }
+  }
+}
+
+.Burger {
+  span {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    display: block;
+  }
+}
+
+.Close {
+  span {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    display: block;
+    &:first-child {
+      transform: rotate(-45deg) translate(0, 3.5px);
+    }
+    &:last-child {
+      transform: rotate(45deg) translate(0, -3.5px);
+    }
+  }
 }

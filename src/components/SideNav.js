@@ -48,7 +48,10 @@ export default class SideNav extends Component {
                           className="SideNav__close"
                           onClick={ctx.actions.toggleMenu}
                         >
-                          Lukk
+                          <div className="Close">
+                            <span />
+                            <span />
+                          </div>
                         </button>
                       </div>
                       {/* <nav className="SideNav__nav SideNav__nav--primary">

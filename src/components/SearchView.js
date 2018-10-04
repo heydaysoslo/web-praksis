@@ -45,7 +45,12 @@ export default class SearchView extends Component {
       <div className="SearchView">
         <header className="SearchView__header">
           <h1>Søk</h1>
-          <button onClick={this.props.toggle}>Lukk</button>
+          <button onClick={this.props.toggle}>
+            <div className="Close">
+              <span />
+              <span />
+            </div>
+          </button>
         </header>
         <form onSubmit={this.handleSubmit}>
           <label>

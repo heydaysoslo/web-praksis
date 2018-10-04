@@ -16,7 +16,10 @@ export default class SlideoutNav extends Component {
                 className="SlideoutNav__close-button"
                 onClick={this.props.toggle}
               >
-                Lukk
+                <div className="Close">
+                  <span />
+                  <span />
+                </div>
               </button>
             </header>
             <div className="SlideoutNav__body">{this.props.children}</div>

@@ -32,7 +32,13 @@ class Header extends Component {
                   Praksis
                 </Link>
                 <div className="Header__nav Header__nav--right">
-                  <button onClick={ctx.actions.toggleMenu}>Meny</button>
+                  <button onClick={ctx.actions.toggleMenu}>
+                    <div className="Burger">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
+                  </button>
                   <SideNav />
                 </div>
               </div>

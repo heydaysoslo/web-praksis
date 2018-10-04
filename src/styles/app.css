@@ -1197,8 +1197,34 @@ strong {
 
 .MoreArticles {
   text-align: center;
-  padding-top: 8.75rem;
-  padding-bottom: 8.75rem; }
+  margin-top: 8.75rem; }
+  .MoreArticles__button {
+    display: block;
+    width: 100%;
+    padding: 4.375rem 2.5rem;
+    text-align: center;
+    background: #f1eeeb;
+    color: #dc1e0f;
+    transition: color 0.25s ease; }
+    .MoreArticles__button:hover {
+      color: #373332; }
+
+.Burger span {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  display: block; }
+
+.Close span {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  display: block; }
+  .Close span:first-child {
+    transform: rotate(-45deg) translate(0, 3.5px); }
+  .Close span:last-child {
+    transform: rotate(45deg) translate(0, -3.5px); }
 
 .AdminBar {
   position: fixed;
