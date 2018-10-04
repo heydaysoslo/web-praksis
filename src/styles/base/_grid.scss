@@ -56,6 +56,9 @@ $container-gutters: (
   margin-right: auto;
   &--text {
     max-width: rem-calc(680);
+    @include bp(md) {
+      width: 66.666%;
+    }
   }
 }
 

@@ -163,10 +163,37 @@
     margin-bottom: rem-calc(60);
   }
 
+  .faktaboks {
+    margin-top: rem-calc(40);
+    margin-bottom: rem-calc(40);
+  }
+
   @include bp(md) {
     blockquote {
       margin-top: rem-calc(70);
       margin-bottom: rem-calc(70);
+    }
+  }
+}
+
+.faktaboks {
+  border: 2px solid $c-light-gray;
+  margin-left: -(rem-calc(30));
+  margin-right: -(rem-calc(30));
+  &__title {
+    font-weight: 400 !important;
+    line-height: 1.34;
+    margin: 0 !important;
+    color: $c-primary;
+  }
+  &__header {
+    padding: rem-calc(20 30);
+    border-bottom: 2px solid $c-light-gray;
+  }
+  &__content {
+    padding: rem-calc(20 30);
+    & > *:last-child {
+      margin-bottom: 0 !important;
     }
   }
 }

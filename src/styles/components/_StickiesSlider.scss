@@ -1,0 +1,47 @@
+.StickiesSlider {
+  &__link {
+    color: $c-primary;
+  }
+
+  // Slick settings
+
+  .slick-slide {
+    width: 33.333%;
+  }
+
+  .slick-next,
+  .slick-prev {
+    display: none !important;
+  }
+
+  // .slick-next {
+
+  // }
+
+  // .slick-prev {
+
+  // }
+
+  .slick-dots {
+    margin-top: rem-calc(40);
+    text-align: center;
+    li {
+      display: inline-block;
+      margin: rem-calc(0 5);
+      button {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 99px;
+        text-indent: -999px;
+        overflow: hidden;
+        background: $c-gray;
+      }
+      &.slick-active {
+        button {
+          background: $c-primary;
+        }
+      }
+    }
+  }
+}

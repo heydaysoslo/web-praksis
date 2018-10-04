@@ -31,8 +31,12 @@
     position: absolute;
     top: 0;
     display: none;
+    transition: opacity 0.5s ease;
     &--stuck {
       padding-top: 40px;
+    }
+    &--bottom {
+      opacity: 0;
     }
     @include bp(lg) {
       display: block;
@@ -68,6 +72,10 @@
     margin-bottom: rem-calc(20);
   }
 
+  &--single {
+    padding-bottom: rem-calc(140);
+  }
+
   @include bp(md) {
     &__header {
       margin-top: rem-calc(70);
@@ -99,5 +107,13 @@
       margin-top: 0;
     }
     // border-top: 1px solid $c-gray;
+  }
+}
+
+.Articles {
+  &__item:first-child {
+    .Article {
+      margin-top: 0;
+    }
   }
 }

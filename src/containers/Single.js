@@ -67,7 +67,7 @@ class Single extends Component {
     return (
       <Fragment>
         <HeaderMeta data={post} />
-        <Article post={post} preview={isPreview} />
+        <Article single post={post} preview={isPreview} />
       </Fragment>
     )
   }

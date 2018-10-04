@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Article from '../containers/Article'
 import uuid from 'uuid/v1'
 import cc from 'classcat'
-// import StickyPosts from '../components/StickyPosts'
+import StickyPosts from '../components/StickyPosts'
 import { Consumer } from '../components/utilities'
 import { getScrollPosition, getDocumentHeight } from '../utils/functions'
 
@@ -26,7 +26,7 @@ class FrontPage extends Component {
     const { ctx } = this.props
     return (
       <article>
-        {/* <StickyPosts /> */}
+        <StickyPosts />
         <div className="Articles">
           {ctx.state.posts &&
             ctx.state.posts.map(p => (

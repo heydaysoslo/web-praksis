@@ -76,7 +76,8 @@ class Article extends Component {
         className={cc({
           container: true,
           Article: true,
-          [`Article--${articleStyle}`]: true
+          [`Article--${articleStyle}`]: true,
+          'Article--single': this.props.single
         })}
       >
         <div className="Article__inner">
@@ -150,12 +151,13 @@ class Article extends Component {
               )}
             </footer>
             <Sticky disableCompensation topOffset={-40}>
-              {({ style, isSticky }) => (
+              {({ style, isSticky, distanceFromBottom }) => (
                 <div
                   style={style}
                   className={cc({
                     Article__sticky: true,
-                    'Article__sticky--stuck': isSticky
+                    'Article__sticky--stuck': isSticky,
+                    'Article__sticky--bottom': distanceFromBottom <= 20
                   })}
                 >
                   {!(preview || post.type !== 'post') && (
