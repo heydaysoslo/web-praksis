@@ -258,6 +258,7 @@ button,
   font-size: inherit;
   font-weight: inherit;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-smooth: always;
   vertical-align: middle; }
   [role='button']:focus,
@@ -300,6 +301,7 @@ body {
   font-weight: 400;
   color: #373332;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-smooth: always; }
   @media screen and (min-width: 48em) {
     body {
@@ -1349,6 +1351,31 @@ strong {
       background: #b8b3ae; }
     .StickiesSlider .slick-dots li.slick-active button {
       background: #dc1e0f; }
+
+.PostPassword {
+  text-align: center; }
+  .PostPassword__label {
+    display: block; }
+  .PostPassword__input {
+    margin-top: 1.5625rem;
+    text-align: center; }
+
+input[type='text'] {
+  background: #f1eeeb;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+  font-weight: inherit;
+  color: #373332;
+  padding: 0.625rem 1.25rem;
+  width: 100%;
+  max-width: 40rem;
+  position: relative;
+  border: 2px solid transparent;
+  transition: border-color 0.25s ease; }
+  input[type='text']:focus {
+    outline: none;
+    border-bottom-color: #dc1e0f; }
 
 .wp-caption {
   max-width: 100% !important; }

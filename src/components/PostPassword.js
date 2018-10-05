@@ -67,16 +67,33 @@ class PostPassword extends Component {
       return <Loading />
     }
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Passordbeskyttet innlegg
-            <br />
-            <input onChange={this.handleChange} type="text" />
-            {this.state.pwmessage && <p>{this.state.pwmessage}</p>}
-          </label>
-        </form>
-      </div>
+      <article className="Article Article--single container">
+        <div className="Article__inner">
+          <div className="Article__header">
+            <h1 className="Article__title">Passordbeskyttet innlegg</h1>
+          </div>
+          <div className="Article__content">
+            <div className="PostPassword">
+              <form className="PostPassword__form" onSubmit={this.handleSubmit}>
+                <label className="PostPassword__label" for="ppw-input">
+                  Skriv inn passord
+                </label>
+                <input
+                  className="PostPassword__input"
+                  id="ppw-input"
+                  onChange={this.handleChange}
+                  type="text"
+                />
+                {this.state.pwmessage && (
+                  <p className="PostPassword__message">
+                    {this.state.pwmessage}
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      </article>
     )
   }
 }

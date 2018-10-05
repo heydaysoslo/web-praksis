@@ -36,3 +36,9 @@
   font-weight: 400;
   @include font-size(small);
 }
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
+}

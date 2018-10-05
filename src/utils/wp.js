@@ -142,7 +142,10 @@ export const getPostBySlug = slug => {
     .posts()
     .slug(slug)
     .embed()
-    .then(res => res[0])
+    .then(res => {
+      return res[0]
+    })
+    .catch(err => console.log(err))
 }
 
 export const getPageBySlug = slug => {

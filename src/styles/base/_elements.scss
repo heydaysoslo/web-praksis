@@ -38,8 +38,7 @@ button,
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-  -webkit-font-smoothing: antialiased;
-  font-smooth: always;
+  @include font-smoothing;
   vertical-align: middle;
   &:focus {
     outline: none;

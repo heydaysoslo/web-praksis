@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { HeaderMeta } from '../components/utilities'
-import Article from '../containers/Article'
+import Article from './Article'
+import NoMatchPage from './NoMatchPage'
 import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'
 import Loading from '../components/Loading'
@@ -53,7 +54,7 @@ class Single extends Component {
       return <Loading />
     }
     if (noMatch || !post) {
-      return <div>404</div>
+      return <NoMatchPage />
     }
     if (post.content.protected && !unlocked) {
       return (
