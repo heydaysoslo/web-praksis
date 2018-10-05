@@ -20,3 +20,8 @@ export const getDocumentHeight = () => {
 export const capitalize = ([first, ...rest], lowerRest = false) =>
   first.toUpperCase() +
   (lowerRest ? rest.join('').toLowerCase() : rest.join(''))
+
+export const elementContains = (parent, child) => {
+  if (!child) return false
+  return parent !== child && parent.contains(child)
+}

@@ -12,6 +12,7 @@ import EditPostLink from '../components/EditPostLink'
 import { Link } from 'react-router-dom'
 import cc from 'classcat'
 import autolinker from 'autolinker'
+import { elementContains } from '../utils/functions'
 
 class Article extends Component {
   state = {
@@ -21,18 +22,26 @@ class Article extends Component {
   makeEmbedsResponsive = () => {
     const embeds = document.getElementsByClassName('embed')
     if (embeds) {
+      let existingPusher = document.getElementsByClassName('embed__pusher')
+      if (existingPusher && existingPusher[0]) {
+        existingPusher = existingPusher[0]
+      } else {
+        existingPusher = false
+      }
       Object.keys(embeds).forEach(key => {
         const el = embeds[key]
         let iframe = el.getElementsByTagName('iframe')
-        if (iframe) {
-          iframe = iframe[0]
-          const w = parseFloat(iframe.getAttribute('width'))
-          const h = parseFloat(iframe.getAttribute('height'))
-          if (h && w) {
-            const pusher = document.createElement('div')
-            pusher.className = 'embed__pusher'
-            pusher.style.paddingTop = (h / w) * 100 + '%'
-            el.appendChild(pusher)
+        if (!elementContains(el, existingPusher)) {
+          if (iframe) {
+            iframe = iframe[0]
+            const w = parseFloat(iframe.getAttribute('width'))
+            const h = parseFloat(iframe.getAttribute('height'))
+            if (h && w) {
+              const pusher = document.createElement('div')
+              pusher.className = 'embed__pusher'
+              pusher.style.paddingTop = (h / w) * 100 + '%'
+              el.appendChild(pusher)
+            }
           }
         }
       })
