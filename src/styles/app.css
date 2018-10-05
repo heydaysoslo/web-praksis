@@ -875,7 +875,8 @@ strong {
     position: absolute;
     top: 0;
     display: none;
-    transition: opacity 0.5s ease; }
+    transition: opacity 0.5s ease;
+    max-width: 8.75rem; }
     .Article__sticky--stuck {
       padding-top: 40px; }
     .Article__sticky--bottom {
