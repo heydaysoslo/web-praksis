@@ -21,7 +21,21 @@ export const capitalize = ([first, ...rest], lowerRest = false) =>
   first.toUpperCase() +
   (lowerRest ? rest.join('').toLowerCase() : rest.join(''))
 
+// export const elementContains = (parent, child) => {
+//   if (!child) return false
+//   return parent !== child && parent.contains(child)
+// }
+
 export const elementContains = (parent, child) => {
-  if (!child) return false
   return parent !== child && parent.contains(child)
+}
+
+export const elementContainsMulti = (parent, children) => {
+  for (let i = 0; i < children.length; i++) {
+    const item = children[i]
+    if (elementContains(parent, item)) {
+      return true
+    }
+  }
+  return false
 }
