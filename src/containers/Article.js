@@ -55,7 +55,9 @@ class Article extends Component {
   componentDidMount = () => {
     this.makeEmbedsResponsive()
     this.setArticleType()
-    window.scrollTo(0, 0)
+    if (this.props.single) {
+      window.scrollTo(0, 0)
+    }
   }
 
   render() {
