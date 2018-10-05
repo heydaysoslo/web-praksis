@@ -1,6 +1,5 @@
 // Used for helping in dev
 // This class is set via environment variables process.env.NODE_ENV
-
 .development {
   @include showQueries;
 }

@@ -75,6 +75,12 @@
   &__meta {
     color: $c-medium-gray;
     margin-bottom: rem-calc(20);
+    a {
+      color: $c-medium-gray;
+      &:hover {
+        color: $c-primary;
+      }
+    }
   }
 
   &--single {

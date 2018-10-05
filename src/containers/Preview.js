@@ -17,14 +17,14 @@ class Preview extends Component {
   render() {
     const { post } = this.state
     if (!post) {
-      return <div>Loading</div>
+      return <div>Laster</div>
     }
     return (
       <Fragment>
         <Helmet>
           <meta name="robots" content="noindex" />
         </Helmet>
-        <Article preview={true} post={post} />
+        <Article single preview post={post} />
       </Fragment>
     )
   }

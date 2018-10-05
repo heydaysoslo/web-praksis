@@ -1,0 +1,9 @@
+.Button {
+  border: 2px solid $c-light-gray;
+  color: $c-primary;
+  padding: rem-calc(10 20);
+  transition: border-color 0.2s ease;
+  &:hover {
+    border-color: $c-primary;
+  }
+}

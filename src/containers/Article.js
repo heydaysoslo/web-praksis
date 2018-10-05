@@ -83,8 +83,8 @@ class Article extends Component {
       >
         <div className="Article__inner">
           <header className="Article__header wrapper wrapper--text">
+            {preview && <p className="Article__preview">Forhåndsvisning</p>}
             <div className="Article__meta">
-              {preview && <p>Forhåndsvisning</p>}
               {post.type === 'post' && (
                 <Fragment>
                   <time dateTime={post.date} className="date">

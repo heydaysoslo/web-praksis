@@ -59,7 +59,7 @@ export default class ShareButtons extends Component {
               subject={title}
               body={description}
             >
-              Email
+              E-post
             </EmailShareButton>
           </li>
         </ul>

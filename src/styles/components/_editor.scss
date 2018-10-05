@@ -142,8 +142,8 @@
   }
 
   .embed {
-    margin-top: rem-calc(60);
-    margin-bottom: rem-calc(60);
+    margin-top: rem-calc(35);
+    margin-bottom: rem-calc(35);
     position: relative;
     &__pusher {
       width: 100%;
@@ -159,8 +159,26 @@
   }
 
   img {
-    margin-top: rem-calc(60);
-    margin-bottom: rem-calc(60);
+    margin-top: rem-calc(35);
+    margin-bottom: rem-calc(35);
+  }
+
+  .wp-caption {
+    margin-bottom: rem-calc(35);
+    img {
+      margin-bottom: 0;
+    }
+  }
+
+  .wp-caption-text {
+    margin-top: rem-calc(10);
+    @include font-size(small);
+    font-family: $f-sans;
+    font-weight: 400;
+    text-align: center;
+    &:before {
+      color: $c-primary;
+    }
   }
 
   .faktaboks {
@@ -169,9 +187,17 @@
   }
 
   @include bp(md) {
-    blockquote {
+    blockquote,
+    .embed {
       margin-top: rem-calc(70);
       margin-bottom: rem-calc(70);
+    }
+    img {
+      margin-top: rem-calc(60);
+      margin-bottom: rem-calc(60);
+    }
+    .wp-caption {
+      margin-bottom: rem-calc(60);
     }
   }
 }
