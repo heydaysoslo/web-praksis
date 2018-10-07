@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react'
-import { getNavMenu, getPosts } from '../../utils/wp'
+import { getNavMenu, getPosts, getSettings } from '../../utils/wp'
 export const SiteContext = createContext()
 
 export class Provider extends Component {
@@ -10,10 +10,17 @@ export class Provider extends Component {
     postsPage: 1,
     loadingNext: false,
     allPagesLoaded: false,
-    feedScrollPos: 0
+    feedScrollPos: 0,
+    settings: null
   }
 
   componentDidMount = () => {
+    getSettings().then(settings => {
+      this.setState({
+        settings
+      })
+    })
+
     getNavMenu('primary')
       .then(res => {
         this.setState({

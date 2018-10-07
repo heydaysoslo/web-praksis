@@ -3,7 +3,7 @@ import Article from '../containers/Article'
 import uuid from 'uuid/v1'
 import cc from 'classcat'
 import StickyPosts from '../components/StickyPosts'
-import { Consumer } from '../components/utilities'
+import { Consumer, HeaderMeta } from '../components/utilities'
 import { getScrollPosition, getDocumentHeight } from '../utils/functions'
 
 class FrontPage extends Component {
@@ -26,6 +26,7 @@ class FrontPage extends Component {
     const { ctx } = this.props
     return (
       <article>
+        <HeaderMeta />
         <StickyPosts />
         <div className="Articles">
           {ctx.state.posts &&

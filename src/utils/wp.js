@@ -33,6 +33,7 @@ wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
 wp.search = wp.registerRoute('relevanssi/v1', '/search/')
 wp.contentType = wp.registerRoute('wp/v2', 'content_type/(?P<id>[\\d]+)')
 wp.contentTypes = wp.registerRoute('wp/v2', 'content_type')
+wp.publicSettings = wp.registerRoute('hey/v1', 'settings')
 
 const excludeEmptyTerms = terms => {
   return terms.filter(term => {
@@ -50,6 +51,10 @@ export const cachedPrivateRequest = requestUrl => {
     })
   }
   return wpCache[requestUrl]
+}
+
+export const getSettings = () => {
+  return wp.publicSettings()
 }
 
 export const loggedIn = () => {

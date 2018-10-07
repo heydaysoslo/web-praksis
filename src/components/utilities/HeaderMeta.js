@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Consumer } from '../utilities'
 import Helmet from 'react-helmet'
 
 export const striptags = html => {
@@ -12,74 +13,173 @@ class HeaderMeta extends Component {
     return ''
   }
 
-  getDescription = (data, key = '') => {
+  getDescription = (data, key = '', bloginfo = {}) => {
     if (data.yoast_seo && data.yoast_seo[key]) {
       return striptags(data.yoast_seo[key])
     }
     if (data.yoast_seo && data.yoast_seo.description) {
       return data.yoast_seo.description
     }
-    return striptags(data.excerpt.rendered)
+    if (data.excerpt && data.excerpt.rendered) {
+      return striptags(data.excerpt.rendered)
+    }
+    if (bloginfo.description) {
+      return bloginfo.description
+    }
+    return ''
   }
 
-  getTitle = (data, key = '') => {
+  getTitle = (data, key = '', bloginfo = {}) => {
     if (data.yoast_seo && data.yoast_seo[key]) {
       return striptags(data.yoast_seo[key])
     }
     if (data.yoast_seo && data.yoast_seo.title) {
       return data.yoast_seo.title
     }
-    return striptags(data.title.rendered)
+    if (data.title && data.title.rendered) {
+      return striptags(data.title.rendered)
+    }
+    if (bloginfo.name) {
+      return bloginfo.name
+    }
+    return ''
   }
 
-  getImage = (data, key = '') => {
+  getImage = (data, key = '', social = {}) => {
     if (data.yoast_seo && data.yoast_seo[key]) {
       return data.yoast_seo[key]
     }
     if (data.featured_image) {
       return data.featured_image.sizes.large
     }
+    if (social.og_default_image) {
+      return social.og_default_image
+    }
     return false
   }
 
   render() {
-    const { data } = this.props
-    const siteName = 'Praksis'
-    const twitterName = '@aufnorge'
-    const title = this.getTitle(data, 'wp_title')
-    const description = this.getDescription(data, 'description')
+    let { data } = this.props
+    if (!data) {
+      data = {}
+    }
+    // http://praksis.local/api/hey/v1/settings
 
-    const meta = [
-      // Google / Search engines in general
-      { name: 'description', content: description },
-      { itemprop: 'name', content: siteName },
-      { itemprop: 'description', content: description },
-      { itemprop: 'image', content: this.getImage(data) },
+    return (
+      <Consumer>
+        {ctx => {
+          if (!ctx.state.settings) {
+            return null
+          }
 
-      // Facebook
-      { property: 'og:url', content: this.getCanonicalUrl(data) },
-      { property: 'og:title', content: this.getTitle(data, 'og_title') },
-      {
-        property: 'og:description',
-        content: this.getDescription(data, 'og_description')
-      },
-      { property: 'og:image', content: this.getImage(data, 'og_image') },
-      { property: 'og:image:width', content: 1800 },
-      { property: 'og:image:height', content: 945 },
+          const { wpseo, bloginfo } = ctx.state.settings
 
-      // Twitter
-      { name: 'twitter:card', content: 'summary' },
-      { name: 'twitter:title', content: this.getTitle(data, 'twitter_title') },
-      {
-        name: 'twitter:description',
-        content: this.getDescription(data, 'twitter_description')
-      },
-      { name: 'twitter:site', content: twitterName },
-      { name: 'twitter:creator', content: twitterName },
-      { name: 'twitter:image', content: this.getImage(data, 'twitter_image') }
-    ]
+          const { social } = wpseo
+          const title = this.getTitle(data, 'wp_title', bloginfo)
+          const description = this.getDescription(data, 'description', bloginfo)
+          const siteName = bloginfo.name
 
-    return <Helmet title={title} meta={meta} />
+          /**
+           * General tags
+           */
+
+          const meta = [
+            { name: 'description', content: description },
+            { itemprop: 'name', content: siteName },
+            { itemprop: 'description', content: description },
+            { itemprop: 'image', content: this.getImage(data) }
+          ]
+
+          /**
+           * Opengraph
+           */
+
+          if (social.opengraph) {
+            // social.og_frontpage_title
+            // social.og_frontpage_desc
+            // social.og_frontpage_image
+
+            meta.push({
+              property: 'og:title',
+              content: this.getTitle(data, 'og_title', bloginfo)
+            })
+            meta.push({
+              property: 'og:description',
+              content: this.getDescription(data, 'og_description', bloginfo)
+            })
+            meta.push({
+              property: 'og:url',
+              content: this.getCanonicalUrl(data)
+            })
+
+            const og_image = this.getImage(data, 'og_image', social)
+            if (og_image) {
+              meta.push({ property: 'og:image', content: og_image })
+              meta.push({ property: 'og:image:width', content: 1800 })
+              meta.push({ property: 'og:image:height', content: 945 })
+            }
+          }
+
+          /**
+           * Twitter
+           */
+
+          if (social.twitter) {
+            // Twitter name
+            // console.log(social)
+
+            meta.push({
+              name: 'twitter:card',
+              content: social.twitter_card_type
+                ? social.twitter_card_type
+                : 'summary'
+            })
+
+            meta.push({
+              name: 'twitter:title',
+              content: this.getTitle(data, 'twitter_title', bloginfo)
+            })
+
+            meta.push({
+              name: 'twitter:description',
+              content: this.getDescription(
+                data,
+                'twitter_description',
+                bloginfo
+              )
+            })
+
+            if (social.twitter_site) {
+              meta.push({ name: 'twitter:site', content: social.twitter_site })
+              // Creator: Might be the current author of the article!
+              meta.push({
+                name: 'twitter:creator',
+                content: social.twitter_site
+              })
+            }
+
+            const twitter_image = this.getImage(data, 'twitter_image', social)
+            if (twitter_image) {
+              meta.push({ name: 'twitter:image', content: twitter_image })
+              // twitter:image:alt
+            }
+          }
+
+          return (
+            <Helmet title={title} meta={meta}>
+              {bloginfo.rss2_url && (
+                <link
+                  rel="alternate"
+                  type="application/rss+xml"
+                  title="RSS Feed"
+                  href={bloginfo.rss2_url}
+                />
+              )}
+            </Helmet>
+          )
+        }}
+      </Consumer>
+    )
   }
 }
 
