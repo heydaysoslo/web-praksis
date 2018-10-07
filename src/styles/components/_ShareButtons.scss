@@ -7,6 +7,11 @@
   // max-width: rem-calc(740);
   // margin-left: auto;
   // margin-right: auto;
+
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
   &__button {
     color: $c-medium-gray;
     &:hover {
@@ -17,15 +22,15 @@
     color: $c-primary;
   }
   &__list {
-    // display: flex;
+    display: flex;
     // justify-content: center;
-    align-items: center;
-    margin-top: rem-calc(20);
+    // align-items: center;
+    // margin-top: rem-calc(20);
     // flex-wrap: wrap;
   }
   &__item {
     // margin-left: rem-calc(10);
-    margin-right: rem-calc(20);
+    margin-left: rem-calc(20);
     &--url {
       display: none;
     }

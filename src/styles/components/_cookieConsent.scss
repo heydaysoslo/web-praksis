@@ -9,6 +9,15 @@
   right: 20px;
   bottom: 20px !important;
   max-width: rem-calc(280);
+  position: static !important;
+  text-align: left;
+  a {
+    color: $c-primary;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
   &__button {
     color: $c-white;
     background-color: $c-primary;

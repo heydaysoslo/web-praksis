@@ -107,8 +107,11 @@
 
 .ArticleFooter {
   margin-top: rem-calc(60);
+  &__share {
+    padding-bottom: rem-calc(20);
+    border-bottom: 2px solid $c-light-gray;
+  }
   &__content {
-    border-top: 2px solid $c-light-gray;
     padding-top: rem-calc(40);
     padding-bottom: rem-calc(20);
   }

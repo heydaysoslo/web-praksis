@@ -25,6 +25,7 @@
     "react-share": "^2.3.1",
     "react-slick": "^0.23.1",
     "react-sticky": "^6.0.3",
+    "smoothscroll-polyfill": "^0.4.3",
     "universal-cookie": "^3.0.4",
     "wpapi": "^1.1.2"
   },

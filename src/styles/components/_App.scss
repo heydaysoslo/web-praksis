@@ -2,6 +2,13 @@
   &__header {
     z-index: 100;
   }
+  &__corner {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: rem-calc(20);
+    text-align: right;
+  }
   padding-left: 10px; // make space for footer
   @include bp(md) {
     padding-left: 40px; // make space for footer

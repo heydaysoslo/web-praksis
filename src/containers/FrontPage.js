@@ -7,11 +7,11 @@ import { Consumer, HeaderMeta } from '../components/utilities'
 import { getScrollPosition, getDocumentHeight } from '../utils/functions'
 
 class FrontPage extends Component {
+  state = {
+    loaded: false
+  }
+
   componentDidMount = () => {
-    /**
-     * Return to same scroll position as you left
-     * TODO: Change this to return to same article instead
-     */
     const { feedScrollPos } = this.props.ctx.state
     if (feedScrollPos.y && getDocumentHeight() > feedScrollPos.y) {
       window.scrollTo(0, feedScrollPos.y)

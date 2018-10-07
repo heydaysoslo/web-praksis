@@ -135,29 +135,30 @@ class Article extends Component {
               alt={post.better_featured_image.alt_text}
             />
           )}
-          <StickyContainer className="Article__stickyContainer">
-            <div className="Article__content editor wrapper wrapper--text">
-              {theContent}
+          {/* <StickyContainer className="Article__stickyContainer"> */}
+          <div className="Article__content editor wrapper wrapper--text">
+            {theContent}
+          </div>
+          <footer className="ArticleFooter Article__footer wrapper wrapper--text">
+            <div className="ArticleFooter__share">
+              <ShareButtons url={baseUrl(getObjectLink(post))} />
             </div>
-            <footer className="ArticleFooter Article__footer wrapper wrapper--text">
+            <div className="ArticleFooter__content">
               {post.type === 'post' && (
-                <div className="ArticleFooter__content">
-                  <Author
-                    className="ArticleFooter__item"
-                    author={post.author}
-                  />
-                  {/* <PostTerms className="ArticleFooter__item" post={post} />
-                <PostTags className="ArticleFooter__item" post={post} /> */}
-                  {/* {!preview && (
-                    <ShareButtons
-                      className="ArticleFooter__item"
-                      url={baseUrl(getObjectLink(post))}
-                    />
-                  )} */}
-                </div>
+                <Author className="ArticleFooter__item" author={post.author} />
               )}
-            </footer>
-            <Sticky disableCompensation topOffset={-40}>
+              {/* <PostTerms className="ArticleFooter__item" post={post} />
+              <PostTags className="ArticleFooter__item" post={post} /> */}
+              {/* {!preview && (
+                  <ShareButtons
+                    className="ArticleFooter__item"
+                    url={baseUrl(getObjectLink(post))}
+                  />
+                )} */}
+              <EditPostLink post={post} />
+            </div>
+          </footer>
+          {/* <Sticky disableCompensation topOffset={-40}>
               {({ style, isSticky, distanceFromBottom }) => (
                 <div
                   style={style}
@@ -174,7 +175,7 @@ class Article extends Component {
                 </div>
               )}
             </Sticky>
-          </StickyContainer>
+          </StickyContainer> */}
         </div>
       </article>
     )

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import CookieConsent from 'react-cookie-consent'
 import { Provider, Consumer } from './components/utilities'
@@ -7,6 +7,7 @@ import Header from './components/Header'
 import './styles/app.css'
 import { routes } from './utils/routes'
 import SvgFlame from './components/SvgFlame'
+import ToTop from './components/utilities/ToTop'
 
 class App extends Component {
   render() {
@@ -36,23 +37,16 @@ class App extends Component {
                       <Route component={NoMatchPage} />
                     </Switch>
                   </div>
-                  <CookieConsent
-                    // acceptOnScroll={true}
-                    // acceptOnScrollPercentage={25}
-                    disableStyles={true}
-                    location="bottom"
-                    buttonText="Jeg godtar"
-                    buttonClasses="cookieConsent__button"
-                    contentClasses="cookieConstent__content"
-                    expires={150}
-                  >
-                    Denne siden bruker cookies for å forbedre brukeropplevelsen.
-                  </CookieConsent>
                 </div>
                 <footer className="AppFooter">
                   <div className="AppFooter__content">
                     <div className="AppFooter__left">
-                      <a href="/">Personvern</a>
+                      {ctx.state.settings &&
+                        ctx.state.settings.policy_page && (
+                          <a href={'/' + ctx.state.settings.policy_page.slug}>
+                            {ctx.state.settings.policy_page.title}
+                          </a>
+                        )}
                     </div>
                     <div className="AppFooter__right">
                       Et medlemsblad fra{' '}
@@ -66,6 +60,30 @@ class App extends Component {
                     </div>
                   </div>
                 </footer>
+                <div className="App__corner">
+                  <ToTop />
+                  <CookieConsent
+                    // acceptOnScroll={true}
+                    // acceptOnScrollPercentage={25}
+                    disableStyles={true}
+                    location="bottom"
+                    buttonText="Jeg godtar"
+                    buttonClasses="cookieConsent__button"
+                    contentClasses="cookieConstent__content"
+                    expires={150}
+                  >
+                    Denne siden bruker cookies for å forbedre brukeropplevelsen.{' '}
+                    {ctx.state.settings &&
+                      ctx.state.settings.policy_page && (
+                        <Fragment>
+                          Les mer i vår{' '}
+                          <a href={'/' + ctx.state.settings.policy_page.slug}>
+                            {ctx.state.settings.policy_page.title}
+                          </a>
+                        </Fragment>
+                      )}
+                  </CookieConsent>
+                </div>
               </div>
             )}
           </Consumer>

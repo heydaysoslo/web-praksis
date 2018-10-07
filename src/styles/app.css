@@ -291,6 +291,21 @@ figcaption:before {
 a {
   color: #373332; }
 
+.ToTop {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 99px;
+  text-indent: -9999px;
+  background: #dc1e0f;
+  margin-bottom: 1.25rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease; }
+  .ToTop--visible {
+    visibility: visible;
+    opacity: 1; }
+
 html {
   font-size: 100%; }
 
@@ -778,13 +793,20 @@ strong {
   border-radius: 3px;
   right: 20px;
   bottom: 20px !important;
-  max-width: 17.5rem; }
+  max-width: 17.5rem;
+  position: static !important;
+  text-align: left; }
   @media screen and (min-width: 48em) {
     .cookieConsent {
       font-size: 1rem; } }
   @media screen and (min-width: 64em) {
     .cookieConsent {
       font-size: 1rem; } }
+  .cookieConsent a {
+    color: #dc1e0f;
+    text-decoration: underline; }
+    .cookieConsent a:hover {
+      text-decoration: none; }
   .cookieConsent__button {
     color: #fff;
     background-color: #dc1e0f;
@@ -928,8 +950,10 @@ strong {
 
 .ArticleFooter {
   margin-top: 3.75rem; }
+  .ArticleFooter__share {
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid #f1eeeb; }
   .ArticleFooter__content {
-    border-top: 2px solid #f1eeeb;
     padding-top: 2.5rem;
     padding-bottom: 1.25rem; }
   .ArticleFooter__item {
@@ -968,6 +992,12 @@ strong {
   padding-left: 10px; }
   .App__header {
     z-index: 100; }
+  .App__corner {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 1.25rem;
+    text-align: right; }
   @media screen and (min-width: 48em) {
     .App {
       padding-left: 40px; } }
@@ -1303,26 +1333,25 @@ strong {
   .SlideoutNav__close-button {
     height: 3.875rem; }
 
-.ShareButtons__button {
-  color: #b8b3ae; }
-  .ShareButtons__button:hover {
+.ShareButtons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between; }
+  .ShareButtons__button {
+    color: #b8b3ae; }
+    .ShareButtons__button:hover {
+      color: #dc1e0f; }
+  .ShareButtons__title {
     color: #dc1e0f; }
-
-.ShareButtons__title {
-  color: #dc1e0f; }
-
-.ShareButtons__list {
-  align-items: center;
-  margin-top: 1.25rem; }
-
-.ShareButtons__item {
-  margin-right: 1.25rem; }
-  .ShareButtons__item--url {
-    display: none; }
-
-@media screen and (min-width: 48em) {
-  .ShareButtons__item--url {
-    display: block; } }
+  .ShareButtons__list {
+    display: flex; }
+  .ShareButtons__item {
+    margin-left: 1.25rem; }
+    .ShareButtons__item--url {
+      display: none; }
+  @media screen and (min-width: 48em) {
+    .ShareButtons__item--url {
+      display: block; } }
 
 .SocialMediaShareButton {
   position: relative; }
