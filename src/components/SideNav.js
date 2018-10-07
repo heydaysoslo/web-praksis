@@ -54,16 +54,20 @@ export default class SideNav extends Component {
                           </div>
                         </button>
                       </div>
-                      <NavMenu
-                        homeLink
-                        toggle={ctx.actions.toggleMenu}
-                        items={ctx.state.menuItems}
-                      />
-                      <NavMenu
-                        small
-                        toggle={ctx.actions.toggleMenu}
-                        items={ctx.state.secondaryItems}
-                      />
+                      {ctx.state.menuItems && (
+                        <NavMenu
+                          homeLink
+                          toggle={ctx.actions.toggleMenu}
+                          items={ctx.state.menuItems}
+                        />
+                      )}
+                      {ctx.state.secondaryItems && (
+                        <NavMenu
+                          small
+                          toggle={ctx.actions.toggleMenu}
+                          items={ctx.state.secondaryItems}
+                        />
+                      )}
                     </div>
                   </Drawer>,
                   <Backdrop
