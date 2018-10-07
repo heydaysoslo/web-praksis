@@ -54,16 +54,15 @@ export default class SideNav extends Component {
                           </div>
                         </button>
                       </div>
-                      {/* <nav className="SideNav__nav SideNav__nav--primary">
-                      <ul className="SideNav__list">
-                        <li className="SideNav__item SideNav__item--title">
-                          <h3 className="nolead">Mere stuffs</h3>
-                        </li>
-                      </ul>
-                    </nav> */}
                       <NavMenu
+                        homeLink
                         toggle={ctx.actions.toggleMenu}
                         items={ctx.state.menuItems}
+                      />
+                      <NavMenu
+                        small
+                        toggle={ctx.actions.toggleMenu}
+                        items={ctx.state.secondaryItems}
                       />
                     </div>
                   </Drawer>,

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
+import cc from 'classcat'
 import uuid from 'uuid/v1'
 
 export default class NavMenu extends Component {
@@ -9,19 +10,27 @@ export default class NavMenu extends Component {
       return null
     }
     return (
-      <nav className="NavMenu">
+      <nav
+        className={cc({
+          NavMenu: true,
+          'NavMenu--large': !this.props.small
+        })}
+      >
         <ul className="NavMenu__list">
-          <li className="NavMenu__item">
-            <NavLink
-              activeClassName="NavMenu__link--active"
-              className="NavMenu__link"
-              to="/"
-              onClick={this.props.toggle}
-              exact
-            >
-              Feed
-            </NavLink>
-          </li>
+          {this.props.homeLink && (
+            <li className="NavMenu__item">
+              <NavLink
+                activeClassName="NavMenu__link--active"
+                className="NavMenu__link"
+                to="/"
+                onClick={this.props.toggle}
+                exact
+              >
+                Feed
+              </NavLink>
+            </li>
+          )}
+
           {items.map(p => {
             if (p.slug) {
               return (

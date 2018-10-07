@@ -1,9 +1,11 @@
 .NavMenu {
+  &--large &__link {
+    @include font-size(lead);
+  }
   &__link {
     display: block;
     padding: rem-calc(10 0);
     color: $c-primary;
-    @include font-size(lead);
     line-height: 1;
     &:hover {
       color: $c-black;

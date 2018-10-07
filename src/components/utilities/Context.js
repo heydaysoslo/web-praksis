@@ -6,6 +6,7 @@ export class Provider extends Component {
   state = {
     showMenu: false,
     menuItems: [],
+    secondaryItems: [],
     posts: [],
     postsPage: 1,
     loadingNext: false,
@@ -21,13 +22,23 @@ export class Provider extends Component {
       })
     })
 
-    getNavMenu('primary')
+    Promise.all([getNavMenu('primary'), getNavMenu('secondary')])
       .then(res => {
         this.setState({
-          menuItems: res.items
+          menuItems: res[0].items,
+          secondaryItems: res[1].items
         })
       })
       .catch(err => console.log(err))
+
+    // getNavMenu('secondary')
+    // getNavMenu('primary')
+    //   .then(res => {
+    //     this.setState({
+    //       menuItems: res.items
+    //     })
+    //   })
+    //   .catch(err => console.log(err))
 
     getPosts(this.state.postsPage).then(res => {
       this.setState({

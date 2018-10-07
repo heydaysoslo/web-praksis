@@ -862,18 +862,20 @@ strong {
   background: linear-gradient(to left, #fff, rgba(255, 255, 255, 0.75));
   z-index: 9; }
 
+.NavMenu--large .NavMenu__link {
+  font-size: 1.75rem; }
+  @media screen and (min-width: 48em) {
+    .NavMenu--large .NavMenu__link {
+      font-size: 1.75rem; } }
+  @media screen and (min-width: 64em) {
+    .NavMenu--large .NavMenu__link {
+      font-size: 1.75rem; } }
+
 .NavMenu__link {
   display: block;
   padding: 0.625rem 0;
   color: #dc1e0f;
-  font-size: 1.75rem;
   line-height: 1; }
-  @media screen and (min-width: 48em) {
-    .NavMenu__link {
-      font-size: 1.75rem; } }
-  @media screen and (min-width: 64em) {
-    .NavMenu__link {
-      font-size: 1.75rem; } }
   .NavMenu__link:hover {
     color: #373332; }
   .NavMenu__link--active {

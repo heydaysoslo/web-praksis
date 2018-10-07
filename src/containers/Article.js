@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import renderHTML from 'react-render-html'
-import { StickyContainer, Sticky } from 'react-sticky'
+// import { StickyContainer, Sticky } from 'react-sticky'
 import ShareButtons from '../components/ShareButtons'
 import { postDateFormat } from '../utils/date'
 import AcfImage from '../components/AcfImage'
