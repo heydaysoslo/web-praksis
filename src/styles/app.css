@@ -1025,7 +1025,9 @@ strong {
     display: none;
     line-height: 1;
     padding: 0.625rem;
-    justify-content: space-between; }
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: nowrap; }
   .AppFooter a {
     text-decoration: underline;
     color: #fff; }
@@ -1039,8 +1041,10 @@ strong {
 
 .SvgFlame {
   height: 1em;
-  width: auto;
-  margin-left: 0.3125rem; }
+  width: 1.6em;
+  margin-left: 0.3125rem;
+  display: inline-block;
+  vertical-align: middle; }
 
 .development:after {
   position: fixed;
