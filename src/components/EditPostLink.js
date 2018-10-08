@@ -33,7 +33,7 @@ export default class EditPostLink extends Component {
       >
         <a
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           className="EditPostLink__link"
           href={edit_post_link}
         >
