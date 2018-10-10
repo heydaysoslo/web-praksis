@@ -12,16 +12,23 @@ export class Provider extends Component {
     loadingNext: false,
     allPagesLoaded: false,
     feedScrollPos: 0,
-    settings: null
+    settings: null,
+    initialLoad: false
   }
 
   componentDidMount = () => {
+    /**
+     * Get main settings
+     */
     getSettings().then(settings => {
       this.setState({
         settings
       })
     })
 
+    /**
+     * Get navigation
+     */
     Promise.all([getNavMenu('primary'), getNavMenu('secondary')])
       .then(res => {
         this.setState({
@@ -31,18 +38,13 @@ export class Provider extends Component {
       })
       .catch(err => console.log(err))
 
-    // getNavMenu('secondary')
-    // getNavMenu('primary')
-    //   .then(res => {
-    //     this.setState({
-    //       menuItems: res.items
-    //     })
-    //   })
-    //   .catch(err => console.log(err))
-
+    /**
+     * Get feed items
+     */
     getPosts(this.state.postsPage).then(res => {
       this.setState({
-        posts: res
+        posts: res,
+        initialLoad: true
       })
     })
   }

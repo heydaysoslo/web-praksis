@@ -36,26 +36,30 @@ class FrontPage extends Component {
               </div>
             ))}
         </div>
-        <div className="MoreArticles">
-          {!ctx.state.allPagesLoaded && (
-            <button
-              className={cc({
-                MoreArticles__button: true,
-                button: true,
-                'button--loading': ctx.state.loadingNext
-              })}
-              disabled={ctx.state.loadingNext}
-              onClick={ctx.actions.nextPage}
-            >
-              {ctx.state.loadingNext ? 'Laster innlegg' : 'Last flere innlegg'}
-            </button>
-          )}
-          {ctx.state.allPagesLoaded && (
-            <div className="MoreArticles__button MoreArticles__button--loaded">
-              Alle innlegg lastet
-            </div>
-          )}
-        </div>
+        {ctx.state.initialLoad && (
+          <div className="MoreArticles">
+            {!ctx.state.allPagesLoaded && (
+              <button
+                className={cc({
+                  MoreArticles__button: true,
+                  button: true,
+                  'button--loading': ctx.state.loadingNext
+                })}
+                disabled={ctx.state.loadingNext}
+                onClick={ctx.actions.nextPage}
+              >
+                {ctx.state.loadingNext
+                  ? 'Laster innlegg'
+                  : 'Last flere innlegg'}
+              </button>
+            )}
+            {ctx.state.allPagesLoaded && (
+              <div className="MoreArticles__button MoreArticles__button--loaded">
+                Alle innlegg lastet
+              </div>
+            )}
+          </div>
+        )}
       </article>
     )
   }
