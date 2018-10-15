@@ -33,7 +33,7 @@
 @mixin t-uppercase {
   text-transform: uppercase;
   letter-spacing: 0.01em;
-  font-weight: 400;
+  font-weight: $f-regular;
   @include font-size(small);
 }
 

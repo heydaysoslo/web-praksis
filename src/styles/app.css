@@ -1096,6 +1096,21 @@ strong {
       font-size: 1.25rem; } }
   .editor em {
     font-style: italic; }
+  .editor .wp-video {
+    width: 100%;
+    position: relative;
+    max-width: 100%; }
+    .editor .wp-video:before {
+      content: '';
+      display: block;
+      padding-top: 62.5%;
+      width: 100%; }
+    .editor .wp-video > *:first-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
   .editor a {
     color: #dc1e0f;
     border-bottom: 1px solid #dc1e0f;
@@ -1172,7 +1187,7 @@ strong {
     font-size: 1.75rem;
     color: #dc1e0f;
     text-align: center;
-    font-weight: bold;
+    font-weight: 700;
     line-height: 1.25; }
     @media screen and (min-width: 48em) {
       .editor blockquote {
@@ -1273,15 +1288,14 @@ strong {
     position: relative;
     justify-content: center; }
   .Header__logo {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 2.625rem;
-    color: #373332;
-    line-height: 1;
-    display: block;
-    color: #fff;
-    background: #dc1e0f;
-    padding: 0.3125rem 0.625rem; }
+    width: 100%;
+    max-width: 15.625rem; }
+    @media screen and (min-width: 48em) {
+      .Header__logo {
+        max-width: 21.875rem; } }
+    @media screen and (min-width: 64em) {
+      .Header__logo {
+        max-width: 26.25rem; } }
   .Header__nav--right {
     position: absolute;
     right: 0; }
@@ -1450,6 +1464,17 @@ input[type='text'] {
   .Button:hover {
     border-color: #dc1e0f; }
 
+.FrontPage__intro {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-weight: 400; }
+
+.Logo {
+  width: 100%;
+  height: auto;
+  display: block; }
+
 .wp-caption {
   max-width: 100% !important; }
 
@@ -1474,15 +1499,19 @@ input[type='text'] {
   margin: 6px 0;
   display: block; }
 
-.Close span {
+.Close {
+  display: block;
   width: 28px;
-  height: 4px;
-  background-color: #373332;
-  display: block; }
-  .Close span:first-child {
-    transform: rotate(-45deg) translate(0, 2.5px); }
-  .Close span:last-child {
-    transform: rotate(45deg) translate(0, -2.5px); }
+  height: 28px; }
+  .Close span {
+    width: 28px;
+    height: 4px;
+    background-color: #373332;
+    display: block; }
+    .Close span:first-child {
+      transform: rotate(-45deg) translate(0, 2.5px); }
+    .Close span:last-child {
+      transform: rotate(45deg) translate(0, -2.5px); }
 
 .AdminBar {
   position: fixed;

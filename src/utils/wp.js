@@ -136,6 +136,15 @@ export const getPosts = (page = 1) => {
     .perPage(10)
     .page(page)
     .embed()
+    .then(res => {
+      if (page < 2) {
+        // Move stikcy posts first
+        res.sort((a, b) => {
+          return a.sticky ? -1 : b.sticky ? 1 : 0
+        })
+      }
+      return res
+    })
 }
 
 export const getNavMenu = slug => {
@@ -159,6 +168,10 @@ export const getPageBySlug = slug => {
     .slug(slug)
     .embed()
     .then(res => res[0])
+}
+
+export const getPageById = id => {
+  return wp.pages().id(id)
 }
 
 export const getProtectedPost = (id, password) => {

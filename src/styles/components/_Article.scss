@@ -67,7 +67,7 @@
 
   &__intro {
     @include font-size(lead);
-    font-weight: 400;
+    font-weight: $f-regular;
     line-height: 1.3;
     margin: 0 auto;
     margin-top: rem-calc(20);

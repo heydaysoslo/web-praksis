@@ -49,7 +49,7 @@ class App extends Component {
                         )}
                     </div>
                     <div className="AppFooter__right">
-                      Et medlemsblad fra{' '}
+                      Magasinet for unge sosialdemokrater fra{' '}
                       <a
                         target="_blank"
                         rel="noopener noreferrer"

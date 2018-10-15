@@ -6,7 +6,7 @@ body {
   font-family: $f-sans;
   @include font-size(body);
   line-height: 1.65;
-  font-weight: 400;
+  font-weight: $f-regular;
   color: $c-black;
   @include font-smoothing;
 }
@@ -22,7 +22,7 @@ h3,
 h4,
 h5 {
   color: $c-text;
-  font-weight: 700;
+  font-weight: $f-bold;
 }
 
 // p,
@@ -82,5 +82,5 @@ a {
 }
 
 strong {
-  font-weight: 700;
+  font-weight: $f-bold;
 }

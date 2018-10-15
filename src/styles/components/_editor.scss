@@ -7,6 +7,25 @@
     font-style: italic;
   }
 
+  .wp-video {
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+    &:before {
+      content: '';
+      display: block;
+      padding-top: percentage(10/16);
+      width: 100%;
+    }
+    > *:first-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   a {
     color: $c-primary;
     border-bottom: 1px solid $c-primary;
@@ -41,7 +60,7 @@
 
   h4 {
     // @include font-size(body);
-    font-weight: 700;
+    font-weight: $f-bold;
     margin-bottom: rem-calc(5);
     color: $c-primary;
     margin-bottom: rem-calc(15);
@@ -92,7 +111,7 @@
         margin-left: -25px;
         color: $c-primary;
         font-family: $f-sans;
-        font-weight: 700;
+        font-weight: $f-bold;
       }
     }
   }
@@ -113,7 +132,7 @@
     @include font-size(h2);
     color: $c-primary;
     text-align: center;
-    font-weight: bold;
+    font-weight: $f-bold;
     line-height: 1.25;
 
     p {
@@ -171,7 +190,7 @@
     margin-top: rem-calc(10);
     @include font-size(small);
     font-family: $f-sans;
-    font-weight: 400;
+    font-weight: $f-regular;
     text-align: center;
     &:before {
       color: $c-primary;
@@ -202,7 +221,7 @@
 .faktaboks {
   border: 2px solid $c-light-gray;
   &__title {
-    font-weight: 400 !important;
+    font-weight: $f-regular !important;
     line-height: 1.34;
     margin: 0 !important;
     color: $c-primary;

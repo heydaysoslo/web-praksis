@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Consumer } from './utilities'
 // import AdminBar from '../components/AdminBar'
 import SideNav from '../components/SideNav'
+import Logo from './Logo'
 
 class Header extends Component {
   state = {
@@ -29,7 +30,7 @@ class Header extends Component {
             <div className="container container--fluid">
               <div className="Header__content">
                 <Link to={'/'} className="Header__logo">
-                  Praksis
+                  <Logo />
                 </Link>
                 <div className="Header__nav Header__nav--right">
                   <button onClick={ctx.actions.toggleMenu}>

@@ -7,15 +7,14 @@
     justify-content: center;
   }
   &__logo {
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: rem-calc(42);
-    color: $c-text;
-    line-height: 1;
-    display: block;
-    color: $c-white;
-    background: $c-primary;
-    padding: rem-calc(5 10);
+    width: 100%;
+    max-width: rem-calc(250);
+    @include bp(md) {
+      max-width: rem-calc(350);
+    }
+    @include bp(lg) {
+      max-width: rem-calc(420);
+    }
   }
   &__nav {
     &--right {

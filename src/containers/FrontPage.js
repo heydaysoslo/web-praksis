@@ -5,10 +5,12 @@ import cc from 'classcat'
 import StickyPosts from '../components/StickyPosts'
 import { Consumer, HeaderMeta } from '../components/utilities'
 import { getScrollPosition, getDocumentHeight } from '../utils/functions'
+import { getPageById } from '../utils/wp'
 
 class FrontPage extends Component {
   state = {
-    loaded: false
+    loaded: false,
+    page: null
   }
 
   componentDidMount = () => {
@@ -18,16 +20,38 @@ class FrontPage extends Component {
     }
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    const ctx = this.props.ctx
+    if (
+      ctx.state.settings !== prevProps.ctx.state.settings &&
+      ctx.state.settings.front_page_id
+    ) {
+      getPageById(ctx.state.settings.front_page_id).then(res => {
+        this.setState({
+          page: res
+        })
+      })
+    }
+  }
+
   componentWillUnmount = () => {
     this.props.ctx.state.feedScrollPos = getScrollPosition()
   }
 
   render() {
     const { ctx } = this.props
+    const { page } = this.state
+    console.log(page)
     return (
-      <article>
-        <HeaderMeta />
-        <StickyPosts />
+      <article className="FrontPage">
+        {page ? <HeaderMeta data={page} /> : <HeaderMeta />}
+        {page &&
+          page.acf.intro && (
+            <div className="container">
+              <h1 className="FrontPage__intro">{page.acf.intro}</h1>
+            </div>
+          )}
+        {/* <StickyPosts /> */}
         <div className="Articles">
           {ctx.state.posts &&
             ctx.state.posts.map(p => (
