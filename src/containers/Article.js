@@ -78,6 +78,12 @@ class Article extends Component {
       }
     })
     theContent = renderHTML(theContent)
+
+    let author = post.author
+    if (post.acf && post.acf.contributor) {
+      author = post.acf.contributor[0]
+    }
+
     return (
       <article
         className={cc({
@@ -145,7 +151,7 @@ class Article extends Component {
             </div>
             <div className="ArticleFooter__content">
               {post.type === 'post' && (
-                <Author className="ArticleFooter__item" author={post.author} />
+                <Author className="ArticleFooter__item" author={author} />
               )}
               {/* <PostTerms className="ArticleFooter__item" post={post} />
               <PostTags className="ArticleFooter__item" post={post} /> */}

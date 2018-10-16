@@ -114,6 +114,11 @@ a {
       padding-top: percentage(10/16);
     }
   }
+  &--square {
+    &:before {
+      padding-top: 100%;
+    }
+  }
   & > *:first-child {
     position: absolute;
     top: 0;

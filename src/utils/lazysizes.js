@@ -7,7 +7,7 @@ import 'lazysizes/lazysizes'
 export const emptyGif =
   'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
 
-export const acfImageToSrcset = (sizes, maxSize = 99999) => {
+export const acfImageToSrcArray = (sizes, maxSize = 99999) => {
   // Remove sizes if multiple of same size
   const sizesFiltered = Object.keys(sizes).reduce((build, key) => {
     if (key.indexOf('-width') !== -1) {
@@ -20,13 +20,19 @@ export const acfImageToSrcset = (sizes, maxSize = 99999) => {
     return build
   }, {})
 
-  const srcsetArray = Object.keys(sizesFiltered).map(size => {
-    return `${sizesFiltered[size]} ${size}w`
+  return sizesFiltered
+}
+
+export const acfImageToSrcset = (sizes, maxSize = 99999) => {
+  const sizesFiltered = acfImageToSrcArray(sizes, maxSize)
+  return srcArrayToSrcset(sizesFiltered)
+}
+
+export const srcArrayToSrcset = sizes => {
+  const srcsetArray = Object.keys(sizes).map(size => {
+    return `${sizes[size]} ${size}w`
   })
-
-  const srcset = srcsetArray.join(', ')
-
-  return srcset
+  return srcsetArray.join(', ')
 }
 
 /*

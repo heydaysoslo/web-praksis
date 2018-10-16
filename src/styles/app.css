@@ -323,6 +323,8 @@ a {
     height: 0; }
   .aspect--landscape:before {
     padding-top: 62.5%; }
+  .aspect--square:before {
+    padding-top: 100%; }
   .aspect > *:first-child {
     position: absolute;
     top: 0;
@@ -1000,7 +1002,8 @@ strong {
     border-radius: 9999px;
     max-width: 6.25rem;
     margin-right: 1.25rem;
-    margin: 0 auto; }
+    margin: 0 auto;
+    width: 100%; }
   .Author__content {
     margin-top: 1.25rem;
     line-height: 1.34; }
@@ -1009,13 +1012,13 @@ strong {
       display: flex;
       align-items: center;
       text-align: left;
-      max-width: 25rem; }
+      justify-content: flex-start; }
       .Author__content {
-        margin-top: 0;
-        padding-left: 1.875rem; }
+        margin-top: 0; }
       .Author__media {
         margin: 0;
-        min-width: 33.33%; } }
+        max-width: 8.75rem;
+        margin-right: 1.875rem; } }
 
 .App {
   padding-left: 10px; }
@@ -1382,18 +1385,24 @@ strong {
 
 .ShareButtons {
   display: flex;
-  width: 100%;
-  justify-content: space-between; }
+  width: 100%; }
   .ShareButtons__button {
     color: #b8b3ae; }
     .ShareButtons__button:hover {
       color: #dc1e0f; }
   .ShareButtons__title {
-    color: #dc1e0f; }
+    color: #dc1e0f;
+    line-height: 1em; }
   .ShareButtons__list {
     display: flex; }
   .ShareButtons__item {
-    margin-left: 1.25rem; }
+    margin-left: 1.25rem;
+    line-height: 1em; }
+    .ShareButtons__item div {
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+      vertical-align: middle; }
     .ShareButtons__item--url {
       display: none; }
   @media screen and (min-width: 48em) {

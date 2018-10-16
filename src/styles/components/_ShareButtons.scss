@@ -10,7 +10,7 @@
 
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   &__button {
     color: $c-medium-gray;
@@ -20,6 +20,7 @@
   }
   &__title {
     color: $c-primary;
+    line-height: 1em;
   }
   &__list {
     display: flex;
@@ -31,6 +32,13 @@
   &__item {
     // margin-left: rem-calc(10);
     margin-left: rem-calc(20);
+    line-height: 1em;
+    div {
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+      vertical-align: middle;
+    }
     &--url {
       display: none;
     }

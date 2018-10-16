@@ -33,6 +33,8 @@ wp.navMenus = wp.registerRoute('menus/v1', '/menus/(?P<id>[a-zA-Z0-9_-]+)')
 wp.search = wp.registerRoute('relevanssi/v1', '/search/')
 wp.contentType = wp.registerRoute('wp/v2', 'content_type/(?P<id>[\\d]+)')
 wp.contentTypes = wp.registerRoute('wp/v2', 'content_type')
+wp.profile = wp.registerRoute('wp/v2', 'profile/(?P<id>[\\d]+)')
+wp.profiles = wp.registerRoute('wp/v2', 'profile')
 wp.publicSettings = wp.registerRoute('hey/v1', 'settings')
 
 const excludeEmptyTerms = terms => {
@@ -79,6 +81,13 @@ export const getObjectLink = obj => {
     return '/' + obj.type + '/' + obj.slug
   }
   console.log('Nothing found')
+}
+
+export const getProfileById = id => {
+  return wp
+    .profile()
+    .id(id)
+    .embed()
 }
 
 export const search = queryTerm => {
