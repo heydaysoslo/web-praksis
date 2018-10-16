@@ -49,8 +49,8 @@ export default class Author extends Component {
           [this.props.className]: true
         })}
       >
-        <div className="Author__media">
-          {avatar && (
+        {avatar && (
+          <div className="Author__media">
             <div
               role="img"
               title="Avatar"
@@ -58,8 +58,8 @@ export default class Author extends Component {
               data-bgset={srcArrayToSrcset(avatar)}
               className="lazyload cover aspect aspect--square"
             />
-          )}
-        </div>
+          </div>
+        )}
         <div className="Author__content">
           <strong className="c-primary">Tekst</strong>
           <h4 className="Author__title">{name}</h4>
