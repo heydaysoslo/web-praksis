@@ -1,11 +1,12 @@
 import WPAPI from 'wpapi'
 
-const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'production'
-let endpoint = 'http://praksis.test/api'
-if (env === 'production' || window.location.hostname !== 'localhost') {
-  endpoint = 'https://api.praksismagasin.no/api'
-}
+// const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'production'
+// let endpoint = 'http://praksis.test/api'
+// if (env === 'production' || window.location.hostname !== 'localhost') {
+//   endpoint = 'https://api.praksismagasin.no/api'
+// }
 
+const endpoint = 'api'
 const wpCache = {}
 
 const wp = new WPAPI({
@@ -43,27 +44,27 @@ const excludeEmptyTerms = terms => {
   })
 }
 
-fetch('/api/wp/v2')
-  .then(res => {
-    return res.json()
-  })
-  .then(res => {
-    console.log('proxy test success (/api)', res)
-  })
-  .catch(err => {
-    console.log('proxy test error (/api)', err)
-  })
+// fetch('/api/wp/v2')
+//   .then(res => {
+//     return res.json()
+//   })
+//   .then(res => {
+//     console.log('proxy test success (/api)', res)
+//   })
+//   .catch(err => {
+//     console.log('proxy test error (/api)', err)
+//   })
 
-fetch('api/wp/v2')
-  .then(res => {
-    return res.json()
-  })
-  .then(res => {
-    console.log('proxy test success (api)', res)
-  })
-  .catch(err => {
-    console.log('proxy test error (api)', err)
-  })
+// fetch('api/wp/v2')
+//   .then(res => {
+//     return res.json()
+//   })
+//   .then(res => {
+//     console.log('proxy test success (api)', res)
+//   })
+//   .catch(err => {
+//     console.log('proxy test error (api)', err)
+//   })
 
 export const cachedPrivateRequest = requestUrl => {
   if (!wpCache[requestUrl]) {
