@@ -1,12 +1,63 @@
 .StickiesSlider {
+  // &__link {
+  //   color: $c-white;
+  //   position: relative;
+  //   display: block;
+  // }
+  // &__title {
+  //   color: $c-white;
+  // }
+  // &__image {
+  //   margin-bottom: rem-calc(20);
+  //   background-color: $c-primary;
+  // }
+  // &__inner {
+  //   padding: rem-calc(30 15 15 15);
+  //   width: 100%;
+  // }
+  // &__content {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   display: flex;
+  //   align-items: center;
+  //   vertical-align: middle;
+  // }
+  &__image {
+    margin-bottom: rem-calc(20);
+    background-color: $c-light-gray;
+  }
   &__link {
     color: $c-primary;
+    position: relative;
+    display: block;
+  }
+  &__more {
+    display: inline-block;
+    margin-top: rem-calc(10);
   }
 
   // Slick settings
 
+  margin-left: rem-calc(30);
+  margin-right: rem-calc(30);
+
   .slick-slide {
-    width: 33.333%;
+    padding-left: rem-calc(10);
+    padding-right: rem-calc(10);
+  }
+
+  @include bp(md) {
+    margin-left: -(rem-calc(15));
+    margin-right: -(rem-calc(15));
+
+    .slick-slide {
+      width: 33.333%;
+      padding-left: rem-calc(15);
+      padding-right: rem-calc(15);
+    }
   }
 
   .slick-next,
@@ -14,16 +65,8 @@
     display: none !important;
   }
 
-  // .slick-next {
-
-  // }
-
-  // .slick-prev {
-
-  // }
-
   .slick-dots {
-    margin-top: rem-calc(40);
+    margin-top: rem-calc(20);
     text-align: center;
     li {
       display: inline-block;

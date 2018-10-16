@@ -233,10 +233,18 @@ img {
   max-width: 100%;
   vertical-align: middle; }
 
+[data-sizes='auto'] {
+  display: block; }
+
 ul {
   list-style: none;
   padding: 0;
   margin: 0; }
+
+.cover {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat; }
 
 hr {
   margin: 0;
@@ -305,6 +313,22 @@ a {
   .ToTop--visible {
     visibility: visible;
     opacity: 1; }
+
+.aspect {
+  position: relative; }
+  .aspect::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0; }
+  .aspect--landscape:before {
+    padding-top: 62.5%; }
+  .aspect > *:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0; }
 
 html {
   font-size: 100%; }
@@ -818,17 +842,20 @@ strong {
     .cookieConsent__button:hover {
       background-color: #373332; }
 
-.StickyPosts {
+.PostCarousel {
   text-align: center;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem; }
+  margin-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  overflow: hidden; }
+  .PostCarousel .slick-list {
+    overflow: visible; }
   @media screen and (min-width: 48em) {
-    .StickyPosts {
-      padding-top: 1.875rem;
+    .PostCarousel {
+      margin-top: 1.875rem;
       padding-bottom: 1.875rem; } }
   @media screen and (min-width: 64em) {
-    .StickyPosts {
-      padding-top: 3.75rem;
+    .PostCarousel {
+      margin-top: 3.125rem;
       padding-bottom: 3.75rem; } }
 
 .SideNav__header {
@@ -1404,32 +1431,49 @@ strong {
 .Terms__item--active {
   text-decoration: underline; }
 
-.StickiesSlider__link {
-  color: #dc1e0f; }
-
-.StickiesSlider .slick-slide {
-  width: 33.333%; }
-
-.StickiesSlider .slick-next,
-.StickiesSlider .slick-prev {
-  display: none !important; }
-
-.StickiesSlider .slick-dots {
-  margin-top: 2.5rem;
-  text-align: center; }
-  .StickiesSlider .slick-dots li {
+.StickiesSlider {
+  margin-left: 1.875rem;
+  margin-right: 1.875rem; }
+  .StickiesSlider__image {
+    margin-bottom: 1.25rem;
+    background-color: #f1eeeb; }
+  .StickiesSlider__link {
+    color: #dc1e0f;
+    position: relative;
+    display: block; }
+  .StickiesSlider__more {
     display: inline-block;
-    margin: 0 0.3125rem; }
-    .StickiesSlider .slick-dots li button {
-      display: block;
-      width: 10px;
-      height: 10px;
-      border-radius: 99px;
-      text-indent: -999px;
-      overflow: hidden;
-      background: #b8b3ae; }
-    .StickiesSlider .slick-dots li.slick-active button {
-      background: #dc1e0f; }
+    margin-top: 0.625rem; }
+  .StickiesSlider .slick-slide {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem; }
+  @media screen and (min-width: 48em) {
+    .StickiesSlider {
+      margin-left: -0.9375rem;
+      margin-right: -0.9375rem; }
+      .StickiesSlider .slick-slide {
+        width: 33.333%;
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem; } }
+  .StickiesSlider .slick-next,
+  .StickiesSlider .slick-prev {
+    display: none !important; }
+  .StickiesSlider .slick-dots {
+    margin-top: 1.25rem;
+    text-align: center; }
+    .StickiesSlider .slick-dots li {
+      display: inline-block;
+      margin: 0 0.3125rem; }
+      .StickiesSlider .slick-dots li button {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 99px;
+        text-indent: -999px;
+        overflow: hidden;
+        background: #b8b3ae; }
+      .StickiesSlider .slick-dots li.slick-active button {
+        background: #dc1e0f; }
 
 .PostPassword {
   text-align: center; }
@@ -1466,9 +1510,7 @@ input[type='text'] {
 
 .FrontPage__intro {
   margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  text-align: center;
-  font-weight: 400; }
+  text-align: center; }
 
 .Logo {
   width: 100%;

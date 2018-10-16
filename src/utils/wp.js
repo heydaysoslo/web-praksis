@@ -97,6 +97,10 @@ export const getPostsByTaxonomy = (tax, ids) => {
   return wp.posts().param(tax, ids)
 }
 
+export const getPostsByIds = (ids = []) => {
+  return wp.posts().include(ids)
+}
+
 export const getCategoryBySlug = slug => {
   return wp
     .categories()

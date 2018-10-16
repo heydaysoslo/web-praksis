@@ -1,9 +1,8 @@
 .FrontPage {
   &__intro {
     margin-top: rem-calc(40);
-    margin-bottom: rem-calc(40);
     text-align: center;
-    font-weight: $f-regular;
+    // font-weight: $f-regular;
     // @include font-size(h2);
     // color: $c-primary;
   }

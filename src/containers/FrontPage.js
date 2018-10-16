@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Article from '../containers/Article'
 import uuid from 'uuid/v1'
 import cc from 'classcat'
-// import StickyPosts from '../components/StickyPosts'
+import PostCarousel from '../components/PostCarousel'
 import { Consumer, HeaderMeta } from '../components/utilities'
 import { getScrollPosition, getDocumentHeight } from '../utils/functions'
 import { getPageById } from '../utils/wp'
@@ -41,7 +41,6 @@ class FrontPage extends Component {
   render() {
     const { ctx } = this.props
     const { page } = this.state
-    console.log(page)
     return (
       <article className="FrontPage">
         {page ? <HeaderMeta data={page} /> : <HeaderMeta />}
@@ -51,7 +50,11 @@ class FrontPage extends Component {
               <h1 className="FrontPage__intro">{page.acf.intro}</h1>
             </div>
           )}
-        {/* <StickyPosts /> */}
+        {page &&
+          page.acf &&
+          page.acf.featured_posts && (
+            <PostCarousel posts={page.acf.featured_posts} />
+          )}
         <div className="Articles">
           {ctx.state.posts &&
             ctx.state.posts.map(p => (
