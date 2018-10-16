@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react'
-import { getNavMenu, getPosts, getSettings } from '../../utils/wp'
+import { getNavMenu, getPosts, getSettings, getPageById } from '../../utils/wp'
 export const SiteContext = createContext()
 
 export class Provider extends Component {
@@ -13,7 +13,8 @@ export class Provider extends Component {
     allPagesLoaded: false,
     feedScrollPos: 0,
     settings: null,
-    initialLoad: false
+    initialLoad: false,
+    frontPage: null
   }
 
   componentDidMount = () => {
@@ -24,6 +25,11 @@ export class Provider extends Component {
       this.setState({
         settings
       })
+      if (settings.front_page_id) {
+        getPageById(settings.front_page_id).then(frontPage => {
+          this.setState({ frontPage })
+        })
+      }
     })
 
     /**

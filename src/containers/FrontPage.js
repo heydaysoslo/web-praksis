@@ -5,7 +5,6 @@ import cc from 'classcat'
 import PostCarousel from '../components/PostCarousel'
 import { Consumer, HeaderMeta } from '../components/utilities'
 import { getScrollPosition, getDocumentHeight } from '../utils/functions'
-import { getPageById } from '../utils/wp'
 
 class FrontPage extends Component {
   state = {
@@ -13,31 +12,10 @@ class FrontPage extends Component {
     page: null
   }
 
-  loadFrontPageContent = () => {
-    if (
-      this.props.ctx.state.settings &&
-      this.props.ctx.state.settings.front_page_id
-    ) {
-      console.log('load frontpage content')
-      getPageById(this.props.ctx.state.settings.front_page_id).then(page => {
-        this.setState({
-          page
-        })
-      })
-    }
-  }
-
   componentDidMount = () => {
     const { feedScrollPos } = this.props.ctx.state
     if (feedScrollPos.y && getDocumentHeight() > feedScrollPos.y) {
       window.scrollTo(0, feedScrollPos.y)
-    }
-    this.loadFrontPageContent()
-  }
-
-  componentDidUpdate = (prevProps, prevState) => {
-    if (this.props.ctx.state.settings !== prevProps.ctx.state.settings) {
-      this.loadFrontPageContent()
     }
   }
 
@@ -47,20 +25,20 @@ class FrontPage extends Component {
 
   render() {
     const { ctx } = this.props
-    const { page } = this.state
+    const { frontPage } = ctx.state
     return (
       <article className="FrontPage">
-        {page ? <HeaderMeta data={page} /> : <HeaderMeta />}
-        {page &&
-          page.acf.intro && (
+        {frontPage ? <HeaderMeta data={frontPage} /> : <HeaderMeta />}
+        {frontPage &&
+          frontPage.acf.intro && (
             <div className="container">
-              <h1 className="FrontPage__intro">{page.acf.intro}</h1>
+              <h1 className="FrontPage__intro">{frontPage.acf.intro}</h1>
             </div>
           )}
-        {page &&
-          page.acf &&
-          page.acf.featured_posts && (
-            <PostCarousel posts={page.acf.featured_posts} />
+        {frontPage &&
+          frontPage.acf &&
+          frontPage.acf.featured_posts && (
+            <PostCarousel posts={frontPage.acf.featured_posts} />
           )}
         <div className="Articles">
           {ctx.state.posts &&
