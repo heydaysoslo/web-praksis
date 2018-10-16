@@ -9,16 +9,19 @@
     margin: rem-calc(5);
   }
   &__link {
-    border: 1px solid $c-light-gray;
+    border: 2px solid $c-light-gray;
     padding: rem-calc(7 15);
     color: $c-text;
     display: block;
     &:hover {
-      border-color: $c-primary;
-      color: $c-primary;
+      background-color: $c-light-gray;
     }
     &--active {
-      border-color: $c-text;
+      color: $c-primary;
+      border-color: $c-primary;
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
 }

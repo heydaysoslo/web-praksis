@@ -43,12 +43,12 @@ class Tag extends Component {
       )
     }
     return (
-      <article className="container">
-        <header>
-          <TagCloud />
-          {/* <h1>
+      <article className="TagPage container">
+        <header className="TagPage__header">
+          <TagCloud className="TagPage__tags" />
+          <div className="TagPage__result">
             Innlegg tagget med <strong>{tag.name}</strong>
-          </h1> */}
+          </div>
         </header>
         <div>{posts && posts.map(p => <Post key={p.id} post={p} />)}</div>
       </article>

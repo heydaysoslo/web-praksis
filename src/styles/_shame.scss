@@ -15,30 +15,36 @@
   }
 }
 
-.Burger {
-  span {
-    width: 28px;
-    height: 4px;
-    background-color: $c-black;
-    margin: 6px 0;
-    display: block;
-  }
-}
-
 .Close {
   display: block;
   width: 28px;
   height: 28px;
+  position: relative;
   span {
     width: 28px;
     height: 4px;
     background-color: $c-black;
     display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
     &:first-child {
-      transform: rotate(-45deg) translate(0, 2.5px);
+      transform: rotate(-45deg);
     }
     &:last-child {
-      transform: rotate(45deg) translate(0, -2.5px);
+      transform: rotate(45deg);
     }
+  }
+}
+
+.TagPage {
+  &__header {
+    @include spacing(lg, 'margin-top');
+  }
+  &__result {
+    color: $c-primary;
+    text-align: center;
+    @include spacing(lg, ('margin-top', 'padding-bottom'));
+    border-bottom: 2px solid $c-light-gray;
   }
 }

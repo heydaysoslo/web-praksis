@@ -855,9 +855,15 @@ strong {
 
 .SideNav__header {
   display: flex;
-  height: 4.5rem;
+  height: 3.4375rem;
   align-items: center;
   justify-content: flex-end; }
+  @media screen and (min-width: 48em) {
+    .SideNav__header {
+      height: 4.8125rem; } }
+  @media screen and (min-width: 64em) {
+    .SideNav__header {
+      height: 5.75rem; } }
 
 .SideNav__content {
   width: 100%;
@@ -874,6 +880,15 @@ strong {
   max-width: 25rem;
   overflow: auto;
   -webkit-overflow-scrolling: touch; }
+
+.SideNav__menus {
+  padding-top: 1.25rem; }
+  @media screen and (min-width: 48em) {
+    .SideNav__menus {
+      padding-top: 1.875rem; } }
+  @media screen and (min-width: 64em) {
+    .SideNav__menus {
+      padding-top: 3.125rem; } }
 
 .SideNav__backdrop {
   position: fixed;
@@ -1313,7 +1328,7 @@ strong {
     display: flex;
     align-items: center;
     position: relative;
-    justify-content: center; }
+    justify-content: left; }
   .Header__logo {
     width: 100%;
     max-width: 15.625rem; }
@@ -1325,12 +1340,38 @@ strong {
         max-width: 26.25rem; } }
   .Header__nav--right {
     position: absolute;
-    right: 0; }
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
   @media screen and (min-width: 48em) {
     .Header__content {
       justify-content: center; }
     .Header__logo {
       font-size: 3.875rem; } }
+
+.SearchLink {
+  display: block;
+  width: 25px;
+  height: 26px;
+  margin-right: 0.9375rem; }
+
+.HamburgerButton {
+  display: block;
+  width: 28px;
+  height: 24px; }
+  .HamburgerButton .Burger {
+    display: block;
+    width: 28px;
+    height: 24px; }
+    .HamburgerButton .Burger span {
+      width: 28px;
+      height: 4px;
+      background-color: #373332;
+      margin: 6px 0 0 0;
+      display: block; }
+      .HamburgerButton .Burger span:first-child {
+        margin-top: 0; }
 
 .Card {
   text-align: center;
@@ -1358,15 +1399,17 @@ strong {
   margin: 0.3125rem; }
 
 .TagCloud__link {
-  border: 1px solid #f1eeeb;
+  border: 2px solid #f1eeeb;
   padding: 0.4375rem 0.9375rem;
   color: #373332;
   display: block; }
   .TagCloud__link:hover {
-    border-color: #dc1e0f;
-    color: #dc1e0f; }
+    background-color: #f1eeeb; }
   .TagCloud__link--active {
-    border-color: #373332; }
+    color: #dc1e0f;
+    border-color: #dc1e0f; }
+    .TagCloud__link--active:hover {
+      background-color: transparent; }
 
 .SlideoutNav {
   position: fixed;
@@ -1602,26 +1645,47 @@ strong {
     .MoreArticles__button:hover {
       color: #373332; }
 
-.Burger span {
-  width: 28px;
-  height: 4px;
-  background-color: #373332;
-  margin: 6px 0;
-  display: block; }
-
 .Close {
   display: block;
   width: 28px;
-  height: 28px; }
+  height: 28px;
+  position: relative; }
   .Close span {
     width: 28px;
     height: 4px;
     background-color: #373332;
-    display: block; }
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -2px; }
     .Close span:first-child {
-      transform: rotate(-45deg) translate(0, 2.5px); }
+      transform: rotate(-45deg); }
     .Close span:last-child {
-      transform: rotate(45deg) translate(0, -2.5px); }
+      transform: rotate(45deg); }
+
+.TagPage__header {
+  margin-top: 1.25rem; }
+  @media screen and (min-width: 48em) {
+    .TagPage__header {
+      margin-top: 1.875rem; } }
+  @media screen and (min-width: 64em) {
+    .TagPage__header {
+      margin-top: 3.125rem; } }
+
+.TagPage__result {
+  color: #dc1e0f;
+  text-align: center;
+  margin-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid #f1eeeb; }
+  @media screen and (min-width: 48em) {
+    .TagPage__result {
+      margin-top: 1.875rem;
+      padding-bottom: 1.875rem; } }
+  @media screen and (min-width: 64em) {
+    .TagPage__result {
+      margin-top: 3.125rem;
+      padding-bottom: 3.125rem; } }
 
 .AdminBar {
   position: fixed;

@@ -9,7 +9,9 @@ const Post = props => {
     <article className="Card">
       <Link className="container container--text" to={getObjectLink(post)}>
         <h1 className="Card__title">{renderHTML(post.title.rendered)}</h1>
-        <div className="Card__content">{renderHTML(post.excerpt.rendered)}</div>
+        <div className="Card__content editor">
+          {renderHTML(post.excerpt.rendered)}
+        </div>
       </Link>
     </article>
   )

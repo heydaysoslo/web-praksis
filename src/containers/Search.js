@@ -12,7 +12,8 @@ export default class Search extends Component {
     inputValue: '',
     posts: [],
     searchTerm: '',
-    searching: false
+    searching: false,
+    placeholderText: 'Søk'
   }
 
   input = createRef()
@@ -120,8 +121,26 @@ export default class Search extends Component {
     )
   }
 
+  inputFocus = () => {
+    this.setState({
+      placeholderText: 'Begynn å skrive for å søke'
+    })
+  }
+
+  inputBlur = () => {
+    this.setState({
+      placeholderText: 'Søk'
+    })
+  }
+
   render() {
-    const { posts, searching, searchTerm, inputValue } = this.state
+    const {
+      posts,
+      searching,
+      searchTerm,
+      inputValue,
+      placeholderText
+    } = this.state
     return (
       <article className="Search container">
         <form className="Search__form" onSubmit={this.handleSubmit}>
@@ -129,7 +148,9 @@ export default class Search extends Component {
             <input
               ref={this.input}
               className="Search__input"
-              placeholder="Skriv her"
+              placeholder={placeholderText}
+              onFocus={this.inputFocus}
+              onBlur={this.inputBlur}
               onChange={this.handleChange}
               type="text"
               value={inputValue}
@@ -150,7 +171,8 @@ export default class Search extends Component {
               </div>
             )}
         {!searching &&
-          !posts.length && (
+          !posts.length &&
+          !inputValue.length && (
             <Fragment>
               <TagCloud className="Search__tags" />
             </Fragment>

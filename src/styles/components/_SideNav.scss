@@ -1,9 +1,15 @@
 .SideNav {
   &__header {
     display: flex;
-    height: rem-calc(72);
+    height: rem-calc(55);
     align-items: center;
     justify-content: flex-end;
+    @include bp(md) {
+      height: rem-calc(77);
+    }
+    @include bp(lg) {
+      height: rem-calc(92);
+    }
   }
 
   &__content {
@@ -17,12 +23,15 @@
     right: 0;
     bottom: 0;
     z-index: 10;
-    // padding: rem-calc(30);
     width: 100%;
     text-align: right;
     max-width: rem-calc(400);
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  &__menus {
+    @include spacing(lg, 'padding-top');
   }
 
   &__backdrop {
