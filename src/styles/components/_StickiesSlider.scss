@@ -31,8 +31,8 @@
   }
   &__link {
     color: $c-primary;
-    position: relative;
-    display: block;
+    // position: relative;
+    // display: block; -> somehow this makes dragging the slider not work
   }
   &__more {
     display: inline-block;

@@ -1438,9 +1438,7 @@ strong {
     margin-bottom: 1.25rem;
     background-color: #f1eeeb; }
   .StickiesSlider__link {
-    color: #dc1e0f;
-    position: relative;
-    display: block; }
+    color: #dc1e0f; }
   .StickiesSlider__more {
     display: inline-block;
     margin-top: 0.625rem; }
