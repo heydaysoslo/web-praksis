@@ -1,9 +1,12 @@
 .FrontPage {
   &__intro {
-    margin-top: rem-calc(40);
+    @include spacing(lg, 'margin-top');
     text-align: center;
     // font-weight: $f-regular;
     // @include font-size(h2);
     // color: $c-primary;
+  }
+  &__carousel {
+    @include spacing(lg, 'margin-top');
   }
 }

@@ -1,8 +1,9 @@
 .Article {
   // max-width: rem-calc(1400);
   // margin: 0 auto;
+  // margin-top: rem-calc(70);
 
-  margin-top: rem-calc(70);
+  @include spacing(lg, 'margin-top');
 
   &__inner {
     border-top: 2px solid $c-primary;
@@ -122,13 +123,5 @@
       margin-top: 0;
     }
     // border-top: 1px solid $c-gray;
-  }
-}
-
-.Articles {
-  &__item:first-child {
-    .Article {
-      margin-top: 0;
-    }
   }
 }

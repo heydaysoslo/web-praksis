@@ -1,0 +1,33 @@
+.Search {
+  @include spacing(lg, 'margin-top');
+  &__tags {
+    @include spacing(lg, 'margin-top');
+  }
+  &__status {
+    text-align: center;
+    @include spacing(md, 'margin-top');
+  }
+  &__form {
+    position: relative;
+  }
+  &__clear {
+    position: absolute;
+    top: 50%;
+    right: rem-calc(8);
+    transform: translate(0, -50%);
+    line-height: 28px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    // border: 1px solid $c-primary;
+    border-radius: 999px;
+    color: $c-primary;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    &:hover {
+      background: $c-primary;
+      color: $c-white;
+    }
+  }
+}

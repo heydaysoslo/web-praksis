@@ -1,9 +1,24 @@
 .TagCloud {
   &__list {
     display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   &__item {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin: rem-calc(5);
+  }
+  &__link {
+    border: 1px solid $c-light-gray;
+    padding: rem-calc(7 15);
+    color: $c-text;
+    display: block;
+    &:hover {
+      border-color: $c-primary;
+      color: $c-primary;
+    }
+    &--active {
+      border-color: $c-text;
+    }
   }
 }

@@ -1,24 +1,32 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { getTags } from '../utils/wp'
+import cc from 'classcat'
 
 class TagCloud extends Component {
   state = {
     loading: true,
     tags: []
   }
+
   componentDidMount() {
     getTags().then(tags => {
       this.setState({ tags, loading: false })
     })
   }
+
   render() {
     const { loading, tags } = this.state
     if (loading) {
       return null
     }
     return (
-      <div className="TagCloud">
+      <div
+        className={cc({
+          TagCloud: true,
+          [this.props.className]: this.props.className
+        })}
+      >
         {this.props.children}
         <nav className="TagCloud__nav">
           <ul className="TagCloud__list">
@@ -26,13 +34,14 @@ class TagCloud extends Component {
               tags.map(tag => {
                 return (
                   <li key={`tag-${tag.id}`} className="TagCloud__item">
-                    <Link
+                    <NavLink
                       className="TagCloud__link"
+                      activeClassName="TagCloud__link--active"
                       key={'tag-' + tag.id}
                       to={tag.link}
                     >
                       {tag.name}
-                    </Link>
+                    </NavLink>
                   </li>
                 )
               })}

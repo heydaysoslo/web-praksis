@@ -55,14 +55,6 @@ button,
   }
 }
 
-[type='text'] {
-  border: 0;
-  font-family: inherit;
-  background: transparent;
-  @include font-size(body);
-  font-weight: inherit;
-}
-
 li {
   position: relative;
 }

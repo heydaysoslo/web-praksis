@@ -33,6 +33,7 @@ class Header extends Component {
                   <Logo />
                 </Link>
                 <div className="Header__nav Header__nav--right">
+                  <Link to="/sok">Søk</Link>
                   <button onClick={ctx.actions.toggleMenu}>
                     <div className="Burger">
                       <span />

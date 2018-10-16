@@ -38,7 +38,10 @@ class FrontPage extends Component {
         {frontPage &&
           frontPage.acf &&
           frontPage.acf.featured_posts && (
-            <PostCarousel posts={frontPage.acf.featured_posts} />
+            <PostCarousel
+              className="FrontPage__carousel"
+              posts={frontPage.acf.featured_posts}
+            />
           )}
         <div className="Articles">
           {ctx.state.posts &&

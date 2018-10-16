@@ -118,7 +118,10 @@ export const getCategoryBySlug = slug => {
 }
 
 export const getTags = () => {
-  return wp.tags().then(excludeEmptyTerms)
+  return wp
+    .tags()
+    .perPage(100)
+    .then(excludeEmptyTerms)
 }
 
 export const getCategories = () => {

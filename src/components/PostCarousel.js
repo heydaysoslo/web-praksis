@@ -5,6 +5,7 @@ import uuid from 'uuid/v1'
 import Slider from 'react-slick'
 // import AcfImage from '../components/AcfImage'
 import AcfBgset from './AcfBgset'
+import cc from 'classcat'
 
 export default class PostCarousel extends Component {
   state = {
@@ -62,7 +63,12 @@ export default class PostCarousel extends Component {
     }
 
     return (
-      <div className="PostCarousel">
+      <div
+        className={cc({
+          PostCarousel: true,
+          [this.props.className]: this.props.className
+        })}
+      >
         <div className="container">
           <Slider className="StickiesSlider" {...sliderSettings}>
             {posts.map(post => {

@@ -46,9 +46,9 @@ class Tag extends Component {
       <article className="container">
         <header>
           <TagCloud />
-          <h1>
+          {/* <h1>
             Innlegg tagget med <strong>{tag.name}</strong>
-          </h1>
+          </h1> */}
         </header>
         <div>{posts && posts.map(p => <Post key={p.id} post={p} />)}</div>
       </article>
