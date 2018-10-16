@@ -13,24 +13,30 @@ class FrontPage extends Component {
     page: null
   }
 
+  loadFrontPageContent = () => {
+    if (
+      this.props.ctx.state.settings &&
+      this.props.ctx.state.settings.front_page_id
+    ) {
+      getPageById(this.props.ctx.state.settings.front_page_id).then(res => {
+        this.setState({
+          page: res
+        })
+      })
+    }
+  }
+
   componentDidMount = () => {
     const { feedScrollPos } = this.props.ctx.state
     if (feedScrollPos.y && getDocumentHeight() > feedScrollPos.y) {
       window.scrollTo(0, feedScrollPos.y)
     }
+    this.loadFrontPageContent()
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    const ctx = this.props.ctx
-    if (
-      ctx.state.settings !== prevProps.ctx.state.settings &&
-      ctx.state.settings.front_page_id
-    ) {
-      getPageById(ctx.state.settings.front_page_id).then(res => {
-        this.setState({
-          page: res
-        })
-      })
+    if (this.props.ctx.state.settings !== prevProps.ctx.state.settings) {
+      this.loadFrontPageContent()
     }
   }
 
