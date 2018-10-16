@@ -6,7 +6,7 @@ import WPAPI from 'wpapi'
 //   endpoint = 'https://api.praksismagasin.no/api'
 // }
 
-const endpoint = 'api'
+const endpoint = '/api'
 const wpCache = {}
 
 const wp = new WPAPI({
