@@ -1,7 +1,7 @@
 import WPAPI from 'wpapi'
 
 // const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'production'
-let endpoint = '/api'
+let endpoint = 'api'
 // if (env === 'production' || window.location.hostname !== 'localhost') {
 //   endpoint = 'https://api.praksismagasin.no/api'
 // }
