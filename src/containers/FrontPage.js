@@ -18,9 +18,10 @@ class FrontPage extends Component {
       this.props.ctx.state.settings &&
       this.props.ctx.state.settings.front_page_id
     ) {
-      getPageById(this.props.ctx.state.settings.front_page_id).then(res => {
+      console.log('load frontpage content')
+      getPageById(this.props.ctx.state.settings.front_page_id).then(page => {
         this.setState({
-          page: res
+          page
         })
       })
     }
