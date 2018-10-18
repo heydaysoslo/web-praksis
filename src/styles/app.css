@@ -372,7 +372,7 @@ h2,
 .h2 {
   font-size: 1.75rem;
   line-height: 1.2;
-  margin-bottom: 1.25rem; }
+  margin-bottom: 3.125rem; }
   @media screen and (min-width: 48em) {
     h2,
     .h2 {
@@ -384,7 +384,7 @@ h2,
   @media screen and (min-width: 48em) {
     h2,
     .h2 {
-      margin-bottom: 1.875rem; } }
+      margin-bottom: 3.125rem; } }
   @media screen and (min-width: 64em) {
     h2,
     .h2 {
@@ -882,10 +882,10 @@ strong {
   -webkit-overflow-scrolling: touch; }
 
 .SideNav__menus {
-  padding-top: 1.25rem; }
+  padding-top: 3.125rem; }
   @media screen and (min-width: 48em) {
     .SideNav__menus {
-      padding-top: 1.875rem; } }
+      padding-top: 3.125rem; } }
   @media screen and (min-width: 64em) {
     .SideNav__menus {
       padding-top: 3.125rem; } }
@@ -919,10 +919,10 @@ strong {
     color: #373332; }
 
 .Article {
-  margin-top: 1.25rem; }
+  margin-top: 3.125rem; }
   @media screen and (min-width: 48em) {
     .Article {
-      margin-top: 1.875rem; } }
+      margin-top: 3.125rem; } }
   @media screen and (min-width: 64em) {
     .Article {
       margin-top: 3.125rem; } }
@@ -1331,10 +1331,12 @@ strong {
     justify-content: left; }
   .Header__logo {
     width: 100%;
-    max-width: 15.625rem; }
+    max-width: 25rem;
+    padding-right: 6.25rem; }
     @media screen and (min-width: 48em) {
       .Header__logo {
-        max-width: 21.875rem; } }
+        max-width: 21.875rem;
+        padding-right: 0; } }
     @media screen and (min-width: 64em) {
       .Header__logo {
         max-width: 26.25rem; } }
@@ -1354,7 +1356,7 @@ strong {
   display: block;
   width: 25px;
   height: 26px;
-  margin-right: 0.9375rem; }
+  margin-right: 1.25rem; }
 
 .HamburgerButton {
   display: block;
@@ -1376,12 +1378,12 @@ strong {
 .Card {
   text-align: center;
   border-bottom: 2px solid #f1eeeb;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem; }
+  padding-top: 3.125rem;
+  padding-bottom: 3.125rem; }
   @media screen and (min-width: 48em) {
     .Card {
-      padding-top: 1.875rem;
-      padding-bottom: 1.875rem; } }
+      padding-top: 3.125rem;
+      padding-bottom: 3.125rem; } }
   @media screen and (min-width: 64em) {
     .Card {
       padding-top: 3.125rem;
@@ -1560,20 +1562,20 @@ strong {
     border-color: #dc1e0f; }
 
 .FrontPage__intro {
-  margin-top: 1.25rem;
+  margin-top: 3.125rem;
   text-align: center; }
   @media screen and (min-width: 48em) {
     .FrontPage__intro {
-      margin-top: 1.875rem; } }
+      margin-top: 3.125rem; } }
   @media screen and (min-width: 64em) {
     .FrontPage__intro {
       margin-top: 3.125rem; } }
 
 .FrontPage__carousel {
-  margin-top: 1.25rem; }
+  margin-top: 3.125rem; }
   @media screen and (min-width: 48em) {
     .FrontPage__carousel {
-      margin-top: 1.875rem; } }
+      margin-top: 3.125rem; } }
   @media screen and (min-width: 64em) {
     .FrontPage__carousel {
       margin-top: 3.125rem; } }
@@ -1584,18 +1586,18 @@ strong {
   display: block; }
 
 .Search {
-  margin-top: 1.25rem; }
+  margin-top: 3.125rem; }
   @media screen and (min-width: 48em) {
     .Search {
-      margin-top: 1.875rem; } }
+      margin-top: 3.125rem; } }
   @media screen and (min-width: 64em) {
     .Search {
       margin-top: 3.125rem; } }
   .Search__tags {
-    margin-top: 1.25rem; }
+    margin-top: 3.125rem; }
     @media screen and (min-width: 48em) {
       .Search__tags {
-        margin-top: 1.875rem; } }
+        margin-top: 3.125rem; } }
     @media screen and (min-width: 64em) {
       .Search__tags {
         margin-top: 3.125rem; } }
@@ -1664,10 +1666,10 @@ strong {
       transform: rotate(45deg); }
 
 .TagPage__header {
-  margin-top: 1.25rem; }
+  margin-top: 3.125rem; }
   @media screen and (min-width: 48em) {
     .TagPage__header {
-      margin-top: 1.875rem; } }
+      margin-top: 3.125rem; } }
   @media screen and (min-width: 64em) {
     .TagPage__header {
       margin-top: 3.125rem; } }
@@ -1675,13 +1677,13 @@ strong {
 .TagPage__result {
   color: #dc1e0f;
   text-align: center;
-  margin-top: 1.25rem;
-  padding-bottom: 1.25rem;
+  margin-top: 3.125rem;
+  padding-bottom: 3.125rem;
   border-bottom: 2px solid #f1eeeb; }
   @media screen and (min-width: 48em) {
     .TagPage__result {
-      margin-top: 1.875rem;
-      padding-bottom: 1.875rem; } }
+      margin-top: 3.125rem;
+      padding-bottom: 3.125rem; } }
   @media screen and (min-width: 64em) {
     .TagPage__result {
       margin-top: 3.125rem;

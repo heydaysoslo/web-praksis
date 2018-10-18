@@ -1,5 +1,10 @@
 .Header {
   width: 100%;
+  // background: $c-white;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
   &__content {
     display: flex;
     align-items: center;
@@ -8,9 +13,11 @@
   }
   &__logo {
     width: 100%;
-    max-width: rem-calc(250);
+    max-width: rem-calc(400);
+    padding-right: rem-calc(100);
     @include bp(md) {
       max-width: rem-calc(350);
+      padding-right: 0;
     }
     @include bp(lg) {
       max-width: rem-calc(420);
@@ -39,7 +46,7 @@
   display: block;
   width: 25px;
   height: 26px;
-  margin-right: rem-calc(15);
+  margin-right: rem-calc(20);
   &__icon {
   }
 }
