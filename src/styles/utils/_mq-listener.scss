@@ -1,0 +1,12 @@
+@function bp-serialize($map) {
+  $str: '';
+  @each $key, $value in $map {
+    $str: $str + $key + '=' + em-calc($value) + '&';
+  }
+  $str: str-slice($str, 1, -2);
+  @return $str;
+}
+
+.mq-listener {
+  font-family: '#{bp-serialize($breakpoints)}';
+}

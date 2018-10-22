@@ -6,6 +6,7 @@
     "autolinker": "^1.7.1",
     "base-64": "^0.1.0",
     "classcat": "^3.2.3",
+    "enquire.js": "^2.1.6",
     "htmlparser2": "^3.9.2",
     "js-cookie": "^2.2.0",
     "lazysizes": "^4.1.2",

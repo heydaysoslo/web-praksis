@@ -1,5 +1,6 @@
 import React, { Component, createContext } from 'react'
 import { getNavMenu, getPosts, getSettings, getPageById } from '../../utils/wp'
+import mqlistener from '../../utils/mqlistener'
 export const SiteContext = createContext()
 
 export class Provider extends Component {
@@ -14,10 +15,15 @@ export class Provider extends Component {
     feedScrollPos: 0,
     settings: null,
     initialLoad: false,
-    frontPage: null
+    frontPage: null,
+    mq: 'sm'
   }
 
   componentDidMount = () => {
+    mqlistener(mq => {
+      this.setState({ mq })
+    })
+
     /**
      * Get main settings
      */
@@ -91,6 +97,7 @@ export class Provider extends Component {
   }
 
   render() {
+    console.log(this.state.mq)
     return (
       <SiteContext.Provider
         value={{

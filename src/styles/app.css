@@ -92,6 +92,9 @@ margin-top: spacing($size:sm, $breakpoint:sm);
   font-stretch: normal;
   font-display: swap; }
 
+.mq-listener {
+  font-family: "sm=0em&md=48em&lg=64em&xl=87.5em&xxl=112.5em"; }
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
