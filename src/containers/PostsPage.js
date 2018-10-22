@@ -15,9 +15,7 @@ class PostsPage extends Component {
       })
     })
   }
-  loadNextPage = () => {
-    console.log('HELELE')
-  }
+  loadNextPage = () => {}
   render() {
     const { posts } = this.state
     return (

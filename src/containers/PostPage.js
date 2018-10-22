@@ -17,7 +17,6 @@ class PostPage extends Component {
       if (post.content && post.content.rendered) {
         injectInlineScripts(post.content.rendered)
       }
-      console.log(post)
       this.setState({ post })
     })
   }

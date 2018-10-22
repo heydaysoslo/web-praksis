@@ -6,7 +6,6 @@ class Mouse extends Component {
   }
   componentDidMount() {
     const headerHeight = document.querySelector('.Header').offsetHeight
-    console.log(headerHeight)
     window.addEventListener('mousemove', e => {
       this.setState({
         mouse: e.pageY - headerHeight

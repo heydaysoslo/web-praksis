@@ -126,7 +126,6 @@ class HeaderMeta extends Component {
 
           if (social.twitter) {
             // Twitter name
-            // console.log(social)
 
             meta.push({
               name: 'twitter:card',

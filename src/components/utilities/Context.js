@@ -97,7 +97,6 @@ export class Provider extends Component {
   }
 
   render() {
-    console.log(this.state.mq)
     return (
       <SiteContext.Provider
         value={{

@@ -32,7 +32,6 @@ class Taxonomy extends Component {
       this.setCurrentCat(this.state.cats, slug)
     } else {
       getCategories().then(cats => {
-        // console.log(cats)
         this.setState({ cats, catsLoaded: true })
         this.setCurrentCat(cats, slug)
       })
