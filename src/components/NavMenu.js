@@ -32,13 +32,13 @@ export default class NavMenu extends Component {
           )}
 
           {items.map(p => {
-            if (p.slug) {
+            if (p.url.indexOf('://') === -1) {
               return (
                 <li key={uuid()} className="NavMenu__item">
                   <NavLink
                     activeClassName="NavMenu__link--active"
                     className="NavMenu__link"
-                    to={p.slug}
+                    to={p.url}
                     onClick={this.props.toggle}
                     exact
                   >
