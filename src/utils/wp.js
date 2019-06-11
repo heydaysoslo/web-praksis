@@ -2,7 +2,7 @@ import WPAPI from 'wpapi'
 
 const env =
   process.env.NODE_ENV === 'development' ? 'development' : process.env.NODE_ENV
-let endpoint = 'http://praksis.test/api'
+let endpoint = 'https://api.praksismagasin.no/api'
 if (env !== 'development') {
   endpoint = 'https://api.praksismagasin.no/api'
 }

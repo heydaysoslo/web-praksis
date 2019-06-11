@@ -26,9 +26,9 @@ class Article extends Component {
       Object.keys(embeds).forEach(key => {
         const el = embeds[key]
         if (!elementContainsMulti(el, existingPusher)) {
-          let iframe = el.getElementsByTagName('iframe')
-          if (iframe) {
-            iframe = iframe[0]
+          let iframes = el.getElementsByTagName('iframe')
+          if (iframes.length) {
+            const iframe = iframes[0]
             const w = parseFloat(iframe.getAttribute('width'))
             const h = parseFloat(iframe.getAttribute('height'))
             if (h && w) {
