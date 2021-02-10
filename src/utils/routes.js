@@ -14,31 +14,37 @@ export const routes = [
     name: 'Home',
     path: '/',
     component: FrontPage,
-    exact: true
+    exact: true,
   },
   {
     name: 'Posts',
     path: '/posts',
     component: PostsPage,
-    exact: true
+    exact: true,
+  },
+  {
+    name: 'Posts',
+    path: '/posts/page/:pageNum',
+    component: PostsPage,
+    exact: true,
   },
   {
     name: 'Search',
     path: '/sok',
     component: Search,
-    exact: true
+    exact: true,
   },
   {
     name: 'Search',
     path: '/sok/:query',
     component: Search,
-    exact: true
+    exact: true,
   },
   {
     name: 'Category',
     path: '/kategori/:cat',
     component: Taxonomy,
-    exact: true
+    exact: true,
   },
   {
     name: 'Category',
@@ -46,31 +52,31 @@ export const routes = [
     component: ContentType,
     exact: true,
     props: {
-      taxonomy: 'content_type'
-    }
+      taxonomy: 'content_type',
+    },
   },
   {
     name: 'Tag',
     path: '/stikkord/:tag',
     component: Tag,
-    exact: true
+    exact: true,
   },
   {
     name: 'Preview',
     path: '/_preview/:id/:postType',
     component: Preview,
-    exact: true
+    exact: true,
   },
   {
     name: 'Post',
     path: '/:type/:slug',
     component: Single,
-    exact: false
+    exact: false,
   },
   {
     name: 'Page',
     path: '/:slug',
     component: Single,
-    exact: true
-  }
+    exact: true,
+  },
 ]

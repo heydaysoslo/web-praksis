@@ -30,6 +30,7 @@
     "react-slick": "^0.28.0",
     "react-sticky": "^6.0.3",
     "smoothscroll-polyfill": "^0.4.4",
+    "styled-components": "^5.2.1",
     "universal-cookie": "^4.0.4",
     "wpapi": "^1.2.1"
   },

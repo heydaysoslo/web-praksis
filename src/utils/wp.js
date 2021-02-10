@@ -22,12 +22,12 @@ const wp = new WPAPI({
         }
         return Promise.resolve(result)
       }
-      return WPAPI.transport.get(wpreq, callback).then(result => {
+      return WPAPI.transport.get(wpreq, callback).then((result) => {
         wpCache[wpreq] = result
         return result
       })
-    }
-  }
+    },
+  },
 })
 
 // Create custom routes
@@ -39,18 +39,18 @@ wp.profile = wp.registerRoute('wp/v2', 'profile/(?P<id>[\\d]+)')
 wp.profiles = wp.registerRoute('wp/v2', 'profile')
 wp.publicSettings = wp.registerRoute('hey/v1', 'settings')
 
-const excludeEmptyTerms = terms => {
-  return terms.filter(term => {
+const excludeEmptyTerms = (terms) => {
+  return terms.filter((term) => {
     return term.count > 0
   })
 }
 
-export const cachedPrivateRequest = requestUrl => {
+export const cachedPrivateRequest = (requestUrl) => {
   if (!wpCache[requestUrl]) {
     wpCache[requestUrl] = fetch(requestUrl, {
       method: 'get',
-      credentials: 'include'
-    }).then(res => {
+      credentials: 'include',
+    }).then((res) => {
       return res.json()
     })
   }
@@ -66,7 +66,7 @@ export const loggedIn = () => {
   return cachedPrivateRequest(requestUrl)
 }
 
-export const getLatestRevisions = id => {
+export const getLatestRevisions = (id) => {
   const requestUrl = endpoint + '/hey/v1/revisions/' + id
   return cachedPrivateRequest(requestUrl)
 }
@@ -75,8 +75,8 @@ export const baseUrl = (path = '') => {
   return window.location.protocol + '//' + window.location.host + path
 }
 
-export const getObjectLink = obj => {
-  if (obj.type) {
+export const getObjectLink = (obj) => {
+  if (obj && obj.type) {
     if (obj.type === 'page') {
       return '/' + obj.slug
     }
@@ -85,22 +85,19 @@ export const getObjectLink = obj => {
   console.log('Nothing found')
 }
 
-export const getProfileById = id => {
-  return wp
-    .profile()
-    .id(id)
-    .embed()
+export const getProfileById = (id) => {
+  return wp.profile().id(id).embed()
 }
 
-export const search = queryTerm => {
+export const search = (queryTerm) => {
   return wp.search().param('s', queryTerm)
 }
 
-export const getPostsByCategory = id => {
+export const getPostsByCategory = (id) => {
   return wp.posts().categories(id)
 }
 
-export const getPostsByTag = id => {
+export const getPostsByTag = (id) => {
   return wp.posts().tags(id)
 }
 
@@ -112,18 +109,15 @@ export const getPostsByIds = (ids = []) => {
   return wp.posts().include(ids)
 }
 
-export const getCategoryBySlug = slug => {
+export const getCategoryBySlug = (slug) => {
   return wp
     .categories()
     .slug(slug)
-    .then(cats => cats[0])
+    .then((cats) => cats[0])
 }
 
 export const getTags = () => {
-  return wp
-    .tags()
-    .perPage(100)
-    .then(excludeEmptyTerms)
+  return wp.tags().perPage(100).then(excludeEmptyTerms)
 }
 
 export const getCategories = () => {
@@ -134,18 +128,18 @@ export const getContentTypes = () => {
   return wp.contentTypes().then(excludeEmptyTerms)
 }
 
-export const getContentType = slug => {
+export const getContentType = (slug) => {
   return wp
     .contentTypes()
     .slug(slug)
-    .then(cats => cats[0])
+    .then((cats) => cats[0])
 }
 
-export const getTagBySlug = slug => {
+export const getTagBySlug = (slug) => {
   return wp
     .tags()
     .slug(slug)
-    .then(tags => tags[0])
+    .then((tags) => tags[0])
 }
 
 export const getPosts = (page = 1) => {
@@ -154,9 +148,9 @@ export const getPosts = (page = 1) => {
     .perPage(10)
     .page(page)
     .embed()
-    .then(res => {
+    .then((res) => {
       if (page < 2) {
-        // Move stikcy posts first
+        // Move sticky posts first if on the first page
         res.sort((a, b) => {
           return a.sticky ? -1 : b.sticky ? 1 : 0
         })
@@ -165,45 +159,39 @@ export const getPosts = (page = 1) => {
     })
 }
 
-export const getNavMenu = slug => {
+export const getNavMenu = (slug) => {
   return wp.navMenus().id(slug)
 }
 
-export const getPostBySlug = slug => {
+export const getPostBySlug = (slug) => {
   return wp
     .posts()
     .slug(slug)
     .embed()
-    .then(res => {
+    .then((res) => {
       return res[0]
     })
-    .catch(err => console.log(err))
+    .catch((err) => console.log(err))
 }
 
-export const getPageBySlug = slug => {
+export const getPageBySlug = (slug) => {
   return wp
     .pages()
     .slug(slug)
     .embed()
-    .then(res => res[0])
+    .then((res) => res[0])
 }
 
-export const getPageById = id => {
+export const getPageById = (id) => {
   return wp.pages().id(id)
 }
 
 export const getProtectedPost = (id, password) => {
-  return wp
-    .posts()
-    .id(id)
-    .password(password)
+  return wp.posts().id(id).password(password)
 }
 
 export const getProtectedPage = (id, password) => {
-  return wp
-    .pages()
-    .id(id)
-    .password(password)
+  return wp.pages().id(id).password(password)
 }
 
 export const getProtectedObject = (id, type, password) => {
@@ -239,17 +227,9 @@ export const getStickyPosts = () => {
 export const getPreview = ({ id, postType }) => {
   let requestUrl
   if (postType === 'post') {
-    requestUrl = wp
-      .posts()
-      .id(id)
-      .revisions()
-      .toString()
+    requestUrl = wp.posts().id(id).revisions().toString()
   } else if (postType === 'page') {
-    requestUrl = wp
-      .pages()
-      .id(id)
-      .revisions()
-      .toString()
+    requestUrl = wp.pages().id(id).revisions().toString()
   }
   if (requestUrl) {
     return cachedPrivateRequest(requestUrl)
@@ -259,8 +239,8 @@ export const getPreview = ({ id, postType }) => {
 export const getPostTerms = (post, type = null) => {
   let allTerms = {}
   if (post._embedded && post._embedded['wp:term']) {
-    post._embedded['wp:term'].forEach(terms => {
-      terms.forEach(term => {
+    post._embedded['wp:term'].forEach((terms) => {
+      terms.forEach((term) => {
         if (!allTerms[term.taxonomy]) {
           allTerms[term.taxonomy] = []
         }
@@ -274,7 +254,7 @@ export const getPostTerms = (post, type = null) => {
   return allTerms
 }
 
-export const getPostTags = post => {
+export const getPostTags = (post) => {
   if (
     post._embedded &&
     post._embedded['wp:term'] &&
