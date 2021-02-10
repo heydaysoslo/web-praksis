@@ -31,8 +31,7 @@ margin-top: spacing($size:sm, $breakpoint:sm);
 
 @font-face {
   font-family: 'Replica';
-  src: url("/assets/fonts/lineto/lineto-replica-regular.eot");
-  src: url("/assets/fonts/lineto/lineto-replica-regular.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/lineto/lineto-replica-regular.woff") format("woff");
+  src: url("../fonts/lineto/lineto-replica-regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-stretch: normal;
@@ -40,8 +39,7 @@ margin-top: spacing($size:sm, $breakpoint:sm);
 
 @font-face {
   font-family: 'Replica';
-  src: url("/assets/fonts/lineto/lineto-replica-italic.eot");
-  src: url("/assets/fonts/lineto/lineto-replica-italic.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/lineto/lineto-replica-italic.woff") format("woff");
+  src: url("../fonts/lineto/lineto-replica-italic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
   font-stretch: normal;
@@ -49,8 +47,7 @@ margin-top: spacing($size:sm, $breakpoint:sm);
 
 @font-face {
   font-family: 'Replica';
-  src: url("/assets/fonts/lineto/lineto-replica-light.eot");
-  src: url("/assets/fonts/lineto/lineto-replica-light.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/lineto/lineto-replica-light.woff") format("woff");
+  src: url("../fonts/lineto/lineto-replica-light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -58,8 +55,7 @@ margin-top: spacing($size:sm, $breakpoint:sm);
 
 @font-face {
   font-family: 'Replica';
-  src: url("/assets/fonts/lineto/lineto-replica-lightitalic.eot");
-  src: url("/assets/fonts/lineto/lineto-replica-lightitalic.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/lineto/lineto-replica-lightitalic.woff") format("woff");
+  src: url("../fonts/lineto/lineto-replica-lightitalic.woff") format("woff");
   font-weight: 300;
   font-style: italic;
   font-stretch: normal;
@@ -67,8 +63,7 @@ margin-top: spacing($size:sm, $breakpoint:sm);
 
 @font-face {
   font-family: 'Replica';
-  src: url("/assets/fonts/lineto/lineto-replica-bold.eot");
-  src: url("/assets/fonts/lineto/lineto-replica-bold.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/lineto/lineto-replica-bold.woff") format("woff");
+  src: url("../fonts/lineto/lineto-replica-bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-stretch: normal;
@@ -76,8 +71,7 @@ margin-top: spacing($size:sm, $breakpoint:sm);
 
 @font-face {
   font-family: 'Tiempos Text';
-  src: url("/assets/fonts/tiempos/TiemposText-Regular.eot");
-  src: url("/assets/fonts/tiempos/TiemposText-Regular.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/tiempos/TiemposText-Regular.woff2") format("woff2"), url("/assets/fonts/tiempos/TiemposText-Regular.woff") format("woff"), url("/assets/fonts/tiempos/TiemposText-Regular.ttf") format("truetype");
+  src: url("../fonts/tiempos/TiemposText-Regular.woff2") format("woff2"), url("../fonts/tiempos/TiemposText-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-stretch: normal;
@@ -85,8 +79,7 @@ margin-top: spacing($size:sm, $breakpoint:sm);
 
 @font-face {
   font-family: 'Tiempos Text';
-  src: url("/assets/fonts/tiempos/TiemposText-RegularItalic.eot");
-  src: url("/assets/fonts/tiempos/TiemposText-RegularItalic.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/tiempos/TiemposText-RegularItalic.woff2") format("woff2"), url("/assets/fonts/tiempos/TiemposText-RegularItalic.woff") format("woff"), url("/assets/fonts/tiempos/TiemposText-RegularItalic.ttf") format("truetype");
+  src: url("../fonts/tiempos/TiemposText-RegularItalic.woff2") format("woff2"), url("../fonts/tiempos/TiemposText-RegularItalic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
   font-stretch: normal;
