@@ -94,7 +94,7 @@ export const search = (queryTerm) => {
 }
 
 export const getPostsByCategory = (id) => {
-  return wp.posts().categories(id)
+  return wp.posts().categories(id).perPage(24)
 }
 
 export const getPostsByTag = (id) => {

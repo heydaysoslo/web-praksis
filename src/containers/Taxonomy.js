@@ -1,24 +1,22 @@
 import React, { Component } from 'react'
-import Post from '../components/Post'
 import { getPostsByCategory, getCategories } from '../utils/wp'
 import Loading from '../components/Loading'
-import { NavLink } from 'react-router-dom'
-import uuid from 'uuid/v1'
-
+import Card from '../components/Card'
+import Grid from '../components/primitives/Grid'
 class Taxonomy extends Component {
   state = {
     cat: null,
     loading: true,
     posts: [],
     cats: [],
-    catsLoaded: false
+    catsLoaded: false,
   }
 
   setCurrentCat = (cats, slug) => {
-    cats.forEach(cat => {
+    cats.forEach((cat) => {
       if (cat.slug === slug) {
         this.setState({ cat })
-        getPostsByCategory(cat.id).then(posts => {
+        getPostsByCategory(cat.id).then((posts) => {
           this.setState({ posts, loading: false })
         })
       }
@@ -26,12 +24,13 @@ class Taxonomy extends Component {
   }
 
   loadContent = () => {
+    this.setState({ loading: true })
     const slug = this.props.match.params.cat
 
     if (this.state.catsLoaded) {
       this.setCurrentCat(this.state.cats, slug)
     } else {
-      getCategories().then(cats => {
+      getCategories().then((cats) => {
         this.setState({ cats, catsLoaded: true })
         this.setCurrentCat(cats, slug)
       })
@@ -42,7 +41,7 @@ class Taxonomy extends Component {
     this.loadContent()
   }
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (this.props.match.params.cat !== prevProps.match.params.cat) {
       this.loadContent()
     }
@@ -50,33 +49,28 @@ class Taxonomy extends Component {
 
   render() {
     const { cat, loading, posts, cats } = this.state
-    if (loading) {
-      return <Loading />
-    }
     return (
-      <article className="container">
-        <h1>Kategori: {cat.name}</h1>
-        {cats && (
-          <ul className="Terms">
-            {cats.map(c => {
-              return (
-                <NavLink
-                  className="Terms__item"
-                  activeClassName="Terms__item--active"
-                  key={uuid()}
-                  to={c.link}
-                >
-                  {c.name}
-                </NavLink>
-              )
-            })}
-          </ul>
-        )}
-        {posts.length ? (
-          posts.map(p => <Post key={p.id} post={p} />)
+      <article>
+        {loading ? (
+          <Loading />
         ) : (
-          <div>
-            Fant ingen innlegg i kategorien <strong>{cat.name}</strong>
+          <div className="container">
+            {/* <h1>Kategori: {cat.name}</h1> */}
+            {posts.length ? (
+              <Grid
+                gridGap={[4]}
+                justifyContent={[null, 'center']}
+                gridTemplateColumns={'repeat(auto-fit, minmax(25%, 1fr))'}
+              >
+                {posts.map((p) => (
+                  <Card key={p.id} post={p} />
+                ))}
+              </Grid>
+            ) : (
+              <div>
+                Fant ingen innlegg i kategorien <strong>{cat.name}</strong>
+              </div>
+            )}
           </div>
         )}
       </article>

@@ -6,25 +6,25 @@ import { search } from '../utils/wp'
 export default class SearchView extends Component {
   state = {
     searchTerm: '',
-    posts: []
+    posts: [],
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     search(this.state.searchTerm)
-      .then(posts => {
+      .then((posts) => {
         this.setState({ posts })
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ posts: [] })
       })
     event.preventDefault()
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ searchTerm: event.target.value })
   }
 
-  onEscClick = e => {
+  onEscClick = (e) => {
     if (e.key === 'Escape' || e.key === 'Esc' || e.keyCode === 27) {
       this.props.toggle()
       e.preventDefault()
@@ -65,7 +65,7 @@ export default class SearchView extends Component {
         <TagCloud>
           <p>… eller let i tags</p>
         </TagCloud>
-        {posts && posts.map(p => <Post key={p.id} post={p} />)}
+        {posts && posts.map((p) => <Post key={p.id} post={p} />)}
       </div>
     )
   }
