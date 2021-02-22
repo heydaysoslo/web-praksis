@@ -6,7 +6,14 @@ export default class AcfImage extends Component {
     const { image } = this.props
     const srcset = acfImageToSrcset(image.sizes)
     return (
-      <figure className="AcfImage">
+      <figure
+        className="AcfImage"
+        style={{
+          maxWidth: `${image.width}px`,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
         <img
           className="lazyload"
           src={image.sizes.lqip ? image.sizes.lqip : emptyGif}

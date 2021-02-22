@@ -6,7 +6,6 @@ import Container from './Container'
 import CategoryNavStyled from './CategoryNav.styled'
 import CategoryNavItem from './CategoryNavItem'
 import Grid from './primitives/Grid'
-import Heading from './primitives/Heading'
 
 const CategoryNav = ({ categories = [] }) => {
   const [cats, setCats] = useState(categories)
@@ -27,7 +26,7 @@ const CategoryNav = ({ categories = [] }) => {
   }
 
   return (
-    <CategoryNavStyled>
+    <CategoryNavStyled py={3}>
       <Container>
         <Grid
           gridGap={[3]}

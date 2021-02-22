@@ -47,6 +47,12 @@ export const routes = [
     exact: true,
   },
   {
+    name: 'CategoryPage',
+    path: '/kategori/:cat/side/:page',
+    component: Taxonomy,
+    exact: true,
+  },
+  {
     name: 'Category',
     path: '/innleggstype/:cat',
     component: ContentType,

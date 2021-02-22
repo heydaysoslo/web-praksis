@@ -93,8 +93,8 @@ export const search = (queryTerm) => {
   return wp.search().param('s', queryTerm)
 }
 
-export const getPostsByCategory = (id) => {
-  return wp.posts().categories(id).perPage(24)
+export const getPostsByCategory = (id, page = 1, perPage = 12) => {
+  return wp.posts().categories(id).perPage(perPage).page(page)
 }
 
 export const getPostsByTag = (id) => {

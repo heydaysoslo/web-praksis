@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components'
+import Box from './primitives/Box'
 
-const CategoryNavStyled = styled.nav(
+const CategoryNavStyled = styled(Box)(
   ({ theme }) => css`
-    background: red;
+    border-bottom: 2px solid ${theme.color.grays[0]};
   `
 )
 

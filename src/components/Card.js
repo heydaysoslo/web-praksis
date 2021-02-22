@@ -1,6 +1,9 @@
 import React from 'react'
 import renderHTML from 'react-render-html'
 import { Link } from 'react-router-dom'
+import AcfBgset from './AcfBgset'
+import PostDate from './PostDate'
+import Box from './primitives/Box'
 import Heading from './primitives/Heading'
 import Text from './primitives/Text'
 
@@ -9,11 +12,21 @@ const Card = ({ post }) => {
   return (
     <div>
       <Link to={link}>
-        <Heading as="h2" size="h3">
+        {post.featured_image ? (
+          <AcfBgset image={post.featured_image} aspect="landscape" />
+        ) : (
+          <div className="StickiesSlider__image aspect aspect--landscape" />
+        )}
+        <Box mt={3}>
+          <PostDate date={post.date} />
+        </Box>
+        <Heading mt={1} mb={0} as="h2" size="h3">
           {renderHTML(title?.rendered)}
         </Heading>
         {excerpt?.rendered && (
-          <Text size="excerpt">{renderHTML(excerpt.rendered)}</Text>
+          <Text mt={2} size="excerpt">
+            {renderHTML(excerpt.rendered)}
+          </Text>
         )}
       </Link>
     </div>

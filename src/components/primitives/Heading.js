@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { variant, compose } from 'styled-system'
+import { variant, space, compose } from 'styled-system'
 
 const Heading = styled('h1')(
   compose({
@@ -9,6 +9,7 @@ const Heading = styled('h1')(
     lineHeight: 'heading',
     margin: 0,
   }),
+  space,
   variant({
     prop: 'size',
     variants: {
