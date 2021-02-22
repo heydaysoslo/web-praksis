@@ -1,25 +1,26 @@
 import styled from 'styled-components'
-import { variant } from 'styled-system'
+import { variant, space, compose } from 'styled-system'
 
-const textBase = {
-  color: 'red',
-  fontFamily: 'serif',
-  fontWeight: 'normal',
-  lineHeight: 'body',
-  fontSize: [10],
-}
-
-const Text = styled('div')(
-  textBase,
+const Text = styled.div(
+  compose({
+    fontFamily: 'serif',
+    fontWeight: 'normal',
+    lineHeight: 'body',
+    fontSize: [18, 20],
+  }),
   variant({
     prop: 'size',
     variants: {
       small: {
-        ...textBase,
-        fontSize: [10],
+        fontSize: 14,
+      },
+      excerpt: {
+        fontFamily: 'sans',
+        lineHeight: 'tight',
       },
     },
-  })
+  }),
+  space
 )
 
 export default Text

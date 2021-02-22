@@ -10,10 +10,11 @@ const Card = ({ post }) => {
     <div>
       <Link to={link}>
         <Heading as="h2" size="h3">
-          {title?.rendered}
+          {renderHTML(title?.rendered)}
         </Heading>
-        {excerpt?.rendered && <Text>{renderHTML(excerpt.rendered)}</Text>}
-        {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
+        {excerpt?.rendered && (
+          <Text size="excerpt">{renderHTML(excerpt.rendered)}</Text>
+        )}
       </Link>
     </div>
   )

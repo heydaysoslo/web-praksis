@@ -46,6 +46,7 @@ const fontWeight = {
 const lineHeight = {
   heading: 1,
   body: 1.5,
+  tight: 1.25,
 }
 
 const fontSizes = [14, 18, 20, 28, 32, 64]
