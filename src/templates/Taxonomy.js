@@ -15,6 +15,7 @@ class Taxonomy extends Component {
     cats: [],
     catsLoaded: false,
     page: 1,
+    paging: null,
   }
 
   getCurrentCat = (slug) => {
@@ -32,10 +33,16 @@ class Taxonomy extends Component {
     if (cat?.id) {
       getPostsByCategory(cat.id, page).then((posts) => {
         this.setState({ posts, loading: false })
+        if (posts._paging) {
+          this.setState({ paging: posts._paging })
+        }
       })
     } else {
       getPosts(page).then((posts) => {
         this.setState({ posts, loading: false })
+        if (posts._paging) {
+          this.setState({ paging: posts._paging })
+        }
       })
     }
   }
@@ -86,7 +93,7 @@ class Taxonomy extends Component {
                   <Grid
                     gridGap={[4]}
                     justifyContent={[null, 'center']}
-                    gridTemplateColumns={'repeat(4, 1fr)'}
+                    gridTemplateColumns={'repeat(auto-fit, minmax(320px, 1fr))'}
                   >
                     {posts.map((p) => (
                       <Card key={`post-item-${p.id}`} post={p} />
@@ -96,6 +103,7 @@ class Taxonomy extends Component {
                     page={parseInt(this.state.page)}
                     cat={cat}
                     posts={posts}
+                    paging={this.state.paging}
                   />
                 </Box>
               ) : (

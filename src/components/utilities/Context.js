@@ -14,7 +14,9 @@ export class Provider extends Component {
     loadingNext: false,
     allPagesLoaded: false,
     feedScrollPos: 0,
-    settings: null,
+    settings: {
+      bloginfo: null,
+    },
     initialLoad: false,
     frontPage: null,
     mq: 'sm',
