@@ -71,8 +71,8 @@ class App extends Component {
                       disableStyles={true}
                       location="bottom"
                       buttonText="Jeg godtar"
-                      buttonClasses="cookieConsent__button"
-                      contentClasses="cookieConstent__content"
+                      buttonClasses="CookieConsent__button"
+                      contentClasses="CookieConstent__content"
                       expires={150}
                     >
                       Denne siden bruker cookies for å forbedre

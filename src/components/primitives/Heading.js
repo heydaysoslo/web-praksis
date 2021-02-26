@@ -1,16 +1,9 @@
 import styled from 'styled-components'
-import { variant, space, compose } from 'styled-system'
+import { variant, space } from 'styled-system'
 
-const Heading = styled('h1')(
-  compose({
-    color: 'text',
-    fontFamily: 'sans',
-    fontWeight: 'bold',
-    lineHeight: 'heading',
-    margin: 0,
-  }),
-  space,
-  variant({
+const Heading = styled.h1`
+  ${space}
+  ${variant({
     prop: 'size',
     variants: {
       h1: {
@@ -26,7 +19,11 @@ const Heading = styled('h1')(
         fontSize: [18, null, null, 20],
       },
     },
-  })
-)
+  })}
+`
+
+Text.defaultProps = {
+  size: 'h1',
+}
 
 export default Heading

@@ -6,26 +6,27 @@ import { Consumer } from './utilities'
 import SideNav from '../components/SideNav'
 import Logo from './Logo'
 import SearchIcon from '../components/SearchIcon'
+import Text from '../components/primitives/Text'
 
 class Header extends Component {
   state = {
-    menuItems: []
+    menuItems: [],
   }
 
   componentDidMount = () => {
     getNavMenu('primary')
-      .then(res => {
+      .then((res) => {
         this.setState({
-          menuItems: res.items
+          menuItems: res.items,
         })
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err))
   }
 
   render() {
     return (
       <Consumer>
-        {ctx => (
+        {(ctx) => (
           <header className="App__header Header">
             {/* <AdminBar /> */}
             <div className="container container--fluid">

@@ -3,11 +3,11 @@
   // margin: 0 auto;
   // margin-top: rem-calc(70);
 
-  @include spacing(lg, 'margin-top');
+  // @include spacing(lg, 'margin-top');
 
-  &__inner {
-    border-top: 2px solid $c-primary;
-  }
+  // &__inner {
+  //   border-top: 2px solid $c-primary;
+  // }
 
   &--red &__title {
     // transform: rotate(-1.5deg);

@@ -809,7 +809,7 @@ strong {
   display: none; }
 
 /*# sourceMappingURL=slick.min.css.map */
-.cookieConsent {
+.CookieConsent {
   padding: 1.5rem;
   background: #f1eeeb;
   color: #373332;
@@ -822,17 +822,17 @@ strong {
   position: static !important;
   text-align: left; }
   @media screen and (min-width: 48em) {
-    .cookieConsent {
+    .CookieConsent {
       font-size: 1.6rem; } }
   @media screen and (min-width: 64em) {
-    .cookieConsent {
+    .CookieConsent {
       font-size: 1.6rem; } }
-  .cookieConsent a {
+  .CookieConsent a {
     color: #dc1e0f;
     text-decoration: underline; }
-    .cookieConsent a:hover {
+    .CookieConsent a:hover {
       text-decoration: none; }
-  .cookieConsent__button {
+  .CookieConsent__button {
     color: #fff;
     background-color: #dc1e0f;
     border-radius: 3px;
@@ -840,7 +840,7 @@ strong {
     display: block;
     padding: 0.5rem;
     margin-top: 1rem; }
-    .cookieConsent__button:hover {
+    .CookieConsent__button:hover {
       background-color: #373332; }
 
 .PostCarousel {
@@ -914,80 +914,80 @@ strong {
   .NavMenu__link--active {
     color: #373332; }
 
-.Article {
-  margin-top: 5rem; }
-  @media screen and (min-width: 48em) {
-    .Article {
-      margin-top: 5rem; } }
+.Article--red .Article__title a {
+  background: #dc1e0f;
+  color: #fff;
+  padding: 0 1rem; }
+
+.Article--frame .Article__inner {
+  border: 2px solid transparent;
+  border-top: 2px solid #f1eeeb;
+  border-right: 2px solid #f1eeeb; }
+
+.Article__stickyContainer {
+  position: relative; }
+
+.Article__sticky {
+  position: absolute;
+  top: 0;
+  display: none;
+  transition: opacity 0.5s ease;
+  max-width: 14rem; }
+  .Article__sticky--stuck {
+    padding-top: 40px; }
+  .Article__sticky--bottom {
+    position: absolute !important;
+    bottom: 0 !important;
+    top: auto !important;
+    left: 0 !important; }
   @media screen and (min-width: 64em) {
-    .Article {
-      margin-top: 5rem; } }
-  .Article__inner {
-    border-top: 2px solid #dc1e0f; }
-  .Article--red .Article__title a {
-    background: #dc1e0f;
-    color: #fff;
-    padding: 0 1rem; }
-  .Article--frame .Article__inner {
-    border: 2px solid transparent;
-    border-top: 2px solid #f1eeeb;
-    border-right: 2px solid #f1eeeb; }
-  .Article__stickyContainer {
-    position: relative; }
-  .Article__sticky {
-    position: absolute;
-    top: 0;
-    display: none;
-    transition: opacity 0.5s ease;
-    max-width: 14rem; }
-    .Article__sticky--stuck {
-      padding-top: 40px; }
-    .Article__sticky--bottom {
-      position: absolute !important;
-      bottom: 0 !important;
-      top: auto !important;
-      left: 0 !important; }
-    @media screen and (min-width: 64em) {
-      .Article__sticky {
-        display: block; } }
-  .Article__image {
-    margin-top: 4rem; }
-  .Article__content {
-    margin: 0 auto;
-    margin-top: 3rem; }
-  .Article__header {
-    margin-top: 2rem; }
-  .Article__intro {
-    font-size: 2.8rem;
-    font-weight: 400;
-    line-height: 1.3;
-    margin: 0 auto;
-    margin-top: 2rem; }
-    @media screen and (min-width: 48em) {
-      .Article__intro {
-        font-size: 2.8rem; } }
-    @media screen and (min-width: 64em) {
-      .Article__intro {
-        font-size: 2.8rem; } }
-  .Article__meta {
-    color: #b8b3ae;
-    margin-bottom: 2rem; }
-    .Article__meta a {
-      color: #b8b3ae; }
-      .Article__meta a:hover {
-        color: #dc1e0f; }
-  .Article--single {
-    padding-bottom: 14rem; }
+    .Article__sticky {
+      display: block; } }
+
+.Article__image {
+  margin-top: 4rem; }
+
+.Article__content {
+  margin: 0 auto;
+  margin-top: 3rem; }
+
+.Article__header {
+  margin-top: 2rem; }
+
+.Article__intro {
+  font-size: 2.8rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 auto;
+  margin-top: 2rem; }
   @media screen and (min-width: 48em) {
-    .Article__header {
-      margin-top: 7rem;
-      text-align: center; }
     .Article__intro {
-      margin-top: 3rem; }
-    .Article__meta {
-      margin-bottom: 3rem; }
-    .Article__content {
-      margin-top: 7rem; } }
+      font-size: 2.8rem; } }
+  @media screen and (min-width: 64em) {
+    .Article__intro {
+      font-size: 2.8rem; } }
+
+.Article__meta {
+  color: #b8b3ae;
+  margin-bottom: 2rem; }
+  .Article__meta a {
+    color: #b8b3ae; }
+    .Article__meta a:hover {
+      color: #dc1e0f; }
+
+.Article--single {
+  padding-bottom: 14rem; }
+
+@media screen and (min-width: 48em) {
+  .Article__header {
+    margin-top: 7rem;
+    text-align: center; }
+  .Article__intro {
+    margin-top: 3rem; }
+  .Article__meta {
+    margin-bottom: 3rem; }
+  .Article__content {
+    margin-top: 7rem; } }
 
 .ArticleFooter {
   margin-top: 6rem; }

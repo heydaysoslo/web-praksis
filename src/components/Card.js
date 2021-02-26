@@ -17,8 +17,8 @@ const Card = ({ post }) => {
         ) : (
           <div className="StickiesSlider__image aspect aspect--landscape" />
         )}
-        <Box mt={3}>
-          <PostDate date={post.date} />
+        <Box mt={2}>
+          <Text date={post.date} as={PostDate} size="small" />
         </Box>
         <Heading mt={1} mb={0} as="h2" size="h3">
           {renderHTML(title?.rendered)}
