@@ -1,22 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
-import { routes } from '../utils/routes'
+import { getPaginatedCategoryLink } from '../utils/routes'
 import Box from './primitives/Box'
 
 const StyledPageLink = styled(Link)(
   ({ theme }) => css`
-    color: ${theme.color.red};
+    color: ${theme.colors.red};
   `
 )
-
-const getPageLink = ({ cat, page }) => {
-  const pageLinkObject = routes.filter((r) => r.name === 'CategoryPage')[0]
-  const pageLink = pageLinkObject.path
-    .replace(':cat', cat)
-    .replace(':page', page)
-  return pageLink
-}
 
 const StyledPagination = styled(Box)`
   display: flex;
@@ -28,11 +20,18 @@ const StyledPagination = styled(Box)`
   }
 `
 
-const PageLink = ({ cat, page, active, children, className, ...props }) => {
+const CategoryPageLink = ({
+  slug,
+  page,
+  active,
+  children,
+  className,
+  ...props
+}) => {
   if (active) {
     return <span className={className}>{children}</span>
   }
-  const pageLink = getPageLink({ cat, page })
+  const pageLink = getPaginatedCategoryLink({ slug, page })
   return (
     <StyledPageLink className={className} to={pageLink} {...props}>
       {children}
@@ -52,49 +51,58 @@ const Pagination = ({ posts, page, cat }) => {
   const nextPageNum =
     page >= parseInt(totalPages) ? parseInt(totalPages) : page + 1
   const prevPageNum = page <= 1 ? 1 : page - 1
+  const catSlug = cat?.slug || false
 
   return (
     <StyledPagination py={5}>
-      <PageLink
+      <CategoryPageLink
         aria-label="Siste side"
-        cat={cat.slug}
+        slug={catSlug}
         page={firstPageNum}
         active={firstPageNum === page}
       >
         «
-      </PageLink>
-      <PageLink active={prevPageNum === page} cat={cat.slug} page={prevPageNum}>
+      </CategoryPageLink>
+      <CategoryPageLink
+        active={prevPageNum === page}
+        slug={catSlug}
+        page={prevPageNum}
+      >
         &larr; Nyere innlegg
-      </PageLink>
+      </CategoryPageLink>
       <ul>
         {Array.from(Array(totalPages).keys()).map((pageNum) => {
           const paged = pageNum + 1
           return (
-            <li>
-              <PageLink
+            <li key={`page-${paged}`}>
+              <CategoryPageLink
                 aria-label={`Side ${paged}`}
                 key={`page-${pageNum}`}
                 active={page === paged}
-                cat={cat.slug}
+                slug={catSlug}
                 page={paged}
               >
                 {paged}
-              </PageLink>
+              </CategoryPageLink>
             </li>
           )
         })}
       </ul>
-      <PageLink active={nextPageNum === page} cat={cat.slug} page={nextPageNum}>
+      <CategoryPageLink
+        active={nextPageNum === page}
+        slug={catSlug}
+        page={nextPageNum}
+      >
         Eldre innlegg &rarr;
-      </PageLink>
-      <PageLink
+      </CategoryPageLink>
+      <CategoryPageLink
         aria-label="Siste side"
-        cat={cat.slug}
+        slug={catSlug}
         page={lastPageNum}
         active={lastPageNum === page}
       >
         »
-      </PageLink>
+      </CategoryPageLink>
     </StyledPagination>
   )
 }

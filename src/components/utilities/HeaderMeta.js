@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { Consumer } from '../utilities'
 import Helmet from 'react-helmet'
 
-export const striptags = html => {
+export const striptags = (html) => {
   var tmp = document.createElement('DIV')
   tmp.innerHTML = html
   return tmp.textContent || tmp.innerText
 }
 
 class HeaderMeta extends Component {
-  getCanonicalUrl = data => {
+  getCanonicalUrl = (data) => {
     return ''
   }
 
@@ -67,7 +67,7 @@ class HeaderMeta extends Component {
 
     return (
       <Consumer>
-        {ctx => {
+        {(ctx) => {
           if (!ctx.state.settings) {
             return null
           }
@@ -87,7 +87,7 @@ class HeaderMeta extends Component {
             { name: 'description', content: description },
             { itemprop: 'name', content: siteName },
             { itemprop: 'description', content: description },
-            { itemprop: 'image', content: this.getImage(data) }
+            { itemprop: 'image', content: this.getImage(data) },
           ]
 
           /**
@@ -101,15 +101,15 @@ class HeaderMeta extends Component {
 
             meta.push({
               property: 'og:title',
-              content: this.getTitle(data, 'og_title', bloginfo)
+              content: this.getTitle(data, 'og_title', bloginfo),
             })
             meta.push({
               property: 'og:description',
-              content: this.getDescription(data, 'og_description', bloginfo)
+              content: this.getDescription(data, 'og_description', bloginfo),
             })
             meta.push({
               property: 'og:url',
-              content: this.getCanonicalUrl(data)
+              content: this.getCanonicalUrl(data),
             })
 
             const og_image = this.getImage(data, 'og_image', social)
@@ -131,12 +131,12 @@ class HeaderMeta extends Component {
               name: 'twitter:card',
               content: social.twitter_card_type
                 ? social.twitter_card_type
-                : 'summary'
+                : 'summary',
             })
 
             meta.push({
               name: 'twitter:title',
-              content: this.getTitle(data, 'twitter_title', bloginfo)
+              content: this.getTitle(data, 'twitter_title', bloginfo),
             })
 
             meta.push({
@@ -145,7 +145,7 @@ class HeaderMeta extends Component {
                 data,
                 'twitter_description',
                 bloginfo
-              )
+              ),
             })
 
             if (social.twitter_site) {
@@ -153,7 +153,7 @@ class HeaderMeta extends Component {
               // Creator: Might be the current author of the article!
               meta.push({
                 name: 'twitter:creator',
-                content: social.twitter_site
+                content: social.twitter_site,
               })
             }
 

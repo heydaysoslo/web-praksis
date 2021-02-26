@@ -5,12 +5,12 @@ import Helmet from 'react-helmet'
 
 class Preview extends Component {
   state = {
-    post: false
+    post: false,
   }
   componentDidMount() {
-    getPreview(this.props.match.params).then(res => {
+    getPreview(this.props.match.params).then((res) => {
       this.setState({
-        post: res[0]
+        post: res[0],
       })
     })
   }

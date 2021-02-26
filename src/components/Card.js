@@ -1,5 +1,5 @@
 import React from 'react'
-import renderHTML from 'react-render-html'
+import ReactHtmlParser from 'react-html-parser'
 import { Link } from 'react-router-dom'
 import AcfBgset from './AcfBgset'
 import PostDate from './PostDate'
@@ -12,20 +12,22 @@ const Card = ({ post }) => {
   return (
     <div>
       <Link to={link}>
-        {post.featured_image ? (
-          <AcfBgset image={post.featured_image} aspect="landscape" />
-        ) : (
-          <div className="StickiesSlider__image aspect aspect--landscape" />
-        )}
+        <Box bg="grays.0">
+          {post.featured_image ? (
+            <AcfBgset image={post.featured_image} aspect="landscape" />
+          ) : (
+            <div className="aspect aspect--landscape" />
+          )}
+        </Box>
         <Box mt={2}>
           <Text date={post.date} as={PostDate} size="small" />
         </Box>
         <Heading mt={1} mb={0} as="h2" size="h3">
-          {renderHTML(title?.rendered)}
+          {ReactHtmlParser(title?.rendered)}
         </Heading>
         {excerpt?.rendered && (
           <Text mt={2} size="excerpt">
-            {renderHTML(excerpt.rendered)}
+            {ReactHtmlParser(excerpt.rendered)}
           </Text>
         )}
       </Link>

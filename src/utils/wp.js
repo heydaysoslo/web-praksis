@@ -1,8 +1,12 @@
 import WPAPI from 'wpapi'
 
+export const BACKEND_URL = 'http://praksis.test'
+export const FRONTEND_URL = 'https://praksismagasin.no'
+
 const env =
   process.env.NODE_ENV === 'development' ? 'development' : process.env.NODE_ENV
-let endpoint = 'https://api.praksismagasin.no/api'
+// let endpoint = 'https://api.praksismagasin.no/api'
+let endpoint = 'http://praksis.test/api'
 if (env !== 'development') {
   endpoint = 'https://api.praksismagasin.no/api'
 }
@@ -94,6 +98,9 @@ export const search = (queryTerm) => {
 }
 
 export const getPostsByCategory = (id, page = 1, perPage = 12) => {
+  if (!id) {
+    return wp.posts().perPage(perPage).page(page)
+  }
   return wp.posts().categories(id).perPage(perPage).page(page)
 }
 
@@ -142,10 +149,10 @@ export const getTagBySlug = (slug) => {
     .then((tags) => tags[0])
 }
 
-export const getPosts = (page = 1) => {
+export const getPosts = (page = 1, perPage = 12) => {
   return wp
     .posts()
-    .perPage(10)
+    .perPage(perPage)
     .page(page)
     .embed()
     .then((res) => {

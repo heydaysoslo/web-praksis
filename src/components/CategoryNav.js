@@ -36,6 +36,7 @@ const CategoryNav = ({ categories = [] }) => {
           {cats.map((cat) => {
             return <CategoryNavItem key={`catNavItem-${cat.id}`} cat={cat} />
           })}
+          <CategoryNavItem cat={null}>Arkiv</CategoryNavItem>
         </Grid>
       </Container>
     </CategoryNavStyled>

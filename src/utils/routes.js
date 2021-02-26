@@ -1,59 +1,75 @@
-import FrontPage from '../containers/FrontPage'
-import PostsPage from '../containers/PostsPage'
-import Taxonomy from '../containers/Taxonomy'
+import FrontPage from '../templates/FrontPage'
+import Taxonomy from '../templates/Taxonomy'
+import Preview from '../templates/Preview'
+import Search from '../templates/Search'
+import Tag from '../templates/Tag'
+import Single from '../templates/Single'
+
 import ContentType from '../containers/ContentType'
-// import PostPage from '../containers/PostPage'
-// import Page from '../containers/Page'
-import Single from '../containers/Single'
-import Preview from '../containers/Preview'
-import Tag from '../containers/Tag'
-import Search from '../containers/Search'
 
 export const routes = [
   {
-    name: 'Home',
+    name: 'home',
     path: '/',
     component: FrontPage,
     exact: true,
   },
   {
-    name: 'Posts',
+    name: 'posts',
     path: '/posts',
-    component: PostsPage,
+    component: Taxonomy,
     exact: true,
   },
   {
-    name: 'Posts',
-    path: '/posts/page/:pageNum',
-    component: PostsPage,
+    name: 'postsPage',
+    path: '/posts/side/:page',
+    component: Taxonomy,
     exact: true,
   },
   {
-    name: 'Search',
+    name: 'searchPage',
     path: '/sok',
     component: Search,
     exact: true,
   },
   {
-    name: 'Search',
+    name: 'searchResult',
     path: '/sok/:query',
     component: Search,
     exact: true,
   },
   {
-    name: 'Category',
+    name: 'archive',
+    path: '/arkiv',
+    component: Taxonomy,
+    exact: true,
+  },
+  {
+    name: 'archivePage',
+    path: '/arkiv/side/:page',
+    component: Taxonomy,
+    exact: true,
+  },
+  {
+    name: 'categoryPage',
+    path: '/kategori',
+    component: Taxonomy,
+    exact: true,
+  },
+  {
+    name: 'category',
     path: '/kategori/:cat',
     component: Taxonomy,
     exact: true,
   },
   {
-    name: 'CategoryPage',
+    name: 'categoryPagina',
     path: '/kategori/:cat/side/:page',
     component: Taxonomy,
     exact: true,
   },
   {
-    name: 'Category',
+    name: 'articleType',
     path: '/innleggstype/:cat',
     component: ContentType,
     exact: true,
@@ -62,27 +78,77 @@ export const routes = [
     },
   },
   {
-    name: 'Tag',
+    name: 'tag',
     path: '/stikkord/:tag',
     component: Tag,
     exact: true,
   },
   {
-    name: 'Preview',
+    name: 'preview',
     path: '/_preview/:id/:postType',
     component: Preview,
     exact: true,
   },
   {
-    name: 'Post',
+    name: 'postType',
     path: '/:type/:slug',
     component: Single,
     exact: false,
   },
   {
-    name: 'Page',
+    name: 'page',
     path: '/:slug',
     component: Single,
     exact: true,
   },
 ]
+
+/* 
+
+Use:
+replaceAll('I love cat and camel', {'cat':'dog', 'camel':'dromedar'})
+// Output: 'I love dog and dromedar'
+
+*/
+export const replaceAll = (str, mapObj) => {
+  const keys = Object.keys(mapObj)
+  if (!Array.isArray(keys) || !keys.length) {
+    return str
+  }
+  var re = new RegExp(keys.join('|'), 'gi')
+  return str.replace(re, (matched) => {
+    return mapObj[matched.toLowerCase()]
+  })
+}
+
+/* 
+
+Use:
+getRouteLink('post', {':slug':'pizatime'})
+
+*/
+export const getRouteLink = (type, replace = {}) => {
+  const pageLinkObject = routes.filter((r) => r.name === type)[0]
+  const url = replaceAll(pageLinkObject.path, replace)
+  return url
+}
+
+/*
+
+Helpers
+
+*/
+export const getPaginatedCategoryLink = ({ slug, page }) => {
+  if (!slug) {
+    return getRouteLink('archivePage', { ':page': page })
+  }
+  if (page <= 1) {
+    // If it's the first page, get root url without pagenumber
+    return getRouteLink('category', { ':cat': slug })
+  }
+  return getRouteLink('categoryPagina', { ':cat': slug, ':page': page })
+}
+
+export const getCategoryPageLink = () => {
+  return getRouteLink('archive')
+}

@@ -57,7 +57,7 @@ Color
 
 */
 
-const color = {
+const colors = {
   red: '#dc1e0f',
   text: '#373332',
   black: '#373332',
@@ -80,5 +80,5 @@ export default {
   fontWeight,
   fontSizes,
   lineHeight,
-  color,
+  colors,
 }

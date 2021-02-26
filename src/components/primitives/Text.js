@@ -16,6 +16,7 @@ const Text = styled.div`
       excerpt: {
         fontFamily: 'sans',
         lineHeight: 'tight',
+        fontSize: [1],
       },
     },
   })}

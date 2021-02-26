@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { HeaderMeta } from '../components/utilities'
 import Article from './Article'
 import NoMatchPage from './NoMatchPage'
 import { getObjectBySlug } from '../utils/wp'
@@ -11,27 +10,27 @@ class Single extends Component {
     loading: true,
     noMatch: false,
     post: null,
-    unlocked: false
+    unlocked: false,
   }
 
   loadContent = () => {
     // Reset state
     this.setState({
       loading: true,
-      unlocked: false
+      unlocked: false,
     })
 
     getObjectBySlug(this.props.match.params)
-      .then(post => {
+      .then((post) => {
         this.setState({
           post,
-          loading: false
+          loading: false,
         })
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err))
   }
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (this.props.match.params.slug !== prevProps.match.params.slug) {
       this.loadContent()
     }
@@ -41,10 +40,10 @@ class Single extends Component {
     this.loadContent()
   }
 
-  onPostUnlocked = post => {
+  onPostUnlocked = (post) => {
     this.setState({
       post,
-      unlocked: true
+      unlocked: true,
     })
   }
 
@@ -67,7 +66,6 @@ class Single extends Component {
     }
     return (
       <Fragment>
-        <HeaderMeta data={post} />
         <Article single post={post} preview={isPreview} />
       </Fragment>
     )
