@@ -54,7 +54,7 @@ const SEO = ({ page }) => {
           />
         )}
       </Helmet>
-      <pre>{JSON.stringify(page, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(page, null, 2)}</pre> */}
     </>
   )
 }
