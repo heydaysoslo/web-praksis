@@ -77,8 +77,25 @@ class Taxonomy extends Component {
     }
   }
 
+  getPageHeadings = (cat) => {
+    if (this.state.page !== 1) {
+      return null
+    }
+    if (cat?.name) {
+      return {
+        label: 'Kategori',
+        title: cat.name,
+        intro: cat?.description,
+      }
+    }
+    return {
+      title: 'Arkiv',
+    }
+  }
+
   render() {
     const { cat, loading, posts } = this.state
+    const pageHeadings = this.getPageHeadings(cat)
     return (
       <Layout
         page={{
@@ -91,13 +108,13 @@ class Taxonomy extends Component {
             <Loading />
           ) : (
             <Container>
-              {this.state.page === 1 && cat?.name && (
+              {pageHeadings && (
                 <Box textAlign={{ xs: 'left', lg: 'center' }} mt={4}>
-                  <Label>Kategori</Label>
+                  {pageHeadings.label && <Label>{pageHeadings.label}</Label>}
                   <Heading mt={[1]} size="h1" as="h1">
-                    {cat.name}
+                    {pageHeadings.title}
                   </Heading>
-                  {cat.description && <Text>{cat.description}</Text>}
+                  {pageHeadings.intro && <Text>{pageHeadings.intro}</Text>}
                 </Box>
               )}
               {posts.length ? (
