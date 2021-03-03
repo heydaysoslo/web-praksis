@@ -6,7 +6,7 @@ import { Consumer } from './utilities'
 import SideNav from '../components/SideNav'
 import Logo from './Logo'
 import SearchIcon from '../components/SearchIcon'
-import Text from '../components/primitives/Text'
+import Container from '../components/primitives/Container'
 
 class Header extends Component {
   state = {
@@ -29,7 +29,7 @@ class Header extends Component {
         {(ctx) => (
           <header className="App__header Header">
             {/* <AdminBar /> */}
-            <div className="container container--fluid">
+            <Container size="fluid">
               <div className="Header__content">
                 <Link to={'/'} className="Header__logo">
                   <Logo />
@@ -51,7 +51,7 @@ class Header extends Component {
                   <SideNav />
                 </div>
               </div>
-            </div>
+            </Container>
           </header>
         )}
       </Consumer>

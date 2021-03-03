@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { getPostsByCategory, getCategories, getPosts } from '../utils/wp'
 import Loading from '../components/Loading'
 import Card from '../components/Card'
-import Grid from '../components/primitives/Grid'
 import Pagination from '../components/Pagination'
 import Box from '../components/primitives/Box'
 import Flex from '../components/primitives/Flex'
+import Container from '../components/primitives/Container'
 import Layout from '../components/Layout'
-import Container from '../components/Container'
+import Heading from '../components/primitives/Heading'
+import Label from '../components/primitives/Label'
 
 class Taxonomy extends Component {
   state = {
@@ -90,8 +91,17 @@ class Taxonomy extends Component {
             <Loading />
           ) : (
             <Container>
+              {this.state.page === 1 && cat?.name && (
+                <Box textAlign={{ xs: 'left', lg: 'center' }} mt={4}>
+                  <Label>Kategori</Label>
+                  <Heading mt={[1]} size="h1" as="h1">
+                    {cat.name}
+                  </Heading>
+                  {cat.description && <Text>{cat.description}</Text>}
+                </Box>
+              )}
               {posts.length ? (
-                <Box mt={5}>
+                <Box mt={4}>
                   <Flex flexWrap="wrap" mx={-3}>
                     {posts.map((p) => (
                       <Box

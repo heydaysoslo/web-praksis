@@ -8,11 +8,17 @@ const activeClassName = 'active'
 const CategoryNavItemStyled = styled(NavLink)(
   ({ theme }) => css`
     white-space: nowrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+    border-bottom: 2px solid transparent;
     &:hover {
       color: ${theme.colors.primary};
+      border-color: ${theme.colors.primary};
     }
     &.${activeClassName} {
-      color: ${theme.colors.primary};
+      color: ${theme.colors.text};
+      border-color: ${theme.colors.primary};
     }
   `
 )

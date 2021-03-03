@@ -8,27 +8,25 @@ import {
   flexbox,
   border,
   grid,
+  typography,
   compose,
 } from 'styled-system'
 
-const boxProps = compose(space, color, layout, flexbox, border, grid)
-
-export const Box = styled('div')(
-  {
-    boxSizing: 'border-box',
-  },
-  boxProps
+const boxProps = compose(
+  space,
+  color,
+  layout,
+  flexbox,
+  border,
+  grid,
+  typography
 )
 
-Box.displayName = 'Box'
+const Box = styled.div`
+  box-sizing: border-box;
+  ${boxProps}
+`
 
-// const Box = styled.div`
-//   box-sizing: border-box;
-//   ${space}
-//   ${layout}
-//   ${color}
-//   ${border}
-//   ${flexbox}
-// `
+Box.displayName = 'Box'
 
 export default Box

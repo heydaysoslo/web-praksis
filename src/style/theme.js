@@ -84,9 +84,8 @@ const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
 Border radius
 
 */
-const radii = {
-  default: 4,
-}
+const radii = [2, 4]
+radii.default = radii[1]
 
 export default {
   radii,

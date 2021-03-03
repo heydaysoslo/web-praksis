@@ -1,8 +1,9 @@
 import styled from 'styled-components'
-import { variant, space } from 'styled-system'
+import { variant, space, typography } from 'styled-system'
 
 const Heading = styled.h1`
   ${space}
+  ${typography}
   ${variant({
     prop: 'size',
     variants: {
@@ -22,7 +23,7 @@ const Heading = styled.h1`
   })}
 `
 
-Text.defaultProps = {
+Heading.defaultProps = {
   size: 'h1',
 }
 
