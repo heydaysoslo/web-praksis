@@ -11,7 +11,7 @@ const ContainerStyled = styled(Box)(
 )
 
 const Container = ({ children }) => {
-  return <ContainerStyled px={[1, 2, 3, 4]}>{children}</ContainerStyled>
+  return <ContainerStyled px={[3, null, null, 4]}>{children}</ContainerStyled>
 }
 
 export default Container

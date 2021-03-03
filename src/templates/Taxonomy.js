@@ -5,7 +5,9 @@ import Card from '../components/Card'
 import Grid from '../components/primitives/Grid'
 import Pagination from '../components/Pagination'
 import Box from '../components/primitives/Box'
+import Flex from '../components/primitives/Flex'
 import Layout from '../components/Layout'
+import Container from '../components/Container'
 
 class Taxonomy extends Component {
   state = {
@@ -87,18 +89,21 @@ class Taxonomy extends Component {
           {loading ? (
             <Loading />
           ) : (
-            <div className="container">
+            <Container>
               {posts.length ? (
                 <Box mt={5}>
-                  <Grid
-                    gridGap={[4]}
-                    justifyContent={[null, 'center']}
-                    gridTemplateColumns={'repeat(auto-fit, minmax(320px, 1fr))'}
-                  >
+                  <Flex flexWrap="wrap" mx={-3}>
                     {posts.map((p) => (
-                      <Card key={`post-item-${p.id}`} post={p} />
+                      <Box
+                        key={`post-item-${p.id}`}
+                        width={[1, 1, 1 / 2, 1 / 2, 1 / 3, 1 / 4]}
+                        px={[3]}
+                        pb={[4]}
+                      >
+                        <Card post={p} />
+                      </Box>
                     ))}
-                  </Grid>
+                  </Flex>
                   <Pagination
                     page={parseInt(this.state.page)}
                     cat={cat}
@@ -111,7 +116,7 @@ class Taxonomy extends Component {
                   Fant ingen innlegg i kategorien <strong>{cat.name}</strong>
                 </div>
               )}
-            </div>
+            </Container>
           )}
         </article>
       </Layout>

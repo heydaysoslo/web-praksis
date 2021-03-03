@@ -27,6 +27,12 @@ const breakpoints = Object.keys(untilessBreakpoints).reduce((acc, key) => {
   return acc
 }, [])
 
+const bp = Object.keys(untilessBreakpoints).reduce((acc, key) => {
+  const emBp = emSize(untilessBreakpoints[key])
+  acc[key] = `@media screen and (min-width: ${emBp})`
+  return acc
+}, [])
+
 /*
 
 Typography
@@ -73,7 +79,18 @@ Space
 */
 const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
 
+/*
+
+Border radius
+
+*/
+const radii = {
+  default: 4,
+}
+
 export default {
+  radii,
+  bp,
   breakpoints,
   space,
   fontFamily,

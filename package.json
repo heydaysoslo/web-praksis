@@ -31,6 +31,7 @@
     "react-slick": "^0.28.0",
     "react-sticky": "^6.0.3",
     "smoothscroll-polyfill": "^0.4.4",
+    "source-map-explorer": "^2.5.2",
     "styled-components": "^5.2.1",
     "styled-system": "^5.1.5",
     "universal-cookie": "^4.0.4",
@@ -41,7 +42,8 @@
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --source-map-root ./src --source-map true --source-map-embed",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && react-scripts build"
+    "build": "npm run build-css && react-scripts build",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "browserslist": [
     ">0.2%",
