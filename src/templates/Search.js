@@ -1,9 +1,10 @@
 import React, { Component, Fragment, createRef } from 'react'
 import TagCloud from '../components/TagCloud'
-import Post from '../components/Post'
 import { search } from '../utils/wp'
+import PostGrid from '../components/PostGrid'
+import Box from '../components/primitives/Box'
 
-const cleanSearch = str => {
+const cleanSearch = (str) => {
   return str.replace(/[^a-zA-Z0-9\-_+ ]/g, '')
 }
 
@@ -13,7 +14,7 @@ export default class Search extends Component {
     posts: [],
     searchTerm: '',
     searching: false,
-    placeholderText: 'Søk'
+    placeholderText: 'Søk',
   }
 
   input = createRef()
@@ -25,18 +26,18 @@ export default class Search extends Component {
         searching: false,
         searchTerm: '',
         posts: [],
-        inputValue: ''
+        inputValue: '',
       })
       window.history.replaceState({}, '', '/sok/')
     } else {
       this.setState({ searching: true })
       search(searchTerm)
-        .then(posts => {
+        .then((posts) => {
           this.setState(
             {
               posts,
               searchTerm: this.state.inputValue,
-              searching: false
+              searching: false,
             },
             () => {
               // Add url parameter for successful search to make it possible to share results
@@ -48,19 +49,19 @@ export default class Search extends Component {
             }
           )
         })
-        .catch(err => {
+        .catch((err) => {
           console.log('err', err)
           this.setState({
             posts: [],
             searchTerm: this.state.inputValue,
-            searching: false
+            searching: false,
           })
           window.history.replaceState({}, '', '/sok/')
         })
     }
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     if (this.autoQueryTimer) {
       clearTimeout(this.autoQueryTimer)
     }
@@ -70,7 +71,7 @@ export default class Search extends Component {
     event.preventDefault()
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const query = event.target.value
 
     // this.setState({ inputValue: query }, () => {
@@ -101,7 +102,7 @@ export default class Search extends Component {
     if (this.props.match.params && this.props.match.params.query) {
       this.setState(
         {
-          inputValue: this.props.match.params.query
+          inputValue: this.props.match.params.query,
         },
         () => {
           this.doSearch()
@@ -113,7 +114,7 @@ export default class Search extends Component {
   clearSearch = () => {
     this.setState(
       {
-        inputValue: ''
+        inputValue: '',
       },
       () => {
         this.doSearch()
@@ -123,13 +124,13 @@ export default class Search extends Component {
 
   inputFocus = () => {
     this.setState({
-      placeholderText: 'Begynn å skrive for å søke'
+      placeholderText: 'Begynn å skrive for å søke',
     })
   }
 
   inputBlur = () => {
     this.setState({
-      placeholderText: 'Søk'
+      placeholderText: 'Søk',
     })
   }
 
@@ -139,7 +140,7 @@ export default class Search extends Component {
       searching,
       searchTerm,
       inputValue,
-      placeholderText
+      placeholderText,
     } = this.state
     return (
       <article className="Search container">
@@ -163,20 +164,22 @@ export default class Search extends Component {
           )}
         </form>
         {searching && <div className="Search__status">Et øyeblikk…</div>}
-        {posts.length
-          ? posts.map(p => <Post key={p.id} post={p} />)
-          : searchTerm && (
-              <div className="Search__status">
-                Ingen innlegg funnet for <strong>{searchTerm}</strong>
-              </div>
-            )}
-        {!searching &&
-          !posts.length &&
-          !inputValue.length && (
-            <Fragment>
-              <TagCloud className="Search__tags" />
-            </Fragment>
-          )}
+        {posts.length ? (
+          <Box my={5}>
+            <PostGrid posts={posts} />
+          </Box>
+        ) : (
+          searchTerm && (
+            <div className="Search__status">
+              Ingen innlegg funnet for <strong>{searchTerm}</strong>
+            </div>
+          )
+        )}
+        {!searching && !posts.length && !inputValue.length && (
+          <Fragment>
+            <TagCloud className="Search__tags" />
+          </Fragment>
+        )}
       </article>
     )
   }

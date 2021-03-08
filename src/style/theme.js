@@ -87,7 +87,15 @@ Border radius
 const radii = [2, 4]
 radii.default = radii[1]
 
+/*
+
+Borders
+
+*/
+const borders = [null, `2px solid ${colors.grays[0]}`]
+
 export default {
+  borders,
   radii,
   bp,
   breakpoints,

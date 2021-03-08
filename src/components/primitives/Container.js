@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { variant, system } from 'styled-system'
+import { variant } from 'styled-system'
 import Box from './Box'
 
 const baseProps = {

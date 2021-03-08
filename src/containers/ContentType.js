@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Post from '../components/Post'
 import { getContentTypes, getPostsByTaxonomy } from '../utils/wp'
 import Loading from '../components/Loading'
 import { NavLink } from 'react-router-dom'
 import uuid from 'uuid/v1'
+import PostGrid from '../components/PostGrid'
 
 class ContentType extends Component {
   state = {
@@ -11,14 +11,14 @@ class ContentType extends Component {
     loading: true,
     posts: [],
     cats: [],
-    catsLoaded: false
+    catsLoaded: false,
   }
 
   setCurrentCat = (cats, slug) => {
-    cats.forEach(cat => {
+    cats.forEach((cat) => {
       if (cat.slug === slug) {
         this.setState({ cat })
-        getPostsByTaxonomy('content_type', [cat.id]).then(posts => {
+        getPostsByTaxonomy('content_type', [cat.id]).then((posts) => {
           this.setState({ posts, loading: false })
         })
       }
@@ -32,11 +32,11 @@ class ContentType extends Component {
       this.setCurrentCat(this.state.cats, slug)
     } else {
       getContentTypes()
-        .then(cats => {
+        .then((cats) => {
           this.setState({ cats, catsLoaded: true })
           this.setCurrentCat(cats, slug)
         })
-        .catch(err => console.log('err', err))
+        .catch((err) => console.log('err', err))
     }
   }
 
@@ -44,7 +44,7 @@ class ContentType extends Component {
     this.loadContent()
   }
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (this.props.match.params.cat !== prevProps.match.params.cat) {
       this.loadContent()
     }
@@ -57,10 +57,10 @@ class ContentType extends Component {
     }
     return (
       <article className="container">
-        <h1>Kategori: {cat.name}</h1>
+        <h1>{cat.name}</h1>
         {cats && (
           <ul className="Terms">
-            {cats.map(c => {
+            {cats.map((c) => {
               return (
                 <NavLink
                   className="Terms__item"
@@ -75,7 +75,7 @@ class ContentType extends Component {
           </ul>
         )}
         {posts.length ? (
-          posts.map(p => <Post key={p.id} post={p} />)
+          <PostGrid posts={posts} />
         ) : (
           <div>
             Fant ingen innlegg i kategorien <strong>{cat.name}</strong>

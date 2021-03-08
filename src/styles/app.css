@@ -1456,7 +1456,9 @@ strong {
     display: flex; }
   .ShareButtons__item {
     margin-left: 2rem;
-    line-height: 1em; }
+    line-height: 1em;
+    align-self: baseline;
+    display: inline-flex; }
     .ShareButtons__item div {
       padding: 0;
       margin: 0;
@@ -1671,8 +1673,7 @@ strong {
   color: #dc1e0f;
   text-align: center;
   margin-top: 5rem;
-  padding-bottom: 5rem;
-  border-bottom: 2px solid #f1eeeb; }
+  padding-bottom: 5rem; }
   @media screen and (min-width: 48em) {
     .TagPage__result {
       margin-top: 5rem;

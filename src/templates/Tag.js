@@ -3,18 +3,19 @@ import Loading from '../components/Loading'
 import Post from '../components/Post'
 import { getTagBySlug, getPostsByTag } from '../utils/wp'
 import TagCloud from '../components/TagCloud'
+import PostGrid from '../components/PostGrid'
 
 class Tag extends Component {
   state = {
     tag: null,
     loading: true,
-    posts: []
+    posts: [],
   }
 
-  fetchData = slug => {
-    getTagBySlug(slug).then(tag => {
+  fetchData = (slug) => {
+    getTagBySlug(slug).then((tag) => {
       this.setState({ tag })
-      getPostsByTag(tag.id).then(posts => {
+      getPostsByTag(tag.id).then((posts) => {
         this.setState({ posts, loading: false })
       })
     })
@@ -24,7 +25,7 @@ class Tag extends Component {
     this.fetchData(this.props.match.params.tag)
   }
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (this.props.match.params.tag !== prevProps.match.params.tag) {
       this.fetchData(this.props.match.params.tag)
     }
@@ -50,7 +51,7 @@ class Tag extends Component {
             Innlegg tagget med <strong>{tag.name}</strong>
           </div>
         </header>
-        <div>{posts && posts.map(p => <Post key={p.id} post={p} />)}</div>
+        {posts && <PostGrid posts={posts} />}
       </article>
     )
   }

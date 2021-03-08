@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
+import Button from '../components/primitives/Button'
 
 const NoMatchPage = () => {
   return (
@@ -15,9 +16,9 @@ const NoMatchPage = () => {
         </div>
       </header>
       <div className="Article__content" style={{ textAlign: 'center' }}>
-        <Link className="Button" to="/">
+        <Button as={Link} to="/">
           Gå tilbake til forsiden
-        </Link>
+        </Button>
       </div>
     </article>
   )

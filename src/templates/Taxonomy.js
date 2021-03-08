@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { getPostsByCategory, getCategories, getPosts } from '../utils/wp'
 import Loading from '../components/Loading'
-import Card from '../components/Card'
 import Pagination from '../components/Pagination'
 import Box from '../components/primitives/Box'
-import Flex from '../components/primitives/Flex'
 import Container from '../components/primitives/Container'
 import Layout from '../components/Layout'
 import Heading from '../components/primitives/Heading'
 import Label from '../components/primitives/Label'
+import PostGrid from '../components/PostGrid'
 
 class Taxonomy extends Component {
   state = {
@@ -119,18 +118,7 @@ class Taxonomy extends Component {
               )}
               {posts.length ? (
                 <Box mt={4}>
-                  <Flex flexWrap="wrap" mx={-3}>
-                    {posts.map((p) => (
-                      <Box
-                        key={`post-item-${p.id}`}
-                        width={[1, 1, 1 / 2, 1 / 2, 1 / 3, 1 / 4]}
-                        px={[3]}
-                        pb={[4]}
-                      >
-                        <Card post={p} />
-                      </Box>
-                    ))}
-                  </Flex>
+                  <PostGrid posts={posts} />
                   <Pagination
                     page={parseInt(this.state.page)}
                     cat={cat}
