@@ -5,7 +5,7 @@ import Flex from './primitives/Flex'
 
 const PostGrid = ({ posts }) => {
   return (
-    <Flex flexWrap="wrap" mx={-3}>
+    <Flex flexWrap="wrap" mx={-3} mt={4}>
       {posts.map((p) => (
         <Box
           key={`post-item-${p.id}`}

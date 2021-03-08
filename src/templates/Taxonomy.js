@@ -5,9 +5,8 @@ import Pagination from '../components/Pagination'
 import Box from '../components/primitives/Box'
 import Container from '../components/primitives/Container'
 import Layout from '../components/Layout'
-import Heading from '../components/primitives/Heading'
-import Label from '../components/primitives/Label'
 import PostGrid from '../components/PostGrid'
+import CategoryHeader from '../components/CategoryHeader'
 
 class Taxonomy extends Component {
   state = {
@@ -107,15 +106,11 @@ class Taxonomy extends Component {
             <Loading />
           ) : (
             <Container>
-              {pageHeadings && (
-                <Box textAlign={{ xs: 'left', lg: 'center' }} mt={4}>
-                  {pageHeadings.label && <Label>{pageHeadings.label}</Label>}
-                  <Heading mt={[1]} size="h1" as="h1">
-                    {pageHeadings.title}
-                  </Heading>
-                  {pageHeadings.intro && <Text>{pageHeadings.intro}</Text>}
-                </Box>
-              )}
+              <CategoryHeader
+                label={pageHeadings?.label}
+                title={pageHeadings?.title}
+                intro={pageHeadings?.intro}
+              />
               {posts.length ? (
                 <Box mt={4}>
                   <PostGrid posts={posts} />

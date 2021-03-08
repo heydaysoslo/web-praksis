@@ -1,4 +1,4 @@
-import React, { Component, Fragment, createRef } from 'react'
+import React, { Component, createRef } from 'react'
 import TagCloud from '../components/TagCloud'
 import { search } from '../utils/wp'
 import PostGrid from '../components/PostGrid'
@@ -165,7 +165,7 @@ export default class Search extends Component {
         </form>
         {searching && <div className="Search__status">Et øyeblikk…</div>}
         {posts.length ? (
-          <Box my={5}>
+          <Box mb={5}>
             <PostGrid posts={posts} />
           </Box>
         ) : (
@@ -176,9 +176,9 @@ export default class Search extends Component {
           )
         )}
         {!searching && !posts.length && !inputValue.length && (
-          <Fragment>
+          <>
             <TagCloud className="Search__tags" />
-          </Fragment>
+          </>
         )}
       </article>
     )

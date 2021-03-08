@@ -1,13 +1,12 @@
 import moment from 'moment'
 import 'moment/locale/nb'
 import { capitalize } from '../utils/functions'
-// moment.locale('nb')
 
-export const getDate = date => {
+export const getDate = (date) => {
   return moment(date).fromNow()
 }
 
-export const postDateFormat = date => {
+export const postDateFormat = (date) => {
   const now = new moment()
   const then = new moment(date)
   const duration = moment.duration(now.diff(then))
@@ -19,4 +18,5 @@ export const postDateFormat = date => {
     // Returns dager/minutter/sekunder siden
     return capitalize(then.fromNow())
   }
+  return ''
 }

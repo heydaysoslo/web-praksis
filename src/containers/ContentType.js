@@ -4,6 +4,9 @@ import Loading from '../components/Loading'
 import { NavLink } from 'react-router-dom'
 import uuid from 'uuid/v1'
 import PostGrid from '../components/PostGrid'
+import Container from '../components/primitives/Container'
+import Box from '../components/primitives/Box'
+import CategoryHeader from '../components/CategoryHeader'
 
 class ContentType extends Component {
   state = {
@@ -56,31 +59,33 @@ class ContentType extends Component {
       return <Loading />
     }
     return (
-      <article className="container">
-        <h1>{cat.name}</h1>
-        {cats && (
-          <ul className="Terms">
-            {cats.map((c) => {
-              return (
-                <NavLink
-                  className="Terms__item"
-                  activeClassName="Terms__item--active"
-                  key={uuid()}
-                  to={c.link}
-                >
-                  {c.name}
-                </NavLink>
-              )
-            })}
-          </ul>
-        )}
-        {posts.length ? (
-          <PostGrid posts={posts} />
-        ) : (
-          <div>
-            Fant ingen innlegg i kategorien <strong>{cat.name}</strong>
-          </div>
-        )}
+      <article>
+        <Container>
+          <CategoryHeader title={cat.name} intro={cat.description} />
+          {/* {cats && (
+            <ul className="Terms">
+              {cats.map((c) => {
+                return (
+                  <NavLink
+                    className="Terms__item"
+                    activeClassName="Terms__item--active"
+                    key={uuid()}
+                    to={c.link}
+                  >
+                    {c.name}
+                  </NavLink>
+                )
+              })}
+            </ul>
+          )} */}
+          {posts.length ? (
+            <PostGrid posts={posts} />
+          ) : (
+            <div>
+              Fant ingen innlegg i kategorien <strong>{cat.name}</strong>
+            </div>
+          )}
+        </Container>
       </article>
     )
   }
