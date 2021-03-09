@@ -24,6 +24,11 @@ export const routes = [
     component: Taxonomy,
     exact: true,
   },
+  /*
+
+  Search
+
+  */
   {
     name: 'searchPage',
     path: '/sok',
@@ -34,18 +39,6 @@ export const routes = [
     name: 'searchResult',
     path: '/sok/:query',
     component: Search,
-    exact: true,
-  },
-  {
-    name: 'archive',
-    path: '/arkiv',
-    component: Taxonomy,
-    exact: true,
-  },
-  {
-    name: 'archivePage',
-    path: '/arkiv/side/:page',
-    component: Taxonomy,
     exact: true,
   },
   /*
@@ -112,7 +105,7 @@ export const routes = [
   },
   /*
 
-  Tag pages:
+  Tag page
 
   */
   {
@@ -121,18 +114,33 @@ export const routes = [
     component: Tag,
     exact: true,
   },
+  /*
+
+  Preview page
+
+  */
   {
     name: 'preview',
     path: '/_preview/:id/:postType',
     component: Preview,
     exact: true,
   },
+  /*
+
+  Post by type
+
+  */
   {
     name: 'postType',
     path: '/:type/:slug',
     component: Single,
     exact: false,
   },
+  /*
+
+  Page
+
+  */
   {
     name: 'page',
     path: '/:slug',
@@ -140,6 +148,12 @@ export const routes = [
     exact: true,
   },
 ]
+
+/*
+
+Route helpers
+
+*/
 
 /* 
 
@@ -162,7 +176,7 @@ export const replaceAll = (str, mapObj) => {
 /* 
 
 Use:
-getRouteLink('post', {':slug':'pizatime'})
+getRouteLink('post', {':slug':'pizzatime'})
 
 */
 export const getRouteLink = (type, replace = {}) => {
@@ -171,14 +185,9 @@ export const getRouteLink = (type, replace = {}) => {
   return url
 }
 
-/*
-
-Helpers
-
-*/
 export const getPaginatedCategoryLink = ({ slug, page }) => {
   if (!slug) {
-    return getRouteLink('archivePage', { ':page': page })
+    return getRouteLink('postsPage', { ':page': page })
   }
   if (page <= 1) {
     // If it's the first page, get root url without pagenumber
@@ -188,5 +197,5 @@ export const getPaginatedCategoryLink = ({ slug, page }) => {
 }
 
 export const getCategoryPageLink = () => {
-  return getRouteLink('archive')
+  return getRouteLink('posts')
 }

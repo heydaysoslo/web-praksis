@@ -12,6 +12,7 @@ import AcfImage from '../components/AcfImage'
 import Author from '../components/Author'
 import EditPostLink from '../components/EditPostLink'
 import Layout from '../components/Layout'
+import RelatedPosts from '../components/RelatedPosts'
 
 class Article extends Component {
   state = {
@@ -63,6 +64,7 @@ class Article extends Component {
     const { post, preview } = this.props
     let articleStyle = post.article_style || 'default'
     const { articleType } = this.state
+
     let theContent = post.content.rendered
     theContent = autolinker.link(theContent, {
       className: 'editorLink',
@@ -159,6 +161,7 @@ class Article extends Component {
             </footer>
           </div>
         </article>
+        {this.props.single && <RelatedPosts post={post} />}
       </Layout>
     )
   }

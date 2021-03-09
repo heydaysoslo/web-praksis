@@ -35,9 +35,11 @@ const Single = ({ match }) => {
   if (loading) {
     return <Loading />
   }
+
   if (noMatch || !post) {
     return <NoMatchPage />
   }
+
   if (post?.content?.protected && !unlocked) {
     return (
       <PostPassword
@@ -47,6 +49,7 @@ const Single = ({ match }) => {
       />
     )
   }
+
   return <Article single post={post} preview={false} />
 }
 
