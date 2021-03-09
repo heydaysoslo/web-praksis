@@ -1,75 +1,53 @@
-import React, { Component, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import Article from './Article'
 import NoMatchPage from './NoMatchPage'
 import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'
 import Loading from '../components/Loading'
 
-class Single extends Component {
-  state = {
-    loading: true,
-    noMatch: false,
-    post: null,
-    unlocked: false,
-  }
+const Single = ({ match }) => {
+  const [loading, setLoading] = useState(true)
+  const [noMatch, setNoMatch] = useState(false)
+  const [post, setPost] = useState(null)
+  const [unlocked, setUnlocked] = useState(false)
 
-  loadContent = () => {
-    // Reset state
-    this.setState({
-      loading: true,
-      unlocked: false,
-    })
+  const loadContent = () => {
+    setLoading(true)
+    setUnlocked(false)
 
-    getObjectBySlug(this.props.match.params)
+    getObjectBySlug(match?.params)
       .then((post) => {
-        this.setState({
-          post,
-          loading: false,
-        })
+        setPost(post)
+        setLoading(false)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        setNoMatch(true)
+      })
   }
 
-  componentDidUpdate = (prevProps) => {
-    if (this.props.match.params.slug !== prevProps.match.params.slug) {
-      this.loadContent()
-    }
+  const onPostUnlocked = (post) => {
+    setPost(post)
+    setUnlocked(true)
   }
 
-  componentDidMount = () => {
-    this.loadContent()
-  }
+  useEffect(loadContent, [match.params.slug])
 
-  onPostUnlocked = (post) => {
-    this.setState({
-      post,
-      unlocked: true,
-    })
+  if (loading) {
+    return <Loading />
   }
-
-  render() {
-    const { loading, noMatch, post, unlocked, isPreview } = this.state
-    if (loading) {
-      return <Loading />
-    }
-    if (noMatch || !post) {
-      return <NoMatchPage />
-    }
-    if (post.content.protected && !unlocked) {
-      return (
-        <PostPassword
-          postType={post.type}
-          postId={post.id}
-          postUnlocked={this.onPostUnlocked}
-        />
-      )
-    }
+  if (noMatch || !post) {
+    return <NoMatchPage />
+  }
+  if (post?.content?.protected && !unlocked) {
     return (
-      <Fragment>
-        <Article single post={post} preview={isPreview} />
-      </Fragment>
+      <PostPassword
+        postType={post.type}
+        postId={post.id}
+        postUnlocked={onPostUnlocked}
+      />
     )
   }
+  return <Article single post={post} preview={false} />
 }
 
 export default Single
