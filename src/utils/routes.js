@@ -5,8 +5,6 @@ import Search from '../templates/Search'
 import Tag from '../templates/Tag'
 import Single from '../templates/Single'
 
-import ContentType from '../containers/ContentType'
-
 export const routes = [
   {
     name: 'home',
@@ -50,33 +48,73 @@ export const routes = [
     component: Taxonomy,
     exact: true,
   },
-  {
-    name: 'categoryPage',
-    path: '/kategori',
-    component: Taxonomy,
-    exact: true,
-  },
+  /*
+
+  Taxonomy pages:
+  categories
+
+  */
+  // Root page should not return anything
+  // {
+  //   name: 'categoryPage',
+  //   path: '/kategori',
+  //   component: Taxonomy,
+  //   exact: true,
+  //   props: {
+  //     taxonomy: 'categories',
+  //   },
+  // },
   {
     name: 'category',
     path: '/kategori/:cat',
     component: Taxonomy,
     exact: true,
+    props: {
+      label: 'Kategori',
+      taxonomy: 'categories',
+    },
   },
   {
     name: 'categoryPagina',
     path: '/kategori/:cat/side/:page',
     component: Taxonomy,
     exact: true,
+    props: {
+      label: 'Kategori',
+      taxonomy: 'categories',
+    },
   },
+  /*
+
+  Taxonomy pages:
+  content_type
+
+  */
   {
     name: 'articleType',
     path: '/innleggstype/:cat',
-    component: ContentType,
+    component: Taxonomy,
     exact: true,
     props: {
+      label: 'Innleggstype',
       taxonomy: 'content_type',
     },
   },
+  {
+    name: 'articleTypePagina',
+    path: '/innleggstype/:cat/side/:page',
+    component: Taxonomy,
+    exact: true,
+    props: {
+      label: 'Innleggstype',
+      taxonomy: 'content_type',
+    },
+  },
+  /*
+
+  Tag pages:
+
+  */
   {
     name: 'tag',
     path: '/stikkord/:tag',

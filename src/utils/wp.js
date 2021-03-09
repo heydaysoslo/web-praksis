@@ -97,6 +97,15 @@ export const search = (queryTerm) => {
   return wp.search().param('s', queryTerm)
 }
 
+export const getPostsByTaxonomy = ({
+  ids,
+  taxonomy = 'categories',
+  page = 1,
+  perPage = 12,
+}) => {
+  return wp.posts().param(taxonomy, ids).perPage(perPage).page(page)
+}
+
 export const getPostsByCategory = (id, page = 1, perPage = 12) => {
   if (!id) {
     return wp.posts().perPage(perPage).page(page)
@@ -106,10 +115,6 @@ export const getPostsByCategory = (id, page = 1, perPage = 12) => {
 
 export const getPostsByTag = (id) => {
   return wp.posts().tags(id)
-}
-
-export const getPostsByTaxonomy = (tax, ids) => {
-  return wp.posts().param(tax, ids)
 }
 
 export const getPostsByIds = (ids = []) => {
@@ -129,6 +134,14 @@ export const getTags = () => {
 
 export const getCategories = () => {
   return wp.categories().then(excludeEmptyTerms)
+}
+
+export const getTerms = ({ taxonomy = 'categories' }) => {
+  if (taxonomy === 'content_type') {
+    return wp.contentTypes().then(excludeEmptyTerms)
+  } else {
+    return wp.categories().then(excludeEmptyTerms)
+  }
 }
 
 export const getContentTypes = () => {

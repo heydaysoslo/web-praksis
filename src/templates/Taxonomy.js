@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getPostsByCategory, getCategories, getPosts } from '../utils/wp'
+import { getPostsByTaxonomy, getTerms, getPosts } from '../utils/wp'
 import Loading from '../components/Loading'
 import Pagination from '../components/Pagination'
 import Box from '../components/primitives/Box'
@@ -32,7 +32,11 @@ class Taxonomy extends Component {
     const cat = this.getCurrentCat(slug)
     this.setState({ page, cat })
     if (cat?.id) {
-      getPostsByCategory(cat.id, page).then((posts) => {
+      getPostsByTaxonomy({
+        taxonomy: this.props.taxonomy,
+        ids: [cat.id],
+        page,
+      }).then((posts) => {
         this.setState({ posts, loading: false })
         if (posts._paging) {
           this.setState({ paging: posts._paging })
@@ -54,7 +58,7 @@ class Taxonomy extends Component {
     if (this.state.catsLoaded) {
       this.setCurrentCat(slug)
     } else {
-      getCategories().then((cats) => {
+      getTerms({ taxonomy: this.props.taxonomy }).then((cats) => {
         this.setState({ cats, catsLoaded: true }, () => {
           this.setCurrentCat(slug)
         })
@@ -76,12 +80,12 @@ class Taxonomy extends Component {
   }
 
   getPageHeadings = (cat) => {
-    if (this.state.page !== 1) {
-      return null
-    }
+    // if (this.state.page !== 1) {
+    //   return null
+    // }
     if (cat?.name) {
       return {
-        label: 'Kategori',
+        label: this.props.label,
         title: cat.name,
         intro: cat?.description,
       }
@@ -98,7 +102,9 @@ class Taxonomy extends Component {
       <Layout
         page={{
           ...cat,
-          pageTitle: (cat && cat.name && `Kategori: ${cat.name}`) || 'Arkiv',
+          pageTitle:
+            (cat && cat.name && `${pageHeadings?.label}: ${cat.name}`) ||
+            'Arkiv',
         }}
       >
         <article>

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { variant, space, typography } from 'styled-system'
 
 const Heading = styled.h1`
+  font-weight: 700;
   ${space}
   ${typography}
   ${variant({
