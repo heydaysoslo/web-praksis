@@ -1,4 +1,5 @@
 import WPAPI from 'wpapi'
+// Docs: http://wp-api.org/node-wpapi/api-reference/wpapi/1.1.2/WPRequest.html#exclude
 
 export const BACKEND_URL = 'http://praksis.test'
 export const FRONTEND_URL = 'https://praksismagasin.no'
@@ -283,6 +284,17 @@ export const getPostTags = (post) => {
     return post._embedded['wp:term'][1]
   }
   return []
+}
+
+export const getRelatedPosts = (post) => {
+  // get posts from other categories to ensure rotation
+  return wp
+    .posts()
+    .exclude([post.id])
+    .excludeCategories(post?.categories)
+    .perPage(4)
+  // get from same category
+  // return wp.posts().exclude([post.id]).categories(post?.categories).perPage(4)
 }
 
 export default wp
