@@ -161,7 +161,9 @@ class Article extends Component {
             </footer>
           </div>
         </article>
-        {this.props.single && <RelatedPosts post={post} />}
+        {this.props.single && post?.type === 'post' && (
+          <RelatedPosts post={post} />
+        )}
       </Layout>
     )
   }

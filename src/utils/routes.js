@@ -12,6 +12,11 @@ export const routes = [
     component: FrontPage,
     exact: true,
   },
+  /*
+
+  Archive page
+
+  */
   {
     name: 'posts',
     path: '/posts',
@@ -48,15 +53,6 @@ export const routes = [
 
   */
   // Root page should not return anything
-  // {
-  //   name: 'categoryPage',
-  //   path: '/kategori',
-  //   component: Taxonomy,
-  //   exact: true,
-  //   props: {
-  //     taxonomy: 'categories',
-  //   },
-  // },
   {
     name: 'category',
     path: '/kategori/:cat',
@@ -139,13 +135,14 @@ export const routes = [
   /*
 
   Page
+  !! This route must be last to prevent blocking above routes
 
   */
   {
     name: 'page',
     path: '/:slug',
     component: Single,
-    exact: true,
+    exact: false,
   },
 ]
 
