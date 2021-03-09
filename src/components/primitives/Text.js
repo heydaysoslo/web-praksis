@@ -1,13 +1,15 @@
 import styled from 'styled-components'
-import { variant, space } from 'styled-system'
+import { variant, typography, space } from 'styled-system'
 
 const Text = styled.div`
+  ${typography}
   ${space}
   ${variant({
     prop: 'size',
     variants: {
       normal: {
         fontSize: [1, null, null, 2],
+        lineHeight: 'normal',
       },
       small: {
         fontSize: [14, null, 16],

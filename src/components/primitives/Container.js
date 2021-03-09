@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { variant } from 'styled-system'
+import { variant, space } from 'styled-system'
 import Box from './Box'
 
 const baseProps = {
@@ -8,6 +8,7 @@ const baseProps = {
 
 const Container = styled(Box)`
   margin: 0 auto;
+  ${space}
   ${variant({
     prop: 'size',
     variants: {

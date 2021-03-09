@@ -50,6 +50,7 @@ const fontWeight = {
 }
 
 const lineHeight = {
+  normal: 1.4,
   heading: 1,
   body: 1.5,
   tight: 1.25,

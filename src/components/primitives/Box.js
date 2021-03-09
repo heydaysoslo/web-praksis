@@ -9,10 +9,14 @@ import {
   border,
   grid,
   typography,
+  width,
+  height,
   compose,
 } from 'styled-system'
 
 const boxProps = compose(
+  width,
+  height,
   space,
   color,
   layout,
