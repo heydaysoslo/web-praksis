@@ -15,7 +15,7 @@ export default class AcfBgset extends Component {
         className={cc({
           'AcfBgset lazyload cover': true,
           [`aspect aspect--${aspect}`]: aspect,
-          [this.props.className]: this.props.className
+          [this.props.className]: this.props.className,
         })}
       />
     )
