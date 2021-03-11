@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Article from './Article'
+import Article from './ArticleNew'
 import NoMatchPage from './NoMatchPage'
 import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'

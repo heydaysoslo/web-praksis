@@ -6,8 +6,15 @@ import { Number, PageLink } from './Pagination.styled'
 import Flex from './primitives/Flex'
 import Box from './primitives/Box'
 
-const CategoryPageLink = ({ slug, page, children, className, ...props }) => {
-  const pageLink = getPaginatedCategoryLink({ slug, page })
+const CategoryPageLink = ({
+  slug,
+  page,
+  children,
+  className,
+  taxonomy,
+  ...props
+}) => {
+  const pageLink = getPaginatedCategoryLink({ slug, page, taxonomy })
   return (
     <Link className={className} to={pageLink} {...props}>
       {children}
@@ -59,6 +66,7 @@ const Pagination = ({ posts, page, cat, paging }) => {
                     $active={page === paged}
                     slug={catSlug}
                     page={paged}
+                    taxonomy={cat?.taxonomy}
                   >
                     {paged}
                   </Number>
@@ -76,6 +84,7 @@ const Pagination = ({ posts, page, cat, paging }) => {
                 $active={prevPageNum === page}
                 slug={catSlug}
                 page={prevPageNum}
+                taxonomy={cat?.taxonomy}
               >
                 &larr; Nyere innlegg
               </PageLink>
@@ -87,6 +96,7 @@ const Pagination = ({ posts, page, cat, paging }) => {
                 $active={nextPageNum === page}
                 slug={catSlug}
                 page={nextPageNum}
+                taxonomy={cat?.taxonomy}
               >
                 Eldre innlegg &rarr;
               </PageLink>

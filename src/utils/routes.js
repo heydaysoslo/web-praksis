@@ -1,4 +1,4 @@
-import FrontPage from '../templates/FrontPage'
+import FrontPage from '../templates/FrontPageNew'
 import Taxonomy from '../templates/Taxonomy'
 import Preview from '../templates/Preview'
 import Search from '../templates/Search'
@@ -182,10 +182,19 @@ export const getRouteLink = (type, replace = {}) => {
   return url
 }
 
-export const getPaginatedCategoryLink = ({ slug, page }) => {
+export const getPaginatedCategoryLink = ({ slug, page, taxonomy }) => {
   if (!slug) {
     return getRouteLink('postsPage', { ':page': page })
   }
+
+  if (taxonomy && taxonomy === 'content_type') {
+    if (page <= 1) {
+      // If it's the first page, get root url without pagenumber
+      return getRouteLink('articleType', { ':cat': slug })
+    }
+    return getRouteLink('articleTypePagina', { ':cat': slug, ':page': page })
+  }
+
   if (page <= 1) {
     // If it's the first page, get root url without pagenumber
     return getRouteLink('category', { ':cat': slug })
