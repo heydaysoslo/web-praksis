@@ -57,6 +57,7 @@ const lineHeight = {
 }
 
 const fontSizes = [14, 18, 20, 28, 32, 64]
+fontSizes.small = 14
 
 /*
 

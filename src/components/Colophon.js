@@ -26,7 +26,7 @@ const Colophon = () => {
   const ctx = useContext(SiteContext)
   return (
     <ColophonStyled
-      height={{ xs: '1rem', md: '4rem' }}
+      height={{ xs: '1rem', md: 'auto' }}
       bg="red"
       color="white"
       as="aside"

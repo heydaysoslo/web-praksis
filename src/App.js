@@ -10,6 +10,7 @@ import theme from './style/theme'
 import CategoryNav from './components/CategoryNav'
 import Colophon from './components/Colophon'
 import FooterActions from './components/FooterActions'
+import Footer from './components/Footer'
 
 class App extends Component {
   render() {
@@ -40,6 +41,7 @@ class App extends Component {
                         ))}
                         <Route component={NoMatchPage} />
                       </Switch>
+                      <Footer />
                     </div>
                   </div>
                   <Colophon />
