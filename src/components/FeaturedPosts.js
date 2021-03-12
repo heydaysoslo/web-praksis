@@ -6,7 +6,7 @@ import Container from './primitives/Container'
 
 const FeaturedPosts = ({ postIds }) => {
   const [posts, setPosts] = useState([])
-  const [firstPost, setFirstPost] = useState([])
+  const [firstPost, setFirstPost] = useState(null)
 
   const loadPosts = () => {
     if (Array.isArray(postIds) && !posts.length) {

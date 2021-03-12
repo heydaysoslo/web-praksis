@@ -26,10 +26,22 @@ const boxProps = compose(
   typography
 )
 
-const Box = styled.div`
-  box-sizing: border-box;
-  ${boxProps}
-`
+const Box = styled.div(
+  {
+    boxSizing: 'border-box',
+  },
+  compose(
+    width,
+    height,
+    space,
+    color,
+    layout,
+    flexbox,
+    border,
+    grid,
+    typography
+  )
+)
 
 Box.displayName = 'Box'
 

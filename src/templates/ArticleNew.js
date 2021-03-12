@@ -12,8 +12,10 @@ import Author from '../components/Author'
 import EditPostLink from '../components/EditPostLink'
 import RelatedPosts from '../components/RelatedPosts'
 import WpTheContent from '../components/WpTheContent'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const Article = ({ post, single, preview }) => {
+  const [readArticles, setReadArticles] = useLocalStorage('readArticles', [])
   const [articleType, setArticleType] = useState(null)
   const articleStyle = post?.article_style || 'default'
   const author = post?.acf?.contributor[0] || post.author
@@ -28,6 +30,12 @@ const Article = ({ post, single, preview }) => {
   const onMount = () => {
     getArticleType()
     if (single) {
+      // Record that the user has read this article before
+      // Could have a timeout for more precise tracking
+      if (!readArticles.includes(post.id)) {
+        setReadArticles([...readArticles, post.id])
+      }
+
       window.scrollTo(0, 0)
     }
   }

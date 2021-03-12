@@ -107,11 +107,46 @@ export const getPostsByTaxonomy = ({
   return wp.posts().param(taxonomy, ids).perPage(perPage).page(page)
 }
 
+export const getPostsFromEachTax = ({ perPage = 1 }) => {
+  return new Promise((resolve) => {
+    // Define an array to collect our items
+    const collect = []
+    // Get all terms from "content_type" taxonomy
+    getContentTypes().then((taxRes) => {
+      taxRes.map((tax, i) => {
+        tax.term_order = i
+        // Get the posts in each term
+        getPostsByTaxonomy({
+          perPage,
+          taxonomy: tax.taxonomy,
+          ids: [tax.id],
+        }).then((postRes) => {
+          // Save the taxonomy and posts to an array object
+          collect.push({
+            taxonomy: tax,
+            posts: postRes,
+          })
+          // Resolve when we've got the posts from each term
+          if (collect.length >= taxRes.length) {
+            resolve(collect)
+          }
+        })
+      })
+    })
+  })
+}
+
 export const getPostsByCategory = (id, page = 1, perPage = 12) => {
   if (!id) {
     return wp.posts().perPage(perPage).page(page)
   }
   return wp.posts().categories(id).perPage(perPage).page(page)
+}
+
+export const getFrontPage = () => {
+  return getSettings().then((settings) => {
+    return getPageById(settings.front_page_id)
+  })
 }
 
 export const getPostsByTag = (id) => {
@@ -134,7 +169,11 @@ export const getTags = () => {
 }
 
 export const getCategories = () => {
-  return wp.categories().then(excludeEmptyTerms)
+  return wp
+    .categories()
+    .param('filter[orderby]', 'term_order')
+    .param('order', 'asc')
+    .then(excludeEmptyTerms)
 }
 
 export const getTerms = ({ taxonomy = 'categories' }) => {
@@ -146,7 +185,11 @@ export const getTerms = ({ taxonomy = 'categories' }) => {
 }
 
 export const getContentTypes = () => {
-  return wp.contentTypes().then(excludeEmptyTerms)
+  return wp
+    .contentTypes()
+    .param('filter[orderby]', 'term_order')
+    .param('order', 'asc')
+    .then(excludeEmptyTerms)
 }
 
 export const getContentType = (slug) => {
@@ -286,13 +329,8 @@ export const getPostTags = (post) => {
   return []
 }
 
-export const getRelatedPosts = (post) => {
-  // get posts from other categories to ensure rotation
-  return wp
-    .posts()
-    .exclude([post.id])
-    .excludeCategories(post?.categories)
-    .perPage(4)
+export const getRelatedPosts = ({ post, exclude }) => {
+  return wp.posts().exclude(exclude).perPage(4).orderby('rand')
   // get from same category
   // return wp.posts().exclude([post.id]).categories(post?.categories).perPage(4)
 }

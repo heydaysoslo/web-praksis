@@ -1,31 +1,38 @@
-import React, { useContext } from 'react'
-import SiteContext from '../components/utilities/Context'
+import React, { useEffect, useState } from 'react'
 import FeaturedPosts from '../components/FeaturedPosts'
 import Layout from '../components/Layout'
 import Heading from '../components/primitives/Heading'
 import Container from '../components/primitives/Container'
 import Box from '../components/primitives/Box'
+import SpecialPosts from '../components/SpecialPosts'
+import { getFrontPage } from '../utils/wp'
 
 const FrontPageNew = () => {
-  const { state } = useContext(SiteContext)
-  const { frontPage } = state
+  const [page, setPage] = useState()
+  const onMount = () => {
+    getFrontPage().then((res) => {
+      setPage(res)
+    })
+  }
+  useEffect(onMount, [])
   return (
     <Layout
       page={{
-        ...frontPage,
-        pageTitle: frontPage && frontPage.title && frontPage.title.rendered,
+        ...page,
+        pageTitle: page && page.title && page.title.rendered,
       }}
     >
       <Box as="article" pb={5}>
-        {frontPage && frontPage.acf.intro && (
+        {page && page.acf.intro && (
           <Container as="header" my={[3, null, 5]}>
             <Heading size="h1" textAlign="center">
-              {frontPage.acf.intro}
+              {page.acf.intro}
             </Heading>
           </Container>
         )}
-        <FeaturedPosts postIds={frontPage?.acf?.featured_posts} />
+        <FeaturedPosts postIds={page?.acf?.featured_posts} />
       </Box>
+      <SpecialPosts />
     </Layout>
   )
 }

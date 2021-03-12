@@ -6,9 +6,12 @@ import Box from './primitives/Box'
 import PostGrid from './PostGrid'
 import Loading from './Loading'
 import Heading from './primitives/Heading'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const RelatedPosts = ({ post }) => {
   const [posts, setPosts] = useState(null)
+  const [readArticles] = useLocalStorage('readArticles', [])
+  const perPage = 4
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -17,9 +20,16 @@ const RelatedPosts = ({ post }) => {
 
   const inViewEvent = () => {
     if (inView) {
-      getRelatedPosts(post).then((res) => {
-        console.log(res)
-        setPosts(res)
+      getRelatedPosts({
+        post,
+        exclude: [post.id, ...readArticles],
+        perPage,
+      }).then((res) => {
+        if (res.length < perPage) {
+          //
+        } else {
+          setPosts(res)
+        }
       })
     }
   }

@@ -18,45 +18,46 @@ const StyledBgSet = styled(AcfBgset)`
 const FeaturedPost = ({ post }) => {
   const { title, excerpt, link, featured_image } = post
   return (
-    <Flex alignItems="stretch" flexWrap="wrap">
-      <Box bg="red" width={[1, null, 8 / 12]} style={{ position: 'relative' }}>
-        <Link
-          to={link}
-          style={{
-            minHeight: '100%',
-            display: 'block',
-            background: 'red',
-          }}
+    <>
+      <Flex alignItems="stretch" flexWrap="wrap">
+        <Box
+          width={{ xs: 1, md: 1 / 2, lg: 8 / 12 }}
+          style={{ position: 'relative' }}
         >
-          {featured_image ? (
-            <StyledBgSet image={featured_image} aspect="landscape" />
-          ) : (
-            <div className="aspect aspect--landscape" />
-          )}
-        </Link>
-      </Box>
-      <Box
-        width={[1, null, 4 / 12]}
-        bg="grays.0"
-        p={[3, null, 4]}
-        borderTopRightRadius={[null, null, 1]}
-        borderBottomRightRadius={[1]}
-        borderBottomLeftRadius={[1, null]}
-      >
-        <Label>Kategori her</Label>
-        <Link to={link}>
-          {title?.rendered && (
-            <Heading size="h2" as="h2">
-              {HtmlParser(post.title.rendered)}
-            </Heading>
-          )}
-          {excerpt?.rendered && (
-            <Text>{HtmlParser(post.excerpt.rendered)}</Text>
-          )}
-        </Link>
-        {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
-      </Box>
-    </Flex>
+          <Link to={link}>
+            {featured_image ? (
+              <StyledBgSet image={featured_image} aspect="landscape" />
+            ) : (
+              <div className="aspect aspect--landscape" />
+            )}
+          </Link>
+        </Box>
+        <Box
+          width={{ xs: 1, md: 1 / 2, lg: 4 / 12 }}
+          bg="grays.0"
+          p={[3, null, 4]}
+          borderTopRightRadius={[null, null, 1]}
+          borderBottomRightRadius={[1]}
+          borderBottomLeftRadius={[1, null]}
+        >
+          <Flex flexDirection="column" minHeight="100%">
+            <Label>Kategori her</Label>
+            <Link to={link}>
+              {title?.rendered && (
+                <Heading size="h2" as="h2">
+                  {HtmlParser(post.title.rendered)}
+                </Heading>
+              )}
+            </Link>
+            {excerpt?.rendered && (
+              <Box marginTop="auto">
+                <Text>{HtmlParser(post.excerpt.rendered)}</Text>
+              </Box>
+            )}
+          </Flex>
+        </Box>
+      </Flex>
+    </>
   )
 }
 

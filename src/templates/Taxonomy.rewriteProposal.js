@@ -64,7 +64,6 @@ const Taxonomy = ({ match, taxonomy, label }) => {
   const loadContent = () => {
     setLoading(true)
     const slug = match?.params?.cat
-    console.log('loadContent', slug, catsLoaded)
     if (catsLoaded) {
       setCurrentCat(slug)
     } else {
