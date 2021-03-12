@@ -41,10 +41,10 @@ const RelatedPosts = ({ post }) => {
 
   return (
     <Container ref={ref}>
-      <Heading as="h2" textAlign="center" size="h2">
+      <Heading as="h2" size="h2">
         Les også…
       </Heading>
-      <Box pb={6}>
+      <Box>
         {!posts && (
           <Box minHeight="400px">
             <Loading title="Laster artikler" />

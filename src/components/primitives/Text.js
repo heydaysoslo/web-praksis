@@ -20,6 +20,11 @@ const Text = styled.div`
         lineHeight: 'tight',
         fontSize: [1],
       },
+      md: {
+        fontFamily: 'sans',
+        fontSize: [3],
+        lineHeight: 'tight',
+      },
     },
   })}
 `
