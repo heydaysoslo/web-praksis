@@ -1042,48 +1042,6 @@ strong {
     .App {
       padding-left: 40px; } }
 
-.AppFooter {
-  height: 10px;
-  position: fixed;
-  top: 100%;
-  left: 0;
-  width: 100vh;
-  background: #dc1e0f;
-  transform: rotate(-90deg);
-  transform-origin: top left;
-  font-size: 1.6rem;
-  color: #fff; }
-  @media screen and (min-width: 48em) {
-    .AppFooter {
-      font-size: 1.6rem; } }
-  @media screen and (min-width: 64em) {
-    .AppFooter {
-      font-size: 1.6rem; } }
-  .AppFooter__content {
-    display: none;
-    line-height: 1;
-    padding: 1rem;
-    justify-content: space-between;
-    width: 100%;
-    flex-wrap: nowrap; }
-  .AppFooter a {
-    text-decoration: underline;
-    color: #fff; }
-    .AppFooter a:hover {
-      text-decoration: none; }
-  @media screen and (min-width: 48em) {
-    .AppFooter {
-      height: 40px; }
-      .AppFooter__content {
-        display: flex; } }
-
-.SvgFlame {
-  height: 1em;
-  width: 1.6em;
-  margin-left: 0.5rem;
-  display: inline-block;
-  vertical-align: middle; }
-
 .development:after {
   position: fixed;
   right: 2.2rem;
@@ -1555,25 +1513,6 @@ strong {
   transition: border-color 0.2s ease; }
   .Button:hover {
     border-color: #dc1e0f; }
-
-.FrontPage__intro {
-  margin-top: 5rem;
-  text-align: center; }
-  @media screen and (min-width: 48em) {
-    .FrontPage__intro {
-      margin-top: 5rem; } }
-  @media screen and (min-width: 64em) {
-    .FrontPage__intro {
-      margin-top: 5rem; } }
-
-.FrontPage__carousel {
-  margin-top: 5rem; }
-  @media screen and (min-width: 48em) {
-    .FrontPage__carousel {
-      margin-top: 5rem; } }
-  @media screen and (min-width: 64em) {
-    .FrontPage__carousel {
-      margin-top: 5rem; } }
 
 .Logo {
   width: 100%;

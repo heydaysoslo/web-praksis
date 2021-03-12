@@ -105,7 +105,7 @@ export const getPostsByTaxonomy = ({
   page = 1,
   perPage = 12,
 }) => {
-  return wp.posts().param(taxonomy, ids).perPage(perPage).page(page)
+  return wp.posts().embed().param(taxonomy, ids).perPage(perPage).page(page)
 }
 
 export const getPostsFromEachTax = ({ perPage = 1 }) => {
@@ -155,7 +155,7 @@ export const getPostsByTag = (id) => {
 }
 
 export const getPostsByIds = (ids = []) => {
-  return wp.posts().include(ids)
+  return wp.posts().embed().include(ids)
 }
 
 export const getCategoryBySlug = (slug) => {

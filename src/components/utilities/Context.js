@@ -1,5 +1,5 @@
 import React, { Component, createContext } from 'react'
-import { getNavMenu, getSettings } from '../../utils/wp'
+import { getCategories, getNavMenu, getSettings } from '../../utils/wp'
 import mqlistener from '../../utils/mqlistener'
 
 const SiteContext = createContext()
@@ -13,6 +13,7 @@ export class Provider extends Component {
       bloginfo: null,
     },
     initialLoad: false,
+    categories: [],
     mq: 'sm',
   }
 
@@ -41,6 +42,15 @@ export class Provider extends Component {
         })
       })
       .catch((err) => console.log(err))
+
+    /**
+     * Get categories
+     */
+    getCategories().then((res) => {
+      this.setState({
+        categories: res,
+      })
+    })
   }
 
   toggleMenu = () => {

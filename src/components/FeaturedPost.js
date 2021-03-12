@@ -9,6 +9,7 @@ import Heading from './primitives/Heading'
 import Label from './primitives/Label'
 import Text from './primitives/Text'
 import AcfBgset from './AcfBgset'
+import TaxonomyLabel from './TaxonomyLabel'
 
 const StyledBgSet = styled(AcfBgset)`
   min-height: 100%;
@@ -41,7 +42,7 @@ const FeaturedPost = ({ post }) => {
           borderBottomLeftRadius={[1, null]}
         >
           <Flex flexDirection="column" minHeight="100%">
-            <Label>Kategori her</Label>
+            <TaxonomyLabel post={post} />
             <Link to={link}>
               {title?.rendered && (
                 <Heading size="h2" as="h2">

@@ -5,7 +5,7 @@ import cc from 'classcat'
 import autolinker from 'autolinker'
 
 import { baseUrl, getObjectLink, getPostTerms } from '../utils/wp'
-import { postDateFormat } from '../utils/date'
+import { formatArticeDate } from '../utils/date'
 import { elementContainsMulti } from '../utils/functions'
 import ShareButtons from '../components/ShareButtons'
 import AcfImage from '../components/AcfImage'
@@ -102,7 +102,7 @@ class Article extends Component {
                 {post.type === 'post' && (
                   <Fragment>
                     <time dateTime={post.date} className="date">
-                      {postDateFormat(post.date)}
+                      {formatArticeDate(post.date)}
                     </time>
                     {articleType && (
                       <Fragment>

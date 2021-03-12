@@ -28,7 +28,14 @@ const SpecialPosts = () => {
               pb={[4]}
             >
               {posts.map((post) => {
-                return <Card key={post.id} post={post} />
+                return (
+                  <Card
+                    hideDate={true}
+                    key={post.id}
+                    post={post}
+                    taxonomy="content_type"
+                  />
+                )
               })}
             </Box>
           )

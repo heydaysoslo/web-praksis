@@ -36,7 +36,7 @@ const FeaturedPosts = ({ postIds }) => {
   return (
     <Container>
       {firstPost && <FeaturedPost post={firstPost} />}
-      {posts && <PostGrid posts={posts} />}
+      {posts && <PostGrid posts={posts} itemProps={{ hideDate: true }} />}
     </Container>
   )
 }

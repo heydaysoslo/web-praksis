@@ -14,18 +14,6 @@ import {
   compose,
 } from 'styled-system'
 
-const boxProps = compose(
-  width,
-  height,
-  space,
-  color,
-  layout,
-  flexbox,
-  border,
-  grid,
-  typography
-)
-
 const Box = styled.div(
   {
     boxSizing: 'border-box',

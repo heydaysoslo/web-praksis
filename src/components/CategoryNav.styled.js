@@ -3,8 +3,6 @@ import Container from './primitives/Container'
 import Box from './primitives/Box'
 import Flex from './primitives/Flex'
 
-const CategoryNavStyled = styled(Box)(({ theme }) => css``)
-
 export const Wrap = styled.div(
   ({ theme }) => css`
     overflow: hidden;
@@ -39,5 +37,3 @@ export const Items = styled(Flex)(
     display: inline-flex;
   `
 )
-
-export default CategoryNavStyled

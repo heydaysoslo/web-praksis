@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import Layout from '../components/Layout'
 import { baseUrl, getObjectLink, getPostTerms } from '../utils/wp'
-import { postDateFormat } from '../utils/date'
+import { formatArticeDate } from '../utils/date'
 import ShareButtons from '../components/ShareButtons'
 import AcfImage from '../components/AcfImage'
 import Author from '../components/Author'
@@ -60,7 +60,7 @@ const Article = ({ post, single, preview }) => {
               {post.type === 'post' && (
                 <>
                   <time dateTime={post.date} className="date">
-                    {postDateFormat(post.date)}
+                    {formatArticeDate(post.date)}
                   </time>
                   {articleType && (
                     <>

@@ -45,7 +45,11 @@ const RelatedPosts = ({ post }) => {
         Les også…
       </Heading>
       <Box pb={6}>
-        {!posts && <Loading title="Laster artikler" />}
+        {!posts && (
+          <Box minHeight="400px">
+            <Loading title="Laster artikler" />
+          </Box>
+        )}
         {posts && <PostGrid posts={posts} />}
       </Box>
     </Container>

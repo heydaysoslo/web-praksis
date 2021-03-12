@@ -3,7 +3,7 @@ import Card from './Card'
 import Box from './primitives/Box'
 import Flex from './primitives/Flex'
 
-const PostGrid = ({ posts }) => {
+const PostGrid = ({ posts, itemProps }) => {
   return (
     <Flex flexWrap="wrap" mx={-3} mt={4}>
       {posts.map((p) => (
@@ -13,7 +13,7 @@ const PostGrid = ({ posts }) => {
           px={[3]}
           pb={[4]}
         >
-          <Card post={p} />
+          <Card {...itemProps} post={p} />
         </Box>
       ))}
     </Flex>

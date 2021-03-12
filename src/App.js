@@ -8,7 +8,7 @@ import './styles/app.css'
 import { routes } from './utils/routes'
 import theme from './style/theme'
 import CategoryNav from './components/CategoryNav'
-import Footer from './components/Footer'
+import Colophon from './components/Colophon'
 import FooterActions from './components/FooterActions'
 
 class App extends Component {
@@ -22,7 +22,7 @@ class App extends Component {
                 <div className="App">
                   <div className="App__main">
                     <Header {...this.props} />
-                    <CategoryNav />
+                    <CategoryNav categories={ctx?.state?.categories} />
                     <div className="App__content">
                       <Switch>
                         {routes.map((r) => (
@@ -42,7 +42,7 @@ class App extends Component {
                       </Switch>
                     </div>
                   </div>
-                  <Footer />
+                  <Colophon />
                   <FooterActions />
                 </div>
               </ThemeProvider>
