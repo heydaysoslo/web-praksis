@@ -22,6 +22,7 @@ const wp = new WPAPI({
       // Cache requests
       let result = wpCache[wpreq]
       if (result) {
+        console.log('FROM CACHE')
         if (callback && typeof callback === 'function') {
           callback(null, result)
         }

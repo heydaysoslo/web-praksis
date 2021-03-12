@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getNavMenu } from '../utils/wp'
 import { Link } from 'react-router-dom'
-import { Consumer } from './utilities'
+import { Consumer } from './utilities/Context'
 // import AdminBar from '../components/AdminBar'
 import SideNav from '../components/SideNav'
 import Logo from './Logo'

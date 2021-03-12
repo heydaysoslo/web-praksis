@@ -18,7 +18,8 @@ const Article = ({ post, single, preview }) => {
   const [readArticles, setReadArticles] = useLocalStorage('readArticles', [])
   const [articleType, setArticleType] = useState(null)
   const articleStyle = post?.article_style || 'default'
-  const author = post?.acf?.contributor[0] || post.author
+  const author =
+    (post?.acf?.contributor && post?.acf?.contributor[0]) || post.author
 
   const getArticleType = () => {
     const articleTypes = getPostTerms(post, 'content_type')

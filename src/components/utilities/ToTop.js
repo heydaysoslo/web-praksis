@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollToggle } from './'
+import ScrollToggle from './ScrollToggle'
 import cc from 'classcat'
 import smoothscroll from 'smoothscroll-polyfill'
 smoothscroll.polyfill()
@@ -18,7 +18,7 @@ export default class ToTop extends Component {
               onClick={this.scrollToTop}
               className={cc({
                 ToTop,
-                'ToTop--visible': visible
+                'ToTop--visible': visible,
               })}
             >
               Tilbake til topp

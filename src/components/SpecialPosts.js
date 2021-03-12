@@ -28,7 +28,7 @@ const SpecialPosts = () => {
               pb={[4]}
             >
               {posts.map((post) => {
-                return <Card post={post} />
+                return <Card key={post.id} post={post} />
               })}
             </Box>
           )

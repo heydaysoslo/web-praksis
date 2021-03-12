@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import { Provider, Consumer } from './components/utilities'
+import { Provider, Consumer } from './components/utilities/Context'
 import NoMatchPage from './templates/NoMatchPage'
 import Header from './components/Header'
 import './styles/app.css'

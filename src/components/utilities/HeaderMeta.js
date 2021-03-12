@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Consumer } from '../utilities'
+import { Consumer } from '../utilities/Context'
 import Helmet from 'react-helmet'
 
 export const striptags = (html) => {
