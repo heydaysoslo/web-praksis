@@ -18,7 +18,7 @@ const SpecialPosts = () => {
   }
   return (
     <Container>
-      <Flex wrap="wrap" mx={-3} mt={4}>
+      <Flex flexWrap="wrap" mx={-3} mt={4}>
         {data.map(({ taxonomy, posts }) => {
           return (
             <Box
