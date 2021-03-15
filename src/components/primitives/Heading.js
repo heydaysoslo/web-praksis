@@ -9,7 +9,7 @@ const Heading = styled.h1`
     prop: 'size',
     variants: {
       h1: {
-        fontSize: [42, null, 62],
+        fontSize: ['10vw', null, 62],
       },
       h2: {
         fontSize: [28, null, 42],
