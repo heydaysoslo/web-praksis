@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom'
 import Box from './primitives/Box'
 import Flex from './primitives/Flex'
 import Heading from './primitives/Heading'
-import Label from './primitives/Label'
 import Text from './primitives/Text'
 import AcfBgset from './AcfBgset'
 import TaxonomyLabel from './TaxonomyLabel'
+import StyledLink from './primitives/Link'
 
 const StyledBgSet = styled(AcfBgset)`
   min-height: 100%;
@@ -34,15 +34,15 @@ const FeaturedPost = ({ post }) => {
           </Link>
         </Box>
         <Box
-          width={{ xs: 1, md: 1 / 2, lg: 4 / 12 }}
+          width={{ xs: 1, md: 1 / 2, lg: 1 / 3 }}
           bg="grays.0"
-          p={[3, null, 4]}
+          p={{ xs: 3, md: 4 }}
           borderTopRightRadius={[null, null, 1]}
           borderBottomRightRadius={[1]}
           borderBottomLeftRadius={[1, null]}
         >
           <Flex flexDirection="column" minHeight="100%">
-            <TaxonomyLabel post={post} />
+            <TaxonomyLabel mb={2} post={post} />
             <Link to={link}>
               {title?.rendered && (
                 <Heading size="h2" as="h2">
@@ -55,6 +55,11 @@ const FeaturedPost = ({ post }) => {
                 <Text>{HtmlParser(post.excerpt.rendered)}</Text>
               </Box>
             )}
+            <Box mt={2}>
+              <StyledLink as={Link} to={link}>
+                Les mer »
+              </StyledLink>
+            </Box>
           </Flex>
         </Box>
       </Flex>

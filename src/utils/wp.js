@@ -330,8 +330,8 @@ export const getPostTags = (post) => {
   return []
 }
 
-export const getRelatedPosts = ({ post, exclude }) => {
-  return wp.posts().exclude(exclude).perPage(4).orderby('rand')
+export const getRelatedPosts = ({ post, exclude, perPage }) => {
+  return wp.posts().exclude(exclude).perPage(perPage).orderby('rand')
   // get from same category
   // return wp.posts().exclude([post.id]).categories(post?.categories).perPage(4)
 }

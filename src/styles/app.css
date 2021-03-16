@@ -919,11 +919,6 @@ strong {
   color: #fff;
   padding: 0 1rem; }
 
-.Article--frame .Article__inner {
-  border: 2px solid transparent;
-  border-top: 2px solid #f1eeeb;
-  border-right: 2px solid #f1eeeb; }
-
 .Article__stickyContainer {
   position: relative; }
 

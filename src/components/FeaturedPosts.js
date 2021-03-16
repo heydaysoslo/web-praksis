@@ -7,11 +7,12 @@ import Container from './primitives/Container'
 const FeaturedPosts = ({ postIds }) => {
   const [posts, setPosts] = useState([])
   const [firstPost, setFirstPost] = useState(null)
+  const [secondRow, setSecondRow] = useState(null)
 
   const loadPosts = () => {
     if (Array.isArray(postIds) && !posts.length) {
       // Extract the top 5 posts
-      const firstPosts = [...postIds].splice(0, 5)
+      const firstPosts = [...postIds].splice(0, 7)
 
       // Get posts
       getPostsByIds(firstPosts).then((res) => {
@@ -19,9 +20,12 @@ const FeaturedPosts = ({ postIds }) => {
           // Extract the top featured post
           const allPosts = [...res]
           const firstEl = allPosts.shift()
+          const secondEls = allPosts.slice(0, 2)
+          const rest = allPosts.slice(2)
+
           setFirstPost(firstEl)
-          // Add the rest of the results
-          setPosts(allPosts)
+          setSecondRow(secondEls)
+          setPosts(rest)
         }
       })
     }
@@ -36,7 +40,20 @@ const FeaturedPosts = ({ postIds }) => {
   return (
     <Container>
       {firstPost && <FeaturedPost post={firstPost} />}
-      {posts && <PostGrid posts={posts} itemProps={{ hideDate: true }} />}
+      {secondRow && (
+        <PostGrid
+          itemSize={{ xs: 1, md: 1 / 2 }}
+          posts={secondRow}
+          itemProps={{ hideDate: true }}
+        />
+      )}
+      {posts && (
+        <PostGrid
+          itemSize={{ xs: 1, md: 1 / 2, xl: 1 / 4 }}
+          posts={posts}
+          itemProps={{ hideDate: true }}
+        />
+      )}
     </Container>
   )
 }

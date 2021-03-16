@@ -96,7 +96,7 @@ const Card = ({ post, taxonomy, className, hideDate }) => {
           <div className="aspect aspect--landscape" />
         )}
       </Box>
-      <CardText pt={2} variant={variant}>
+      <CardText pt={3} variant={variant}>
         <Inline gap={[2]} mt={[-2]} ml={[-2]}>
           {!hideDate && (
             <div>

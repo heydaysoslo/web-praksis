@@ -11,7 +11,7 @@ import useLocalStorage from '../hooks/useLocalStorage'
 const RelatedPosts = ({ post }) => {
   const [posts, setPosts] = useState(null)
   const [readArticles] = useLocalStorage('readArticles', [])
-  const perPage = 4
+  const perPage = 3
 
   const { ref, inView } = useInView({
     threshold: 0,
