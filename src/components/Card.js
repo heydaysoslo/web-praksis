@@ -11,17 +11,39 @@ import Box from './primitives/Box'
 import Heading from './primitives/Heading'
 import Text from './primitives/Text'
 import Inline from './primitives/Inline'
+import { getPostTerms } from '../utils/wp'
+import Label from './primitives/Label'
 
 const StyledCard = styled(Link)(
   ({ theme, variant }) => css`
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    position: relative;
     &:hover {
       ${Text}, ${Heading} {
         color: ${theme.colors.red};
       }
     }
+
+    ${StyledSpecialLabel} {
+      position: absolute;
+      top: -0.9rem;
+      left: 0;
+      color: black;
+
+      ${variant === 'red' &&
+      css`
+        background: ${theme.colors.red};
+        color: ${theme.colors.white};
+      `}
+
+      ${variant === 'frame' &&
+      css`
+        background: ${theme.colors.white};
+      `}
+    }
+
     ${variant === 'red' &&
     css`
       ${Text}, ${Heading}, ${TaxLabel} {
@@ -36,6 +58,7 @@ const StyledCard = styled(Link)(
         }
       }
     `}
+
     ${CardText} {
       border-top: 0 !important;
     }
@@ -76,6 +99,16 @@ const CardText = styled(Box)(
   })
 )
 
+const SpecialLabel = ({ term, className }) => {
+  return (
+    <Label ml={3} borderRadius={1} p={2} bg="grays.0" className={className}>
+      {term.name}
+    </Label>
+  )
+}
+
+const StyledSpecialLabel = styled(SpecialLabel)``
+
 const getArticleVariant = (post) => {
   // Only apply variant style to articles assigned with content_type
   if (!post?.acf?.content_type) {
@@ -87,6 +120,7 @@ const getArticleVariant = (post) => {
 const Card = ({ post, taxonomy, className, hideDate }) => {
   const { link, title, excerpt } = post
   const variant = getArticleVariant(post)
+  const terms = getPostTerms(post)
   return (
     <StyledCard variant={variant} className={className} to={link}>
       <Box bg="grays.0">
@@ -94,6 +128,9 @@ const Card = ({ post, taxonomy, className, hideDate }) => {
           <AcfBgset image={post.featured_image} aspect="landscape" />
         ) : (
           <div className="aspect aspect--landscape" />
+        )}
+        {terms?.content_type && (
+          <StyledSpecialLabel term={terms?.content_type[0]} />
         )}
       </Box>
       <CardText pt={3} variant={variant}>

@@ -16,9 +16,9 @@ const getItemSize = (count) => {
 const PostGrid = ({ posts, itemProps, itemSize }) => {
   const _itemSize = itemSize || getItemSize(posts?.length)
   return (
-    <Flex flexWrap="wrap" mx={-3} mt={4}>
+    <Flex flexWrap="wrap" mx={-3} mt={{ xs: 4, lg: 5 }} mb={-5}>
       {posts.map((p) => (
-        <Box key={`post-item-${p.id}`} width={_itemSize} px={[3]} pb={[4]}>
+        <Box key={`post-item-${p.id}`} width={_itemSize} px={[3]} mb={5}>
           <Card {...itemProps} post={p} />
         </Box>
       ))}

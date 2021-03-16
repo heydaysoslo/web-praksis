@@ -5,10 +5,10 @@ export default class ShareURL extends Component {
   input = createRef()
 
   state = {
-    success: null
+    success: null,
   }
 
-  handleCopy = e => {
+  handleCopy = (e) => {
     e.preventDefault()
 
     this.input.current.value = this.props.url
@@ -16,12 +16,12 @@ export default class ShareURL extends Component {
     document.execCommand('copy')
 
     this.setState({
-      success: true
+      success: true,
     })
 
     this.successTimeout = setTimeout(() => {
       this.setState({
-        success: null
+        success: null,
       })
     }, 1000)
   }
@@ -49,7 +49,7 @@ export default class ShareURL extends Component {
             className={cc({
               ShareURL__button: true,
               button: true,
-              'button--loading': isCopying
+              'button--loading': isCopying,
             })}
             type="submit"
             onClick={this.handleCopy}

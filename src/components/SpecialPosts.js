@@ -5,7 +5,7 @@ import Box from './primitives/Box'
 import Flex from './primitives/Flex'
 import Container from './primitives/Container'
 
-const SpecialPosts = () => {
+const SpecialPosts = (props) => {
   const [data, setData] = useState(null)
   const onMount = () => {
     getPostsFromEachTax({ perPage: 1 }).then((res) => {
@@ -17,8 +17,8 @@ const SpecialPosts = () => {
     return null
   }
   return (
-    <Container>
-      <Flex flexWrap="wrap" mx={-3} mt={4}>
+    <Container {...props}>
+      <Flex flexWrap="wrap" mx={-3}>
         {data.map(({ taxonomy, posts }) => {
           return (
             <Box
@@ -28,15 +28,13 @@ const SpecialPosts = () => {
               pb={[4]}
             >
               {posts.map((post) => {
-                return (
-                  <Card
-                    hideDate={true}
-                    key={post.id}
-                    post={post}
-                    taxonomy="content_type"
-                  />
-                )
+                return <Card hideDate={true} key={post.id} post={post} />
               })}
+              {/* <Box>
+                <StyledLink as={Link} to={taxonomy.link}>
+                  Alle {taxonomy.name} »
+                </StyledLink>
+              </Box> */}
             </Box>
           )
         })}

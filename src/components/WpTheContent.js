@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import ReactHtmlParser from 'react-html-parser'
 import autolinker from 'autolinker'
 
-const WpTheContent = ({ content }) => {
+const WpTheContent = ({ className, content }) => {
   const [parsedContent, setParsedContent] = useState(null)
   const ref = useRef()
 
@@ -51,7 +51,11 @@ const WpTheContent = ({ content }) => {
   }
   useEffect(onMount, [content])
 
-  return <div ref={ref}>{parsedContent}</div>
+  return (
+    <div className={className} ref={ref}>
+      {parsedContent}
+    </div>
+  )
 }
 
 export default WpTheContent

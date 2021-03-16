@@ -7,6 +7,7 @@ import Box from '../components/primitives/Box'
 import SpecialPosts from '../components/SpecialPosts'
 import { getFrontPage } from '../utils/wp'
 import NewsTicker from '../components/NewsTicker'
+import Pagebuilder from '../components/Pagebuilder'
 
 const FrontPageNew = () => {
   const [page, setPage] = useState()
@@ -23,7 +24,7 @@ const FrontPageNew = () => {
         pageTitle: page && page.title && page.title.rendered,
       }}
     >
-      <Box as="article" pb={5}>
+      <Box as="article">
         {page && page.acf.intro && (
           <Container as="header" my={[3, null, 4, 5]}>
             <Heading size="h1" textAlign="center">
@@ -37,8 +38,9 @@ const FrontPageNew = () => {
         <Box mt={[4, null, null, 5]}>
           <FeaturedPosts postIds={page?.acf?.featured_posts} />
         </Box>
+        {page?.acf?.blocks && <Pagebuilder my={[5]} blocks={page.acf.blocks} />}
+        <SpecialPosts mt={4} />
       </Box>
-      <SpecialPosts />
     </Layout>
   )
 }

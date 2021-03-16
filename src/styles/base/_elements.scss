@@ -73,26 +73,6 @@ a {
   color: $c-black;
 }
 
-.ToTop {
-  // position: fixed;
-  // bottom: rem-calc(20);
-  // right: rem-calc(20);
-  width: 30px;
-  height: 30px;
-  overflow: hidden;
-  border-radius: 99px;
-  text-indent: -9999px;
-  background: $c-primary;
-  margin-bottom: rem-calc(20);
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.5s ease;
-  &--visible {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-
 .aspect {
   position: relative;
   &::before {

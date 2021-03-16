@@ -281,21 +281,6 @@ figcaption:before {
 a {
   color: #373332; }
 
-.ToTop {
-  width: 30px;
-  height: 30px;
-  overflow: hidden;
-  border-radius: 99px;
-  text-indent: -9999px;
-  background: #dc1e0f;
-  margin-bottom: 2rem;
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.5s ease; }
-  .ToTop--visible {
-    visibility: visible;
-    opacity: 1; }
-
 .aspect {
   position: relative; }
   .aspect::before {

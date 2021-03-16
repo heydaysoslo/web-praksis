@@ -53,6 +53,7 @@ export default class Toggle extends Component {
       this.handleScroll,
       false
     )
+    this.handleScroll()
   }
 
   render() {

@@ -6,8 +6,8 @@ export const FRONTEND_URL = 'https://praksismagasin.no'
 
 const env =
   process.env.NODE_ENV === 'development' ? 'development' : process.env.NODE_ENV
-let endpoint = 'https://api.praksismagasin.no/api'
-// let endpoint = 'http://praksis.test/api'
+// let endpoint = 'https://api.praksismagasin.no/api'
+let endpoint = 'http://praksis.test/api'
 if (env !== 'development') {
   endpoint = 'https://api.praksismagasin.no/api'
 }
@@ -331,7 +331,7 @@ export const getPostTags = (post) => {
 }
 
 export const getRelatedPosts = ({ post, exclude, perPage }) => {
-  return wp.posts().exclude(exclude).perPage(perPage).orderby('rand')
+  return wp.posts().embed().exclude(exclude).perPage(perPage).orderby('rand')
   // get from same category
   // return wp.posts().exclude([post.id]).categories(post?.categories).perPage(4)
 }

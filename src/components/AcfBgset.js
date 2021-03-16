@@ -2,10 +2,11 @@ import React from 'react'
 import { acfImageToSrcset } from '../utils/lazysizes'
 import cc from 'classcat'
 
-const AcfBgset = ({ image, aspect, className }) => {
+const AcfBgset = ({ image, aspect, className, ...props }) => {
   const srcset = acfImageToSrcset(image.sizes)
   return (
     <div
+      {...props}
       role="img"
       title={image.alt ? image.alt : image.title}
       data-sizes="auto"
