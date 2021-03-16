@@ -42,7 +42,7 @@ const FeaturedPosts = ({ postIds }) => {
       {firstPost && <FeaturedPost post={firstPost} />}
       {secondRow && (
         <PostGrid
-          mt={6}
+          mt={{ xs: 5, md: 6 }}
           itemSize={{ xs: 1, md: 1 / 2 }}
           posts={secondRow}
           itemProps={{ hideDate: true }}

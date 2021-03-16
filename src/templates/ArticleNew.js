@@ -54,7 +54,7 @@ const Article = ({ post, single, preview }) => {
   return (
     <Layout>
       <Box as="article" mb={6}>
-        <Box textAlign="center" as="header" pt={[5]}>
+        <Box textAlign="center" as="header" pt={[4, null, 5]}>
           <Container size="narrow">
             {preview && <p>Forhåndsvisning</p>}
             {post.type === 'post' && (
@@ -86,11 +86,11 @@ const Article = ({ post, single, preview }) => {
           </Container>
         </Box>
         {post.featured_image && (
-          <Container mt={5}>
+          <Container mt={[4, null, 5]}>
             <AcfImage image={post.featured_image} />
           </Container>
         )}
-        <Container mt={5} size="narrow">
+        <Container mt={[4, null, 5]} size="narrow">
           <WpTheContent className="editor" content={post?.content?.rendered} />
           <Box as="footer" mt={5}>
             <Box borderBottom={1} pb={3}>
