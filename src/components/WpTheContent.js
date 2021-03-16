@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import ReactHtmlParser from 'react-html-parser'
 import autolinker from 'autolinker'
+import { elementContainsMulti } from '../utils/functions'
 
 const WpTheContent = ({ className, content }) => {
   const [parsedContent, setParsedContent] = useState(null)
@@ -8,8 +9,10 @@ const WpTheContent = ({ className, content }) => {
 
   const makeEmbedsResponsive = () => {
     if (!ref.current) {
+      console.log('returrn')
       return null
     }
+    console.log('newver got herre')
     const embeds = ref.current.getElementsByClassName('embed')
     if (embeds) {
       const existingPusher = ref.current.getElementsByClassName('embed__pusher')
@@ -49,7 +52,7 @@ const WpTheContent = ({ className, content }) => {
     setParsedContent(ReactHtmlParser(theContent))
     makeEmbedsResponsive()
   }
-  useEffect(onMount, [content])
+  useEffect(onMount, [content, ref.current])
 
   return (
     <div className={className} ref={ref}>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Wrap, Nav, Items } from './CategoryNav.styled'
 import CategoryNavItem from './CategoryNavItem'
 import Box from './primitives/Box'
+import Container from './primitives/Container'
 
 const CategoryNav = ({ categories }) => {
   if (!categories) {

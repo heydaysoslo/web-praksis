@@ -41,16 +41,17 @@ const RelatedPosts = ({ post }) => {
 
   return (
     <Container ref={ref}>
+      <Box borderTop="1" mb={[3, null, null, 4]} />
       <Heading as="h2" size="h2">
         Les også…
       </Heading>
-      <Box>
+      <Box mb={[5, null, 6]}>
         {!posts && (
           <Box minHeight="400px">
             <Loading title="Laster artikler" />
           </Box>
         )}
-        {posts && <PostGrid posts={posts} />}
+        {posts && <PostGrid mt={{ xs: 4 }} posts={posts} />}
       </Box>
     </Container>
   )

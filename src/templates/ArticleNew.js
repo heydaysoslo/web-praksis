@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import cc from 'classcat'
 import ReactHtmlParser from 'react-html-parser'
 import { Link } from 'react-router-dom'
 
 import Layout from '../components/Layout'
-import { baseUrl, getObjectLink, getPostTerms } from '../utils/wp'
+import {
+  baseUrl,
+  getArticleVariant,
+  getObjectLink,
+  getPostTerms,
+} from '../utils/wp'
 import { formatArticeDate } from '../utils/date'
 import ShareButtons from '../components/ShareButtons'
 import AcfImage from '../components/AcfImage'
@@ -13,11 +17,15 @@ import EditPostLink from '../components/EditPostLink'
 import RelatedPosts from '../components/RelatedPosts'
 import WpTheContent from '../components/WpTheContent'
 import useLocalStorage from '../hooks/useLocalStorage'
+import Box from '../components/primitives/Box'
+import Heading from '../components/primitives/Heading'
+import Container from '../components/primitives/Container'
+import Text from '../components/primitives/Text'
 
 const Article = ({ post, single, preview }) => {
   const [readArticles, setReadArticles] = useLocalStorage('readArticles', [])
   const [articleType, setArticleType] = useState(null)
-  const articleStyle = post?.article_style || 'default'
+  const articleStyle = getArticleVariant(post)
   const author =
     (post?.acf?.contributor && post?.acf?.contributor[0]) || post.author
 
@@ -45,80 +53,58 @@ const Article = ({ post, single, preview }) => {
 
   return (
     <Layout>
-      <article
-        className={cc({
-          container: true,
-          Article: true,
-          [`Article--${articleStyle}`]: true,
-          'Article--single': Boolean(single),
-        })}
-      >
-        <div className="Article__inner">
-          <header className="Article__header wrapper wrapper--text">
-            {preview && <p className="Article__preview">Forhåndsvisning</p>}
-            <div className="Article__meta">
-              {post.type === 'post' && (
-                <>
-                  <time dateTime={post.date} className="date">
-                    {formatArticeDate(post.date)}
-                  </time>
-                  {articleType && (
-                    <>
-                      {' • '}
-                      <Link to={articleType.link} className="Article__type">
-                        {articleType.name}
-                      </Link>
-                    </>
-                  )}
-                  {' • '}
-                  <span className="Article__read-time">
-                    {post.read_time}{' '}
-                    {post.read_time > 1 ? 'minutter' : 'minutt'} lesetid
-                  </span>
-                </>
-              )}
-            </div>
-            {post.title && (
-              <h1 className="Article__title">
-                <Link to={getObjectLink(post)}>
-                  {ReactHtmlParser(post.title.rendered)}
-                </Link>
-              </h1>
+      <Box as="article" mb={6}>
+        <Box textAlign="center" as="header" pt={[5]}>
+          <Container size="narrow">
+            {preview && <p>Forhåndsvisning</p>}
+            {post.type === 'post' && (
+              <Box mb={3} color="grays.1">
+                <time dateTime={post.date}>{formatArticeDate(post.date)}</time>
+                {articleType && (
+                  <>
+                    {' • '}
+                    <Link to={articleType.link}>{articleType.name}</Link>
+                  </>
+                )}
+                {' • '}
+                <span>
+                  {post.read_time} {post.read_time > 1 ? 'minutter' : 'minutt'}{' '}
+                  lesetid
+                </span>
+              </Box>
+            )}
+            {post?.title?.rendered && (
+              <Heading $type={articleStyle} size="h1" as="h1">
+                <span>{ReactHtmlParser(post.title.rendered)}</span>
+              </Heading>
             )}
             {post.acf.intro && (
-              <div className="Article__intro">
+              <Text size="md" mt={4}>
                 {ReactHtmlParser(post.acf.intro)}
-              </div>
+              </Text>
             )}
-          </header>
-
-          {post.featured_image && (
-            <div className="Article__image">
-              <AcfImage image={post.featured_image} />
-            </div>
-          )}
-          {post.better_featured_image && (
-            <img
-              src={post.better_featured_image.source_url}
-              alt={post.better_featured_image.alt_text}
-            />
-          )}
-          <div className="Article__content editor wrapper wrapper--text">
-            <WpTheContent content={post?.content?.rendered} />
-          </div>
-          <footer className="ArticleFooter Article__footer wrapper wrapper--text">
-            <div className="ArticleFooter__share">
+          </Container>
+        </Box>
+        {post.featured_image && (
+          <Container mt={5}>
+            <AcfImage image={post.featured_image} />
+          </Container>
+        )}
+        <Container mt={5} size="narrow">
+          <WpTheContent className="editor" content={post?.content?.rendered} />
+          <Box as="footer" mt={5}>
+            <Box borderBottom={1} pb={3}>
               <ShareButtons url={baseUrl(getObjectLink(post))} />
-            </div>
-            <div className="ArticleFooter__content">
-              {post.type === 'post' && (
-                <Author className="ArticleFooter__item" author={author} />
-              )}
-              <EditPostLink post={post} />
-            </div>
-          </footer>
-        </div>
-      </article>
+            </Box>
+            {post.type === 'post' && (
+              <Box mt={4}>
+                <Author author={author} />
+              </Box>
+            )}
+            <EditPostLink post={post} />
+          </Box>
+        </Container>
+      </Box>
       {single && post?.type === 'post' && <RelatedPosts post={post} />}
     </Layout>
   )

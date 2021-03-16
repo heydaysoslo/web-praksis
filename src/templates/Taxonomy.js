@@ -7,6 +7,7 @@ import Container from '../components/primitives/Container'
 import Layout from '../components/Layout'
 import PostGrid from '../components/PostGrid'
 import CategoryHeader from '../components/CategoryHeader'
+import Text from '../components/primitives/Text'
 
 class Taxonomy extends Component {
   state = {
@@ -118,19 +119,19 @@ class Taxonomy extends Component {
                 intro={pageHeadings?.intro}
               />
               {posts.length ? (
-                <Box mt={4}>
-                  <PostGrid posts={posts} />
+                <>
+                  <PostGrid mt={{ xs: 4, md: 5 }} posts={posts} />
                   <Pagination
                     page={parseInt(this.state.page)}
                     cat={cat}
                     posts={posts}
                     paging={this.state.paging}
                   />
-                </Box>
+                </>
               ) : (
-                <div>
-                  Fant ingen innlegg i kategorien <strong>{cat.name}</strong>
-                </div>
+                <Box mt={{ xs: 4, md: 5, lg: 6 }} textAlign="center">
+                  <Text>Fant ingen innlegg</Text>
+                </Box>
               )}
             </Container>
           )}

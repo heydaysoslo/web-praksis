@@ -2,10 +2,6 @@ import styled from 'styled-components'
 import { variant, space } from 'styled-system'
 import Box from './Box'
 
-const baseProps = {
-  px: [3, null, null, 4],
-}
-
 const Container = styled(Box)`
   margin: 0 auto;
   ${space}
@@ -13,12 +9,13 @@ const Container = styled(Box)`
     prop: 'size',
     variants: {
       default: {
-        ...baseProps,
         maxWidth: '1400px',
       },
       fluid: {
-        ...baseProps,
         maxWidth: 'none',
+      },
+      narrow: {
+        maxWidth: '42.5em',
       },
     },
   })}
@@ -26,6 +23,7 @@ const Container = styled(Box)`
 
 Container.defaultProps = {
   size: 'default',
+  px: [3, null, null, 4],
 }
 
 export default Container

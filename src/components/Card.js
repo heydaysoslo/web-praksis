@@ -11,7 +11,7 @@ import Box from './primitives/Box'
 import Heading from './primitives/Heading'
 import Text from './primitives/Text'
 import Inline from './primitives/Inline'
-import { getPostTerms } from '../utils/wp'
+import { getArticleVariant, getPostTerms } from '../utils/wp'
 import Label from './primitives/Label'
 
 const StyledCard = styled(Link)(
@@ -109,21 +109,13 @@ const SpecialLabel = ({ term, className }) => {
 
 const StyledSpecialLabel = styled(SpecialLabel)``
 
-const getArticleVariant = (post) => {
-  // Only apply variant style to articles assigned with content_type
-  if (!post?.acf?.content_type) {
-    return false
-  }
-  return post.article_style || 'default'
-}
-
 const Card = ({ post, taxonomy, className, hideDate }) => {
   const { link, title, excerpt } = post
   const variant = getArticleVariant(post)
   const terms = getPostTerms(post)
   return (
     <StyledCard variant={variant} className={className} to={link}>
-      <Box bg="grays.0">
+      <Box bg="grays.1">
         {post.featured_image ? (
           <AcfBgset image={post.featured_image} aspect="landscape" />
         ) : (

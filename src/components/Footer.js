@@ -13,7 +13,7 @@ const Footer = () => {
   const primaryItems = ctx?.state?.menuItems || []
   const secondaryItems = ctx?.state?.secondaryItems || []
   return (
-    <Box as="footer" mt={[4]} pb={{ xs: 4, md: 5 }}>
+    <Box as="footer" mt={[4]} pb={{ xs: 4, md: 5, lg: 6 }}>
       <Container>
         <Box borderTop={[1]} />
         <Flex

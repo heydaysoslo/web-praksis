@@ -38,8 +38,10 @@ const FrontPageNew = () => {
         <Box mt={[4, null, null, 5]}>
           <FeaturedPosts postIds={page?.acf?.featured_posts} />
         </Box>
-        {page?.acf?.blocks && <Pagebuilder my={[5]} blocks={page.acf.blocks} />}
-        <SpecialPosts mt={4} />
+        {page?.acf?.blocks && (
+          <Pagebuilder my={[5, null, null, 6]} blocks={page.acf.blocks} />
+        )}
+        <SpecialPosts my={[5, null, null, 6]} />
       </Box>
     </Layout>
   )
