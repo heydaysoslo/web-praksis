@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import { variant, typography, space } from 'styled-system'
+import { variant, typography, space, color } from 'styled-system'
 
 const Text = styled.div`
+  ${color}
   ${typography}
   ${space}
   ${variant({
@@ -12,7 +13,7 @@ const Text = styled.div`
         lineHeight: 'normal',
       },
       small: {
-        fontSize: [14, null, 16],
+        fontSize: [0, null, 16],
         lineHeight: 'tight',
       },
       excerpt: {

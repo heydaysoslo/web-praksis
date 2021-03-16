@@ -303,7 +303,7 @@ export const getPreview = ({ id, postType }) => {
 
 export const getPostTerms = (post, type = null) => {
   let allTerms = {}
-  if (post._embedded && post._embedded['wp:term']) {
+  if (post?._embedded && post?._embedded['wp:term']) {
     post._embedded['wp:term'].forEach((terms) => {
       terms.forEach((term) => {
         if (!allTerms[term.taxonomy]) {

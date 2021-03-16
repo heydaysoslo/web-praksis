@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/helper-builder-react-jsx": "^7.12.13",
     "@babel/helper-regex": "^7.10.5",
+    "@styled-system/css": "^5.1.5",
     "autolinker": "^3.14.2",
     "base-64": "^1.0.0",
     "classcat": "^4.1.0",

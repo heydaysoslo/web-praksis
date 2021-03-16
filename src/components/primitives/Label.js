@@ -1,30 +1,17 @@
 import styled from 'styled-components'
-import { variant, space } from 'styled-system'
+import Box from './Box'
 
-const baseStyles = {
-  fontSize: [1],
-  py: [1],
-  px: [1],
-  bg: 'grays.0',
-  borderRadius: [1],
-}
-
-const Label = styled.div`
+const Label = styled(Box)`
   display: inline-block;
   line-height: 1;
-  ${space}
-  ${variant({
-    prop: 'size',
-    variants: {
-      normal: {
-        ...baseStyles,
-      },
-    },
-  })}
+  text-transform: uppercase;
 `
 
 Label.defaultProps = {
+  variant: 'normal',
   size: 'normal',
+  fontSize: [0],
+  color: 'red',
 }
 
 export default Label

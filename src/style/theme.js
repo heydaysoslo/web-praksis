@@ -71,7 +71,9 @@ const colors = {
   black: '#373332',
   white: '#fff',
   primary: '#dc1e0f',
+  gray: '#f1eeeb',
   grays: ['#f1eeeb', '#b8b3ae', '#b8b3ae'],
+  reds: ['#dc1e0f', '#D93A26'],
 }
 
 /*
