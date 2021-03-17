@@ -6,8 +6,8 @@ export const FRONTEND_URL = 'https://praksismagasin.no'
 
 const env =
   process.env.NODE_ENV === 'development' ? 'development' : process.env.NODE_ENV
-let endpoint = 'https://api.praksismagasin.no/api'
-// let endpoint = 'http://praksis.test/api'
+// let endpoint = 'https://api.praksismagasin.no/api'
+let endpoint = 'http://praksis.test/api'
 if (env !== 'development') {
   endpoint = 'https://api.praksismagasin.no/api'
 }
@@ -22,7 +22,6 @@ const wp = new WPAPI({
       // Cache requests
       let result = wpCache[wpreq]
       if (result) {
-        console.log('FROM CACHE')
         if (callback && typeof callback === 'function') {
           callback(null, result)
         }

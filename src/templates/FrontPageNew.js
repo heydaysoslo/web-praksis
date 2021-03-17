@@ -8,6 +8,7 @@ import SpecialPosts from '../components/SpecialPosts'
 import { getFrontPage } from '../utils/wp'
 import NewsTicker from '../components/NewsTicker'
 import Pagebuilder from '../components/Pagebuilder'
+import NewsletterForm from '../components/NewsletterForm'
 
 const FrontPageNew = () => {
   const [page, setPage] = useState()
@@ -43,6 +44,12 @@ const FrontPageNew = () => {
         )}
         <SpecialPosts my={[5, null, null, 6]} />
       </Box>
+      <Container mb={6}>
+        <Heading as="h3" size="h2" textAlign="center" mb="3">
+          Meld deg på vårt nyhetsbrev
+        </Heading>
+        <NewsletterForm />
+      </Container>
     </Layout>
   )
 }

@@ -7,6 +7,8 @@ const Button = styled(Box)(
     appearance: 'button',
     border: 0,
     outline: 0,
+    display: 'inline-block',
+    cursor: 'pointer',
   },
   color,
   space,
