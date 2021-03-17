@@ -44,12 +44,12 @@ const Footer = () => {
           >
             <Stack as="nav">
               {[
-                { id: 'home', title: 'Forsiden', url: '/' },
+                { ID: 'home', title: 'Forsiden', url: '/' },
                 ...primaryItems,
                 ...secondaryItems,
               ].map((item) => {
                 return (
-                  <div key={item.id}>
+                  <div key={`footerNav${item.ID}`}>
                     <StyledLink as={Link} to={item.url}>
                       {item.title}
                     </StyledLink>
