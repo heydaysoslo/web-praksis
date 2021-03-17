@@ -6,6 +6,7 @@ import PostDate from './PostDate'
 import Box from './primitives/Box'
 import Flex from './primitives/Flex'
 import Text from './primitives/Text'
+import HtmlParser from 'react-html-parser'
 
 const Bullet = styled.span(
   ({ theme }) => css`
@@ -70,7 +71,7 @@ const NewsTicker = () => {
                 >
                   <Text date={post.date} as={PostDate} size="small" />
                   <PostTitle as="h4" size="small">
-                    <span>{post.title.rendered}</span>
+                    <span>{HtmlParser(post.title.rendered)}</span>
                   </PostTitle>
                 </TickerItem>
               )
