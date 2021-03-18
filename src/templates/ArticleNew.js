@@ -21,6 +21,7 @@ import Box from '../components/primitives/Box'
 import Heading from '../components/primitives/Heading'
 import Container from '../components/primitives/Container'
 import Text from '../components/primitives/Text'
+import PreviewWarning from '../components/PreviewWarning'
 
 const Article = ({ post, single, preview }) => {
   const [readArticles, setReadArticles] = useLocalStorage('readArticles', [])
@@ -54,9 +55,9 @@ const Article = ({ post, single, preview }) => {
   return (
     <Layout>
       <Box as="article" mb={6}>
+        {preview && <PreviewWarning />}
         <Box textAlign="center" as="header" pt={[4, null, 5]}>
           <Container size="narrow">
-            {preview && <p>Forhåndsvisning</p>}
             {post.type === 'post' && (
               <Box mb={3} color="grays.1">
                 <time dateTime={post.date}>{formatArticeDate(post.date)}</time>

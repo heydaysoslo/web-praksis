@@ -97,7 +97,12 @@ class Article extends Component {
         >
           <div className="Article__inner">
             <header className="Article__header wrapper wrapper--text">
-              {preview && <p className="Article__preview">Forhåndsvisning</p>}
+              {preview && (
+                <p className="Article__preview">
+                  <span role="img">🚨</span> Forhåndsvisning{' '}
+                  <span role="img">🚨</span>
+                </p>
+              )}
               <div className="Article__meta">
                 {post.type === 'post' && (
                   <Fragment>
@@ -122,9 +127,7 @@ class Article extends Component {
               </div>
               {post.title && (
                 <h1 className="Article__title">
-                  <Link to={getObjectLink(post)}>
-                    {ReactHtmlParser(post.title.rendered)}
-                  </Link>
+                  {ReactHtmlParser(post.title.rendered)}
                 </h1>
               )}
               {post.acf.intro && (

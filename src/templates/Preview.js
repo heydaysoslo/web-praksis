@@ -1,37 +1,44 @@
 import React, { Component, Fragment } from 'react'
-import { getPreview } from '../utils/wp'
-import Article from './Article'
 import Helmet from 'react-helmet'
-import queryString from 'query-string'
+import Loading from '../components/Loading'
+import { getPreview, getSettings } from '../utils/wp'
+import Article from './ArticleNew'
+import FrontPageNew from './FrontPageNew'
 
 class Preview extends Component {
   state = {
     post: false,
+    frontPageId: null,
   }
 
   componentDidMount() {
-    const qs = queryString.parse(this?.props?.location?.search)
-    getPreview({ ...this.props.match.params, nonce: qs?._wpnonce })
-      .then((res) => {
-        this.setState({
-          post: res[0],
+    return getSettings().then((settings) => {
+      this.setState({ frontPageId: settings.front_page_id })
+      return getPreview({ ...this.props.match.params })
+        .then((res) => {
+          this.setState({
+            post: res,
+          })
         })
-      })
-      .catch((err) => console.log('ERROR', err))
+        .catch((err) => console.log('ERROR', err))
+    })
   }
 
   render() {
-    const { post } = this.state
+    const { post, frontPageId } = this.state
     if (!post) {
-      return <div>Laster...</div>
+      return <Loading title="Laster forhåndsvisning" />
     }
     return (
       <Fragment>
         <Helmet>
           <meta name="robots" content="noindex" />
         </Helmet>
-
-        <Article single preview post={post} />
+        {parseInt(frontPageId) === parseInt(post.parent) ? (
+          <FrontPageNew preview page={post} />
+        ) : (
+          <Article single preview post={post} />
+        )}
       </Fragment>
     )
   }

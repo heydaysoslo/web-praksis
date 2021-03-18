@@ -17,11 +17,16 @@ const FeaturedPosts = ({ postIds }) => {
       // Get posts
       getPostsByIds(firstPosts).then((res) => {
         if (Array.isArray(res) && res.length) {
-          // Extract the top featured post
           const allPosts = [...res]
-          const firstEl = allPosts.shift()
-          const secondEls = allPosts.slice(0, 2)
-          const rest = allPosts.slice(2)
+          // Sort the returned posts by the order of the ids
+          const allPostsSorted = postIds.reduce((acc, id) => {
+            allPosts.forEach((item) => item.id === id && acc.push(item))
+            return acc
+          }, [])
+          // Extract the top featured post
+          const firstEl = allPostsSorted.shift()
+          const secondEls = allPostsSorted.slice(0, 2)
+          const rest = allPostsSorted.slice(2)
 
           setFirstPost(firstEl)
           setSecondRow(secondEls)

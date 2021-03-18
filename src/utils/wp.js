@@ -50,27 +50,16 @@ const excludeEmptyTerms = (terms) => {
   })
 }
 
-export const cachedPrivateRequest = (requestUrl, _wpnonce = '') => {
-  // if (!wpCache[requestUrl]) {
-  //   wpCache[requestUrl] = fetch(requestUrl, {
-  //     method: 'get',
-  //     credentials: 'include',
-  //   }).then((res) => {
-  //     return res.json()
-  //   })
-  // }
-  // return wpCache[requestUrl]
-  return fetch(requestUrl, {
-    // method: 'get',
-    // credentials: 'include',
-    // mode: 'cors',
-    headers: {
-      // 'Access-Control-Allow-Origin': '*',
-      'X-WP-Nonce': _wpnonce,
-    },
-  }).then((res) => {
-    return res.json()
-  })
+export const cachedPrivateRequest = (requestUrl) => {
+  if (!wpCache[requestUrl]) {
+    wpCache[requestUrl] = fetch(requestUrl, {
+      method: 'get',
+      credentials: 'include',
+    }).then((res) => {
+      return res.json()
+    })
+  }
+  return wpCache[requestUrl]
 }
 
 export const getSettings = () => {
@@ -299,16 +288,11 @@ export const getStickyPosts = () => {
   return wp.posts().sticky(true)
 }
 
-export const getPreview = ({ id, postType, nonce }) => {
-  let requestUrl
-  if (postType === 'post') {
-    requestUrl = wp.posts().embed().id(id).revisions().toString()
-  } else if (postType === 'page') {
-    requestUrl = wp.pages().embed().id(id).revisions().toString()
-  }
-  if (requestUrl) {
-    return cachedPrivateRequest(requestUrl, nonce)
-  }
+export const getPreview = ({ id }) => {
+  const requestUrl = `${endpoint}/hey/v1/preview/${id}?v=${Date.now()}`
+  return fetch(requestUrl, {
+    method: 'get',
+  }).then((response) => response.json())
 }
 
 export const getPostTerms = (post, type = null) => {

@@ -13,11 +13,11 @@ export default class NavMenu extends Component {
       <nav
         className={cc({
           NavMenu: true,
-          'NavMenu--large': !this.props.small
+          'NavMenu--large': !this.props.small,
         })}
       >
         <ul className="NavMenu__list">
-          {this.props.homeLink && (
+          {/* {this.props.homeLink && (
             <li className="NavMenu__item">
               <NavLink
                 activeClassName="NavMenu__link--active"
@@ -29,9 +29,8 @@ export default class NavMenu extends Component {
                 Feed
               </NavLink>
             </li>
-          )}
-
-          {items.map(p => {
+          )} */}
+          {items.map((p) => {
             if (p.url.indexOf('://') === -1) {
               return (
                 <li key={uuid()} className="NavMenu__item">

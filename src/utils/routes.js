@@ -1,4 +1,4 @@
-import FrontPage from '../templates/FrontPageNew'
+import FrontPageContainer from '../templates/FrontPageContainer'
 import Taxonomy from '../templates/Taxonomy'
 import Preview from '../templates/Preview'
 import Search from '../templates/Search'
@@ -9,7 +9,7 @@ export const routes = [
   {
     name: 'home',
     path: '/',
-    component: FrontPage,
+    component: FrontPageContainer,
     exact: true,
   },
   /*
@@ -117,7 +117,7 @@ export const routes = [
   */
   {
     name: 'preview',
-    path: '/_preview/:id/:postType',
+    path: '/_preview/:id',
     component: Preview,
     exact: true,
   },

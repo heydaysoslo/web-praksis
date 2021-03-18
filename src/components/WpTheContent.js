@@ -12,7 +12,6 @@ const WpTheContent = ({ className, content }) => {
       console.log('returrn')
       return null
     }
-    console.log('newver got herre')
     const embeds = ref.current.getElementsByClassName('embed')
     if (embeds) {
       const existingPusher = ref.current.getElementsByClassName('embed__pusher')

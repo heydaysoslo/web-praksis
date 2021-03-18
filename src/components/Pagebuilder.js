@@ -2,25 +2,19 @@ import React from 'react'
 import Box from './primitives/Box'
 import WpTheContent from '../components/WpTheContent'
 import Heading from './primitives/Heading'
-import AcfBgset from './AcfBgset'
+import AcfImage from './AcfImage'
 import Container from './primitives/Container'
 import Flex from './primitives/Flex'
 
 const SplitBlock = ({ title, content, image }) => {
   return (
-    <Flex
-      bg="gray"
-      alignItems="stretch"
-      flexWrap="wrap"
-      flexDirection="row-reverse"
-      borderRadius={1}
-    >
+    <Flex flexWrap="wrap" flexDirection="row-reverse" borderRadius={1}>
       <Box
         width={{ xs: 1, md: 1 / 2 }}
         style={{ position: 'relative' }}
         p={{ xs: 3, md: 4, lg: 5 }}
       >
-        <AcfBgset
+        <AcfImage
           style={{ minHeight: '100%', height: '100%' }}
           image={image}
           aspect="square"
@@ -44,18 +38,13 @@ const SplitBlock = ({ title, content, image }) => {
   )
 }
 
-const CoverBlock = ({ title, content, image }) => {
+const CoverBlock = ({ title, content }) => {
   return (
     <Box bg="gray" borderRadius={1} px={4} py={[6]} textAlign="center">
       {title && (
         <Heading size="h1" as="h2">
           {title}
         </Heading>
-      )}
-      {image && (
-        <Box maxWidth="560px" mx="auto">
-          <AcfBgset image={image} aspect="landscape" />
-        </Box>
       )}
       {content && (
         <Box mt={3}>

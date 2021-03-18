@@ -43,11 +43,7 @@ const Footer = () => {
             width={{ xs: 1, md: 1 / 2, lg: 1 / 4 }}
           >
             <Stack as="nav">
-              {[
-                { ID: 'home', title: 'Forsiden', url: '/' },
-                ...primaryItems,
-                ...secondaryItems,
-              ].map((item) => {
+              {[...primaryItems, ...secondaryItems].map((item) => {
                 return (
                   <div key={`footerNav${item.ID}`}>
                     <StyledLink as={Link} to={item.url}>
