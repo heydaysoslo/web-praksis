@@ -7,9 +7,11 @@ import Container from './primitives/Container'
 import SiteContext from './utilities/Context'
 import StyledLink from './primitives/Link'
 import { Link } from 'react-router-dom'
+import ReactHtmlParser from 'react-html-parser'
 
 const Footer = () => {
   const ctx = useContext(SiteContext)
+  const acfOptions = ctx?.state?.settings?.acf_options
   const primaryItems = ctx?.state?.menuItems || []
   const secondaryItems = ctx?.state?.secondaryItems || []
   return (
@@ -23,19 +25,14 @@ const Footer = () => {
           justifyContent="space-between"
         >
           <Box px={3} width={{ xs: 1, md: 1 / 2 }}>
-            <Text size="md">
-              Praksis er medlemsmagasinet til AUF. Her kan du bli kjent med AUF
-              og AUFerne våre.
-            </Text>
-            <Text size="small" mt={{ xs: 3, md: 4 }}>
-              <p>
-                Arbeidernes Ungdomsfylking
-                <br />
-                Postboks 8863,
-                <br />
-                Youngstorget
-              </p>
-            </Text>
+            {acfOptions?.footer_tagline && (
+              <Text size="md">{acfOptions.footer_tagline}</Text>
+            )}
+            {acfOptions?.footer_address && (
+              <Text size="small" mt={{ xs: 3, md: 4 }}>
+                {ReactHtmlParser(acfOptions.footer_address)}
+              </Text>
+            )}
           </Box>
           <Box
             mt={{ xs: 3, md: 0 }}

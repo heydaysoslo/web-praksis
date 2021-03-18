@@ -4,6 +4,10 @@ import Box from './Box'
 
 const Container = styled(Box)`
   margin: 0 auto;
+  & & {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
   ${space}
   ${variant({
     prop: 'size',

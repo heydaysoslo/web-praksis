@@ -1,8 +1,10 @@
+import React, { useContext } from 'react'
 import MailchimpSubscribe from 'react-mailchimp-subscribe'
 import StyledButton from './primitives/Button'
 import StyledInput from './primitives/Input'
 import Text from './primitives/Text'
 import Box from './primitives/Box'
+import SiteContext from './utilities/Context'
 
 /*
 
@@ -14,7 +16,7 @@ Signup forms » From builder » Translate it
 
 */
 
-const CustomForm = ({ status, message, onValidated }) => {
+const CustomForm = ({ status, message, onValidated, buttonTitle }) => {
   let email
   // let name
   const submit = () =>
@@ -26,7 +28,7 @@ const CustomForm = ({ status, message, onValidated }) => {
     })
   const isSending = status === 'sending'
   return (
-    <Box textAlign="center">
+    <Box textAlign="center" maxWidth="62rem" mx="auto">
       {/* <input
         style={{ fontSize: '2em', padding: 5 }}
         ref={(node) => (name = node)}
@@ -35,8 +37,9 @@ const CustomForm = ({ status, message, onValidated }) => {
       />
       <br /> */}
       <label>
-        <span>E-post</span>
-        <br />
+        {/* <Box bg="gray" px="2" display="block">
+          E-post
+        </Box> */}
         <StyledInput
           as="input"
           ref={(node) => (email = node)}
@@ -50,13 +53,15 @@ const CustomForm = ({ status, message, onValidated }) => {
         </Box>
       )}
       {message && ['success', 'error'].indexOf(status) !== -1 && (
-        <Box
+        <Text
+          color="grays.1"
+          size="small"
           mt={2}
-          className={`Message Message--${status}`}
+          $status={status}
           dangerouslySetInnerHTML={{ __html: message }}
         />
       )}
-      <Box as="footer" mt={2}>
+      <Box as="footer" mt={3}>
         <StyledButton
           as="button"
           size="lg"
@@ -64,7 +69,7 @@ const CustomForm = ({ status, message, onValidated }) => {
           disabled={isSending}
           onClick={submit}
         >
-          Sett meg på liste
+          {buttonTitle}
         </StyledButton>
       </Box>
     </Box>
@@ -75,18 +80,26 @@ const CustomForm = ({ status, message, onValidated }) => {
 const MAILCHIMP_URL =
   'https://praksismagasin.us7.list-manage.com/subscribe/post?u=f53db79c2dbc0eaa7917ea8bb&id=1648f7b3ce'
 
-const NewsletterForm = ({ formUrl = MAILCHIMP_URL, ...props }) => {
+const NewsletterForm = ({ formUrl = MAILCHIMP_URL }) => {
+  const ctx = useContext(SiteContext)
+  const _formUrl = ctx?.state?.settings?.acf_options?.mailchimp_url || formUrl
+  const buttonTitle =
+    ctx?.state?.settings?.acf_options?.mailchimp_submit_button_title ||
+    'Send inn'
   return (
-    <MailchimpSubscribe
-      url={formUrl}
-      render={({ subscribe, status, message }) => (
-        <CustomForm
-          status={status}
-          message={message}
-          onValidated={(formData) => subscribe(formData)}
-        />
-      )}
-    />
+    <>
+      <MailchimpSubscribe
+        url={_formUrl}
+        render={({ subscribe, status, message }) => (
+          <CustomForm
+            buttonTitle={buttonTitle}
+            status={status}
+            message={message}
+            onValidated={(formData) => subscribe(formData)}
+          />
+        )}
+      />
+    </>
   )
 }
 

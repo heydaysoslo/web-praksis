@@ -22,6 +22,7 @@ import Heading from '../components/primitives/Heading'
 import Container from '../components/primitives/Container'
 import Text from '../components/primitives/Text'
 import PreviewWarning from '../components/PreviewWarning'
+import Pagebuilder from '../components/Pagebuilder'
 
 const Article = ({ post, single, preview }) => {
   const [readArticles, setReadArticles] = useLocalStorage('readArticles', [])
@@ -93,20 +94,25 @@ const Article = ({ post, single, preview }) => {
         )}
         <Container mt={[4, null, 5]} size="narrow">
           <WpTheContent className="editor" content={post?.content?.rendered} />
-          <Box as="footer" mt={5}>
-            <Box borderBottom={1} pb={3}>
-              <ShareButtons url={baseUrl(getObjectLink(post))} />
-            </Box>
-            {post.type === 'post' && (
-              <Box mt={4}>
-                <Author author={author} />
-              </Box>
-            )}
-            <EditPostLink post={post} />
+        </Container>
+        {post?.acf?.blocks && (
+          <Pagebuilder my={[5, null, null, 6]} blocks={post.acf.blocks} />
+        )}
+        <Container as="footer" mt={[5]} size="narrow">
+          <Box borderBottom={1} pb={3}>
+            <ShareButtons url={baseUrl(getObjectLink(post))} />
           </Box>
+          {post.type === 'post' && (
+            <Box mt={4}>
+              <Author author={author} />
+            </Box>
+          )}
+          <EditPostLink post={post} />
         </Container>
       </Box>
+
       {single && post?.type === 'post' && <RelatedPosts post={post} />}
+      {post?.type === 'page' && <RelatedPosts title="Siste innlegg" />}
     </Layout>
   )
 }

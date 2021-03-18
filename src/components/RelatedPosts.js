@@ -8,7 +8,7 @@ import Loading from './Loading'
 import Heading from './primitives/Heading'
 import useLocalStorage from '../hooks/useLocalStorage'
 
-const RelatedPosts = ({ post }) => {
+const RelatedPosts = ({ post, title = 'Les også...' }) => {
   const [posts, setPosts] = useState(null)
   const [readArticles] = useLocalStorage('readArticles', [])
   const perPage = 3
@@ -21,8 +21,7 @@ const RelatedPosts = ({ post }) => {
   const inViewEvent = () => {
     if (inView) {
       getRelatedPosts({
-        post,
-        exclude: [post.id, ...readArticles],
+        exclude: [post?.id, ...readArticles],
         perPage,
       }).then((res) => {
         if (res.length < perPage) {
@@ -43,7 +42,7 @@ const RelatedPosts = ({ post }) => {
     <Container ref={ref}>
       <Box borderTop="1" mb={[3, null, null, 4]} />
       <Heading as="h2" size="h2">
-        Les også…
+        {title}
       </Heading>
       <Box mb={[5, null, 6]}>
         {!posts && (

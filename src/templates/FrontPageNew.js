@@ -11,34 +11,26 @@ import PreviewWarning from '../components/PreviewWarning'
 
 const FrontPageNew = ({ page, preview }) => {
   return (
-    <>
-      <Box as="article">
-        {preview && <PreviewWarning />}
-        {page && page.acf.intro && (
-          <Container as="header" my={[3, null, 4, 5]}>
-            <Heading size="h1" textAlign="center">
-              {page.acf.intro}
-            </Heading>
-          </Container>
-        )}
-        <Container>
-          <NewsTicker />
+    <Box as="article">
+      {preview && <PreviewWarning />}
+      {page && page.acf.intro && (
+        <Container as="header" my={[3, null, 4, 5]}>
+          <Heading size="h1" textAlign="center">
+            {page.acf.intro}
+          </Heading>
         </Container>
-        <Box mt={[4, null, null, 5]}>
-          <FeaturedPosts postIds={page?.acf?.featured_posts} />
-        </Box>
-        {page?.acf?.blocks && (
-          <Pagebuilder my={[5, null, null, 6]} blocks={page.acf.blocks} />
-        )}
-        <SpecialPosts my={[5, null, null, 6]} />
-      </Box>
-      <Container mb={6}>
-        <Heading as="h3" size="h2" textAlign="center" mb="3">
-          Meld deg på vårt nyhetsbrev
-        </Heading>
-        <NewsletterForm />
+      )}
+      <Container>
+        <NewsTicker />
       </Container>
-    </>
+      <Box mt={[4, null, null, 5]}>
+        <FeaturedPosts postIds={page?.acf?.featured_posts} />
+      </Box>
+      {page?.acf?.blocks && (
+        <Pagebuilder my={[5, null, null, 6]} blocks={page.acf.blocks} />
+      )}
+      <SpecialPosts my={[5, null, null, 6]} />
+    </Box>
   )
 }
 
