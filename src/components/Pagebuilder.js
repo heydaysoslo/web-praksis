@@ -2,10 +2,12 @@ import React from 'react'
 import Box from './primitives/Box'
 import NewsletterBlock from './NewsletterBlock'
 import FeatureBlock from './FeatureBlock'
+import TextBlock from './TextBlock'
 
 const blockTypes = {
   feature: FeatureBlock,
   newsletter: NewsletterBlock,
+  text: TextBlock,
 }
 
 const resolveBlock = (block) => {
