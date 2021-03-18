@@ -24,7 +24,10 @@ const FrontPageNew = ({ page, preview }) => {
         <NewsTicker />
       </Container>
       <Box mt={[4, null, null, 5]}>
-        <FeaturedPosts postIds={page?.acf?.featured_posts} />
+        <FeaturedPosts
+          postIds={page?.acf?.featured_posts}
+          randomize={page?.acf?.featured_posts_randomize}
+        />
       </Box>
       {page?.acf?.blocks && (
         <Pagebuilder my={[5, null, null, 6]} blocks={page.acf.blocks} />

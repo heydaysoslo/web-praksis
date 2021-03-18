@@ -5,12 +5,16 @@ import FrontPageNew from './FrontPageNew'
 
 const FrontPageContainer = () => {
   const [page, setPage] = useState()
+
   const onMount = () => {
+    window.scrollTo(0, 0)
     getFrontPage().then((res) => {
       setPage(res)
     })
   }
+
   useEffect(onMount, [])
+
   return (
     <Layout
       page={{

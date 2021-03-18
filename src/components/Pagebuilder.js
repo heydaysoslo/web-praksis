@@ -17,10 +17,10 @@ const resolveBlock = (block) => {
 const Pagebuilder = ({ blocks, ...props }) => {
   return (
     <Box {...props}>
-      {blocks.map((item) => {
+      {blocks.map((item, i) => {
         const Block = resolveBlock(item)
         if (Block) {
-          return <Block {...item} />
+          return <Block key={`PB-block-${i}`} {...item} />
         }
       })}
     </Box>

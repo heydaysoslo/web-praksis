@@ -60,6 +60,7 @@ const NewsTicker = () => {
             posts.map((post) => {
               return (
                 <TickerItem
+                  key={`ticker-${post.id}`}
                   as={Link}
                   to={post.link}
                   width={['75%', null, '45%', null, '22.5%']}

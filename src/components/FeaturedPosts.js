@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { getPostsByIds } from '../utils/wp'
+import { arrayShuffle } from '../utils/functions'
 import FeaturedPost from './FeaturedPost'
 import PostGrid from './PostGrid'
 import Container from './primitives/Container'
 
-const FeaturedPosts = ({ postIds }) => {
+const FeaturedPosts = ({ postIds, randomize }) => {
   const [posts, setPosts] = useState([])
   const [firstPost, setFirstPost] = useState(null)
   const [secondRow, setSecondRow] = useState(null)
@@ -12,14 +13,28 @@ const FeaturedPosts = ({ postIds }) => {
   const loadPosts = () => {
     if (Array.isArray(postIds) && !posts.length) {
       // Extract the top 5 posts
-      const firstPosts = [...postIds].splice(0, 7)
-
+      let firstPosts = [...postIds].splice(0, 7)
       // Get posts
       getPostsByIds(firstPosts).then((res) => {
         if (Array.isArray(res) && res.length) {
           const allPosts = [...res]
+
+          // Orders
+          let postsOrder = firstPosts
+
+          // Randomize all
+          if (randomize === 'all') {
+            postsOrder = arrayShuffle(postsOrder)
+          }
+
+          // Randomize all but first post
+          if (randomize === 'exclude_first') {
+            const firstNum = postsOrder.shift()
+            postsOrder = [firstNum, ...arrayShuffle(postsOrder)]
+          }
+
           // Sort the returned posts by the order of the ids
-          const allPostsSorted = postIds.reduce((acc, id) => {
+          const allPostsSorted = postsOrder.reduce((acc, id) => {
             allPosts.forEach((item) => item.id === id && acc.push(item))
             return acc
           }, [])
