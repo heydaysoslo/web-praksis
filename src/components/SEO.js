@@ -35,11 +35,7 @@ const SEO = ({ page }) => {
 
   return (
     <>
-      <Helmet
-        titleTemplate="Praksismagasin - %s"
-        defaultTitle="Sosialdemokratisk ordskifte"
-        meta={meta}
-      >
+      <Helmet titleTemplate="Praksismagasin - %s" defaultTitle="" meta={meta}>
         <html lang="nb" />
         {pageTitle && <title>{pageTitle}</title>}
         {page &&

@@ -6,7 +6,7 @@ import { getCategoryPageLink } from '../utils/routes'
 const activeClassName = 'active'
 
 const CategoryNavItemStyled = styled(NavLink)(
-  ({ theme }) => css`
+  ({ theme, $variant }) => css`
     white-space: nowrap;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -20,16 +20,26 @@ const CategoryNavItemStyled = styled(NavLink)(
       color: ${theme.colors.text};
       border-color: ${theme.colors.primary};
     }
+    ${$variant === 'pill' &&
+    css`
+      span {
+        background: ${theme.colors.primary};
+        color: ${theme.colors.white};
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
+    `}
   `
 )
 
-const CategoryNavItem = ({ cat, children }) => {
+const CategoryNavItem = ({ cat, children, variant }) => {
   return (
     <CategoryNavItemStyled
+      $variant={variant}
       activeClassName={activeClassName}
       to={cat?.link || getCategoryPageLink()}
     >
-      {children || cat?.name}
+      <span>{children || cat?.name}</span>
     </CategoryNavItemStyled>
   )
 }

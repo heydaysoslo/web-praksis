@@ -1,7 +1,6 @@
 import React from 'react'
 import NewsTicker from '../components/NewsTicker'
 import Pagebuilder from '../components/Pagebuilder'
-import NewsletterForm from '../components/NewsletterForm'
 import Heading from '../components/primitives/Heading'
 import Container from '../components/primitives/Container'
 import Box from '../components/primitives/Box'
