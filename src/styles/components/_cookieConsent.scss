@@ -1,9 +1,9 @@
-.cookieConsent {
+.CookieConsent {
+
+  @include font-size(small);
   padding: rem-calc(15);
   background: $c-light-gray;
   color: $c-text;
-  // width: 100%;
-  @include font-size(small);
   line-height: 1.25;
   border-radius: 3px;
   right: 20px;
@@ -11,6 +11,7 @@
   max-width: rem-calc(280);
   position: static !important;
   text-align: left;
+  
   a {
     color: $c-primary;
     text-decoration: underline;
@@ -18,6 +19,7 @@
       text-decoration: none;
     }
   }
+
   &__button {
     color: $c-white;
     background-color: $c-primary;
@@ -30,5 +32,5 @@
       background-color: $c-black;
     }
   }
-  // left: 0;
+  
 }

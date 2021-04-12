@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Consumer, Portal } from './utilities'
-// import { NavLink } from 'react-router-dom'
-// import uuid from 'uuid/v1'
+import { Consumer } from './utilities/Context'
+import Portal from './utilities/Portal'
 import posed, { PoseGroup } from 'react-pose'
 import NavMenu from '../components/NavMenu'
 import cc from 'classcat'
@@ -9,34 +8,34 @@ import cc from 'classcat'
 const Drawer = posed.div({
   enter: {
     x: 0,
-    opacity: 1
+    opacity: 1,
   },
   exit: {
     x: 100,
     opacity: 0,
-    transition: { duration: 150 }
+    transition: { duration: 150 },
   },
   open: {
     delayChildren: 200,
-    staggerChildren: 50
-  }
+    staggerChildren: 50,
+  },
 })
 
 const Backdrop = posed.div({
   enter: { opacity: 1 },
-  exit: { opacity: 0 }
+  exit: { opacity: 0 },
 })
 
 export default class SideNav extends Component {
   render() {
     return (
       <Consumer>
-        {ctx => (
+        {(ctx) => (
           <Portal>
             <div
               className={cc({
                 SideNav: true,
-                'SideNav--open': ctx.state.showMenu
+                'SideNav--open': ctx.state.showMenu,
               })}
             >
               <PoseGroup>
@@ -76,7 +75,7 @@ export default class SideNav extends Component {
                     onClick={ctx.actions.toggleMenu}
                     key="modal"
                     className="SideNav__backdrop"
-                  />
+                  />,
                 ]}
               </PoseGroup>
             </div>

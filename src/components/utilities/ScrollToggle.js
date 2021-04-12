@@ -20,7 +20,7 @@ export default class Toggle extends Component {
     visible: false,
     scrollY: 0,
     prevScrollY: 0,
-    direction: 'down'
+    direction: 'down',
   }
 
   handleScroll = () => {
@@ -36,13 +36,15 @@ export default class Toggle extends Component {
         visible,
         scrollY,
         prevScrollY: this.state.scrollY,
-        direction: this.state.scrollY < scrollY ? 'down' : 'up'
+        direction: this.state.scrollY < scrollY ? 'down' : 'up',
       })
     }
   }
 
   componentWillUnmount = () => {
-    window.removeEventListener(this.scrollListener)
+    if (this.scrollListener) {
+      window.removeEventListener(this.scrollListener)
+    }
   }
 
   componentDidMount = () => {
@@ -51,6 +53,7 @@ export default class Toggle extends Component {
       this.handleScroll,
       false
     )
+    this.handleScroll()
   }
 
   render() {

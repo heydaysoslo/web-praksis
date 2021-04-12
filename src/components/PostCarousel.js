@@ -10,7 +10,7 @@ import cc from 'classcat'
 export default class PostCarousel extends Component {
   state = {
     posts: [],
-    isDragging: false
+    isDragging: false,
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -18,12 +18,12 @@ export default class PostCarousel extends Component {
   }
 
   componentDidMount = () => {
-    getPostsByIds(this.props.posts).then(posts => {
+    getPostsByIds(this.props.posts).then((posts) => {
       this.setState({ posts })
     })
   }
 
-  onClickPrevent = e => {
+  onClickPrevent = (e) => {
     if (this.state.isDragging) {
       e.preventDefault()
     }
@@ -50,28 +50,28 @@ export default class PostCarousel extends Component {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 2
-          }
+            slidesToShow: 2,
+          },
         },
         {
           breakpoint: 768,
           settings: {
-            slidesToShow: 1
-          }
-        }
-      ]
+            slidesToShow: 1,
+          },
+        },
+      ],
     }
 
     return (
       <div
         className={cc({
           PostCarousel: true,
-          [this.props.className]: this.props.className
+          [this.props.className]: this.props.className,
         })}
       >
         <div className="container">
           <Slider className="StickiesSlider" {...sliderSettings}>
-            {posts.map(post => {
+            {posts.map((post) => {
               return (
                 <div key={uuid('sticky')} className="StickiesSlider__item">
                   <Link

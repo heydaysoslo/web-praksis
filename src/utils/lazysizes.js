@@ -28,8 +28,8 @@ export const acfImageToSrcset = (sizes, maxSize = 99999) => {
   return srcArrayToSrcset(sizesFiltered)
 }
 
-export const srcArrayToSrcset = sizes => {
-  const srcsetArray = Object.keys(sizes).map(size => {
+export const srcArrayToSrcset = (sizes) => {
+  const srcsetArray = Object.keys(sizes).map((size) => {
     return `${sizes[size]} ${size}w`
   })
   return srcsetArray.join(', ')

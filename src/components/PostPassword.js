@@ -8,7 +8,7 @@ class PostPassword extends Component {
     isUnlocked: false,
     password: '',
     pwmessage: '',
-    loading: true
+    loading: true,
   }
 
   componentDidMount = () => {
@@ -18,13 +18,13 @@ class PostPassword extends Component {
     if (password) {
       this.setState(
         {
-          password
+          password,
         },
         this.getObject
       )
     } else {
       this.setState({
-        loading: false
+        loading: false,
       })
     }
   }
@@ -35,7 +35,7 @@ class PostPassword extends Component {
       this.props.postType,
       this.state.password
     )
-      .then(post => {
+      .then((post) => {
         // Save password in session so we don't need to ender password every time
         sessionStorage.setItem(
           'post_unlocked_' + this.props.postId,
@@ -43,22 +43,22 @@ class PostPassword extends Component {
         )
         this.props.postUnlocked(post)
       })
-      .catch(err => {
+      .catch((err) => {
         console.log('error', err)
         if (err.message) {
           this.setState({
-            pwmessage: err.message
+            pwmessage: err.message,
           })
         }
       })
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     this.getObject()
     event.preventDefault()
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ password: event.target.value })
   }
 

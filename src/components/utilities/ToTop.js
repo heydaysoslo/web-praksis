@@ -1,8 +1,28 @@
 import React, { Component } from 'react'
-import { ScrollToggle } from './'
-import cc from 'classcat'
+import ScrollToggle from './ScrollToggle'
 import smoothscroll from 'smoothscroll-polyfill'
+import styled, { css } from 'styled-components'
 smoothscroll.polyfill()
+
+const ToTopButton = styled.button(
+  ({ theme, $visible }) => css`
+    width: 3rem;
+    height: 3rem;
+    overflow: hidden;
+    border-radius: 99px;
+    color: ${theme.colors.white};
+    background: ${theme.colors.red};
+    margin-bottom: 2rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease;
+    ${$visible &&
+    css`
+      visibility: visible;
+      opacity: 1;
+    `}
+  `
+)
 
 export default class ToTop extends Component {
   scrollToTop = () => {
@@ -14,15 +34,13 @@ export default class ToTop extends Component {
       <ScrollToggle>
         {({ visible }) => {
           return (
-            <button
+            <ToTopButton
+              aria-label="Tilbake til topp"
               onClick={this.scrollToTop}
-              className={cc({
-                ToTop,
-                'ToTop--visible': visible
-              })}
+              $visible={visible}
             >
-              Tilbake til topp
-            </button>
+              &uarr;
+            </ToTopButton>
           )
         }}
       </ScrollToggle>

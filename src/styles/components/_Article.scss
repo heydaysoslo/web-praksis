@@ -1,16 +1,6 @@
 .Article {
-  // max-width: rem-calc(1400);
-  // margin: 0 auto;
-  // margin-top: rem-calc(70);
-
-  @include spacing(lg, 'margin-top');
-
-  &__inner {
-    border-top: 2px solid $c-primary;
-  }
 
   &--red &__title {
-    // transform: rotate(-1.5deg);
     a {
       background: $c-primary;
       color: #fff;
@@ -18,12 +8,11 @@
     }
   }
 
-  &--frame &__inner {
-    border: 2px solid transparent;
-    border-top: 2px solid $c-light-gray;
-    border-right: 2px solid $c-light-gray;
-    // background: #000;
-  }
+  // &--frame &__inner {
+  //   border: 2px solid transparent;
+  //   border-top: 2px solid $c-light-gray;
+  //   border-right: 2px solid $c-light-gray;
+  // }
 
   &__stickyContainer {
     position: relative;
@@ -48,9 +37,6 @@
       display: block;
     }
 
-    // @include bp(sm, lg) {
-    //   position: static !important;
-    // }
   }
 
   &__image {

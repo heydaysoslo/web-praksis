@@ -1,93 +1,63 @@
 import React, { Component, createContext } from 'react'
-import { getNavMenu, getPosts, getSettings, getPageById } from '../../utils/wp'
+import { getCategories, getNavMenu, getSettings } from '../../utils/wp'
 import mqlistener from '../../utils/mqlistener'
-export const SiteContext = createContext()
+
+const SiteContext = createContext()
 
 export class Provider extends Component {
   state = {
     showMenu: false,
     menuItems: [],
     secondaryItems: [],
-    posts: [],
-    postsPage: 1,
-    loadingNext: false,
-    allPagesLoaded: false,
-    feedScrollPos: 0,
-    settings: null,
+    settings: {
+      bloginfo: null,
+    },
     initialLoad: false,
-    frontPage: null,
-    mq: 'sm'
+    categories: [],
+    mq: 'sm',
   }
 
   componentDidMount = () => {
-    mqlistener(mq => {
+    mqlistener((mq) => {
       this.setState({ mq })
     })
 
     /**
      * Get main settings
      */
-    getSettings().then(settings => {
+    getSettings().then((settings) => {
       this.setState({
-        settings
+        settings,
       })
-      if (settings.front_page_id) {
-        getPageById(settings.front_page_id).then(frontPage => {
-          this.setState({ frontPage })
-        })
-      }
     })
 
     /**
      * Get navigation
      */
     Promise.all([getNavMenu('primary'), getNavMenu('secondary')])
-      .then(res => {
+      .then((res) => {
         this.setState({
           menuItems: res[0].items,
-          secondaryItems: res[1].items
+          secondaryItems: res[1].items,
         })
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err))
 
     /**
-     * Get feed items
+     * Get categories
      */
-    getPosts(this.state.postsPage).then(res => {
+    getCategories().then((res) => {
       this.setState({
-        posts: res,
-        initialLoad: true
+        categories: res,
       })
     })
   }
 
   toggleMenu = () => {
     this.setState(
-      prevState => ({ showMenu: !prevState.showMenu }),
+      (prevState) => ({ showMenu: !prevState.showMenu }),
       () => this.noScroll()
     )
-  }
-
-  nextPage = () => {
-    const nextPage = this.state.postsPage + 1
-    this.setState({ loadingNext: true })
-    getPosts(nextPage)
-      .then(res => {
-        this.setState(prevState => {
-          return {
-            posts: [...prevState.posts, ...res],
-            postsPage: nextPage,
-            loadingNext: false
-          }
-        })
-      })
-      .catch(err => {
-        if (err && err.code && err.code === 'rest_post_invalid_page_number') {
-          this.setState({
-            allPagesLoaded: true
-          })
-        }
-      })
   }
 
   noScroll = () => {
@@ -103,8 +73,7 @@ export class Provider extends Component {
           state: this.state,
           actions: {
             toggleMenu: this.toggleMenu,
-            nextPage: this.nextPage
-          }
+          },
         }}
       >
         {this.props.children}
@@ -112,4 +81,7 @@ export class Provider extends Component {
     )
   }
 }
+
 export const Consumer = SiteContext.Consumer
+
+export default SiteContext

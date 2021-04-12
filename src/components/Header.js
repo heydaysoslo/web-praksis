@@ -1,34 +1,35 @@
 import React, { Component } from 'react'
 import { getNavMenu } from '../utils/wp'
 import { Link } from 'react-router-dom'
-import { Consumer } from './utilities'
+import { Consumer } from './utilities/Context'
 // import AdminBar from '../components/AdminBar'
 import SideNav from '../components/SideNav'
 import Logo from './Logo'
 import SearchIcon from '../components/SearchIcon'
+import Container from '../components/primitives/Container'
 
 class Header extends Component {
   state = {
-    menuItems: []
+    menuItems: [],
   }
 
   componentDidMount = () => {
     getNavMenu('primary')
-      .then(res => {
+      .then((res) => {
         this.setState({
-          menuItems: res.items
+          menuItems: res.items,
         })
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err))
   }
 
   render() {
     return (
       <Consumer>
-        {ctx => (
+        {(ctx) => (
           <header className="App__header Header">
             {/* <AdminBar /> */}
-            <div className="container container--fluid">
+            <Container size="fluid">
               <div className="Header__content">
                 <Link to={'/'} className="Header__logo">
                   <Logo />
@@ -50,7 +51,7 @@ class Header extends Component {
                   <SideNav />
                 </div>
               </div>
-            </div>
+            </Container>
           </header>
         )}
       </Consumer>
