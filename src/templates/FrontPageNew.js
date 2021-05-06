@@ -19,10 +19,10 @@ const FrontPageNew = ({ page, preview }) => {
           </Heading>
         </Container>
       )}
-      <Container>
+      <Container mt={[3, null, 4]}>
         <NewsTicker />
       </Container>
-      <Box mt={[4, null, null, 5]}>
+      <Box mt={[4, null, null, 4]}>
         <FeaturedPosts
           postIds={page?.acf?.featured_posts}
           randomize={page?.acf?.featured_posts_randomize}

@@ -41,7 +41,8 @@ const FeaturedPosts = ({ postIds, randomize }) => {
           // Extract the top featured post
           const firstEl = allPostsSorted.shift()
           // const secondEls = allPostsSorted.slice(0, 2)
-          const rest = allPostsSorted.slice(2)
+          // const rest = allPostsSorted.slice(2)
+          const rest = allPostsSorted.slice(0, 4)
 
           setFirstPost(firstEl)
           // setSecondRow(secondEls)
