@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class Logo extends Component {
   render() {
@@ -9,6 +9,7 @@ export default class Logo extends Component {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 974 214.4"
       >
+        <title>Frihet</title>
         <rect fill="#DC1E0F" width="974" height="214.4" />
         <path
           fill="#FFFFFF"
@@ -29,6 +30,6 @@ export default class Logo extends Component {
 	c0,12.9,8.6,17.3,38.8,21.6c30.2,4.3,53.9,17.3,53.9,47.4C936.7,163.3,919.4,184.9,874.1,184.9z"
         />
       </svg>
-    )
+    );
   }
 }
