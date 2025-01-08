@@ -1,9 +1,9 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import styled, { css } from 'styled-components'
-import { getCategoryPageLink } from '../utils/routes'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styled, { css } from "styled-components";
+import { getCategoryPageLink } from "../utils/routes";
 
-const activeClassName = 'active'
+const activeClassName = "active";
 
 const CategoryNavItemStyled = styled(NavLink)(
   ({ theme, $variant }) => css`
@@ -20,7 +20,7 @@ const CategoryNavItemStyled = styled(NavLink)(
       color: ${theme.colors.text};
       border-color: ${theme.colors.primary};
     }
-    ${$variant === 'pill' &&
+    ${$variant === "pill" &&
     css`
       span {
         background: ${theme.colors.primary};
@@ -30,18 +30,18 @@ const CategoryNavItemStyled = styled(NavLink)(
       }
     `}
   `
-)
+);
 
 const CategoryNavItem = ({ cat, children, variant }) => {
   return (
     <CategoryNavItemStyled
       $variant={variant}
-      activeClassName={activeClassName}
+      className={({ isActive }) => (isActive ? activeClassName : "")}
       to={cat?.link || getCategoryPageLink()}
     >
       <span>{children || cat?.name}</span>
     </CategoryNavItemStyled>
-  )
-}
+  );
+};
 
-export default CategoryNavItem
+export default CategoryNavItem;

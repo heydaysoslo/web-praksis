@@ -1,6 +1,5 @@
 .CookieConsent {
 
-  @include font-size(small);
   padding: rem-calc(15);
   background: $c-light-gray;
   color: $c-text;
@@ -11,6 +10,8 @@
   max-width: rem-calc(280);
   position: static !important;
   text-align: left;
+  
+  @include font-size(small);
   
   a {
     color: $c-primary;

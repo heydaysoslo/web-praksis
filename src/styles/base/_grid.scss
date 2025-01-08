@@ -96,13 +96,13 @@ $container-gutters: (
         }
         @for $i from 1 through $grid-columns {
           &--#{$bp}-#{$i} {
-            flex-basis: percentage($i/$grid-columns);
-            max-width: percentage($i/$grid-columns);
+            flex-basis: percentage(calc($i/$grid-columns));
+            max-width: percentage(calc($i/$grid-columns));
           }
         }
       }
 
-      $grid_gutter: rem-calc($gutter/2 * -1);
+      $grid_gutter: rem-calc(calc($gutter/2 * -1));
 
       &--margin-x {
         margin-right: $grid_gutter;
@@ -110,13 +110,13 @@ $container-gutters: (
       }
 
       &--margin-x &__item {
-        $item_gutter: rem-calc($gutter/2);
+        $item_gutter: rem-calc(calc($gutter/2));
         padding-right: $item_gutter;
         padding-left: $item_gutter;
       }
 
       &--margin-y &__item {
-        $item_gutter: rem-calc($gutter/2);
+        $item_gutter: rem-calc(calc($gutter/2));
         margin-top: $item_gutter;
         margin-bottom: $item_gutter;
       }

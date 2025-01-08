@@ -83,7 +83,7 @@ a {
   }
   &--landscape {
     &:before {
-      padding-top: percentage(10/16);
+      padding-top: percentage(calc(10/16));
     }
   }
   &--square {

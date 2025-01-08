@@ -14,7 +14,7 @@
     &:before {
       content: '';
       display: block;
-      padding-top: percentage(10/16);
+      padding-top: percentage(calc(10/16));
       width: 100%;
     }
     > *:first-child {

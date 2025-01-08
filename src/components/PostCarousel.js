@@ -1,39 +1,39 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { getObjectLink, getPostsByIds } from '../utils/wp'
-import uuid from 'uuid/v1'
-import Slider from 'react-slick'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { getObjectLink, getPostsByIds } from "../utils/wp";
+import { v1 as uuid } from "uuid";
+import Slider from "react-slick";
 // import AcfImage from '../components/AcfImage'
-import AcfBgset from './AcfBgset'
-import cc from 'classcat'
+import AcfBgset from "./AcfBgset";
+import cc from "classcat";
 
 export default class PostCarousel extends Component {
   state = {
     posts: [],
     isDragging: false,
-  }
+  };
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.isDragging === nextState.isDragging
+    return this.state.isDragging === nextState.isDragging;
   }
 
   componentDidMount = () => {
     getPostsByIds(this.props.posts).then((posts) => {
-      this.setState({ posts })
-    })
-  }
+      this.setState({ posts });
+    });
+  };
 
   onClickPrevent = (e) => {
     if (this.state.isDragging) {
-      e.preventDefault()
+      e.preventDefault();
     }
-  }
+  };
 
   render() {
-    const { posts } = this.state
+    const { posts } = this.state;
 
     if (!posts.length) {
-      return null
+      return null;
     }
 
     const sliderSettings = {
@@ -60,7 +60,7 @@ export default class PostCarousel extends Component {
           },
         },
       ],
-    }
+    };
 
     return (
       <div
@@ -73,7 +73,7 @@ export default class PostCarousel extends Component {
           <Slider className="StickiesSlider" {...sliderSettings}>
             {posts.map((post) => {
               return (
-                <div key={uuid('sticky')} className="StickiesSlider__item">
+                <div key={uuid("sticky")} className="StickiesSlider__item">
                   <Link
                     onClick={this.onClickPrevent}
                     className="StickiesSlider__link"
@@ -98,11 +98,11 @@ export default class PostCarousel extends Component {
                     </div>
                   </Link>
                 </div>
-              )
+              );
             })}
           </Slider>
         </div>
       </div>
-    )
+    );
   }
 }

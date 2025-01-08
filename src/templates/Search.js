@@ -1,36 +1,36 @@
-import React, { Component, createRef } from 'react'
-import TagCloud from '../components/TagCloud'
-import { search } from '../utils/wp'
-import PostGrid from '../components/PostGrid'
-import Box from '../components/primitives/Box'
+import React, { Component, createRef } from "react";
+import TagCloud from "../components/TagCloud";
+import { search } from "../utils/wp";
+import PostGrid from "../components/PostGrid";
+import Box from "../components/primitives/Box";
 
 const cleanSearch = (str) => {
-  return str.replace(/[^a-zA-Z0-9\-_+ ]/g, '')
-}
+  return str.replace(/[^a-zA-Z0-9\-_+ ]/g, "");
+};
 
 export default class Search extends Component {
   state = {
-    inputValue: '',
+    inputValue: "",
     posts: [],
-    searchTerm: '',
+    searchTerm: "",
     searching: false,
-    placeholderText: 'Søk',
-  }
+    placeholderText: "Søk",
+  };
 
-  input = createRef()
+  input = createRef();
 
   doSearch = () => {
-    const searchTerm = cleanSearch(this.state.inputValue)
+    const searchTerm = cleanSearch(this.state.inputValue);
     if (!searchTerm) {
       this.setState({
         searching: false,
-        searchTerm: '',
+        searchTerm: "",
         posts: [],
-        inputValue: '',
-      })
-      window.history.replaceState({}, '', '/sok/')
+        inputValue: "",
+      });
+      window.history.replaceState({}, "", "/sok/");
     } else {
-      this.setState({ searching: true })
+      this.setState({ searching: true });
       search(searchTerm)
         .then((posts) => {
           this.setState(
@@ -43,60 +43,60 @@ export default class Search extends Component {
               // Add url parameter for successful search to make it possible to share results
               window.history.replaceState(
                 { searchTerm },
-                '',
-                '/sok/' + searchTerm
-              )
+                "",
+                "/sok/" + searchTerm
+              );
             }
-          )
+          );
         })
         .catch((err) => {
-          console.log('err', err)
+          console.log("err", err);
           this.setState({
             posts: [],
             searchTerm: this.state.inputValue,
             searching: false,
-          })
-          window.history.replaceState({}, '', '/sok/')
-        })
+          });
+          window.history.replaceState({}, "", "/sok/");
+        });
     }
-  }
+  };
 
   handleSubmit = (event) => {
     if (this.autoQueryTimer) {
-      clearTimeout(this.autoQueryTimer)
+      clearTimeout(this.autoQueryTimer);
     }
 
-    this.doSearch()
+    this.doSearch();
 
-    event.preventDefault()
-  }
+    event.preventDefault();
+  };
 
   handleChange = (event) => {
-    const query = event.target.value
+    const query = event.target.value;
 
     // this.setState({ inputValue: query }, () => {
     //   window.history.replaceState({ query }, '', '/sok/' + query)
     // })
-    this.setState({ inputValue: query })
+    this.setState({ inputValue: query });
 
     if (this.autoQueryTimer) {
-      clearTimeout(this.autoQueryTimer)
+      clearTimeout(this.autoQueryTimer);
     }
     this.autoQueryTimer = setTimeout(() => {
-      this.doSearch()
-    }, 500)
-  }
+      this.doSearch();
+    }, 500);
+  };
 
   componentWillUnmount = () => {
     if (this.inputFocusTimer) {
-      clearTimeout(this.inputFocusTimer)
+      clearTimeout(this.inputFocusTimer);
     }
-  }
+  };
 
   componentDidMount = () => {
     this.inputFocusTimer = setTimeout(() => {
-      this.input.current.focus()
-    }, 300)
+      this.input.current.focus();
+    }, 300);
 
     // Search on initial load based on query
     if (this.props.match.params && this.props.match.params.query) {
@@ -105,43 +105,38 @@ export default class Search extends Component {
           inputValue: this.props.match.params.query,
         },
         () => {
-          this.doSearch()
+          this.doSearch();
         }
-      )
+      );
     }
-  }
+  };
 
   clearSearch = () => {
     this.setState(
       {
-        inputValue: '',
+        inputValue: "",
       },
       () => {
-        this.doSearch()
+        this.doSearch();
       }
-    )
-  }
+    );
+  };
 
   inputFocus = () => {
     this.setState({
-      placeholderText: 'Begynn å skrive for å søke',
-    })
-  }
+      placeholderText: "Begynn å skrive for å søke",
+    });
+  };
 
   inputBlur = () => {
     this.setState({
-      placeholderText: 'Søk',
-    })
-  }
+      placeholderText: "Søk",
+    });
+  };
 
   render() {
-    const {
-      posts,
-      searching,
-      searchTerm,
-      inputValue,
-      placeholderText,
-    } = this.state
+    const { posts, searching, searchTerm, inputValue, placeholderText } =
+      this.state;
     return (
       <article className="Search container">
         <form className="Search__form" onSubmit={this.handleSubmit}>
@@ -181,6 +176,6 @@ export default class Search extends Component {
           </>
         )}
       </article>
-    )
+    );
   }
 }

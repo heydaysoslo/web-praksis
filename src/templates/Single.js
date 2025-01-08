@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import Article from './ArticleNew'
-import NoMatchPage from './NoMatchPage'
-import { getObjectBySlug } from '../utils/wp'
-import PostPassword from '../components/PostPassword'
-import Loading from '../components/Loading'
+import React, { useEffect, useState } from "react";
+import Article from "./ArticleNew";
+import NoMatchPage from "./NoMatchPage";
+import { getObjectBySlug } from "../utils/wp";
+import PostPassword from "../components/PostPassword";
+import Loading from "../components/Loading";
 
 const Single = ({ match }) => {
-  const [loading, setLoading] = useState(true)
-  const [noMatch, setNoMatch] = useState(false)
-  const [post, setPost] = useState(null)
-  const [unlocked, setUnlocked] = useState(false)
+  const [loading, setLoading] = useState(true);
+  const [noMatch, setNoMatch] = useState(false);
+  const [post, setPost] = useState(null);
+  const [unlocked, setUnlocked] = useState(false);
 
   const loadContent = () => {
-    setLoading(true)
-    setUnlocked(false)
+    setLoading(true);
+    setUnlocked(false);
 
     getObjectBySlug(match?.params)
       .then((post) => {
-        setPost(post)
-        setLoading(false)
+        setPost(post);
+        setLoading(false);
       })
       .catch((err) => {
-        setNoMatch(true)
-      })
-  }
+        setNoMatch(true);
+      });
+  };
 
   const onPostUnlocked = (post) => {
-    setPost(post)
-    setUnlocked(true)
-  }
+    setPost(post);
+    setUnlocked(true);
+  };
 
-  useEffect(loadContent, [match.params.slug])
+  useEffect(loadContent, [match?.params?.slug]);
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   if (noMatch || !post) {
-    return <NoMatchPage />
+    return <NoMatchPage />;
   }
 
   if (post?.content?.protected && !unlocked) {
@@ -47,10 +47,10 @@ const Single = ({ match }) => {
         postId={post.id}
         postUnlocked={onPostUnlocked}
       />
-    )
+    );
   }
 
-  return <Article single post={post} preview={false} />
-}
+  return <Article single post={post} preview={false} />;
+};
 
-export default Single
+export default Single;

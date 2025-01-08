@@ -1,42 +1,30 @@
-import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
-import cc from 'classcat'
-import uuid from 'uuid/v1'
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import cc from "classcat";
+import { v1 as uuid } from "uuid";
 
 export default class NavMenu extends Component {
   render() {
-    const { items } = this.props
+    const { items } = this.props;
     if (!items.length < 0) {
-      return null
+      return null;
     }
     return (
       <nav
         className={cc({
           NavMenu: true,
-          'NavMenu--large': !this.props.small,
+          "NavMenu--large": !this.props.small,
         })}
       >
         <ul className="NavMenu__list">
-          {/* {this.props.homeLink && (
-            <li className="NavMenu__item">
-              <NavLink
-                activeClassName="NavMenu__link--active"
-                className="NavMenu__link"
-                to="/"
-                onClick={this.props.toggle}
-                exact
-              >
-                Feed
-              </NavLink>
-            </li>
-          )} */}
           {items.map((p) => {
-            if (p.url.indexOf('://') === -1) {
+            if (p.url.indexOf("://") === -1) {
               return (
                 <li key={uuid()} className="NavMenu__item">
                   <NavLink
-                    activeClassName="NavMenu__link--active"
-                    className="NavMenu__link"
+                    className={({ isActive }) =>
+                      isActive ? "NavMenu__link--active" : "NavMenu__link"
+                    }
                     to={p.url}
                     onClick={this.props.toggle}
                     exact
@@ -44,7 +32,7 @@ export default class NavMenu extends Component {
                     {p.title}
                   </NavLink>
                 </li>
-              )
+              );
             } else {
               return (
                 <li key={uuid()} className="NavMenu__item">
@@ -57,11 +45,11 @@ export default class NavMenu extends Component {
                     {p.title}
                   </a>
                 </li>
-              )
+              );
             }
           })}
         </ul>
       </nav>
-    )
+    );
   }
 }

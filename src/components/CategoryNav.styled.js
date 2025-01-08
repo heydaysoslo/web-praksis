@@ -1,7 +1,6 @@
-import styled, { css } from 'styled-components'
-import Container from './primitives/Container'
-import Box from './primitives/Box'
-import Flex from './primitives/Flex'
+import styled, { css } from "styled-components";
+import Container from "./primitives/Container";
+import Flex from "./primitives/Flex";
 
 export const Wrap = styled.div(
   ({ theme }) => css`
@@ -14,7 +13,7 @@ export const Wrap = styled.div(
     }
 
     &:after {
-      content: '';
+      content: "";
       display: block;
       width: 100%;
       border-bottom: 2px solid ${theme.colors.grays[0]};
@@ -24,16 +23,16 @@ export const Wrap = styled.div(
       z-index: -1;
     }
   `
-)
+);
 
 export const Nav = styled(Container)`
   overflow-x: scroll;
   overflow-y: hidden;
   height: 8rem; // hide scrollbar
-`
+`;
 
 export const Items = styled(Flex)(
   ({ theme }) => css`
     display: inline-flex;
   `
-)
+);

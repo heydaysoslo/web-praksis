@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { getPostsByTaxonomy, getTerms, getPosts } from '../utils/wp'
-import Loading from '../components/Loading'
-import Pagination from '../components/Pagination'
-import Box from '../components/primitives/Box'
-import Container from '../components/primitives/Container'
-import Layout from '../components/Layout'
-import PostGrid from '../components/PostGrid'
-import CategoryHeader from '../components/CategoryHeader'
-import Text from '../components/primitives/Text'
+import React, { Component } from "react";
+import { getPostsByTaxonomy, getTerms, getPosts } from "../utils/wp";
+import Loading from "../components/Loading";
+import Pagination from "../components/Pagination";
+import Box from "../components/primitives/Box";
+import Container from "../components/primitives/Container";
+import Layout from "../components/Layout";
+import PostGrid from "../components/PostGrid";
+import CategoryHeader from "../components/CategoryHeader";
+import Text from "../components/primitives/Text";
 
 class Taxonomy extends Component {
   state = {
@@ -18,68 +18,68 @@ class Taxonomy extends Component {
     catsLoaded: false,
     page: 1,
     paging: null,
-  }
+  };
 
   getCurrentCat = (slug) => {
     if (!slug) {
-      return null
+      return null;
     }
-    const foundCats = this.state.cats.filter((cat) => cat.slug === slug)
-    return foundCats?.length ? foundCats[0] : null
-  }
+    const foundCats = this.state.cats.filter((cat) => cat.slug === slug);
+    return foundCats?.length ? foundCats[0] : null;
+  };
 
   setCurrentCat = (slug) => {
-    const page = this.props.match.params.page || 1
-    const cat = this.getCurrentCat(slug)
-    this.setState({ page, cat })
+    const page = this.props.match.params.page || 1;
+    const cat = this.getCurrentCat(slug);
+    this.setState({ page, cat });
     if (cat?.id) {
       getPostsByTaxonomy({
         taxonomy: this.props.taxonomy,
         ids: [cat.id],
         page,
       }).then((posts) => {
-        this.setState({ posts, loading: false })
+        this.setState({ posts, loading: false });
         if (posts._paging) {
-          this.setState({ paging: posts._paging })
+          this.setState({ paging: posts._paging });
         }
-      })
+      });
     } else {
       getPosts(page).then((posts) => {
-        this.setState({ posts, loading: false })
+        this.setState({ posts, loading: false });
         if (posts._paging) {
-          this.setState({ paging: posts._paging })
+          this.setState({ paging: posts._paging });
         }
-      })
+      });
     }
-  }
+  };
 
   loadContent = () => {
-    window.scrollTo(0, 0)
-    this.setState({ loading: true })
-    const slug = this.props.match.params.cat
+    window.scrollTo(0, 0);
+    this.setState({ loading: true });
+    const slug = this.props.match.params.cat;
     if (this.state.catsLoaded) {
-      this.setCurrentCat(slug)
+      this.setCurrentCat(slug);
     } else {
       getTerms({ taxonomy: this.props.taxonomy }).then((cats) => {
         this.setState({ cats, catsLoaded: true }, () => {
-          this.setCurrentCat(slug)
-        })
-      })
+          this.setCurrentCat(slug);
+        });
+      });
     }
-  }
+  };
 
   componentDidMount = () => {
-    this.loadContent()
-  }
+    this.loadContent();
+  };
 
   componentDidUpdate = (prevProps) => {
     if (
       this.props.match.params.cat !== prevProps.match.params.cat ||
       this.props.match.params.page !== prevProps.match.params.page
     ) {
-      this.loadContent()
+      this.loadContent();
     }
-  }
+  };
 
   getPageHeadings = (cat) => {
     // if (this.state.page !== 1) {
@@ -90,23 +90,23 @@ class Taxonomy extends Component {
         label: this.props.label,
         title: cat.name,
         intro: cat?.description,
-      }
+      };
     }
     return {
-      title: 'Arkiv',
-    }
-  }
+      title: "Arkiv",
+    };
+  };
 
   render() {
-    const { cat, loading, posts } = this.state
-    const pageHeadings = this.getPageHeadings(cat)
+    const { cat, loading, posts } = this.state;
+    const pageHeadings = this.getPageHeadings(cat);
     return (
       <Layout
         page={{
           ...cat,
           pageTitle:
             (cat && cat.name && `${pageHeadings?.label}: ${cat.name}`) ||
-            'Arkiv',
+            "Arkiv",
         }}
       >
         <article>
@@ -138,8 +138,8 @@ class Taxonomy extends Component {
           )}
         </article>
       </Layout>
-    )
+    );
   }
 }
 
-export default Taxonomy
+export default Taxonomy;
