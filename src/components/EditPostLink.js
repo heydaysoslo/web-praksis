@@ -1,34 +1,34 @@
-import React, { Component } from 'react'
-import { loggedIn } from '../utils/wp'
-import cc from 'classcat'
+import React, { Component } from "react";
+import { loggedIn } from "../utils/wp";
+import cc from "classcat";
 
 export default class EditPostLink extends Component {
   state = {
-    loggedIn: false
-  }
+    loggedIn: false,
+  };
   componentDidMount = () => {
     loggedIn()
-      .then(res => {
-        if (res.logged_in) {
+      .then((res) => {
+        if (res?.logged_in) {
           this.setState({
-            loggedIn: true
-          })
+            loggedIn: true,
+          });
         }
       })
-      .catch()
-  }
+      .catch();
+  };
 
   render() {
-    const { loggedIn } = this.state
-    const { edit_post_link } = this.props.post
+    const { loggedIn } = this.state;
+    const { edit_post_link } = this.props.post;
     if (!loggedIn || !edit_post_link) {
-      return null
+      return null;
     }
     return (
       <div
         className={cc({
           [this.props.className]: true,
-          EditPostLink: true
+          EditPostLink: true,
         })}
       >
         <a
@@ -40,6 +40,6 @@ export default class EditPostLink extends Component {
           Rediger
         </a>
       </div>
-    )
+    );
   }
 }

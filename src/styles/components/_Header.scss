@@ -19,9 +19,6 @@
       max-width: rem-calc(350);
       padding-right: 0;
     }
-    @include bp(lg) {
-      max-width: rem-calc(420);
-    }
   }
   &__nav {
     &--right {

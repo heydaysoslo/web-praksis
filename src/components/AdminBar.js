@@ -1,23 +1,23 @@
-import React, { Component } from 'react'
-import { loggedIn } from '../utils/wp'
+import React, { Component } from "react";
+import { loggedIn } from "../utils/wp";
 
 export default class AdminBar extends Component {
   state = {
-    data: false
-  }
+    data: false,
+  };
 
   componentDidMount = () => {
-    loggedIn().then(data => {
+    loggedIn().then((data) => {
       if (data && data.logged_in === true) {
-        this.setState({ data })
+        this.setState({ data });
       }
-    })
-  }
+    });
+  };
 
   render() {
-    const { data } = this.state
+    const { data } = this.state;
     if (!data) {
-      return null
+      return null;
     }
     return (
       <div className="AdminBar">
@@ -25,6 +25,6 @@ export default class AdminBar extends Component {
           WordPress
         </a>
       </div>
-    )
+    );
   }
 }

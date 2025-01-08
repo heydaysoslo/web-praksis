@@ -1271,9 +1271,6 @@ strong {
       .Header__logo {
         max-width: 35rem;
         padding-right: 0; } }
-    @media screen and (min-width: 64em) {
-      .Header__logo {
-        max-width: 42rem; } }
   .Header__nav--right {
     position: absolute;
     right: 0;
