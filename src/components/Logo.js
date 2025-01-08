@@ -9,7 +9,7 @@ export default class Logo extends Component {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 974 214.4"
       >
-        <title>Frihet</title>
+        <title>Frihetmagasin</title>
         <rect fill="#DC1E0F" width="974" height="214.4" />
         <path
           fill="#FFFFFF"
