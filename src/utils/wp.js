@@ -2,7 +2,7 @@ import WPAPI from "wpapi";
 // Docs: http://wp-api.org/node-wpapi/api-reference/wpapi/1.1.2/WPRequest.html#exclude
 
 export const BACKEND_URL = "http://praksis.test";
-export const FRONTEND_URL = "https://praksismagasin.no";
+export const FRONTEND_URL = "https://frihetmagasin.no";
 
 const env =
   process.env.NODE_ENV === "development" ? "development" : process.env.NODE_ENV;

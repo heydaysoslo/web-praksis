@@ -1,26 +1,29 @@
-import React, { useContext } from 'react'
-import { Helmet } from 'react-helmet'
-import ReactHtmlParser from 'react-html-parser'
+import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
+import ReactHtmlParser from "react-html-parser";
 
-import { BACKEND_URL, FRONTEND_URL } from '../utils/wp'
-import SiteContext from './utilities/Context'
+import { BACKEND_URL, FRONTEND_URL } from "../utils/wp";
+import SiteContext from "./utilities/Context";
 
 const SEO = ({ page }) => {
-  const ctx = useContext(SiteContext)
+  const ctx = useContext(SiteContext);
 
   const preprocessNodes = (nodes) => {
     return nodes.map((node) => {
-      if (node?.attribs?.rel === 'canonical') {
-        node.attribs.href = node.attribs.href.replace(BACKEND_URL, FRONTEND_URL)
+      if (node?.attribs?.rel === "canonical") {
+        node.attribs.href = node.attribs.href.replace(
+          BACKEND_URL,
+          FRONTEND_URL
+        );
       }
-      return node
-    })
-  }
+      return node;
+    });
+  };
 
-  const { bloginfo } = ctx.state.settings
+  const { bloginfo } = ctx.state.settings;
 
   const pageTitle =
-    page?.pageTitle || page?.title?.rendered || page?.title || null
+    page?.pageTitle || page?.title?.rendered || page?.title || null;
 
   /*
   <meta name="description" content="Helmet application" />
@@ -31,11 +34,11 @@ const SEO = ({ page }) => {
   ]
   */
 
-  const meta = [{ itemprop: 'name', content: bloginfo?.name }]
+  const meta = [{ itemprop: "name", content: bloginfo?.name }];
 
   return (
     <>
-      <Helmet titleTemplate="Praksismagasin - %s" defaultTitle="" meta={meta}>
+      <Helmet titleTemplate="Frihet - %s" defaultTitle="" meta={meta}>
         <html lang="nb" />
         {pageTitle && <title>{pageTitle}</title>}
         {page &&
@@ -52,7 +55,7 @@ const SEO = ({ page }) => {
       </Helmet>
       {/* <pre>{JSON.stringify(page, null, 2)}</pre> */}
     </>
-  )
-}
+  );
+};
 
-export default SEO
+export default SEO;
