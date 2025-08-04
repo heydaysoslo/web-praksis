@@ -6,7 +6,7 @@ export const FRONTEND_URL = "https://frihetmagasin.no";
 
 const env =
   process.env.NODE_ENV === "development" ? "development" : process.env.NODE_ENV;
-let endpoint = "https://api.praksismagasin.no/api";
+let endpoint = "https://210698-www.web.tornado-node.net/api";
 // let endpoint = 'http://praksis.test/api'
 // if (env !== 'development') {
 //   endpoint = 'https://api.praksismagasin.no/api'
