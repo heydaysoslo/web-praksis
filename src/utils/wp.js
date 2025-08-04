@@ -1,7 +1,7 @@
 import WPAPI from "wpapi";
 // Docs: http://wp-api.org/node-wpapi/api-reference/wpapi/1.1.2/WPRequest.html#exclude
 
-export const BACKEND_URL = "http://praksis.test";
+export const BACKEND_URL = "https://210698-www.web.tornado-node.net";
 export const FRONTEND_URL = "https://frihetmagasin.no";
 
 const env =
