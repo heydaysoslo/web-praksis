@@ -1,12 +1,12 @@
 import WPAPI from "wpapi";
 // Docs: http://wp-api.org/node-wpapi/api-reference/wpapi/1.1.2/WPRequest.html#exclude
 
-export const BACKEND_URL = "https://210698-www.web.tornado-node.net";
+export const BACKEND_URL = "https://w210698-www.website.cbpwye3po.service.one";
 export const FRONTEND_URL = "https://frihetmagasin.no";
 
 const env =
   process.env.NODE_ENV === "development" ? "development" : process.env.NODE_ENV;
-let endpoint = "https://210698-www.web.tornado-node.net/api";
+let endpoint = "https://w210698-www.website.cbpwye3po.service.one/api";
 // let endpoint = 'http://praksis.test/api'
 // if (env !== 'development') {
 //   endpoint = 'https://api.praksismagasin.no/api'
