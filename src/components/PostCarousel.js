@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { getObjectLink, getPostsByIds } from '../utils/wp'
-import uuid from 'uuid/v1'
+import { v1 as uuid } from 'uuid'
 import Slider from 'react-slick'
 // import AcfImage from '../components/AcfImage'
 import AcfBgset from './AcfBgset'

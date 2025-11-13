@@ -1,46 +1,53 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Consumer } from './utilities/Context'
 import Portal from './utilities/Portal'
-import posed, { PoseGroup } from 'react-pose'
 import NavMenu from '../components/NavMenu'
 import cc from 'classcat'
 
-const Drawer = posed.div({
+const drawerVariants = {
   enter: {
     x: 0,
     opacity: 1,
+    transition: {
+      delayChildren: 0.2,
+      staggerChildren: 0.05,
+    },
   },
   exit: {
     x: 100,
     opacity: 0,
-    transition: { duration: 150 },
+    transition: { duration: 0.15 },
   },
-  open: {
-    delayChildren: 200,
-    staggerChildren: 50,
-  },
-})
+}
 
-const Backdrop = posed.div({
+const backdropVariants = {
   enter: { opacity: 1 },
   exit: { opacity: 0 },
-})
+}
 
-export default class SideNav extends Component {
-  render() {
-    return (
-      <Consumer>
-        {(ctx) => (
-          <Portal>
-            <div
-              className={cc({
-                SideNav: true,
-                'SideNav--open': ctx.state.showMenu,
-              })}
-            >
-              <PoseGroup>
-                {ctx.state.showMenu && [
-                  <Drawer key="shade" className="SideNav__drawer">
+const SideNav = () => {
+  return (
+    <Consumer>
+      {(ctx) => (
+        <Portal>
+          <div
+            className={cc({
+              SideNav: true,
+              'SideNav--open': ctx.state.showMenu,
+            })}
+          >
+            <AnimatePresence>
+              {ctx.state.showMenu && (
+                <>
+                  <motion.div
+                    key="drawer"
+                    className="SideNav__drawer"
+                    variants={drawerVariants}
+                    initial="exit"
+                    animate="enter"
+                    exit="exit"
+                  >
                     <div className="SideNav__content container container--fluid">
                       <div className="SideNav__header">
                         <button
@@ -70,18 +77,24 @@ export default class SideNav extends Component {
                         )}
                       </div>
                     </div>
-                  </Drawer>,
-                  <Backdrop
+                  </motion.div>
+                  <motion.div
+                    key="backdrop"
                     onClick={ctx.actions.toggleMenu}
-                    key="modal"
                     className="SideNav__backdrop"
-                  />,
-                ]}
-              </PoseGroup>
-            </div>
-          </Portal>
-        )}
-      </Consumer>
-    )
-  }
+                    variants={backdropVariants}
+                    initial="exit"
+                    animate="enter"
+                    exit="exit"
+                  />
+                </>
+              )}
+            </AnimatePresence>
+          </div>
+        </Portal>
+      )}
+    </Consumer>
+  )
 }
+
+export default SideNav

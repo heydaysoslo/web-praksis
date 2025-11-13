@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { getPostTags } from '../utils/wp'
 import { Link } from 'react-router-dom'
-import uuid from 'uuid/v1'
+import { v1 as uuid } from 'uuid'
 import cc from 'classcat'
 
 export default class PostTags extends Component {

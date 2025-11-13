@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Article from './ArticleNew'
 import NoMatchPage from './NoMatchPage'
 import { getObjectBySlug } from '../utils/wp'
 import PostPassword from '../components/PostPassword'
 import Loading from '../components/Loading'
 
-const Single = ({ match }) => {
+const Single = () => {
+  const params = useParams()
   const [loading, setLoading] = useState(true)
   const [noMatch, setNoMatch] = useState(false)
   const [post, setPost] = useState(null)
@@ -15,7 +17,7 @@ const Single = ({ match }) => {
     setLoading(true)
     setUnlocked(false)
 
-    getObjectBySlug(match?.params)
+    getObjectBySlug(params)
       .then((post) => {
         setPost(post)
         setLoading(false)
@@ -30,7 +32,7 @@ const Single = ({ match }) => {
     setUnlocked(true)
   }
 
-  useEffect(loadContent, [match.params.slug])
+  useEffect(loadContent, [params.slug, params.type])
 
   if (loading) {
     return <Loading />

@@ -10,7 +10,6 @@ export const routes = [
     name: 'home',
     path: '/',
     component: FrontPageContainer,
-    exact: true,
   },
   /*
 
@@ -21,13 +20,11 @@ export const routes = [
     name: 'posts',
     path: '/posts',
     component: Taxonomy,
-    exact: true,
   },
   {
     name: 'postsPage',
     path: '/posts/side/:page',
     component: Taxonomy,
-    exact: true,
   },
   /*
 
@@ -38,13 +35,11 @@ export const routes = [
     name: 'searchPage',
     path: '/sok',
     component: Search,
-    exact: true,
   },
   {
     name: 'searchResult',
     path: '/sok/:query',
     component: Search,
-    exact: true,
   },
   /*
 
@@ -57,7 +52,6 @@ export const routes = [
     name: 'category',
     path: '/kategori/:cat',
     component: Taxonomy,
-    exact: true,
     props: {
       label: 'Kategori',
       taxonomy: 'categories',
@@ -67,7 +61,6 @@ export const routes = [
     name: 'categoryPagina',
     path: '/kategori/:cat/side/:page',
     component: Taxonomy,
-    exact: true,
     props: {
       label: 'Kategori',
       taxonomy: 'categories',
@@ -83,7 +76,6 @@ export const routes = [
     name: 'articleType',
     path: '/innleggstype/:cat',
     component: Taxonomy,
-    exact: true,
     props: {
       label: 'Innleggstype',
       taxonomy: 'content_type',
@@ -93,7 +85,6 @@ export const routes = [
     name: 'articleTypePagina',
     path: '/innleggstype/:cat/side/:page',
     component: Taxonomy,
-    exact: true,
     props: {
       label: 'Innleggstype',
       taxonomy: 'content_type',
@@ -108,7 +99,6 @@ export const routes = [
     name: 'tag',
     path: '/stikkord/:tag',
     component: Tag,
-    exact: true,
   },
   /*
 
@@ -119,7 +109,6 @@ export const routes = [
     name: 'preview',
     path: '/_preview/:id',
     component: Preview,
-    exact: true,
   },
   /*
 
@@ -130,7 +119,6 @@ export const routes = [
     name: 'postType',
     path: '/:type/:slug',
     component: Single,
-    exact: false,
   },
   /*
 
@@ -142,7 +130,6 @@ export const routes = [
     name: 'page',
     path: '/:slug',
     component: Single,
-    exact: false,
   },
 ]
 

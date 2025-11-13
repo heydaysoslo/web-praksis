@@ -1,34 +1,30 @@
-import React, { Component, createContext } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 import { getCategories, getNavMenu, getSettings } from '../../utils/wp'
 import mqlistener from '../../utils/mqlistener'
 
 const SiteContext = createContext()
 
-export class Provider extends Component {
-  state = {
-    showMenu: false,
-    menuItems: [],
-    secondaryItems: [],
-    settings: {
-      bloginfo: null,
-    },
-    initialLoad: false,
-    categories: [],
-    mq: 'sm',
-  }
+export const Provider = ({ children }) => {
+  const [showMenu, setShowMenu] = useState(false)
+  const [menuItems, setMenuItems] = useState([])
+  const [secondaryItems, setSecondaryItems] = useState([])
+  const [settings, setSettings] = useState({
+    bloginfo: null,
+  })
+  const [initialLoad, setInitialLoad] = useState(false)
+  const [categories, setCategories] = useState([])
+  const [mq, setMq] = useState('sm')
 
-  componentDidMount = () => {
+  useEffect(() => {
     mqlistener((mq) => {
-      this.setState({ mq })
+      setMq(mq)
     })
 
     /**
      * Get main settings
      */
     getSettings().then((settings) => {
-      this.setState({
-        settings,
-      })
+      setSettings(settings)
     })
 
     /**
@@ -36,10 +32,8 @@ export class Provider extends Component {
      */
     Promise.all([getNavMenu('primary'), getNavMenu('secondary')])
       .then((res) => {
-        this.setState({
-          menuItems: res[0].items,
-          secondaryItems: res[1].items,
-        })
+        setMenuItems(res[0].items)
+        setSecondaryItems(res[1].items)
       })
       .catch((err) => console.log(err))
 
@@ -47,41 +41,48 @@ export class Provider extends Component {
      * Get categories
      */
     getCategories().then((res) => {
-      this.setState({
-        categories: res,
-      })
+      setCategories(res)
+    })
+  }, [])
+
+  const toggleMenu = () => {
+    setShowMenu((prevShowMenu) => {
+      const newShowMenu = !prevShowMenu
+      // Update scroll lock after state update
+      setTimeout(() => {
+        document.querySelector('html').style.cssText = newShowMenu
+          ? 'overflow: hidden;'
+          : ''
+      }, 0)
+      return newShowMenu
     })
   }
 
-  toggleMenu = () => {
-    this.setState(
-      (prevState) => ({ showMenu: !prevState.showMenu }),
-      () => this.noScroll()
-    )
+  const value = {
+    state: {
+      showMenu,
+      menuItems,
+      secondaryItems,
+      settings,
+      initialLoad,
+      categories,
+      mq,
+    },
+    actions: {
+      toggleMenu,
+    },
   }
 
-  noScroll = () => {
-    document.querySelector('html').style.cssText = this.state.showMenu
-      ? 'overflow: hidden;'
-      : ''
-  }
-
-  render() {
-    return (
-      <SiteContext.Provider
-        value={{
-          state: this.state,
-          actions: {
-            toggleMenu: this.toggleMenu,
-          },
-        }}
-      >
-        {this.props.children}
-      </SiteContext.Provider>
-    )
-  }
+  return (
+    <SiteContext.Provider value={value}>
+      {children}
+    </SiteContext.Provider>
+  )
 }
 
-export const Consumer = SiteContext.Consumer
+export const Consumer = ({ children }) => {
+  const context = useContext(SiteContext)
+  return children(context)
+}
 
 export default SiteContext

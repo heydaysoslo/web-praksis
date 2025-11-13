@@ -1,4 +1,5 @@
-import React, { Component, createRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import TagCloud from '../components/TagCloud'
 import { search } from '../utils/wp'
 import PostGrid from '../components/PostGrid'
@@ -8,179 +9,152 @@ const cleanSearch = (str) => {
   return str.replace(/[^a-zA-Z0-9\-_+ ]/g, '')
 }
 
-export default class Search extends Component {
-  state = {
-    inputValue: '',
-    posts: [],
-    searchTerm: '',
-    searching: false,
-    placeholderText: 'Søk',
-  }
+const Search = () => {
+  const params = useParams()
+  const navigate = useNavigate()
+  const [inputValue, setInputValue] = useState('')
+  const [posts, setPosts] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+  const [searching, setSearching] = useState(false)
+  const [placeholderText, setPlaceholderText] = useState('Søk')
 
-  input = createRef()
+  const input = useRef(null)
+  const autoQueryTimer = useRef(null)
+  const inputFocusTimer = useRef(null)
 
-  doSearch = () => {
-    const searchTerm = cleanSearch(this.state.inputValue)
-    if (!searchTerm) {
-      this.setState({
-        searching: false,
-        searchTerm: '',
-        posts: [],
-        inputValue: '',
-      })
-      window.history.replaceState({}, '', '/sok/')
+  const doSearch = useCallback((searchValue) => {
+    const valueToSearch = searchValue !== undefined ? searchValue : inputValue
+    const cleanedSearchTerm = cleanSearch(valueToSearch)
+    if (!cleanedSearchTerm) {
+      setSearching(false)
+      setSearchTerm('')
+      setPosts([])
+      setInputValue('')
+      navigate('/sok', { replace: true })
     } else {
-      this.setState({ searching: true })
-      search(searchTerm)
+      setSearching(true)
+      search(cleanedSearchTerm)
         .then((posts) => {
-          this.setState(
-            {
-              posts,
-              searchTerm: this.state.inputValue,
-              searching: false,
-            },
-            () => {
-              // Add url parameter for successful search to make it possible to share results
-              window.history.replaceState(
-                { searchTerm },
-                '',
-                '/sok/' + searchTerm
-              )
-            }
-          )
+          setPosts(posts)
+          setSearchTerm(valueToSearch)
+          setSearching(false)
+          // Add url parameter for successful search to make it possible to share results
+          navigate(`/sok/${cleanedSearchTerm}`, { replace: true })
         })
         .catch((err) => {
           console.log('err', err)
-          this.setState({
-            posts: [],
-            searchTerm: this.state.inputValue,
-            searching: false,
-          })
-          window.history.replaceState({}, '', '/sok/')
+          setPosts([])
+          setSearchTerm(valueToSearch)
+          setSearching(false)
+          navigate('/sok', { replace: true })
         })
     }
-  }
+  }, [inputValue, navigate])
 
-  handleSubmit = (event) => {
-    if (this.autoQueryTimer) {
-      clearTimeout(this.autoQueryTimer)
+  const handleSubmit = (event) => {
+    if (autoQueryTimer.current) {
+      clearTimeout(autoQueryTimer.current)
     }
 
-    this.doSearch()
+    doSearch()
 
     event.preventDefault()
   }
 
-  handleChange = (event) => {
+  const handleChange = (event) => {
     const query = event.target.value
 
-    // this.setState({ inputValue: query }, () => {
-    //   window.history.replaceState({ query }, '', '/sok/' + query)
-    // })
-    this.setState({ inputValue: query })
+    setInputValue(query)
 
-    if (this.autoQueryTimer) {
-      clearTimeout(this.autoQueryTimer)
+    if (autoQueryTimer.current) {
+      clearTimeout(autoQueryTimer.current)
     }
-    this.autoQueryTimer = setTimeout(() => {
-      this.doSearch()
+    autoQueryTimer.current = setTimeout(() => {
+      doSearch()
     }, 500)
   }
 
-  componentWillUnmount = () => {
-    if (this.inputFocusTimer) {
-      clearTimeout(this.inputFocusTimer)
+  useEffect(() => {
+    return () => {
+      if (inputFocusTimer.current) {
+        clearTimeout(inputFocusTimer.current)
+      }
+      if (autoQueryTimer.current) {
+        clearTimeout(autoQueryTimer.current)
+      }
     }
-  }
+  }, [])
 
-  componentDidMount = () => {
-    this.inputFocusTimer = setTimeout(() => {
-      this.input.current.focus()
+  useEffect(() => {
+    inputFocusTimer.current = setTimeout(() => {
+      input.current?.focus()
     }, 300)
 
     // Search on initial load based on query
-    if (this.props.match.params && this.props.match.params.query) {
-      this.setState(
-        {
-          inputValue: this.props.match.params.query,
-        },
-        () => {
-          this.doSearch()
-        }
-      )
+    if (params.query) {
+      setInputValue(params.query)
+      // Use a small delay to ensure state is set before searching
+      setTimeout(() => {
+        doSearch(params.query)
+      }, 100)
     }
+  }, [params.query, doSearch])
+
+  const clearSearch = () => {
+    setInputValue('')
+    setTimeout(() => {
+      doSearch()
+    }, 0)
   }
 
-  clearSearch = () => {
-    this.setState(
-      {
-        inputValue: '',
-      },
-      () => {
-        this.doSearch()
-      }
-    )
+  const inputFocus = () => {
+    setPlaceholderText('Begynn å skrive for å søke')
   }
 
-  inputFocus = () => {
-    this.setState({
-      placeholderText: 'Begynn å skrive for å søke',
-    })
+  const inputBlur = () => {
+    setPlaceholderText('Søk')
   }
 
-  inputBlur = () => {
-    this.setState({
-      placeholderText: 'Søk',
-    })
-  }
-
-  render() {
-    const {
-      posts,
-      searching,
-      searchTerm,
-      inputValue,
-      placeholderText,
-    } = this.state
-    return (
-      <article className="Search container">
-        <form className="Search__form" onSubmit={this.handleSubmit}>
-          <label>
-            <input
-              ref={this.input}
-              className="Search__input"
-              placeholder={placeholderText}
-              onFocus={this.inputFocus}
-              onBlur={this.inputBlur}
-              onChange={this.handleChange}
-              type="text"
-              value={inputValue}
-            />
-          </label>
-          {inputValue && (
-            <button className="Search__clear" onClick={this.clearSearch}>
-              &times;
-            </button>
-          )}
-        </form>
-        {searching && <div className="Search__status">Et øyeblikk…</div>}
-        {posts.length ? (
-          <Box mb={5}>
-            <PostGrid posts={posts} />
-          </Box>
-        ) : (
-          searchTerm && (
-            <div className="Search__status">
-              Ingen innlegg funnet for <strong>{searchTerm}</strong>
-            </div>
-          )
+  return (
+    <article className="Search container">
+      <form className="Search__form" onSubmit={handleSubmit}>
+        <label>
+          <input
+            ref={input}
+            className="Search__input"
+            placeholder={placeholderText}
+            onFocus={inputFocus}
+            onBlur={inputBlur}
+            onChange={handleChange}
+            type="text"
+            value={inputValue}
+          />
+        </label>
+        {inputValue && (
+          <button className="Search__clear" onClick={clearSearch}>
+            &times;
+          </button>
         )}
-        {!searching && !posts.length && !inputValue.length && (
-          <>
-            <TagCloud className="Search__tags" />
-          </>
-        )}
-      </article>
-    )
-  }
+      </form>
+      {searching && <div className="Search__status">Et øyeblikk…</div>}
+      {posts.length ? (
+        <Box mb={5}>
+          <PostGrid posts={posts} />
+        </Box>
+      ) : (
+        searchTerm && (
+          <div className="Search__status">
+            Ingen innlegg funnet for <strong>{searchTerm}</strong>
+          </div>
+        )
+      )}
+      {!searching && !posts.length && !inputValue.length && (
+        <>
+          <TagCloud className="Search__tags" />
+        </>
+      )}
+    </article>
+  )
 }
+
+export default Search

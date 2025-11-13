@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import cc from 'classcat'
-import uuid from 'uuid/v1'
+import { v1 as uuid } from 'uuid'
 
 export default class NavMenu extends Component {
   render() {

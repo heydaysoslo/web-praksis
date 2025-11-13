@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import ReactHtmlParser from "react-html-parser";
 
 import { BACKEND_URL, FRONTEND_URL } from "../utils/wp";

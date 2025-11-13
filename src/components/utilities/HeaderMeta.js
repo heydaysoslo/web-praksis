@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Consumer } from "../utilities/Context";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export const striptags = (html) => {
   var tmp = document.createElement("DIV");
