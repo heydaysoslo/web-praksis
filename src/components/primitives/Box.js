@@ -1,6 +1,6 @@
 // https://github.com/rebassjs/grid/blob/master/src/index.js
 
-import styled from 'styled-components'
+import styled from "styled-components";
 import {
   space,
   color,
@@ -12,11 +12,11 @@ import {
   width,
   height,
   compose,
-} from 'styled-system'
+} from "styled-system";
 
 const Box = styled.div(
   {
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
   },
   compose(
     width,
@@ -29,8 +29,8 @@ const Box = styled.div(
     grid,
     typography
   )
-)
+);
 
-Box.displayName = 'Box'
+Box.displayName = "Box";
 
-export default Box
+export default Box;
